@@ -202,7 +202,19 @@ If the IP is your proxy's IP - good, your real IP - bad.
    # Edit .env with your proxy settings if needed
    ```
 
-5. **Run benchmark**
+5. **Configure proxies**
+   1. Create a file named `proxies.txt` in the root directory.
+   2. Add your proxy URLs in format `http://username:password@proxy_host:port` or `http://proxy_host:port`. Number of proxies has to be equal to number of engines you want to test.
+      
+   Example `proxies.txt` content (each line is a separate proxy):
+   ```
+   http://proxy1.example.com:8080
+   http://proxy2.example.com:8080
+   http://username:password@proxy3.example.com:8080
+   http://username:password@proxy4.example.com:8080
+   ```
+
+6. **Run benchmark**
    ```bash
    python main.py
    ```
@@ -211,13 +223,8 @@ If the IP is your proxy's IP - good, your real IP - bad.
 
 ### Environment Variables (.env)
 ```bash
-# Proxy Configuration (Optional, but highly recommended)
+# Proxy Configuration (highly recommended to enable)
 PROXY_ENABLED=true
-PROXY_PROTOCOL=http
-PROXY_HOST=your.proxy.host
-PROXY_PORT=8080
-PROXY_USERNAME=username
-PROXY_PASSWORD=password
 
 # Performance Settings
 PAGE_LOAD_TIMEOUT_MS=90000

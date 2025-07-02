@@ -13,6 +13,7 @@ from utils.dataclasses import BypassTestResult, BrowserDataResult, BenchmarkResu
 from utils.io import create_directory_structure, save_results
 from utils.logging.logging import setup_logging
 from utils.metrics import calculate_metrics
+from utils.proxy.proxy_manager import proxy_manager
 from utils.report import generate_report
 from utils.retry import retry_with_backoff
 from utils.screenshot import take_screenshot
@@ -117,7 +118,7 @@ async def run_benchmark_for_engine(
     os.makedirs(engine_screenshots_path, exist_ok=True)
 
     results = BenchmarkResults(
-        engine=engine_params.get("name", "unknown"),
+        engine=engine.name,
         timestamp=datetime.now().isoformat()
     )
 
@@ -169,6 +170,23 @@ async def run_benchmark_for_engine(
 async def run_all_benchmarks() -> None:
     """Run benchmarks for all configured engines"""
 
+    # validate proxy setup before starting
+    if not settings.proxy.enabled:
+        logger.warning("⚠️ PROXIES ARE DISABLED! Results may be inaccurate due to IP reputation.")
+        logger.warning("\tEnable proxies in .env for reliable benchmark results.")
+        return
+
+    # check if we have enough proxies for all engines (one per engine)
+    engine_count = len(engines_config.engines)
+    if not proxy_manager.validate_proxy_count(engine_count):
+        raise ValueError(
+            f"Wrong proxy count! Need {engine_count} proxies but "
+            f"{proxy_manager.get_available_count()} available in {settings.proxy.file_path}"
+        )
+
+    logger.info(
+        f"✅ Proxy validation passed: {proxy_manager.get_available_count()} proxies available for {engine_count} engines")
+
     timestamp = datetime.now().strftime("%Y.%m.%d__%H_%M_%S")
     result_path, media_path, screenshots_path = create_directory_structure(timestamp)
 
@@ -184,6 +202,14 @@ async def run_all_benchmarks() -> None:
             engine_name = engine_config['params']['name']
             logger.info(f"\n===== Testing {engine_name} =====")
 
+            # get proxy for this engine if enabled
+            proxy = None
+            if settings.proxy.enabled:
+                proxy = proxy_manager.get_proxy()
+                if not proxy:
+                    logger.error(f"No proxy available for {engine_name}, skipping...")
+                    continue
+
             try:
                 results = await run_benchmark_for_engine(
                     engine_cls=engine_config["class"],
@@ -192,7 +218,7 @@ async def run_all_benchmarks() -> None:
                     browser_data_targets=[target.model_dump() for target in
                                           benchmark_targets_config.browser_data_targets.targets],
                     screenshots_path=screenshots_path,
-                    proxy=settings.proxy.config_dict if settings.proxy.enabled else None,
+                    proxy=proxy,
                 )
                 all_results.append(results)
             except Exception as e:

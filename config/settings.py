@@ -1,5 +1,4 @@
 import os
-from typing import Optional
 
 from pydantic import BaseModel
 from pydantic_settings import BaseSettings
@@ -9,23 +8,7 @@ class ProxySettings(BaseModel):
     """Configuration settings for the proxy"""
 
     enabled: bool = True
-    protocol: str = "http"
-    host: Optional[str] = None
-    port: Optional[str] = None
-    username: Optional[str] = None
-    password: Optional[str] = None
-
-    @property
-    def config_dict(self) -> dict:
-        """Return proxy configuration as dictionary"""
-
-        return {
-            "protocol": self.protocol,
-            "host": self.host,
-            "port": self.port,
-            "username": self.username,
-            "password": self.password,
-        }
+    file_path: str = "documents/proxies.txt"
 
     model_config = {"extra": "ignore"}
 
@@ -70,11 +53,7 @@ class Settings(BaseSettings):
 
     # proxy
     PROXY_ENABLED: bool = True
-    PROXY_PROTOCOL: str = "http"  # http, https, socks5
-    PROXY_HOST: Optional[str] = None
-    PROXY_PORT: Optional[str] = None
-    PROXY_USERNAME: Optional[str] = None
-    PROXY_PASSWORD: Optional[str] = None
+    PROXY_FILE_PATH: str = "documents/proxies.txt"
 
     # browser
     PAGE_LOAD_TIMEOUT_MS: int = 90000
@@ -97,11 +76,7 @@ class Settings(BaseSettings):
         """Get proxy configuration"""
         return ProxySettings(
             enabled=self.PROXY_ENABLED,
-            protocol=self.PROXY_PROTOCOL,
-            host=self.PROXY_HOST,
-            port=self.PROXY_PORT,
-            username=self.PROXY_USERNAME,
-            password=self.PROXY_PASSWORD
+            file_path=self.PROXY_FILE_PATH
         )
 
     @property

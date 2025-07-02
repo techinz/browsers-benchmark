@@ -42,6 +42,7 @@ venv.bak/
 # project
 documents/profiles/
 documents/binaries/
+documents/proxies.txt
 *.log
 results/*/
 !results/example/

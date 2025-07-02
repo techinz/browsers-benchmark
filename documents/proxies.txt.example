@@ -1,0 +1,20 @@
+# This is an example of a proxy configuration file.
+# Each line should contain a single proxy URL.
+# Number of proxies has to be equal to the number of engines you want to test.
+# The format is: http://username:password@proxy_host:port or http://proxy_host:port
+
+http://proxy1.example.com:8080
+http://proxy2.example.com:8080
+http://username:password@proxy3.example.com:8080
+http://username:password@proxy4.example.com:8080
+http://proxy5.example.com:8080
+http://proxy6.example.com:8080
+http://username:password@proxy7.example.com:8080
+http://username:password@proxy8.example.com:8080
+http://proxy9.example.com:8080
+http://proxy10.example.com:8080
+http://username:password@proxy11.example.com:8080
+http://username:password@proxy12.example.com:8080
+
+# In real file, remove the comments and replace the example URLs with actual proxy URLs.
+# By default, proxies filename is "proxies.txt".
