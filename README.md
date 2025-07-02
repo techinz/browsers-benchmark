@@ -230,7 +230,34 @@ PAGE_STABILIZATION_DELAY_S=5
 MAX_RETRIES=3
 ```
 
-### Custom Target Configuration
+## 📈 Output & Reports
+
+The benchmark generates reports in the `results/` directory:
+
+- **`summary.md`** - Human-readable markdown report
+- **`benchmark_results_*.json`** - Raw data for further analysis  
+- **`media/`** - Generated visualizations and screenshots
+  - `bypass_dashboard.png` - Multi-metric dashboard
+  - `recaptcha_scores.png` - reCAPTCHA performance chart
+  - `creepjs_scores.png` - Fingerprinting resistance analysis
+  - `screenshots` - Screenshots of all tested targets
+
+## 🏗️ Architecture
+
+The codebase follows a modular architecture for extensibility:
+
+```
+├── config/           # Configuration management
+├── engines/          # Browser engine implementations  
+├── utils/
+│   ├── targets/      # Test target definitions
+│   ├── report/       # Report generation system
+│   ├── logging/      # Structured logging
+│   └── ...
+└── results/          # Output directory
+```
+
+### Adding New Targets
 1. Modify `config/benchmark_targets.py` to add custom test targets:
 
     ```python
@@ -262,50 +289,38 @@ MAX_RETRIES=3
     )
     ```
 
-## 📈 Output & Reports
-
-The benchmark generates reports in the `results/` directory:
-
-- **`summary.md`** - Human-readable markdown report
-- **`benchmark_results_*.json`** - Raw data for further analysis  
-- **`media/`** - Generated visualizations and screenshots
-  - `bypass_dashboard.png` - Multi-metric dashboard
-  - `recaptcha_scores.png` - reCAPTCHA performance chart
-  - `creepjs_scores.png` - Fingerprinting resistance analysis
-  - `screenshots` - Screenshots of all tested targets
-
-## 🏗️ Architecture
-
-The codebase follows a modular architecture for extensibility:
-
-```
-├── config/           # Configuration management
-├── engines/          # Browser engine implementations  
-├── utils/
-│   ├── targets/      # Test target definitions
-│   ├── report/       # Report generation system
-│   ├── logging/      # Structured logging
-│   └── ...
-└── results/          # Output directory
-```
-
 ### Adding New Engines
-Extend the `BrowserEngine` base class:
+1. Extend the `BrowserEngine` base class:
 
-```python  
-class CustomEngine(BrowserEngine):
-    async def start(self) -> None:
-        # Initialize browser
-        
-    async def navigate(self, url: str) -> Dict[str, Any]:
-        # Navigation logic
-```
-
-Or, if Playwright-based, extend `PlaywrightBase` base class:
-```python  
-class CustomPlaywrightBasedEngine(PlaywrightBase):
-    ...
-```
+   ```python  
+   class CustomEngine(BrowserEngine):
+       async def start(self) -> None:
+           # Initialize browser
+           
+       async def navigate(self, url: str) -> Dict[str, Any]:
+           # Navigation logic
+   ```
+   
+   Or, if Playwright-based, extend `PlaywrightBase` base class:
+   ```python  
+   class CustomPlaywrightBasedEngine(PlaywrightBase):
+       ...
+   ```
+   
+2. Add it to the engines mapping in `config/engines.py`'s `EnginesSettings`:
+    ```python
+    base_engines = [
+            {
+                "class": PlaywrightEngine,
+                "params": {"headless": True, "name": "playwright-chrome_headless", "browser_type": "chromium"}
+            },
+            ...
+            {
+                "class": CustomEngine,
+                "params": {"headless": True, "name": "custom_engine", "browser_type": "chromium"}
+            }
+   ]
+    ```
 
 ## 🔧 Platform-Specific Notes
 
