@@ -61,8 +61,8 @@ class BrowserEngine(abc.ABC):
         pass
 
     @abc.abstractmethod
-    async def query_selector(self, css_selector: str) -> Tuple[bool, str]:
-        """Query a selector and return its content"""
+    async def locator(self, css_selector: str) -> Tuple[bool, str]:
+        """Locate a selector and return its content"""
         pass
 
     @abc.abstractmethod

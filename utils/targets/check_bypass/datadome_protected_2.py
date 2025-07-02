@@ -9,8 +9,8 @@ async def check_datadome2_bypass(engine: BrowserEngine, tries: int = 20) -> bool
     # it returns no content for some time and only then renders captcha or page
     bypass = False
     for i in range(tries):
-        target_page_loaded_found, target_page_loaded_html = await engine.query_selector('#account-link')
-        captcha_loaded_found, captcha_loaded_html = await engine.query_selector(
+        target_page_loaded_found, target_page_loaded_html = await engine.locator('#account-link')
+        captcha_loaded_found, captcha_loaded_html = await engine.locator(
             "//*[contains(@id, 'ddChallengeContainer')]")
 
         if target_page_loaded_found or captcha_loaded_found:

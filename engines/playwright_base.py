@@ -110,7 +110,7 @@ class PlaywrightBase(BrowserEngine):
         self.process_list = None
 
     async def navigate(self, url: str) -> Dict[str, Any]:
-        """ Navigate to url and return page data """
+        """Navigate to url and return page data"""
 
         if not self.page:
             raise RuntimeError("Browser not started")
@@ -137,8 +137,8 @@ class PlaywrightBase(BrowserEngine):
 
         await self.page.reload(timeout=settings.browser.page_load_timeout_ms)
 
-    async def query_selector(self, selector: str) -> Tuple[bool, str]:
-        """Query a selector and return found status and its content"""
+    async def locator(self, selector: str) -> Tuple[bool, str]:
+        """Locate a selector and return found status and its content"""
 
         if not self.page:
             raise RuntimeError("browser not started")
@@ -146,7 +146,7 @@ class PlaywrightBase(BrowserEngine):
         element_found = False
         element_html = ''
 
-        element = await self.page.query_selector(selector)
+        element = await self.page.locator(selector)
         if element:
             element_found = True
             element_html: str = await element.inner_html()
@@ -162,7 +162,7 @@ class PlaywrightBase(BrowserEngine):
         return await self.page.content()
 
     async def execute_js(self, script: str) -> Any:
-        """Execute javascript in browser context"""
+        """ Execute javascript in browser context """
 
         if not self.page:
             raise RuntimeError("browser not started")
