@@ -129,8 +129,16 @@ class PlaywrightBase(BrowserEngine):
 
         return result
 
+    async def reload_page(self):
+        """Reload the current page"""
+
+        if not self.page:
+            raise RuntimeError("Browser not started")
+
+        await self.page.reload(timeout=settings.browser.page_load_timeout_ms)
+
     async def query_selector(self, selector: str) -> Tuple[bool, str]:
-        """ Query a selector and return found status and its content """
+        """Query a selector and return found status and its content"""
 
         if not self.page:
             raise RuntimeError("browser not started")
@@ -146,7 +154,7 @@ class PlaywrightBase(BrowserEngine):
         return element_found, element_html
 
     async def get_page_content(self) -> str:
-        """ Get current page html content """
+        """Get current page html content"""
 
         if not self.page:
             raise RuntimeError("browser not started")
@@ -154,7 +162,7 @@ class PlaywrightBase(BrowserEngine):
         return await self.page.content()
 
     async def execute_js(self, script: str) -> Any:
-        """ Execute javascript in browser context """
+        """Execute javascript in browser context"""
 
         if not self.page:
             raise RuntimeError("browser not started")
@@ -162,7 +170,7 @@ class PlaywrightBase(BrowserEngine):
         return await self.page.evaluate(script)
 
     async def screenshot(self, path: str) -> None:
-        """ Take a screenshot of the current page """
+        """Take a screenshot of the current page"""
 
         if not self.page:
             raise RuntimeError("browser not started")

@@ -56,6 +56,11 @@ class BrowserEngine(abc.ABC):
         pass
 
     @abc.abstractmethod
+    async def reload_page(self) -> NavigationResult:
+        """Reload the current page"""
+        pass
+
+    @abc.abstractmethod
     async def query_selector(self, css_selector: str) -> Tuple[bool, str]:
         """Query a selector and return its content"""
         pass

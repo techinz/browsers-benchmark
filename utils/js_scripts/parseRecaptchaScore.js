@@ -1,11 +1,14 @@
 (() => {
     const result = { recaptcha_score: null };
 
-    const scoreDiv = document.querySelector('.col-md-6 big');
-    if (!scoreDiv) return result;
+    const responsePre = document.querySelector('pre.response');
+    if (!responsePre) return result;
 
-    const match = scoreDiv.textContent.trim().match(/Your score is:\s*([\d.]+)/i);
-    result.recaptcha_score = match ? parseFloat(match[1]) : null;
+    try {
+        const responseData = JSON.parse(responsePre.textContent);
+        result.recaptcha_score = typeof responseData.score === 'number' ? responseData.score : null;
+    } catch (e) {
+    }
 
     return result;
 })();

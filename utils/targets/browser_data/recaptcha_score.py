@@ -7,7 +7,7 @@ from utils.js_script import load_js_script
 logger = logging.getLogger(__name__)
 
 
-async def get_recaptcha_score_data(engine: BrowserEngine, tries: int = 10) -> dict:
+async def get_recaptcha_score_data(engine: BrowserEngine, tries: int = 5) -> dict:
     """ Extract data from Recaptcha Score Detector page """
 
     try:
@@ -28,11 +28,21 @@ async def get_recaptcha_score_data(engine: BrowserEngine, tries: int = 10) -> di
 async def extract_recaptcha_score(engine: BrowserEngine) -> dict:
     """ Extract Recaptcha Score from the page """
 
-    try:
-        recaptcha_data = await get_recaptcha_score_data(engine)
-    except Exception as e:
-        logger.error(f"Error getting Recaptcha Score data for engine {engine.name}: {e}")
-        recaptcha_data = {}
+    for i in range(3):
+        try:
+            recaptcha_data = await get_recaptcha_score_data(engine)
+            if recaptcha_data.get("recaptcha_score") is not None:
+                break
+        except Exception as e:
+            logger.warning(f"Attempt {i + 1} failed: {e}")
+
+        try:
+            await engine.reload_page()
+            logger.info('Page reloaded')
+        except Exception as reload_error:
+            logger.warning(f"Page reload failed: {reload_error}")
+    else:
+        raise Exception("Failed to extract recaptcha score data after multiple attempts")
 
     return {
         'recaptcha_score': recaptcha_data.get("recaptcha_score", 0)
