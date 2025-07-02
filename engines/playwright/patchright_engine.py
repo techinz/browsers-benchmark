@@ -56,9 +56,6 @@ class PatchrightEngine(PlaywrightBase):
         self.context = await self.browser.new_context(**context_options)
         self.page = await self.context.new_page()
 
-        # monkey-patch attachShadow to force open mode for closed shadow DOM
-        await self.context.add_init_script(await load_js_script('unlockShadowDom.js'))
-
         # track process for resource usage
         process_children_after = parent_process.children(recursive=True)
         process_children_filtered = find_new_child_processes(process_children_before, process_children_after)

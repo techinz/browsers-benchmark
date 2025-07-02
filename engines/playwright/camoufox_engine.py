@@ -57,10 +57,6 @@ class CamoufoxEngine(PlaywrightBase):
         self.context = await self.browser.new_context()
         self.page = await self.browser.new_page()
 
-        # monkey-patch attachShadow to force open mode for closed shadow DOM
-        # just for consistency - camoufox already does this
-        await self.context.add_init_script(await load_js_script('unlockShadowDom.js'))
-
         # track process for resource usage
         process_children_after = parent_process.children(recursive=True)
         process_children_filtered = find_new_child_processes(process_children_before, process_children_after)
