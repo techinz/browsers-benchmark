@@ -196,11 +196,6 @@ If the IP is your proxy's IP - good, your real IP - bad.
    patchright install chromium
    ```
 
-   **BotBrowser** (Optional)
-   - Download from [BotBrowser Releases](https://github.com/MiddleSchoolStudent/BotBrowser/releases)
-   - Extract to `documents/binaries/botbrowser/`
-   - Change `PathSettings.botbrowser_executable_path` in `config/settings.py` (follow instructions in BotBrowser's repo)
-
 4. **Configure settings**
    ```bash
    cp .env.example .env
@@ -323,19 +318,6 @@ The codebase follows a modular architecture for extensibility:
     ```
 
 ## 🔧 Platform-Specific Notes
-
-### BotBrowser Installation
-
-**Windows:**
-1. Download the .7z archive from releases
-2. Extract and run `chrome.exe`
-3. If encountering STATUS_ACCESS_VIOLATION, use `--no-sandbox` flag
-
-**Linux:**
-1. Rename downloaded .deb to .zip
-2. Extract and locate `data.tar.xz`
-3. Copy `data/opt/chromium.org/chromium` to `documents/binaries/botbrowser/`
-
 ### Troubleshooting
 
 **Common Issues:**
