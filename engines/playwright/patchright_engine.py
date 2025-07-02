@@ -34,9 +34,7 @@ class PatchrightEngine(PlaywrightBase):
 
         # initialize playwright
         self.playwright = await async_playwright().start()
-
         browser_launcher: BrowserType = self.playwright.chromium
-        self.browser = await browser_launcher.launch(headless=self.headless)
 
         # configure browser context
         context_options = {}
@@ -53,7 +51,12 @@ class PatchrightEngine(PlaywrightBase):
                 context_options["proxy"]["password"] = self.proxy["password"]
 
         # create context and page
-        self.context = await self.browser.new_context(**context_options)
+        self.context = await browser_launcher.launch_persistent_context(
+            user_data_dir="",
+            channel="chrome",
+            no_viewport=True,
+            **context_options
+        )
         self.page = await self.context.new_page()
 
         # track process for resource usage
