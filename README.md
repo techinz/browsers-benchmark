@@ -268,7 +268,7 @@ The codebase follows a modular architecture for extensibility:
     from engines.base import BrowserEngine
 
     async def check_custom_bypass(engine: BrowserEngine) -> bool:
-        element_found, element_html = await engine.query_selector('//div[@class="captcha"]')
+        element_found, element_html = await engine.locator('//div[@class="captcha"]')
 
         return not element_found # no captcha found - success!
     ```

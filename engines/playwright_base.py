@@ -129,8 +129,8 @@ class PlaywrightBase(BrowserEngine):
 
         return result
 
-    async def query_selector(self, selector: str) -> Tuple[bool, str]:
-        """ Query a selector and return found status and its content """
+    async def locator(self, selector: str) -> Tuple[bool, str]:
+        """ Locate a selector and return found status and its content """
 
         if not self.page:
             raise RuntimeError("browser not started")
@@ -138,7 +138,7 @@ class PlaywrightBase(BrowserEngine):
         element_found = False
         element_html = ''
 
-        element = await self.page.query_selector(selector)
+        element = await self.page.locator(selector)
         if element:
             element_found = True
             element_html: str = await element.inner_html()
