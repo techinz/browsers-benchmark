@@ -11,7 +11,7 @@ async def check_datadome_bypass(engine: BrowserEngine, tries: int = 20) -> bool:
     for i in range(tries):
         target_page_loaded_found, target_page_loaded_html = await engine.locator('#top')
         captcha_loaded_found, captcha_loaded_html = await engine.locator(
-            "//iframe[contains(@title, 'Datadome') or contains(@title, 'DataDome CAPTCHA')]")
+            'iframe[title*="Datadome"], iframe[title*="DataDome CAPTCHA"]')
 
         if target_page_loaded_found or captcha_loaded_found:
             bypass = not captcha_loaded_found
