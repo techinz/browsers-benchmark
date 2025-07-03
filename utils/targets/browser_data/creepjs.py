@@ -1,4 +1,5 @@
 import asyncio
+import json
 import logging
 
 from engines.base import BrowserEngine
@@ -15,6 +16,7 @@ async def get_creepjs_data(engine: BrowserEngine, tries: int = 10) -> dict:
             await asyncio.sleep(5)
 
             data = await engine.execute_js(await load_js_script('parseCreepJS.js'))
+            data = json.loads(data) if data and isinstance(data, str) else data
             if data and data.get('trust_score') is not None:
                 break
         else:

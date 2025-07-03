@@ -43,4 +43,4 @@ if (colSixBlocks.length > 5) {
     }
 }
 
-return result;
+return JSON.stringify(result); // serialize to ensure consistent output (e.g. nodriver does some weird stuff with dict objects on evaluation)
