@@ -28,6 +28,8 @@ async def get_2ip_data(engine: BrowserEngine, tries: int = 10) -> dict:
 async def extract_2ip_data(engine: BrowserEngine) -> dict:
     """ Extract 2IP from the page """
 
+    await asyncio.sleep(5)  # ensure the page is fully loaded
+
     try:
         twoip_data = await get_2ip_data(engine)
     except Exception as e:
