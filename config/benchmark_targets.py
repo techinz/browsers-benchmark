@@ -3,8 +3,8 @@ from typing import List, Dict, Callable
 from pydantic import BaseModel, Field
 
 from utils.targets.browser_data.creepjs import extract_creepjs_data
+from utils.targets.browser_data.ipify import extract_ipify_data
 from utils.targets.browser_data.recaptcha_score import extract_recaptcha_score
-from utils.targets.browser_data.twoip import extract_2ip_data
 from utils.targets.check_bypass.amazon import check_amazon_bypass
 from utils.targets.check_bypass.cloudflare_protected import check_cloudflare_bypass
 from utils.targets.check_bypass.datadome_protected import check_datadome_bypass
@@ -100,9 +100,9 @@ class BrowserDataTargetsSettings(BaseModel):
                 description="CreepJS fingerprinting data extraction"
             ),
             Target(
-                name="2ip",
-                url="https://2ip.io/",
-                check_function="extract_2ip_data",
+                name="ipify",
+                url="https://api.ipify.org?format=json",
+                check_function="extract_ipify_data",
                 description="IP information extraction"
             )
         ]
@@ -112,7 +112,7 @@ class BrowserDataTargetsSettings(BaseModel):
         default_factory=lambda: {
             "extract_recaptcha_score": extract_recaptcha_score,
             "extract_creepjs_data": extract_creepjs_data,
-            "extract_2ip_data": extract_2ip_data
+            "extract_ipify_data": extract_ipify_data
         }
     )
 
