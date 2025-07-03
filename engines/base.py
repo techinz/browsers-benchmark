@@ -6,6 +6,15 @@ import psutil
 
 
 class NavigationResult(TypedDict):
+    """
+    Result of a navigation operation
+
+    :param url: URL of the page after navigation
+    :param load_time: Time taken to load the page in seconds
+    :param success: Whether the navigation was successful
+    :param headers: Response headers from the navigation request (not always available)
+    """
+
     url: str
     load_time: float
     success: bool
@@ -57,7 +66,12 @@ class BrowserEngine(abc.ABC):
 
     @abc.abstractmethod
     async def navigate(self, url: str) -> NavigationResult:
-        """Navigate to url and return page data"""
+        """
+        Navigate to url and return page data
+
+        :param url: URL to navigate to
+        """
+
         pass
 
     @abc.abstractmethod
@@ -67,7 +81,12 @@ class BrowserEngine(abc.ABC):
 
     @abc.abstractmethod
     async def locator(self, css_selector: str) -> Tuple[bool, str]:
-        """Locate a selector and return its content"""
+        """
+        Locate a selector and return its content
+
+        :param css_selector: CSS selector to locate element
+        """
+
         pass
 
     @abc.abstractmethod
@@ -77,12 +96,22 @@ class BrowserEngine(abc.ABC):
 
     @abc.abstractmethod
     async def execute_js(self, script: str) -> Any:
-        """Execute javascript in browser context"""
+        """
+        Execute javascript in browser context
+
+        :param script: JavaScript code to execute
+        """
+
         pass
 
     @abc.abstractmethod
     async def screenshot(self, path: str) -> None:
-        """Take a screenshot of the current page"""
+        """
+        Take a screenshot of the current page
+
+        :param path: Path to save the screenshot
+        """
+
         pass
 
     def get_memory_usage(self) -> float:

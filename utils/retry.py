@@ -12,7 +12,16 @@ async def retry_with_backoff(
         base_delay: float = 1.0,
         **kwargs
 ) -> Any:
-    """Execute an operation with exponential backoff retry logic"""
+    """
+    Execute an operation with exponential backoff retry logic
+
+    :param operation: The operation to execute (a callable)
+    :param args: Positional arguments to pass to the operation
+    :param max_retries: Maximum number of retry attempts
+    :param base_delay: Base delay in seconds for the backoff
+    :param kwargs: Keyword arguments to pass to the operation
+    :return: Result of the operation if successful
+    """
 
     last_exception = Exception("No attempts made")
 

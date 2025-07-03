@@ -23,6 +23,16 @@ class PlaywrightBase(BrowserEngine):
             proxy: Optional[Dict[str, str]] = None,
             **kwargs
     ):
+        """
+        Initialize the PlaywrightBase with the given parameters
+
+        :param name: Name of the engine instance
+        :param browser_type: Type of browser to use (chromium, firefox, webkit)
+        :param user_agent: Custom user agent string
+        :param headless: Whether to run the browser in headless
+        :param proxy: Proxy settings, if any
+        """
+
         super().__init__(name, proxy)
         self.browser_type = browser_type  # chromium, firefox, webkit
         self.headless = headless
@@ -153,7 +163,11 @@ class PlaywrightBase(BrowserEngine):
         return result
 
     async def locator(self, selector: str) -> Tuple[bool, str]:
-        """Locate a selector and return found status and its content"""
+        """
+        Locate a selector and return found status and its content
+
+        :param selector: CSS selector to locate
+        """
 
         if not self.page:
             raise RuntimeError("browser not started")
@@ -177,7 +191,11 @@ class PlaywrightBase(BrowserEngine):
         return await self.page.content()
 
     async def execute_js(self, script: str) -> Any:
-        """ Execute javascript in browser context """
+        """
+        Execute javascript in browser context
+
+        :param script: JavaScript code to execute
+        """
 
         if not self.page:
             raise RuntimeError("browser not started")
@@ -186,7 +204,11 @@ class PlaywrightBase(BrowserEngine):
             f"(() => {{\n{script}\n}})();")  # wrap script in IIFE
 
     async def screenshot(self, path: str) -> None:
-        """Take a screenshot of the current page"""
+        """
+        Take a screenshot of the current page
+
+        :param path: Path to save the screenshot
+        """
 
         if not self.page:
             raise RuntimeError("browser not started")

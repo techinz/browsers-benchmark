@@ -10,7 +10,12 @@ from config.report import report_settings
 
 
 def generate_bypass_dashboard_image(df: pd.DataFrame, output_dir: str) -> str:
-    """Generate a dashboard of bypass benchmark results"""
+    """
+    Generate a dashboard of bypass benchmark results
+
+    :param df: DataFrame containing bypass benchmark results
+    :param output_dir: Directory to save the generated image
+    """
 
     plt.figure(figsize=report_settings.visualization.figure_size_large)
     plt.suptitle("Browser Engine Benchmark Results", fontsize=24, y=0.99)
@@ -48,7 +53,12 @@ def generate_bypass_dashboard_image(df: pd.DataFrame, output_dir: str) -> str:
 
 
 def generate_recaptcha_score_image(df: pd.DataFrame, output_dir: str) -> str:
-    """Generate image for Recaptcha scores"""
+    """
+    Generate image for Recaptcha scores
+
+    :param df: DataFrame containing recaptcha scores
+    :param output_dir: Directory to save the generated image
+    """
 
     plt.figure(figsize=report_settings.visualization.figure_size_medium)
     plt.title("Recaptcha Scores by Browser", fontsize=16)
@@ -75,7 +85,12 @@ def generate_recaptcha_score_image(df: pd.DataFrame, output_dir: str) -> str:
 
 
 def generate_creepjs_image(df: pd.DataFrame, output_dir: str) -> str:
-    """Generate image for CreepJS scores"""
+    """
+    Generate image for CreepJS scores
+
+    :param df: DataFrame containing CreepJS scores
+    :param output_dir: Directory to save the generated image
+    """
 
     plt.figure(figsize=report_settings.visualization.figure_size_medium)
     plt.title("CreepJS by Browser", fontsize=16)
@@ -102,7 +117,12 @@ def generate_creepjs_image(df: pd.DataFrame, output_dir: str) -> str:
 
 
 def _create_bypass_rate_subplot(df: pd.DataFrame, engine_colors: Dict[str, Any]) -> None:
-    """Create the bypass rate subplot (top left)"""
+    """
+    Create the bypass rate subplot (top left)
+
+    :param df: DataFrame containing bypass benchmark results
+    :param engine_colors: Dictionary mapping engines to their colors
+    """
 
     plt.subplot(2, 2, 1)
     bypass_by_engine = df.groupby("engine")["bypass"].mean().reset_index()
@@ -126,7 +146,12 @@ def _create_bypass_rate_subplot(df: pd.DataFrame, engine_colors: Dict[str, Any])
 
 
 def _create_protection_heatmap_subplot(df: pd.DataFrame, engines: List[str]) -> None:
-    """Create the protection type heatmap subplot (top right)"""
+    """
+    Create the protection type heatmap subplot (top right)
+
+    :param df: DataFrame containing bypass benchmark results
+    :param engines: List of engine names to order the heatmap
+    """
 
     plt.subplot(2, 2, 2)
 
@@ -155,7 +180,11 @@ def _create_protection_heatmap_subplot(df: pd.DataFrame, engines: List[str]) -> 
 
 
 def _create_resource_usage_subplot(df: pd.DataFrame) -> None:
-    """Create the resource usage subplot (bottom left)"""
+    """
+    Create the resource usage subplot (bottom left)
+
+    :param df: DataFrame containing bypass benchmark results
+    """
 
     plt.subplot(2, 2, 3)
 
@@ -195,7 +224,11 @@ def _create_resource_usage_subplot(df: pd.DataFrame) -> None:
 
 
 def _create_load_time_subplot(df: pd.DataFrame) -> None:
-    """Create the load time subplot (bottom right)"""
+    """
+    Create the load time subplot (bottom right)
+
+    :param df: DataFrame containing bypass benchmark results
+    """
 
     plt.subplot(2, 2, 4)
 
@@ -225,7 +258,12 @@ def _create_load_time_subplot(df: pd.DataFrame) -> None:
 
 
 def _create_recaptcha_plot(recaptcha_df: pd.DataFrame) -> None:
-    """Create the reCAPTCHA scores plot"""
+    """
+    Create the reCAPTCHA scores plot
+
+    :param recaptcha_df: DataFrame containing reCAPTCHA scores
+    """
+
     recaptcha_data = recaptcha_df.groupby("engine")["recaptcha_score"].mean().reset_index()
     recaptcha_data = recaptcha_data.sort_values("recaptcha_score", ascending=False)
 
@@ -250,7 +288,11 @@ def _create_recaptcha_plot(recaptcha_df: pd.DataFrame) -> None:
 
 
 def _create_creepjs_plot(creepjs_df: pd.DataFrame) -> None:
-    """Create the CreepJS scores plot"""
+    """
+    Create the CreepJS scores plot
+
+    :param creepjs_df: DataFrame containing CreepJS scores
+    """
 
     creepjs_data = creepjs_df.groupby("engine")[["creepjs_trust_score", "creepjs_bot_score"]].mean().reset_index()
     creepjs_data = creepjs_data.sort_values("creepjs_trust_score", ascending=False)

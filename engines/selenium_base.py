@@ -1,7 +1,7 @@
 import asyncio
 import logging
 import os
-from typing import Dict, Optional, Any, Tuple
+from typing import Dict, Optional, Any, Tuple, Union
 
 import psutil
 from selenium import webdriver
@@ -37,6 +37,16 @@ class SeleniumBase(BrowserEngine):
             proxy: Optional[Dict[str, str]] = None,
             **kwargs
     ):
+        """
+        Initialize the SeleniumBase with the given parameters
+
+        :param name: Name of the engine instance
+        :param browser_type: Type of browser to use (chrome, firefox, edge)
+        :param user_agent: Custom user agent string
+        :param headless: Whether to run the browser in headless
+        :param proxy: Proxy settings, if any
+        """
+
         super().__init__(name, proxy)
         self.browser_type = browser_type  # chrome, firefox
         self.headless = headless
@@ -92,7 +102,7 @@ class SeleniumBase(BrowserEngine):
         process_children_filtered = find_new_child_processes(process_children_before, process_children_after)
         self.process_list = process_children_filtered
 
-    def _get_browser_options(self):
+    def _get_browser_options(self) -> Union[ChromeOptions, FirefoxOptions, EdgeOptions]:
         """Get browser-specific options object"""
 
         if self.browser_type.lower() == "chrome":
@@ -104,8 +114,12 @@ class SeleniumBase(BrowserEngine):
         else:
             raise ValueError(f"Unsupported browser type: {self.browser_type}")
 
-    def _create_driver(self, options):
-        """Create WebDriver instance based on browser type"""
+    def _create_driver(self, options: Union[ChromeOptions, FirefoxOptions, EdgeOptions]) -> webdriver:
+        """
+        Create WebDriver instance based on browser type
+
+        :param options: Browser options object
+        """
 
         if self.browser_type.lower() == "chrome":
             return webdriver.Chrome(options=options)
@@ -129,7 +143,11 @@ class SeleniumBase(BrowserEngine):
         self.process_list = None
 
     async def navigate(self, url: str) -> NavigationResult:
-        """Navigate to url and return page data"""
+        """
+        Navigate to url and return page data
+
+        :param url: URL to navigate to
+        """
 
         if not self.driver:
             raise RuntimeError("Browser not started")
@@ -210,7 +228,11 @@ class SeleniumBase(BrowserEngine):
         return self.driver.page_source
 
     async def execute_js(self, script: str) -> Any:
-        """Execute javascript in browser context"""
+        """
+        Execute javascript in browser context
+
+        :param script: JavaScript code to execute
+        """
 
         if not self.driver:
             raise RuntimeError("Browser not started")
@@ -218,7 +240,11 @@ class SeleniumBase(BrowserEngine):
         return self.driver.execute_script(script)
 
     async def screenshot(self, path: str) -> None:
-        """Take a screenshot of the current page"""
+        """
+        Take a screenshot of the current page
+
+        :param path: Path to save the screenshot
+        """
 
         if not self.driver:
             raise RuntimeError("Browser not started")

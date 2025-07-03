@@ -4,7 +4,12 @@ import pandas as pd
 
 
 def process_bypass_data(results: List[Dict[str, Any]]) -> pd.DataFrame:
-    """Extract and process bypass data from benchmark results"""
+    """
+    Extract and process bypass data from benchmark results
+
+    :param results: List of benchmark results for each engine
+    :return: DataFrame containing bypass rates and engine stats
+    """
 
     bypass_rows = []
 
@@ -31,7 +36,12 @@ def process_bypass_data(results: List[Dict[str, Any]]) -> pd.DataFrame:
 
 
 def process_browser_data(results: List[Dict[str, Any]]) -> pd.DataFrame:
-    """Extract and process browser data from benchmark results"""
+    """
+    Extract and process browser data from benchmark results
+
+    :param results: List of browser data results for each engine
+    :return: DataFrame containing browser data metrics and engine stats
+    """
 
     browser_data_rows = []
 

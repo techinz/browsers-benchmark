@@ -16,7 +16,12 @@ logger = logging.getLogger(__name__)
 
 
 def generate_report(results_file: str, output_dir: Optional[str] = None) -> None:
-    """Generate image & markdown reports from benchmark results"""
+    """
+    Generate image & markdown reports from benchmark results
+
+    :param results_file: Path to the JSON results file
+    :param output_dir: Directory to save the generated report files
+    """
 
     if output_dir is None:
         output_dir = os.path.dirname(results_file)
@@ -50,14 +55,25 @@ def generate_report(results_file: str, output_dir: Optional[str] = None) -> None
 
 
 def _load_results(results_file: str) -> list:
-    """Load and parse the results JSON file"""
+    """
+    Load and parse the results JSON file
+
+    :param results_file: Path to the JSON results file
+    """
 
     with open(results_file, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
 def _generate_all_visualizations(bypass_df, browser_data_df, media_output_dir: str) -> Dict[str, str]:
-    """Generate all visualization images and return their paths"""
+    """
+    Generate all visualization images and return their paths
+
+    :param bypass_df: DataFrame containing bypass results
+    :param browser_data_df: DataFrame containing browser data results
+    :param media_output_dir: Directory to save the generated images
+    :return: Dictionary mapping visualization names to their file paths
+    """
 
     return {
         "bypass_dashboard_image": generate_bypass_dashboard_image(bypass_df, media_output_dir),

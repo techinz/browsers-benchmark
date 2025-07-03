@@ -23,6 +23,16 @@ class TfPlaywrightStealthEngine(PlaywrightBase):
             proxy: Optional[Dict[str, str]] = None,
             **kwargs
     ):
+        """
+        Initialize the TfPlaywrightStealthEngine with the given parameters
+
+        :param name: Name of the engine instance
+        :param browser_type: Type of browser to use (chromium, firefox, webkit)
+        :param user_agent: Custom user agent string
+        :param headless: Whether to run the browser in headless
+        :param proxy: Proxy settings, if any
+        """
+
         super().__init__(name, browser_type, user_agent, headless, proxy)
 
     async def start(self) -> None:

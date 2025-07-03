@@ -9,7 +9,12 @@ logger = logging.getLogger(__name__)
 
 
 async def get_creepjs_data(engine: BrowserEngine, tries: int = 10) -> dict:
-    """Extract data (trust score, bot score, webrtc ip) from CreepJS page"""
+    """
+    Extract data (trust score, bot score, webrtc ip) from CreepJS page
+
+    :param engine: BrowserEngine instance
+    :param tries: Number of attempts to extract data
+    """
 
     try:
         for i in range(tries):
@@ -28,7 +33,11 @@ async def get_creepjs_data(engine: BrowserEngine, tries: int = 10) -> dict:
 
 
 async def extract_creepjs_data(engine: BrowserEngine) -> dict:
-    """Extract CreepJS data: trust score, bot score, webrtc ip"""
+    """
+    Extract CreepJS data: trust score, bot score, webrtc ip
+
+    :param engine: BrowserEngine instance
+    """
 
     try:
         creepjs_data = await get_creepjs_data(engine)

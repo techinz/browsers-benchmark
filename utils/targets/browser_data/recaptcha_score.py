@@ -8,7 +8,12 @@ logger = logging.getLogger(__name__)
 
 
 async def get_recaptcha_score_data(engine: BrowserEngine, tries: int = 5) -> dict:
-    """Extract data from Recaptcha Score Detector page"""
+    """
+    Extract data from Recaptcha Score Detector page
+
+    :param engine: BrowserEngine instance
+    :param tries: Number of attempts to extract data
+    """
 
     try:
         for i in range(tries):
@@ -27,7 +32,11 @@ async def get_recaptcha_score_data(engine: BrowserEngine, tries: int = 5) -> dic
 
 
 async def extract_recaptcha_score(engine: BrowserEngine) -> dict:
-    """Extract Recaptcha Score from the page"""
+    """
+    Extract Recaptcha Score from the page
+
+    :param engine: BrowserEngine instance
+    """
 
     for i in range(3):
         try:

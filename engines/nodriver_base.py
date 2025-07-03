@@ -24,6 +24,15 @@ class NoDriverBase(BrowserEngine):
             proxy: Optional[Dict[str, str]] = None,
             **kwargs
     ):
+        """
+        Initialize the NoDriverBase with the given parameters
+
+        :param name: Name of the engine instance
+        :param user_agent: Custom user agent string
+        :param headless: Whether to run the browser in headless
+        :param proxy: Proxy settings, if any
+        """
+
         super().__init__(name, proxy)
         self.user_agent = user_agent
         self.headless = headless
@@ -109,7 +118,11 @@ class NoDriverBase(BrowserEngine):
         self.process_list = None
 
     async def navigate(self, url: str) -> NavigationResult:
-        """Navigate to url and return page data"""
+        """
+        Navigate to url and return page data
+
+        :param url: URL to navigate to
+        """
 
         if not self.page:
             raise RuntimeError("Browser not started")
@@ -208,7 +221,11 @@ class NoDriverBase(BrowserEngine):
             return ""
 
     async def execute_js(self, script: str) -> Any:
-        """Execute javascript in browser context"""
+        """
+        Execute javascript in browser context
+
+        :param script: JavaScript code to execute
+        """
 
         if not self.page:
             raise RuntimeError("Browser not started")
@@ -220,7 +237,11 @@ class NoDriverBase(BrowserEngine):
             return None
 
     async def screenshot(self, path: str) -> None:
-        """Take a screenshot of the current page"""
+        """
+        Take a screenshot of the current page
+
+        :param path: Path to save the screenshot
+        """
 
         if not self.page:
             raise RuntimeError("Browser not started")

@@ -8,7 +8,12 @@ from utils.dataclasses import BenchmarkResults
 
 
 def create_directory_structure(timestamp: str) -> tuple[str, str, str]:
-    """Create the necessary directory structure for results"""
+    """
+    Create the necessary directory structure for results
+
+    :param timestamp: Timestamp to create unique directory names
+    :return: Tuple containing paths to result directory, media directory, and screenshots directory
+    """
 
     result_path = os.path.join(settings.paths.results_path, timestamp)
     media_path = os.path.join(result_path, settings.paths.media_dir)
@@ -30,7 +35,12 @@ def create_directory_structure(timestamp: str) -> tuple[str, str, str]:
 
 
 def save_results(results: List[BenchmarkResults], result_path: str) -> str:
-    """Save benchmark results to JSON file"""
+    """
+    Save benchmark results to JSON file
+
+    :param results: List of BenchmarkResults dataclasses containing the benchmark data
+    :param result_path: Path to save the results file
+    """
 
     timestamp = int(time.time())
     results_file = os.path.join(result_path, f"benchmark_results_{timestamp}.json")

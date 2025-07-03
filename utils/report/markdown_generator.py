@@ -13,7 +13,14 @@ def generate_markdown_summary(
         output_dir: str,
         image_paths: Dict[str, str]
 ) -> None:
-    """Generate markdown summary of benchmark results"""
+    """
+    Generate markdown summary of benchmark results
+
+    :param bypass_df: DataFrame containing bypass results
+    :param browser_data_df: DataFrame containing browser data results
+    :param output_dir: Directory to save the generated markdown file
+    :param image_paths: Dictionary mapping visualization names to their file paths
+    """
 
     with open(os.path.join(output_dir, report_settings.filenames.summary), "w", encoding="utf-8") as f:
         _write_report_header(f)
@@ -26,14 +33,23 @@ def generate_markdown_summary(
 
 
 def _write_report_header(f) -> None:
-    """Write the report header"""
+    """
+    Write the report header
+
+    :param f: File object to write the header to
+    """
 
     f.write("# Browser Benchmark Results Summary\n\n")
     f.write(f"*Generated on: {pd.Timestamp.now().strftime('%Y-%m-%d %H:%M')}*\n\n")
 
 
 def _write_bypass_section(f, bypass_df: pd.DataFrame) -> None:
-    """Write the bypass rate section"""
+    """
+    Write the bypass rate section
+
+    :param f: File object to write the section to
+    :param bypass_df: DataFrame containing bypass results
+    """
 
     f.write("## Overall Bypass Rate\n\n")
 
@@ -52,7 +68,12 @@ def _write_bypass_section(f, bypass_df: pd.DataFrame) -> None:
 
 
 def _write_resource_section(f, bypass_df: pd.DataFrame) -> None:
-    """Write the resource usage section"""
+    """
+    Write the resource usage section
+
+    :param f: File object to write the section to
+    :param bypass_df: DataFrame containing bypass results with resource usage
+    """
 
     f.write("\n\n## Resource Usage Comparison\n\n")
 
@@ -72,7 +93,12 @@ def _write_resource_section(f, bypass_df: pd.DataFrame) -> None:
 
 
 def _write_recaptcha_section(f, browser_data_df: pd.DataFrame) -> None:
-    """Write the reCAPTCHA section"""
+    """
+    Write the reCAPTCHA section
+
+    :param f: File object to write the section to
+    :param browser_data_df: DataFrame containing browser data results with reCAPTCHA scores
+    """
 
     f.write("## Recaptcha Scores\n\n")
 
@@ -93,7 +119,12 @@ def _write_recaptcha_section(f, browser_data_df: pd.DataFrame) -> None:
 
 
 def _write_creepjs_section(f, browser_data_df: pd.DataFrame) -> None:
-    """Write the CreepJS section"""
+    """
+    Write the CreepJS section
+
+    :param f: File object to write the section to
+    :param browser_data_df: DataFrame containing browser data results with CreepJS scores
+    """
 
     f.write("## CreepJS Scores\n\n")
 
@@ -133,7 +164,12 @@ def _write_creepjs_section(f, browser_data_df: pd.DataFrame) -> None:
 
 
 def _write_ip_section(f, browser_data_df: pd.DataFrame) -> None:
-    """Write the IP section"""
+    """
+    Write the IP section
+
+    :param f: File object to write the section to
+    :param browser_data_df: DataFrame containing browser data results with IP information
+    """
 
     f.write("## IP (Ipify) \n\n")
 
@@ -158,7 +194,12 @@ def _write_ip_section(f, browser_data_df: pd.DataFrame) -> None:
 
 
 def _write_visualization_sections(f, image_paths: Dict[str, str]) -> None:
-    """Write the visualization sections"""
+    """
+    Write the visualization sections
+
+    :param f: File object to write the sections to
+    :param image_paths: Dictionary mapping visualization names to their file paths
+    """
 
     # visual dashboard
     f.write("## Visual Dashboard\n\n")

@@ -2,6 +2,12 @@ from engines.base import BrowserEngine
 
 
 async def check_cloudflare_bypass(engine: BrowserEngine) -> bool:
+    """
+    Check if the cloudflare bypass is successful
+
+    :param engine: BrowserEngine instance
+    """
+
     element_found1, element_html1 = await engine.locator('[title="Just a moment..."]')
 
     # for non-english challenge page

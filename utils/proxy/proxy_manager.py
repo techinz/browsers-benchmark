@@ -72,7 +72,7 @@ class ProxyManager:
         self.proxies_file = proxies_file
         self.available_proxies: List[str] = []
         self.used_proxies: List[str] = []
-        self.failed_proxies: Set[str] = set()  # track proxies that failed
+        self.failed_proxies: Set[str] = set()
         self._load_proxies()
 
     def _load_proxies(self) -> None:
@@ -121,7 +121,11 @@ class ProxyManager:
             return None
 
     def mark_proxy_failed(self, proxy: Dict[str, str]) -> None:
-        """Mark a proxy as failed"""
+        """
+        Mark a proxy as failed
+
+        :param proxy: Proxy configuration dictionary (with 'url' key)
+        """
 
         proxy_url = proxy.get("url")
         if proxy_url:
@@ -129,7 +133,12 @@ class ProxyManager:
             logger.warning(f"Marked proxy {proxy_url} as failed")
 
     def get_fallback_proxy(self, failed_proxy: Optional[Dict[str, str]] = None) -> Optional[Dict[str, str]]:
-        """Get another proxy if current one fails"""
+        """
+        Get another proxy if current one fails
+
+        :param failed_proxy: Optional proxy configuration that failed
+        :return: Next available proxy configuration or None if no proxies left
+        """
 
         if failed_proxy:
             self.mark_proxy_failed(failed_proxy)
@@ -145,7 +154,12 @@ class ProxyManager:
         return self.get_proxy()
 
     def get_proxy_by_protocol(self, supported_protocols: List[str]) -> Optional[Dict[str, str]]:
-        """Get next available proxy that matches one of the supported protocols"""
+        """
+        Get next available proxy that matches one of the supported protocols
+
+        :param supported_protocols: List of protocols to filter proxies by (e.g. ['http', 'https'])
+        :return: Proxy configuration dictionary or None if no compatible proxies left
+        """
 
         if not self.available_proxies:
             logger.error("No more available proxies")
@@ -193,7 +207,13 @@ class ProxyManager:
 
     def get_fallback_proxy_by_protocol(self, supported_protocols: List[str],
                                        failed_proxy: Optional[Dict[str, str]] = None) -> Optional[Dict[str, str]]:
-        """Get another proxy with supported protocol if current one fails"""
+        """
+        Get another proxy with supported protocol if current one fails
+
+        :param supported_protocols: List of protocols to filter proxies by (e.g. ['http', 'https'])
+        :param failed_proxy: Optional proxy configuration that failed
+        :return: Next available proxy configuration or None if no compatible proxies left
+        """
 
         if failed_proxy:
             self.mark_proxy_failed(failed_proxy)
@@ -226,7 +246,12 @@ class ProxyManager:
         return len(self.failed_proxies)
 
     def validate_proxy_count(self, required_count: int) -> bool:
-        """Validate if we have enough proxies for the required engines"""
+        """
+        Validate if we have enough proxies for the required engines
+
+        :param required_count: Number of proxies required for the engines
+        :return: True if enough proxies available, False otherwise
+        """
 
         total_proxies = len(self.available_proxies) + len(self.used_proxies)
         if total_proxies < required_count:
@@ -238,7 +263,12 @@ class ProxyManager:
         return True
 
     def validate_proxy_count_by_protocol(self, engines_with_protocols: List[Tuple[str, List[str]]]) -> bool:
-        """Validate if we have enough compatible proxies for engines with their supported protocols"""
+        """
+        Validate if we have enough compatible proxies for engines with their supported protocols
+
+        :param engines_with_protocols: List of tuples (engine_name, supported_protocols)
+        :return: True if all engines have compatible proxies, False otherwise
+        """
 
         # count available proxies by protocol
         protocol_availability = {}

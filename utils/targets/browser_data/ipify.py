@@ -8,7 +8,11 @@ logger = logging.getLogger(__name__)
 
 
 async def extract_ipify_data(engine: BrowserEngine) -> dict:
-    """Extract ip from Ipify API page"""
+    """
+    Extract ip from Ipify API page
+
+    :param engine: BrowserEngine instance
+    """
 
     await asyncio.sleep(5)  # ensure the page is fully loaded
 

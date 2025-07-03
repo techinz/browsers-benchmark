@@ -8,8 +8,15 @@ def calculate_metrics(
         memory_readings: List[int],
         cpu_readings: List[float]
 ) -> tuple[int, float, float]:
-    """Calculate average metrics from test results"""
-    
+    """
+    Calculate average metrics from test results
+
+    :param bypass_results: List of BypassTestResult objects containing bypass test results
+    :param memory_readings: List of memory usage readings in MB
+    :param cpu_readings: List of CPU usage readings in percentage
+    :return: Tuple containing average memory usage (MB), average CPU usage (percentage), and bypass rate
+    """
+
     avg_memory = int(sum(memory_readings) / len(memory_readings)) if memory_readings else 0
     avg_cpu = sum(cpu_readings) / len(cpu_readings) if cpu_readings else 0.0
 

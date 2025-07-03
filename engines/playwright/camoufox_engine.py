@@ -20,6 +20,15 @@ class CamoufoxEngine(PlaywrightBase):
             proxy: Optional[Dict[str, str]] = None,
             **kwargs
     ):
+        """
+        Initialize the CamoufoxEngine with the given parameters
+
+        :param name: Name of the engine instance
+        :param user_agent: Custom user agent string
+        :param headless: Whether to run the browser in headless
+        :param proxy: Proxy settings, if any
+        """
+
         browser_type = 'firefox'  # camoufox only supports firefox
         super().__init__(name, browser_type, user_agent, headless, proxy)
 
