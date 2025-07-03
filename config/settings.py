@@ -9,6 +9,7 @@ class ProxySettings(BaseModel):
 
     enabled: bool = True
     file_path: str = "documents/proxies.txt"
+    max_retries: int = 3  # maximum number of proxy fallback attempts
 
     model_config = {"extra": "ignore"}
 
@@ -54,6 +55,7 @@ class Settings(BaseSettings):
     # proxy
     PROXY_ENABLED: bool = True
     PROXY_FILE_PATH: str = "documents/proxies.txt"
+    PROXY_MAX_RETRIES: int = 3  
 
     # browser
     PAGE_LOAD_TIMEOUT_MS: int = 90000
@@ -76,7 +78,8 @@ class Settings(BaseSettings):
         """Get proxy configuration"""
         return ProxySettings(
             enabled=self.PROXY_ENABLED,
-            file_path=self.PROXY_FILE_PATH
+            file_path=self.PROXY_FILE_PATH,
+            max_retries=self.PROXY_MAX_RETRIES
         )
 
     @property

@@ -135,7 +135,7 @@ def _write_creepjs_section(f, browser_data_df: pd.DataFrame) -> None:
 def _write_ip_section(f, browser_data_df: pd.DataFrame) -> None:
     """Write the IP section"""
 
-    f.write("## IP (2ip) \n\n")
+    f.write("## IP (Ipify) \n\n")
 
     if "ip" not in browser_data_df.columns:
         f.write("*No IP data available*\n\n")

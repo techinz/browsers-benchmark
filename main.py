@@ -13,9 +13,8 @@ from utils.dataclasses import BypassTestResult, BrowserDataResult, BenchmarkResu
 from utils.io import create_directory_structure, save_results
 from utils.logging.logging import setup_logging
 from utils.metrics import calculate_metrics
-from utils.proxy.proxy_manager import proxy_manager
+from utils.proxy.proxy_manager import proxy_manager, is_proxy_related_error, handle_proxy_fallback
 from utils.report import generate_report
-from utils.retry import retry_with_backoff
 from utils.screenshot import take_screenshot
 
 setup_logging()
@@ -28,7 +27,13 @@ async def test_bypass_target(
         target: Dict[str, Any],
         screenshots_path: str
 ) -> BypassTestResult:
-    """Test a single bypass target"""
+    """
+    Test a single bypass target
+
+    :param engine: The browser engine to use
+    :param target: The target configuration to test
+    :param screenshots_path: Path to save screenshots
+    """
 
     logger.info(f"Testing {engine.name} against {target['name']}...")
 
@@ -51,10 +56,21 @@ async def test_bypass_target(
         return result
 
     try:
-        result = await retry_with_backoff(attempt_bypass_test)
+        result = await attempt_bypass_test()
     except Exception as e:
-        result.error = str(e)
-        logger.warning(f'{engine.name} failed bypass test for {target["name"]}: {e}')
+        # check if this is a proxy-related error that warrants fallback
+        if is_proxy_related_error(e) and settings.proxy.enabled:
+            fallback_result, error_msg = await handle_proxy_fallback(
+                engine, target['name'], e, attempt_bypass_test
+            )
+            if fallback_result:
+                result = fallback_result
+            else:
+                result.error = error_msg
+        else:
+            # non-proxy error - just record it
+            result.error = str(e)
+            logger.warning(f'{engine.name} failed bypass test for {target["name"]}: {e}')
 
     await take_screenshot(engine, screenshots_path, target["name"])
 
@@ -66,7 +82,13 @@ async def extract_browser_data(
         target: Dict[str, Any],
         screenshots_path: str
 ) -> BrowserDataResult:
-    """Extract browser data from a target"""
+    """
+    Extract browser data from a target
+
+    :param engine: The browser engine to use
+    :param target: The target configuration to extract data from
+    :param screenshots_path: Path to save screenshots
+    """
 
     logger.info(f"Extracting browser data from {target['name']} using {engine.name}...")
 
@@ -90,10 +112,21 @@ async def extract_browser_data(
         return result
 
     try:
-        result = await retry_with_backoff(attempt_data_extraction)
+        result = await attempt_data_extraction()
     except Exception as e:
-        result.error = str(e)
-        logger.warning(f'{engine.name} failed data extraction for {target["name"]}: {e}')
+        # check if this is a proxy-related error that warrants fallback
+        if is_proxy_related_error(e) and settings.proxy.enabled:
+            fallback_result, error_msg = await handle_proxy_fallback(
+                engine, target['name'], e, attempt_data_extraction
+            )
+            if fallback_result:
+                result = fallback_result
+            else:
+                result.error = error_msg
+        else:
+            # non-proxy error, just record it
+            result.error = str(e)
+            logger.warning(f'{engine.name} failed data extraction for {target["name"]}: {e}')
 
     await take_screenshot(engine, screenshots_path, target["name"])
 
@@ -108,7 +141,16 @@ async def run_benchmark_for_engine(
         screenshots_path: str,
         proxy: Optional[Dict[str, str]] = None
 ) -> BenchmarkResults | None:
-    """Run benchmark for a browser engine"""
+    """
+    Run benchmark for a browser engine
+
+    :param engine_cls: The browser engine class to instantiate
+    :param engine_params: Parameters for the engine
+    :param bypass_targets: List of bypass targets to test
+    :param browser_data_targets: List of browser data targets to test
+    :param screenshots_path: Path for saving screenshots
+    :param proxy: Optional proxy configuration to use for the engine
+    """
 
     if proxy:
         engine_params = {**engine_params, "proxy": proxy}
@@ -172,19 +214,21 @@ async def run_all_benchmarks() -> None:
 
     # validate proxy setup before starting
     if not settings.proxy.enabled:
-        logger.warning("⚠️ PROXIES ARE DISABLED! Results may be inaccurate due to IP reputation.")
+        logger.warning("PROXIES ARE DISABLED! Results may be inaccurate due to IP reputation.")
         logger.warning("\tEnable proxies in .env for reliable benchmark results.")
-        return
+    else:
+        # check if we have enough proxies for all engines (at least one per engine)
+        engine_count = len(engines_config.engines)
+        if not proxy_manager.validate_proxy_count(engine_count):
+            logger.error(
+                f"Not enough proxies! Need at least {engine_count} proxies but "
+                f"only {proxy_manager.get_available_count()} available in {settings.proxy.file_path}"
+            )
+            logger.error("Please add more proxies to the proxies file or reduce the number of engines.")
+            return
 
-    # check if we have enough proxies for all engines (one per engine)
-    engine_count = len(engines_config.engines)
-    if not proxy_manager.validate_proxy_count(engine_count):
-        raise ValueError(
-            f"Wrong proxy count! Need {engine_count} proxies but "
-            f"{proxy_manager.get_available_count()} available in {settings.proxy.file_path}"
-        )
-
-    logger.info(f"Proxy validation passed: {proxy_manager.get_available_count()} proxies available for {engine_count} engines")
+        logger.info(
+            f"Proxy validation passed: {proxy_manager.get_available_count()} proxies available for {engine_count} engines")
 
     timestamp = datetime.now().strftime("%Y.%m.%d__%H_%M_%S")
     result_path, media_path, screenshots_path = create_directory_structure(timestamp)
@@ -219,7 +263,8 @@ async def run_all_benchmarks() -> None:
                     screenshots_path=screenshots_path,
                     proxy=proxy,
                 )
-                all_results.append(results)
+                if results:
+                    all_results.append(results)
             except Exception as e:
                 logger.error(f"Failed to run benchmark for {engine_name}: {e}")
 
@@ -249,6 +294,20 @@ async def run_all_benchmarks() -> None:
             logger.info(f"\tAverage CPU: {result.average_cpu_percent:.1f}%")
             if result.error:
                 logger.info(f"\tError: {result.error}")
+
+        # print proxy statistics if enabled
+        if settings.proxy.enabled:
+            proxy_stats = proxy_manager.get_stats()
+            logger.info("\n===== PROXY STATISTICS =====")
+            logger.info(f"Total proxies loaded: {proxy_stats['total_loaded']}")
+            logger.info(f"Proxies used: {proxy_stats['used']}")
+            logger.info(f"Proxies failed: {proxy_stats['failed']}")
+            logger.info(f"Proxies remaining: {proxy_stats['available']}")
+
+            if proxy_stats['failed'] > 0:
+                logger.warning(f"{proxy_stats['failed']} proxies failed during benchmarking")
+            if proxy_stats['available'] == 0 and proxy_stats['failed'] > 0:
+                logger.warning("All proxies have been exhausted or failed")
     except Exception as e:
         logger.critical(f"Critical error in benchmark execution: {e}")
         raise
