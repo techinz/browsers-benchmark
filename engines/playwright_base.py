@@ -3,7 +3,7 @@ import os
 from typing import Dict, Optional, Any, Tuple
 
 import psutil
-from playwright.async_api import async_playwright, BrowserType
+from playwright.async_api import async_playwright, BrowserType, Locator
 
 from config.settings import settings
 from engines.base import BrowserEngine
@@ -146,8 +146,8 @@ class PlaywrightBase(BrowserEngine):
         element_found = False
         element_html = ''
 
-        element = await self.page.locator(selector)
-        if element:
+        element: Locator = self.page.locator(selector)
+        if await element.count() > 0:
             element_found = True
             element_html: str = await element.inner_html()
 
