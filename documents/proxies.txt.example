@@ -1,6 +1,6 @@
 # This is an example of a proxy configuration file.
 # Each line should contain a single proxy URL.
-# Number of proxies has to be equal to the number of engines you want to test.
+# Number of proxies has to be not less than number of engines you want to test.
 # The format is: http://username:password@proxy_host:port or http://proxy_host:port
 
 http://proxy1.example.com:8080

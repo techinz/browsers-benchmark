@@ -204,7 +204,7 @@ If the IP is your proxy's IP - good, your real IP - bad.
 
 5. **Configure proxies**
    1. Create a file named `proxies.txt` in the `documents` directory.
-   2. Add your proxy URLs in format `http://username:password@proxy_host:port` or `http://proxy_host:port`. Number of proxies has to be equal to number of engines you want to test.
+   2. Add your proxy URLs in format `http://username:password@proxy_host:port` or `http://proxy_host:port`. Number of proxies has to be not less than number of engines you want to test.
       
    Example `proxies.txt` content (each line is a separate proxy):
    ```
