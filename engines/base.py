@@ -7,7 +7,6 @@ import psutil
 
 class NavigationResult(TypedDict):
     url: str
-    status: Optional[int]
     load_time: float
     success: bool
     headers: Dict[str, str]
@@ -33,6 +32,12 @@ class BrowserEngine(abc.ABC):
         self.process_list = []
         self.browser = None
         self._start_time = None
+
+    @property
+    @abc.abstractmethod
+    def supported_proxy_protocols(self) -> list[str]:
+        """List of supported proxy protocols for this engine"""
+        pass
 
     @abc.abstractmethod
     async def start(self) -> None:

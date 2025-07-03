@@ -32,17 +32,13 @@ class PathSettings(BaseModel):
     def profiles_path(self) -> str:
         return os.path.join(self.documents_path, self.profiles_dir)
 
-    @property
-    def botbrowser_executable_path(self) -> str:
-        return os.path.join(self.binaries_path, "botbrowser/chrome/Chrome-bin/chrome.exe")
-
     model_config = {"extra": "ignore"}
 
 
 class BrowserSettings(BaseModel):
     """Configuration settings for browser engines"""
 
-    page_load_timeout_ms: int = 90000
+    page_load_timeout_s: int = 90  # maximum time to wait for page load in seconds
     page_stabilization_delay_s: int = 5  # time to wait for page stabilization after navigation
     headless: bool = True
 
@@ -55,10 +51,10 @@ class Settings(BaseSettings):
     # proxy
     PROXY_ENABLED: bool = True
     PROXY_FILE_PATH: str = "documents/proxies.txt"
-    PROXY_MAX_RETRIES: int = 3  
+    PROXY_MAX_RETRIES: int = 3
 
     # browser
-    PAGE_LOAD_TIMEOUT_MS: int = 90000
+    PAGE_LOAD_TIMEOUT_S: int = 90
     PAGE_STABILIZATION_DELAY_S: int = 5  # time to wait for page stabilization after navigation
     BROWSER_HEADLESS: bool = True
 
@@ -98,7 +94,7 @@ class Settings(BaseSettings):
     def browser(self) -> BrowserSettings:
         """Get browser configuration"""
         return BrowserSettings(
-            page_load_timeout_ms=self.PAGE_LOAD_TIMEOUT_MS,
+            page_load_timeout_s=self.PAGE_LOAD_TIMEOUT_S,
             page_stabilization_delay_s=self.PAGE_STABILIZATION_DELAY_S,
             headless=self.BROWSER_HEADLESS
         )

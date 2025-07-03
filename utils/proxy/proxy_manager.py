@@ -33,13 +33,18 @@ def is_proxy_related_error(error: Exception) -> bool:
         # playwright-specific network errors
         "net::", "err_", "failed to navigate", "navigation timeout",
         "err_timed_out", "err_connection_refused", "err_network_changed",
+        # selenium-specific errors
+        "webdriver", "selenium", "chrome not reachable", "firefox not responding",
+        "session not created", "unknown error", "chrome failed to start",
         # HTTP errors that might indicate proxy issues
         "502", "503", "504", "bad gateway", "service unavailable", "gateway timeout"
     ]
 
     # playwright-specific error types that are often proxy-related
-    playwright_network_errors = [
-        "timeouterror", "networkerror", "browsererror"
+    network_error_types = [
+        "timeouterror", "networkerror", "browsererror",
+        # selenium error types
+        "webdriverexception", "sessionnotcreatedexception", "timeoutexception"
     ]
 
     # check if error message contains proxy-related keywords
@@ -49,7 +54,7 @@ def is_proxy_related_error(error: Exception) -> bool:
             return True
 
     # check if error type is network-related
-    if error_type in playwright_network_errors:
+    if error_type in network_error_types:
         logger.debug(f"Identified proxy-related error type: '{error_type}'")
         return True
 
@@ -139,6 +144,70 @@ class ProxyManager:
 
         return self.get_proxy()
 
+    def get_proxy_by_protocol(self, supported_protocols: List[str]) -> Optional[Dict[str, str]]:
+        """Get next available proxy that matches one of the supported protocols"""
+
+        if not self.available_proxies:
+            logger.error("No more available proxies")
+            return None
+
+        # filter proxies by supported protocols
+        compatible_proxies = []
+        for proxy_url in self.available_proxies:
+            try:
+                parsed = urlparse(proxy_url)
+                if parsed.scheme in supported_protocols:
+                    compatible_proxies.append(proxy_url)
+            except Exception as e:
+                logger.error(f"Failed to parse proxy URL {proxy_url}: {e}")
+                continue
+
+        if not compatible_proxies:
+            logger.error(f"No proxies found with supported protocols {supported_protocols}")
+            return None
+
+        # use first compatible proxy
+        proxy_url = compatible_proxies[0]
+        self.available_proxies.remove(proxy_url)
+        self.used_proxies.append(proxy_url)
+
+        try:
+            parsed = urlparse(proxy_url)
+            proxy_config = {
+                "protocol": parsed.scheme,
+                "host": parsed.hostname,
+                "port": str(parsed.port) if parsed.port else "8080",
+                "url": proxy_url  # store original url for tracking
+            }
+
+            if parsed.username and parsed.password:
+                proxy_config["username"] = parsed.username
+                proxy_config["password"] = parsed.password
+
+            logger.info(
+                f"Assigned proxy {proxy_url} with protocol {parsed.scheme} ({len(self.available_proxies)} remaining)")
+            return proxy_config
+        except Exception as e:
+            logger.error(f"Failed to parse proxy URL {proxy_url}: {e}")
+            return None
+
+    def get_fallback_proxy_by_protocol(self, supported_protocols: List[str],
+                                       failed_proxy: Optional[Dict[str, str]] = None) -> Optional[Dict[str, str]]:
+        """Get another proxy with supported protocol if current one fails"""
+
+        if failed_proxy:
+            self.mark_proxy_failed(failed_proxy)
+
+        # filter out failed proxies from available ones
+        original_count = len(self.available_proxies)
+        self.available_proxies = [p for p in self.available_proxies if p not in self.failed_proxies]
+        filtered_count = original_count - len(self.available_proxies)
+
+        if filtered_count > 0:
+            logger.info(f"Filtered out {filtered_count} failed proxies, {len(self.available_proxies)} remain available")
+
+        return self.get_proxy_by_protocol(supported_protocols)
+
     def has_available_proxies(self) -> bool:
         """Check if there are still available proxies (excluding failed ones)"""
 
@@ -168,6 +237,56 @@ class ProxyManager:
             return False
         return True
 
+    def validate_proxy_count_by_protocol(self, engines_with_protocols: List[Tuple[str, List[str]]]) -> bool:
+        """Validate if we have enough compatible proxies for engines with their supported protocols"""
+
+        # count available proxies by protocol
+        protocol_availability = {}
+        for proxy_url in self.available_proxies + self.used_proxies:
+            try:
+                parsed = urlparse(proxy_url)
+                protocol = parsed.scheme
+                if protocol not in protocol_availability:
+                    protocol_availability[protocol] = 0
+                protocol_availability[protocol] += 1
+            except Exception:
+                continue
+
+        # check which engines can be satisfied and which cannot
+        satisfied_engines = []
+        unsatisfied_engines = []
+
+        for engine_name, supported_protocols in engines_with_protocols:
+            # check if any of the supported protocols has available proxies
+            has_compatible_proxy = False
+
+            for protocol in supported_protocols:
+                if protocol_availability.get(protocol, 0) > 0:
+                    has_compatible_proxy = True
+                    break
+
+            if not supported_protocols:
+                has_compatible_proxy = True
+
+            if has_compatible_proxy:
+                satisfied_engines.append(f"{engine_name} (supports: {', '.join(supported_protocols)})")
+            else:
+                unsatisfied_engines.append(f"{engine_name} (supports: {', '.join(supported_protocols)})")
+
+        if unsatisfied_engines:
+            logger.error("The following engines don't have compatible proxies:")
+            for engine in unsatisfied_engines:
+                logger.error(f"\t{engine}")
+
+            logger.info(f"Available proxy protocols: {protocol_availability}")
+            return False
+
+        logger.info("All engines have compatible proxies:")
+        for engine in satisfied_engines:
+            logger.info(f"  {engine}")
+        logger.info(f"Available proxy protocols: {protocol_availability}")
+        return True
+
     def reset(self) -> None:
         """Reset proxy manager - move all used proxies back to available"""
 
@@ -194,10 +313,10 @@ async def handle_proxy_fallback(engine, target_name: str, original_error: Except
     Handle proxy fallback when a proxy-related error occurs.
     
     :param engine: The browser engine instance
-    :param target_name: Name of the target being tested (for logging)
+    :param target_name: Name of the target being tested
     :param original_error: The original error that occurred
     :param retry_function: The async function to retry (should be a coroutine)
-    :param proxy_manager_instance: ProxyManager instance (defaults to global proxy_manager)
+    :param proxy_manager_instance: ProxyManager instance
         
     :return: tuple: (result, error_message) where result is the retry result or None,
         and error_message is the error string if failed or None if successful
@@ -214,13 +333,15 @@ async def handle_proxy_fallback(engine, target_name: str, original_error: Except
         logger.error(f"Proxy fallback not available for {target_name}")
         return None, str(original_error)
 
-    fallback_proxy = proxy_manager_instance.get_fallback_proxy(current_proxy)
+    # get supported protocols from engine and use protocol-aware fallback
+    supported_protocols = getattr(engine, 'supported_proxy_protocols', ['http', 'https'])
+    fallback_proxy = proxy_manager_instance.get_fallback_proxy_by_protocol(supported_protocols, current_proxy)
     if not fallback_proxy:
-        logger.error(f"No fallback proxy available for {target_name}")
+        logger.error(f"No compatible fallback proxy available for {target_name} (supports: {supported_protocols})")
         return None, str(original_error)
 
     logger.info(
-        f"Retrying {target_name} with fallback proxy {fallback_proxy.get('host')}:{fallback_proxy.get('port')}")
+        f"Retrying {target_name} with fallback {fallback_proxy['protocol']} proxy {fallback_proxy.get('host')}:{fallback_proxy.get('port')}")
 
     try:
         # stop current engine

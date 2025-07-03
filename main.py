@@ -217,18 +217,27 @@ async def run_all_benchmarks() -> None:
         logger.warning("PROXIES ARE DISABLED! Results may be inaccurate due to IP reputation.")
         logger.warning("\tEnable proxies in .env for reliable benchmark results.")
     else:
-        # check if we have enough proxies for all engines (at least one per engine)
-        engine_count = len(engines_config.engines)
-        if not proxy_manager.validate_proxy_count(engine_count):
-            logger.error(
-                f"Not enough proxies! Need at least {engine_count} proxies but "
-                f"only {proxy_manager.get_available_count()} available in {settings.proxy.file_path}"
-            )
-            logger.error("Please add more proxies to the proxies file or reduce the number of engines.")
-            return
+        # check if we have enough compatible proxies for all engines
+        engines_with_protocols = []
+        for engine_config in engines_config.engines:
+            engine_cls = engine_config["class"]
+            # create temporary instance to get supported protocols
+            temp_engine = engine_cls(**engine_config["params"])
+            engines_with_protocols.append((
+                engine_config['params']['name'],
+                temp_engine.supported_proxy_protocols
+            ))
 
-        logger.info(
-            f"Proxy validation passed: {proxy_manager.get_available_count()} proxies available for {engine_count} engines")
+        if not proxy_manager.validate_proxy_count_by_protocol(engines_with_protocols):
+            logger.error("PROXY VALIDATION FAILED!\n"
+                         "Some engines don't have compatible proxies available.\n"
+                         "Please:\n"
+                         "\tAdd more proxies with the required protocols to documents/proxies.txt\n"
+                         "\tOr disable those engines in config/engines.py\n"
+                         "\tOr disable proxy usage by setting PROXY_ENABLED=false in .env")
+            raise Exception("Not enough compatible proxies for the configured engines!")
+
+        logger.info("Proxy protocol validation passed for all engines")
 
     timestamp = datetime.now().strftime("%Y.%m.%d__%H_%M_%S")
     result_path, media_path, screenshots_path = create_directory_structure(timestamp)
@@ -248,10 +257,26 @@ async def run_all_benchmarks() -> None:
             # get proxy for this engine if enabled
             proxy = None
             if settings.proxy.enabled:
-                proxy = proxy_manager.get_proxy()
+                # create temporary instance to get supported protocols
+                temp_engine = engine_config["class"](**engine_config["params"])
+                supported_protocols = temp_engine.supported_proxy_protocols
+
+                proxy = proxy_manager.get_proxy_by_protocol(supported_protocols)
                 if not proxy:
-                    logger.error(f"No proxy available for {engine_name}, skipping...")
+                    logger.error(f"No compatible proxy available for {engine_name}")
+                    logger.error(f"\tEngine supports: {', '.join(supported_protocols)}")
+
+                    # show what proxies are available
+                    stats = proxy_manager.get_stats()
+                    if stats['available'] > 0:
+                        logger.error(f"\t{stats['available']} proxies remain, but none with compatible protocols")
+                    else:
+                        logger.error(f"\tNo proxies remaining (used: {stats['used']}, failed: {stats['failed']})")
+
+                    logger.error(f"\tSkipping {engine_name}...")
                     continue
+                else:
+                    logger.info(f"Assigned {proxy['protocol']} proxy to {engine_name}")
 
             try:
                 results = await run_benchmark_for_engine(
@@ -325,7 +350,7 @@ async def run_all_benchmarks() -> None:
             except asyncio.TimeoutError:
                 logger.warning("Some tasks did not complete within timeout")
 
-        # force garbage collection
+        # force garbage collection (from some not properly closed browser instances)
         gc.collect()
 
 

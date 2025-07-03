@@ -3,10 +3,12 @@ from typing import List, Dict, Any
 from pydantic import BaseModel, Field
 from pydantic_settings import BaseSettings
 
+from engines.nodriver.nodriver_engine import NoDriverEngine
 from engines.playwright.camoufox_engine import CamoufoxEngine
 from engines.playwright.patchright_engine import PatchrightEngine
 from engines.playwright.playwright_engine import PlaywrightEngine
 from engines.playwright.tf_playwright_stealth_engine import TfPlaywrightStealthEngine
+from engines.selenium.selenium_engine import SeleniumEngine
 
 
 class EngineConfig(BaseModel):
@@ -83,6 +85,22 @@ class EnginesSettings(BaseSettings):
             {
                 "class": PatchrightEngine,
                 "params": {"headless": False, "name": "patchright"}
+            },
+            {
+                "class": SeleniumEngine,
+                "params": {"headless": True, "name": "selenium-chrome_headless__no_proxy", "browser_type": "chrome"}
+            },
+            {
+                "class": SeleniumEngine,
+                "params": {"headless": False, "name": "selenium-chrome__no_proxy", "browser_type": "chrome"}
+            },
+            {
+                "class": NoDriverEngine,
+                "params": {"headless": True, "name": "nodriver-chrome_headless", "browser_type": "chrome"}
+            },
+            {
+                "class": NoDriverEngine,
+                "params": {"headless": False, "name": "nodriver-chrome", "browser_type": "chrome"}
             },
         ]
 

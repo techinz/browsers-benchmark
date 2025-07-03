@@ -1,95 +1,105 @@
 # Browser Benchmark Results Summary
 
-*Generated on: 2025-07-03 04:34*
+*Generated on: 2025-07-03 23:34*
 
 ## Overall Bypass Rate
 
 | Engine | Bypass Rate (%) |
 |-----------------|----------------:|
-| camoufox | 100.0 |
-| camoufox_headless | 100.0 |
-| playwright-firefox_headless | 66.7 |
+| nodriver-chrome | 100.0 |
+| camoufox | 83.3 |
+| camoufox_headless | 83.3 |
+| tf-playwright-stealth-firefox | 66.7 |
 | playwright-firefox | 50.0 |
+| patchright | 50.0 |
+| tf-playwright-stealth-chromium | 50.0 |
 | tf-playwright-stealth-firefox_headless | 50.0 |
-| tf-playwright-stealth-chromium_headless | 50.0 |
-| patchright_headless | 33.3 |
-| patchright | 33.3 |
 | playwright-chrome | 33.3 |
+| patchright_headless | 33.3 |
+| tf-playwright-stealth-chromium_headless | 33.3 |
 | playwright-chrome_headless | 33.3 |
-| tf-playwright-stealth-firefox | 33.3 |
-| tf-playwright-stealth-chromium | 16.7 |
+| nodriver-chrome_headless | 16.7 |
+| playwright-firefox_headless | 16.7 |
 
 
 ## Resource Usage Comparison
 
 | Engine | Memory Usage (MB) | CPU Usage (%) |
 |-----------------|------------------:|--------------:|
-| playwright-chrome_headless | 213.0 | 5.2 |
-| tf-playwright-stealth-chromium_headless | 320.0 | 0.0 |
-| tf-playwright-stealth-chromium | 387.0 | 6.2 |
-| playwright-chrome | 409.0 | 0.0 |
-| patchright | 532.0 | 72.4 |
-| patchright_headless | 546.0 | 0.0 |
-| tf-playwright-stealth-firefox | 609.0 | 15.5 |
-| tf-playwright-stealth-firefox_headless | 804.0 | 5.2 |
-| playwright-firefox_headless | 869.0 | 10.3 |
-| playwright-firefox | 944.0 | 25.8 |
-| camoufox | 971.0 | 0.0 |
-| camoufox_headless | 1069.0 | 62.2 |
+| playwright-chrome_headless | 209.0 | 5.2 |
+| tf-playwright-stealth-chromium_headless | 215.0 | 0.0 |
+| tf-playwright-stealth-chromium | 398.0 | 0.0 |
+| playwright-chrome | 405.0 | 0.0 |
+| nodriver-chrome_headless | 510.0 | 6.3 |
+| playwright-firefox_headless | 521.0 | 0.0 |
+| nodriver-chrome | 527.0 | 10.4 |
+| patchright_headless | 540.0 | 15.5 |
+| patchright | 573.0 | 5.2 |
+| playwright-firefox | 601.0 | 10.3 |
+| tf-playwright-stealth-firefox_headless | 737.0 | 5.1 |
+| tf-playwright-stealth-firefox | 900.0 | 10.3 |
+| camoufox | 1080.0 | 36.4 |
+| camoufox_headless | 1097.0 | 20.7 |
 
 
 ## Recaptcha Scores
 
 | Engine | Recaptcha Score (0-1) |
 |-----------------|--------------------:|
-| camoufox | 0.90 |
-| camoufox_headless | 0.90 |
-| patchright | 0.90 |
-| patchright_headless | 0.90 |
-| playwright-chrome | 0.90 |
-| playwright-chrome_headless | 0.90 |
-| playwright-firefox | 0.90 |
-| playwright-firefox_headless | 0.90 |
-| tf-playwright-stealth-chromium | 0.90 |
-| tf-playwright-stealth-chromium_headless | 0.90 |
-| tf-playwright-stealth-firefox | 0.90 |
-| tf-playwright-stealth-firefox_headless | 0.90 |
+| tf-playwright-stealth-chromium | 0.30 |
+| camoufox | 0.10 |
+| patchright | 0.10 |
+| camoufox_headless | 0.10 |
+| patchright_headless | 0.10 |
+| playwright-chrome | 0.10 |
+| playwright-firefox | 0.10 |
+| playwright-chrome_headless | 0.10 |
+| playwright-firefox_headless | 0.10 |
+| tf-playwright-stealth-chromium_headless | 0.10 |
+| tf-playwright-stealth-firefox | 0.10 |
+| tf-playwright-stealth-firefox_headless | 0.10 |
+| nodriver-chrome | nan |
+| nodriver-chrome_headless | nan |
 
 
 ## CreepJS Scores
 
 | Engine | Trust Score (%) | Bot Score (%) | WebRTC IP |
 |-----------------|----------------:|--------------:|----------:|
-| patchright | 93.00 | 0.00 | 193.32.248.250 |
-| playwright-firefox_headless | 93.00 | 0.00 | 193.32.248.250 |
-| playwright-chrome_headless | 91.50 | 0.00 | 193.32.248.250 |
-| playwright-chrome | 84.00 | 0.00 | 193.32.248.250 |
-| patchright_headless | 69.00 | 13.00 | 193.32.248.250 |
-| playwright-firefox | 69.00 | 13.00 | 193.32.248.250 |
-| camoufox | 59.50 | 13.00 | 94.228.149.87 |
-| camoufox_headless | 59.50 | 13.00 | 86.144.101.200 |
-| tf-playwright-stealth-chromium | 0.00 | 25.00 | 193.32.248.250 |
-| tf-playwright-stealth-chromium_headless | 0.00 | 25.00 | 193.32.248.250 |
-| tf-playwright-stealth-firefox | 0.00 | 25.00 | 193.32.248.250 |
-| tf-playwright-stealth-firefox_headless | 0.00 | 25.00 | 193.32.248.250 |
+| patchright | 99.00 | 0.00 | 169.150.201.11 |
+| playwright-firefox_headless | 99.00 | 0.00 | 169.150.201.11 |
+| patchright_headless | 93.00 | 0.00 | 169.150.201.11 |
+| nodriver-chrome_headless | 93.00 | 0.00 | 169.150.201.11 |
+| playwright-firefox | 93.00 | 0.00 | 169.150.201.11 |
+| playwright-chrome_headless | 91.50 | 0.00 | 169.150.201.11 |
+| playwright-chrome | 84.00 | 0.00 | 169.150.201.11 |
+| nodriver-chrome | 69.00 | 13.00 | 169.150.201.11 |
+| camoufox_headless | 59.50 | 13.00 | 184.79.187.62 |
+| camoufox | 0.00 | 0.00 |  |
+| tf-playwright-stealth-chromium | 0.00 | 25.00 | 169.150.201.11 |
+| tf-playwright-stealth-chromium_headless | 0.00 | 25.00 | 169.150.201.11 |
+| tf-playwright-stealth-firefox | 0.00 | 25.00 | 169.150.201.11 |
+| tf-playwright-stealth-firefox_headless | 0.00 | 25.00 | 169.150.201.11 |
 
 
 ## IP (Ipify) 
 
 | Engine | IP |
 |-----------------|----------:|
-| camoufox | 94.228.149.87 |
-| camoufox_headless | 86.144.101.200 |
-| patchright | 190.175.103.65 |
-| patchright_headless | 80.41.23.87 |
-| playwright-chrome | 184.79.206.236 |
-| playwright-chrome_headless | 176.121.229.86 |
-| playwright-firefox | 184.79.58.77 |
-| playwright-firefox_headless | 181.118.50.213 |
-| tf-playwright-stealth-chromium | 184.77.82.82 |
-| tf-playwright-stealth-chromium_headless | 70.172.154.65 |
-| tf-playwright-stealth-firefox | 152.59.146.124 |
-| tf-playwright-stealth-firefox_headless | 88.213.200.180 |
+| camoufox | 62.136.33.120 |
+| camoufox_headless | 184.79.187.62 |
+| nodriver-chrome | 200.71.127.84 |
+| nodriver-chrome_headless | 196.17.170.160 |
+| patchright | 96.232.46.26 |
+| patchright_headless | 86.23.215.117 |
+| playwright-chrome | 184.77.209.35 |
+| playwright-chrome_headless | 184.77.78.176 |
+| playwright-firefox | 189.76.185.203 |
+| playwright-firefox_headless | 82.4.75.104 |
+| tf-playwright-stealth-chromium | 131.108.236.167 |
+| tf-playwright-stealth-chromium_headless | 184.79.64.193 |
+| tf-playwright-stealth-firefox | 86.176.4.29 |
+| tf-playwright-stealth-firefox_headless | 50.99.215.133 |
 
 
 ## Visual Dashboard

@@ -6,7 +6,6 @@ import psutil
 from patchright.async_api import async_playwright, BrowserType
 
 from engines.playwright_base import PlaywrightBase
-from utils.js_script import load_js_script
 from utils.process import find_new_child_processes
 
 
@@ -14,11 +13,12 @@ class PatchrightEngine(PlaywrightBase):
     def __init__(
             self,
             name: str = "patchright",
-            user_agent: Optional[str] = None,
 
+            user_agent: Optional[str] = None,
             headless: bool = True,
 
             proxy: Optional[Dict[str, str]] = None,
+            **kwargs
     ):
         browser_type = 'chromium'  # patchright only supports chromium
         super().__init__(name, browser_type, user_agent, headless, proxy)
@@ -54,7 +54,8 @@ class PatchrightEngine(PlaywrightBase):
         self.context = await browser_launcher.launch_persistent_context(
             user_data_dir="",
             channel="chrome",
-            no_viewport=True,
+            headless=self.headless,
+            no_viewport=self.headless,
             **context_options
         )
         self.page = await self.context.new_page()

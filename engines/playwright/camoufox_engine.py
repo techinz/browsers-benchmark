@@ -6,7 +6,6 @@ import psutil
 from camoufox.async_api import AsyncCamoufox
 
 from engines.playwright_base import PlaywrightBase
-from utils.js_script import load_js_script
 from utils.process import find_new_child_processes
 
 
@@ -14,11 +13,12 @@ class CamoufoxEngine(PlaywrightBase):
     def __init__(
             self,
             name: str = "camoufox",
-            user_agent: Optional[str] = None,
 
+            user_agent: Optional[str] = None,
             headless: bool = True,
 
             proxy: Optional[Dict[str, str]] = None,
+            **kwargs
     ):
         browser_type = 'firefox'  # camoufox only supports firefox
         super().__init__(name, browser_type, user_agent, headless, proxy)

@@ -16,11 +16,12 @@ class PlaywrightBase(BrowserEngine):
             self,
             name: str = "playwright-chrome",
             browser_type: str = "chromium",
-            user_agent: Optional[str] = None,
 
+            user_agent: Optional[str] = None,
             headless: bool = True,
 
             proxy: Optional[Dict[str, str]] = None,
+            **kwargs
     ):
         super().__init__(name, proxy)
         self.browser_type = browser_type  # chromium, firefox, webkit
@@ -30,6 +31,10 @@ class PlaywrightBase(BrowserEngine):
         self.playwright = None
         self.context = None
         self.page = None
+
+    @property
+    def supported_proxy_protocols(self) -> list[str]:
+        return ["http", "https"]
 
     async def start(self) -> None:
         """Initialize and start the browser"""
@@ -116,12 +121,11 @@ class PlaywrightBase(BrowserEngine):
             raise RuntimeError("Browser not started")
 
         start_time = asyncio.get_event_loop().time()
-        response = await self.page.goto(url, timeout=settings.browser.page_load_timeout_ms)
+        response = await self.page.goto(url, timeout=settings.browser.page_load_timeout_s * 1000)
         end_time = asyncio.get_event_loop().time()
 
         result = {
             "url": url,
-            "status": response.status if response else None,
             "load_time": end_time - start_time,
             "success": response.ok if response else False,
             "headers": response.headers if response else {},
@@ -135,7 +139,18 @@ class PlaywrightBase(BrowserEngine):
         if not self.page:
             raise RuntimeError("Browser not started")
 
-        await self.page.reload(timeout=settings.browser.page_load_timeout_ms)
+        start_time = asyncio.get_event_loop().time()
+        response = await self.page.reload(timeout=settings.browser.page_load_timeout_s * 1000)
+        end_time = asyncio.get_event_loop().time()
+
+        result = {
+            "url": self.page.url,
+            "load_time": end_time - start_time,
+            "success": response.ok if response else False,
+            "headers": response.headers if response else {},
+        }
+
+        return result
 
     async def locator(self, selector: str) -> Tuple[bool, str]:
         """Locate a selector and return found status and its content"""
@@ -167,7 +182,8 @@ class PlaywrightBase(BrowserEngine):
         if not self.page:
             raise RuntimeError("browser not started")
 
-        return await self.page.evaluate(script)
+        return await self.page.evaluate(
+            f"(() => {{\n{script}\n}})();")  # wrap script in IIFE
 
     async def screenshot(self, path: str) -> None:
         """Take a screenshot of the current page"""

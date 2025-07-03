@@ -26,7 +26,9 @@ Modern web applications use advanced bot detection like Cloudflare, DataDome, an
 - <a href="https://camoufox.com">**Camoufox**</a> - Playwright-based
 - <a href="https://github.com/Kaliiiiiiiiii-Vinyzu/patchright-python">**Patchright**</a> - Playwright-based
 - <a href="https://github.com/tinyfish-io/tf-playwright-stealth">**Playwright Stealth**</a> - Playwright-based
-- <i>More engines coming soon</i>
+- <a href="https://www.selenium.dev">**Selenium**</a> - Open-source browser automation framework (apparently deprecated, so it is tested without proxies)
+- <a href="https://github.com/ultrafunkamsterdam/nodriver">**NoDriver**</a> - Open-source browser automation framework (supports only SOCKS5 proxies)
+- <i>More engines coming soon. What engine should I add next?</i>
 
 ### Analytics
 - Automated report generation with visualizations
@@ -45,59 +47,65 @@ Modern web applications use advanced bot detection like Cloudflare, DataDome, an
 
 ## 📊 Sample Results
 This benchmark provides detailed comparative analysis. Here's an excerpt from a recent test run (more in <a href="results/example">results/example</a>):  
-<i>Real IP in this example - 193.32.248.250</i>  
+<i>Real IP in this example - 169.150.201.11</i>  
 <i>Proxy IP in this example is different for each engine</i>
 
 ### Overall Bypass Rate
 | Engine | Bypass Rate (%) |
 |-----------------|----------------:|
-| camoufox | 100.0 |
-| camoufox_headless | 100.0 |
-| playwright-firefox_headless | 66.7 |
+| nodriver-chrome | 100.0 |
+| camoufox | 83.3 |
+| camoufox_headless | 83.3 |
+| tf-playwright-stealth-firefox | 66.7 |
 | playwright-firefox | 50.0 |
+| patchright | 50.0 |
+| tf-playwright-stealth-chromium | 50.0 |
 | tf-playwright-stealth-firefox_headless | 50.0 |
-| tf-playwright-stealth-chromium_headless | 50.0 |
-| patchright_headless | 33.3 |
-| patchright | 33.3 |
 | playwright-chrome | 33.3 |
+| patchright_headless | 33.3 |
+| tf-playwright-stealth-chromium_headless | 33.3 |
 | playwright-chrome_headless | 33.3 |
-| tf-playwright-stealth-firefox | 33.3 |
-| tf-playwright-stealth-chromium | 16.7 |
+| nodriver-chrome_headless | 16.7 |
+| playwright-firefox_headless | 16.7 |
 
 
 ### Resource Usage Comparison
 | Engine | Memory Usage (MB) | CPU Usage (%) |
 |-----------------|------------------:|--------------:|
-| playwright-chrome_headless | 213.0 | 5.2 |
-| tf-playwright-stealth-chromium_headless | 320.0 | 0.0 |
-| tf-playwright-stealth-chromium | 387.0 | 6.2 |
-| playwright-chrome | 409.0 | 0.0 |
-| patchright | 532.0 | 72.4 |
-| patchright_headless | 546.0 | 0.0 |
-| tf-playwright-stealth-firefox | 609.0 | 15.5 |
-| tf-playwright-stealth-firefox_headless | 804.0 | 5.2 |
-| playwright-firefox_headless | 869.0 | 10.3 |
-| playwright-firefox | 944.0 | 25.8 |
-| camoufox | 971.0 | 0.0 |
-| camoufox_headless | 1069.0 | 62.2 |
+| playwright-chrome_headless | 209.0 | 5.2 |
+| tf-playwright-stealth-chromium_headless | 215.0 | 0.0 |
+| tf-playwright-stealth-chromium | 398.0 | 0.0 |
+| playwright-chrome | 405.0 | 0.0 |
+| nodriver-chrome_headless | 510.0 | 6.3 |
+| playwright-firefox_headless | 521.0 | 0.0 |
+| nodriver-chrome | 527.0 | 10.4 |
+| patchright_headless | 540.0 | 15.5 |
+| patchright | 573.0 | 5.2 |
+| playwright-firefox | 601.0 | 10.3 |
+| tf-playwright-stealth-firefox_headless | 737.0 | 5.1 |
+| tf-playwright-stealth-firefox | 900.0 | 10.3 |
+| camoufox | 1080.0 | 36.4 |
+| camoufox_headless | 1097.0 | 20.7 |
 
 If the CPU usage is 0 - failed to measure or it really is 0 for CDP sessions. The problem is known and will be fixed.
 
 ### Recaptcha Scores - https://recaptcha-demo.appspot.com/recaptcha-v3-request-scores.php
 | Engine | Recaptcha Score (0-1) |
 |-----------------|--------------------:|
-| camoufox | 0.90 |
-| camoufox_headless | 0.90 |
-| patchright | 0.90 |
-| patchright_headless | 0.90 |
-| playwright-chrome | 0.90 |
-| playwright-chrome_headless | 0.90 |
-| playwright-firefox | 0.90 |
-| playwright-firefox_headless | 0.90 |
-| tf-playwright-stealth-chromium | 0.90 |
-| tf-playwright-stealth-chromium_headless | 0.90 |
-| tf-playwright-stealth-firefox | 0.90 |
-| tf-playwright-stealth-firefox_headless | 0.90 |
+| tf-playwright-stealth-chromium | 0.30 |
+| camoufox | 0.10 |
+| patchright | 0.10 |
+| camoufox_headless | 0.10 |
+| patchright_headless | 0.10 |
+| playwright-chrome | 0.10 |
+| playwright-firefox | 0.10 |
+| playwright-chrome_headless | 0.10 |
+| playwright-firefox_headless | 0.10 |
+| tf-playwright-stealth-chromium_headless | 0.10 |
+| tf-playwright-stealth-firefox | 0.10 |
+| tf-playwright-stealth-firefox_headless | 0.10 |
+| nodriver-chrome | nan |
+| nodriver-chrome_headless | nan |
 
 `
 This Score is taken by solving the reCAPTCHA v3 on your browser.
@@ -111,18 +119,20 @@ And vise versa, with score >= 0.7 it will be much easier.
 ### CreepJS Scores - https://abrahamjuliot.github.io/creepjs
 | Engine | Trust Score (%) | Bot Score (%) | WebRTC IP |
 |-----------------|----------------:|--------------:|----------:|
-| patchright | 93.00 | 0.00 | 193.32.248.250 |
-| playwright-firefox_headless | 93.00 | 0.00 | 193.32.248.250 |
-| playwright-chrome_headless | 91.50 | 0.00 | 193.32.248.250 |
-| playwright-chrome | 84.00 | 0.00 | 193.32.248.250 |
-| patchright_headless | 69.00 | 13.00 | 193.32.248.250 |
-| playwright-firefox | 69.00 | 13.00 | 193.32.248.250 |
-| camoufox | 59.50 | 13.00 | 94.228.149.87 |
-| camoufox_headless | 59.50 | 13.00 | 86.144.101.200 |
-| tf-playwright-stealth-chromium | 0.00 | 25.00 | 193.32.248.250 |
-| tf-playwright-stealth-chromium_headless | 0.00 | 25.00 | 193.32.248.250 |
-| tf-playwright-stealth-firefox | 0.00 | 25.00 | 193.32.248.250 |
-| tf-playwright-stealth-firefox_headless | 0.00 | 25.00 | 193.32.248.250 |
+| patchright | 99.00 | 0.00 | 169.150.201.11 |
+| playwright-firefox_headless | 99.00 | 0.00 | 169.150.201.11 |
+| patchright_headless | 93.00 | 0.00 | 169.150.201.11 |
+| nodriver-chrome_headless | 93.00 | 0.00 | 169.150.201.11 |
+| playwright-firefox | 93.00 | 0.00 | 169.150.201.11 |
+| playwright-chrome_headless | 91.50 | 0.00 | 169.150.201.11 |
+| playwright-chrome | 84.00 | 0.00 | 169.150.201.11 |
+| nodriver-chrome | 69.00 | 13.00 | 169.150.201.11 |
+| camoufox_headless | 59.50 | 13.00 | 184.79.187.62 |
+| camoufox | 0.00 | 0.00 |  |
+| tf-playwright-stealth-chromium | 0.00 | 25.00 | 169.150.201.11 |
+| tf-playwright-stealth-chromium_headless | 0.00 | 25.00 | 169.150.201.11 |
+| tf-playwright-stealth-firefox | 0.00 | 25.00 | 169.150.201.11 |
+| tf-playwright-stealth-firefox_headless | 0.00 | 25.00 | 169.150.201.11 |
 
 Applicapable only with proxy.
 If the WebRTC IP is different from your real IP - no leakage
@@ -131,18 +141,20 @@ If the WebRTC IP is different from your real IP - no leakage
 ### IP (Ipify)
 | Engine | IP |
 |-----------------|----------:|
-| camoufox | 94.228.149.87 |
-| camoufox_headless | 86.144.101.200 |
-| patchright | 190.175.103.65 |
-| patchright_headless | 80.41.23.87 |
-| playwright-chrome | 184.79.206.236 |
-| playwright-chrome_headless | 176.121.229.86 |
-| playwright-firefox | 184.79.58.77 |
-| playwright-firefox_headless | 181.118.50.213 |
-| tf-playwright-stealth-chromium | 184.77.82.82 |
-| tf-playwright-stealth-chromium_headless | 70.172.154.65 |
-| tf-playwright-stealth-firefox | 152.59.146.124 |
-| tf-playwright-stealth-firefox_headless | 88.213.200.180 |
+| camoufox | 62.136.33.120 |
+| camoufox_headless | 184.79.187.62 |
+| nodriver-chrome | 200.71.127.84 |
+| nodriver-chrome_headless | 196.17.170.160 |
+| patchright | 96.232.46.26 |
+| patchright_headless | 86.23.215.117 |
+| playwright-chrome | 184.77.209.35 |
+| playwright-chrome_headless | 184.77.78.176 |
+| playwright-firefox | 189.76.185.203 |
+| playwright-firefox_headless | 82.4.75.104 |
+| tf-playwright-stealth-chromium | 131.108.236.167 |
+| tf-playwright-stealth-chromium_headless | 184.79.64.193 |
+| tf-playwright-stealth-firefox | 86.176.4.29 |
+| tf-playwright-stealth-firefox_headless | 50.99.215.133 |
 
 Applicapable only with proxy.
 If the IP is your proxy's IP - good, your real IP - bad.
@@ -204,14 +216,20 @@ If the IP is your proxy's IP - good, your real IP - bad.
 
 5. **Configure proxies**
    1. Create a file named `proxies.txt` in the `documents` directory.
-   2. Add your proxy URLs in format `http://username:password@proxy_host:port` or `http://proxy_host:port`. Number of proxies has to be not less than number of engines you want to test.
-      
+   2. Add your proxy URLs in format `http://username:password@proxy_host:port` or `http://proxy_host:port`.  
+      ❗️ IMPORTANT (1): Number of proxies has to be not less than number of engines you want to test.  
+      ❗️ IMPORTANT (2): Some engines support different proxy protocols - for example, Playwright supports only HTTP and HTTPS, but NoDriver supports only SOCKS5.  
+         This implies that you have to add multiple proxy protocols to the `proxies.txt` file or exclude some engines from the test.  
+         At the moment you need all HTTP/HTTPS proxies and at least 1 SOCKS5 for NoDriver. Also, the benchmark will show you what proxy protocols are missing.  
+      ❗️ IMPORTANT (3): Selenium won't use any proxies.  
+
    Example `proxies.txt` content (each line is a separate proxy):
    ```
    http://proxy1.example.com:8080
    http://proxy2.example.com:8080
    http://username:password@proxy3.example.com:8080
    http://username:password@proxy4.example.com:8080
+   socks5://username:password@proxy5.example.com:8080
    ```
 
 6. **Run benchmark**
@@ -229,7 +247,7 @@ PROXY_FILE_PATH=documents/proxies.txt
 PROXY_MAX_RETRIES=3
 
 # Performance Settings
-PAGE_LOAD_TIMEOUT_MS=90000
+PAGE_LOAD_TIMEOUT_S=90
 PAGE_STABILIZATION_DELAY_S=5
 MAX_RETRIES=3
 ```
@@ -308,6 +326,12 @@ The codebase follows a modular architecture for extensibility:
    Or, if Playwright-based, extend `PlaywrightBase` base class:
    ```python  
    class CustomPlaywrightBasedEngine(PlaywrightBase):
+       ...
+   ```
+   
+    Or, if Selenium-based, extend `SeleniumBase` base class:
+   ```python  
+   class CustomSeleniumBasedEngine(SeleniumBase):
        ...
    ```
    
