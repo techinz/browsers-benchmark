@@ -53,7 +53,7 @@ class ProxyManager:
                 proxy_config["username"] = parsed.username
                 proxy_config["password"] = parsed.password
 
-            logger.info(f"Assigned proxy {parsed.hostname}:{parsed.port} ({len(self.available_proxies)} remaining)")
+            logger.info(f"Assigned proxy {parsed.hostname}:{parsed.port}:{parsed.username}:{parsed.password} ({len(self.available_proxies)} remaining)")
             return proxy_config
         except Exception as e:
             logger.error(f"Failed to parse proxy URL {proxy_url}: {e}")

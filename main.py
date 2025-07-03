@@ -184,8 +184,7 @@ async def run_all_benchmarks() -> None:
             f"{proxy_manager.get_available_count()} available in {settings.proxy.file_path}"
         )
 
-    logger.info(
-        f"✅ Proxy validation passed: {proxy_manager.get_available_count()} proxies available for {engine_count} engines")
+    logger.info(f"Proxy validation passed: {proxy_manager.get_available_count()} proxies available for {engine_count} engines")
 
     timestamp = datetime.now().strftime("%Y.%m.%d__%H_%M_%S")
     result_path, media_path, screenshots_path = create_directory_structure(timestamp)
