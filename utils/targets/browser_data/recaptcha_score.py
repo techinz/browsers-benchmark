@@ -1,6 +1,6 @@
 import asyncio
-import json
 import logging
+import re
 
 from engines.base import BrowserEngine
 
@@ -19,10 +19,17 @@ async def get_recaptcha_score_data(engine: BrowserEngine, tries: int = 5) -> dic
         for i in range(tries):
             await asyncio.sleep(5)
 
-            element_found, element_html = await engine.locator('pre.response')
-            if element_found:
-                data = json.loads(element_html)
-                break
+            element_found, element_html = await engine.locator('div.row')
+            if not element_found:
+                continue
+
+            score_match = re.search(r'Your score is:\s*([\d.]+)', element_html)
+            if not score_match:
+                continue
+
+            data = {"score": float(score_match.group(1))}
+
+            break
         else:
             raise Exception("Failed to extract recaptcha score data (recaptcha score not found, out of tries)")
 

@@ -90,7 +90,7 @@ This benchmark provides detailed comparative analysis. Here's an excerpt from a 
 
 If the CPU usage is 0 - failed to measure or it really is 0 for CDP sessions. The problem is known and will be fixed.
 
-### Recaptcha Scores - https://recaptcha-demo.appspot.com/recaptcha-v3-request-scores.php
+### Recaptcha Scores - https://antcpt.com/score_detector
 | Engine | Recaptcha Score (0-1) |
 |-----------------|--------------------:|
 | tf-playwright-stealth-chromium | 0.30 |
