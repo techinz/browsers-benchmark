@@ -17,6 +17,7 @@ tf-playwright-stealth==1.2.0
 patchright==1.52.5
 selenium==4.34.0
 nodriver==0.46.1
+zendriver==0.12.1
 
 # files
 aiofiles==24.1.0

@@ -4,6 +4,7 @@ from pydantic import BaseModel, Field
 from pydantic_settings import BaseSettings
 
 from engines.nodriver.nodriver_engine import NoDriverEngine
+from engines.nodriver.zendriver_engine import ZenDriverEngine
 from engines.playwright.camoufox_engine import CamoufoxEngine
 from engines.playwright.patchright_engine import PatchrightEngine
 from engines.playwright.playwright_engine import PlaywrightEngine
@@ -101,6 +102,14 @@ class EnginesSettings(BaseSettings):
             {
                 "class": NoDriverEngine,
                 "params": {"headless": False, "name": "nodriver-chrome", "browser_type": "chrome"}
+            },
+            {
+                "class": ZenDriverEngine,
+                "params": {"headless": True, "name": "zendriver-chrome_headless", "browser_type": "chrome"}
+            },
+            {
+                "class": ZenDriverEngine,
+                "params": {"headless": False, "name": "zendriver-chrome", "browser_type": "chrome"}
             },
         ]
 

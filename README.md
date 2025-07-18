@@ -28,6 +28,7 @@ Modern web applications use advanced bot detection like Cloudflare, DataDome, an
 - <a href="https://github.com/tinyfish-io/tf-playwright-stealth">**Playwright Stealth**</a> - Playwright-based
 - <a href="https://www.selenium.dev">**Selenium**</a> - Open-source browser automation framework (apparently deprecated, so it is tested without proxies)
 - <a href="https://github.com/ultrafunkamsterdam/nodriver">**NoDriver**</a> - Open-source browser automation framework (supports only SOCKS5 proxies)
+- <a href="https://github.com/cdpdriver/zendriver">**ZenDriver**</a> - NoDriver-based
 - <i>More engines coming soon. What engine should I add next?</i>
 
 ### Analytics
