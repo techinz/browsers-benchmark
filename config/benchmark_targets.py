@@ -89,7 +89,7 @@ class BrowserDataTargetsSettings(BaseModel):
         default_factory=lambda: [
             Target(
                 name="recaptcha_score",
-                url="https://recaptcha-demo.appspot.com/recaptcha-v3-request-scores.php",
+                url="https://antcpt.com/score_detector",
                 check_function="extract_recaptcha_score",
                 description="reCAPTCHA v3 score extraction"
             ),
