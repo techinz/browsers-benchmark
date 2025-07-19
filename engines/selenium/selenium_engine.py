@@ -1,4 +1,4 @@
-from typing import Dict, Optional
+from typing import Dict, Optional, Literal
 
 from engines.selenium_base import SeleniumBase
 
@@ -7,7 +7,7 @@ class SeleniumEngine(SeleniumBase):
     def __init__(
             self,
             name: str = "selenium-chrome__no_proxy",
-            browser_type: str = "chrome",
+            browser_type: Literal['chrome', 'firefox'] = "chrome",
             user_agent: Optional[str] = None,
             headless: bool = True,
             proxy: Optional[Dict[str, str]] = None,

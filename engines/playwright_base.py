@@ -1,6 +1,6 @@
 import asyncio
 import os
-from typing import Dict, Optional, Any, Tuple
+from typing import Dict, Optional, Any, Tuple, Literal
 
 import psutil
 from playwright.async_api import async_playwright, BrowserType, Locator
@@ -15,7 +15,7 @@ class PlaywrightBase(BrowserEngine):
     def __init__(
             self,
             name: str = "playwright-chrome",
-            browser_type: str = "chromium",
+            browser_type: Literal['chromium', 'firefox', 'webkit'] = "chromium",
 
             user_agent: Optional[str] = None,
             headless: bool = True,

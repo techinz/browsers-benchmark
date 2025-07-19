@@ -1,6 +1,6 @@
 import asyncio
 import os
-from typing import Dict, Optional
+from typing import Dict, Optional, Literal
 
 import psutil
 from playwright.async_api import async_playwright, BrowserType
@@ -15,7 +15,7 @@ class TfPlaywrightStealthEngine(PlaywrightBase):
     def __init__(
             self,
             name: str = "tf-playwright-stealth-chromium",
-            browser_type: str = "chromium",
+            browser_type: Literal['firefox', 'chromium', 'webkit'] = "chromium",
 
             user_agent: Optional[str] = None,
             headless: bool = True,

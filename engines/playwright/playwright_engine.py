@@ -1,4 +1,4 @@
-from typing import Dict, Optional
+from typing import Dict, Optional, Literal
 
 from engines.playwright_base import PlaywrightBase
 
@@ -7,7 +7,7 @@ class PlaywrightEngine(PlaywrightBase):
     def __init__(
             self,
             name: str = "playwright-chrome",
-            browser_type: str = "chromium",
+            browser_type: Literal['firefox', 'chromium', 'webkit'] = "chromium",
 
             user_agent: Optional[str] = None,
             headless: bool = True,
