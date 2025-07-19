@@ -36,7 +36,7 @@ const colSixBlocks = document.querySelectorAll('.col-six');
 
 // webrtc ip
 if (colSixBlocks.length > 5) {
-    const unblurredDivs = colSixBlocks[6].querySelectorAll('.unblurred');
+    const unblurredDivs = colSixBlocks[0].querySelectorAll('.unblurred');
     for (const div of unblurredDivs) {
         const text = div.textContent.trim();
         if (text.includes('ip:')) {
