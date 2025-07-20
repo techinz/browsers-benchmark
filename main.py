@@ -261,22 +261,23 @@ async def run_all_benchmarks() -> None:
                 temp_engine = engine_config["class"](**engine_config["params"])
                 supported_protocols = temp_engine.supported_proxy_protocols
 
-                proxy = proxy_manager.get_proxy_by_protocol(supported_protocols)
-                if not proxy:
-                    logger.error(f"No compatible proxy available for {engine_name}")
-                    logger.error(f"\tEngine supports: {', '.join(supported_protocols)}")
+                if supported_protocols:
+                    proxy = proxy_manager.get_proxy_by_protocol(supported_protocols)
+                    if not proxy:
+                        logger.error(f"No compatible proxy available for {engine_name}")
+                        logger.error(f"\tEngine supports: {', '.join(supported_protocols)}")
 
-                    # show what proxies are available
-                    stats = proxy_manager.get_stats()
-                    if stats['available'] > 0:
-                        logger.error(f"\t{stats['available']} proxies remain, but none with compatible protocols")
+                        # show what proxies are available
+                        stats = proxy_manager.get_stats()
+                        if stats['available'] > 0:
+                            logger.error(f"\t{stats['available']} proxies remain, but none with compatible protocols")
+                        else:
+                            logger.error(f"\tNo proxies remaining (used: {stats['used']}, failed: {stats['failed']})")
+
+                        logger.error(f"\tSkipping {engine_name}...")
+                        continue
                     else:
-                        logger.error(f"\tNo proxies remaining (used: {stats['used']}, failed: {stats['failed']})")
-
-                    logger.error(f"\tSkipping {engine_name}...")
-                    continue
-                else:
-                    logger.info(f"Assigned {proxy['protocol']} proxy to {engine_name}")
+                        logger.info(f"Assigned {proxy['protocol']} proxy to {engine_name}")
 
             try:
                 results = await run_benchmark_for_engine(
