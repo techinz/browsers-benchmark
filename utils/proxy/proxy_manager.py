@@ -1,5 +1,6 @@
 import logging
 import os
+import random
 from collections.abc import Callable
 from typing import Dict, List, Optional, Set, Any, Tuple
 from urllib.parse import urlparse
@@ -83,6 +84,9 @@ class ProxyManager:
                 with open(self.proxies_file, 'r', encoding='utf-8') as f:
                     proxies = [line.strip() for line in f if line.strip() and not line.startswith('#')]
                     self.available_proxies = proxies.copy()
+
+                    random.shuffle(self.available_proxies)
+
                     logger.info(f"Loaded {len(self.available_proxies)} proxies from {self.proxies_file}")
             else:
                 logger.warning(f"Proxies file {self.proxies_file} not found")
