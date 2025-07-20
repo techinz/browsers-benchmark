@@ -2,6 +2,7 @@ import asyncio
 import gc
 import logging
 import os
+import shutil
 from datetime import datetime
 from typing import Dict, List, Any, Optional
 
@@ -157,6 +158,10 @@ async def run_benchmark_for_engine(
 
     engine = engine_cls(**engine_params)
     engine_screenshots_path = os.path.join(screenshots_path, engine.name)
+
+    if os.path.exists(engine_screenshots_path):
+        shutil.rmtree(engine_screenshots_path, ignore_errors=True)  # clear previous data if exists
+
     os.makedirs(engine_screenshots_path, exist_ok=True)
 
     results = BenchmarkResults(
@@ -239,12 +244,10 @@ async def run_all_benchmarks() -> None:
 
         logger.info("Proxy protocol validation passed for all engines")
 
-    timestamp = datetime.now().strftime("%Y.%m.%d__%H_%M_%S")
+    timestamp = datetime.now().strftime("%Y.%m.%d")
     result_path, media_path, screenshots_path = create_directory_structure(timestamp)
 
     try:
-        all_results: List[BenchmarkResults] = []
-
         if not engines_config.engines:
             logger.error("No engines configured for benchmarking")
             return
@@ -289,51 +292,48 @@ async def run_all_benchmarks() -> None:
                     screenshots_path=screenshots_path,
                     proxy=proxy,
                 )
-                if results:
-                    all_results.append(results)
             except Exception as e:
                 logger.error(f"Failed to run benchmark for {engine_name}: {e}")
 
-                error_result = BenchmarkResults(
+                results = BenchmarkResults(
                     engine=engine_name,
                     timestamp=datetime.now().isoformat(),
                     error=str(e)
                 )
-                all_results.append(error_result)
 
-        # save and report results
-        benchmark_results_path = save_results(all_results, result_path)
-        logger.info(f"\nBenchmark complete. Results saved to {benchmark_results_path}")
+            if results:
+                # save and report results
+                results_path = save_results(results, result_path)
+                logger.info(f"\nResults for {engine_name} saved to {results_path}")
 
-        # generate report
-        try:
-            generate_report(benchmark_results_path, result_path)
-        except Exception as e:
-            logger.error(f"Failed to generate report: {e}")
+                # generate report
+                try:
+                    generate_report(results_path, result_path)
+                except Exception as e:
+                    logger.error(f"Failed to generate report: {e}")
 
-        # print summary
-        logger.info("\n===== BENCHMARK SUMMARY =====")
-        for result in all_results:
-            logger.info(f"{result.engine}:")
-            logger.info(f"\tBypass rate: {result.bypass_rate * 100:.1f}%")
-            logger.info(f"\tAverage memory: {result.average_memory_mb} MB")
-            logger.info(f"\tAverage CPU: {result.average_cpu_percent:.1f}%")
-            if result.error:
-                logger.info(f"\tError: {result.error}")
+            # print summary
+            logger.info(f"\n===== BENCHMARK FOR {engine_name} SUMMARY =====")
+            logger.info(f"{results.engine}:")
+            logger.info(f"\tBypass rate: {results.bypass_rate * 100:.1f}%")
+            logger.info(f"\tAverage memory: {results.average_memory_mb} MB")
+            logger.info(f"\tAverage CPU: {results.average_cpu_percent:.1f}%")
+            if results.error:
+                logger.info(f"\tError: {results.error}")
 
-        # print proxy statistics if enabled
-        if settings.proxy.enabled:
-            proxy_stats = proxy_manager.get_stats()
-            logger.info("\n===== PROXY STATISTICS =====")
-            logger.info(f"Total proxies loaded: {proxy_stats['total_loaded']}")
-            logger.info(f"Proxies used: {proxy_stats['used']}")
-            logger.info(f"Proxies failed: {proxy_stats['failed']}")
-            logger.info(f"Proxies remaining: {proxy_stats['available']}")
+            # print proxy statistics if enabled
+            if settings.proxy.enabled:
+                proxy_stats = proxy_manager.get_stats()
+                logger.info("\n===== PROXY STATISTICS =====")
+                logger.info(f"Total proxies loaded: {proxy_stats['total_loaded']}")
+                logger.info(f"Proxies used: {proxy_stats['used']}")
+                logger.info(f"Proxies failed: {proxy_stats['failed']}")
+                logger.info(f"Proxies remaining: {proxy_stats['available']}")
 
-            if proxy_stats['failed'] > 0:
-                logger.warning(f"{proxy_stats['failed']} proxies failed during benchmarking")
-            if proxy_stats['available'] == 0 and proxy_stats['failed'] > 0:
-                logger.warning("All proxies have been exhausted or failed")
+                if proxy_stats['failed'] > 0:
+                    logger.warning(f"{proxy_stats['failed']} proxies failed during benchmarking")
+                if proxy_stats['available'] == 0 and proxy_stats['failed'] > 0:
+                    logger.warning("All proxies have been exhausted or failed")
     except Exception as e:
         logger.critical(f"Critical error in benchmark execution: {e}")
         raise
