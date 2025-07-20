@@ -38,7 +38,8 @@ class PathSettings(BaseModel):
 class BrowserSettings(BaseModel):
     """Configuration settings for browser engines"""
 
-    page_load_timeout_s: int = 90  # maximum time to wait for page load in seconds
+    action_timeout_s: int = 60  # maximum time to wait for actions like search of elements, screenshots, clicks, etc.
+    page_load_timeout_s: int = 60  # maximum time to wait for page load in seconds
     page_stabilization_delay_s: int = 5  # time to wait for page stabilization after navigation
     headless: bool = True
 
@@ -54,9 +55,10 @@ class Settings(BaseSettings):
     PROXY_MAX_RETRIES: int = 3
 
     # browser
-    PAGE_LOAD_TIMEOUT_S: int = 90
+    ACTION_TIMEOUT_S: int = 30  # maximum time to wait for actions like search of elements, screenshots, clicks, etc.
+    PAGE_LOAD_TIMEOUT_S: int = 90  # maximum time to wait for page load in seconds
     PAGE_STABILIZATION_DELAY_S: int = 5  # time to wait for page stabilization after navigation
-    BROWSER_HEADLESS: bool = True
+    BROWSER_HEADLESS: bool = True  # run browser in headless mode
 
     # paths
     DOCUMENTS_PATH: str = "documents"
@@ -94,6 +96,7 @@ class Settings(BaseSettings):
     def browser(self) -> BrowserSettings:
         """Get browser configuration"""
         return BrowserSettings(
+            action_timeout_s=self.ACTION_TIMEOUT_S,
             page_load_timeout_s=self.PAGE_LOAD_TIMEOUT_S,
             page_stabilization_delay_s=self.PAGE_STABILIZATION_DELAY_S,
             headless=self.BROWSER_HEADLESS
