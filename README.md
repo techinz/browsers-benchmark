@@ -48,67 +48,79 @@ Modern web applications use advanced bot detection like Cloudflare, DataDome, an
 
 ## 📊 Sample Results
 This benchmark provides detailed comparative analysis. Here's an excerpt from a recent test run (more in <a href="results/example">results/example</a>):  
-<i>Real IP in this example - 169.150.201.11</i>  
+<i>Real IP in this example - 149.102.240.71</i>  
 <i>Proxy IP in this example is different for each engine</i>
 
 ### Overall Bypass Rate
 | Engine | Bypass Rate (%) |
 |-----------------|----------------:|
-| nodriver-chrome | 100.0 |
 | camoufox | 83.3 |
-| camoufox_headless | 83.3 |
-| tf-playwright-stealth-firefox | 66.7 |
+| nodriver-chrome | 83.3 |
+| patchright | 83.3 |
+| camoufox_headless | 66.7 |
+| playwright-firefox_headless | 66.7 |
+| zendriver-chrome | 66.7 |
 | playwright-firefox | 50.0 |
-| patchright | 50.0 |
-| tf-playwright-stealth-chromium | 50.0 |
+| tf-playwright-stealth-firefox | 50.0 |
+| tf-playwright-stealth-chromium_headless | 50.0 |
+| playwright-chrome | 50.0 |
 | tf-playwright-stealth-firefox_headless | 50.0 |
-| playwright-chrome | 33.3 |
-| patchright_headless | 33.3 |
-| tf-playwright-stealth-chromium_headless | 33.3 |
+| zendriver-chrome_headless | 50.0 |
+| tf-playwright-stealth-chromium | 50.0 |
+| nodriver-chrome_headless | 33.3 |
 | playwright-chrome_headless | 33.3 |
-| nodriver-chrome_headless | 16.7 |
-| playwright-firefox_headless | 16.7 |
+| patchright_headless | 33.3 |
+| selenium-chrome__no_proxy | 16.7 |
+| selenium-chrome_headless__no_proxy | 16.7 |
 
 
 ### Resource Usage Comparison
 | Engine | Memory Usage (MB) | CPU Usage (%) |
 |-----------------|------------------:|--------------:|
-| playwright-chrome_headless | 209.0 | 5.2 |
-| tf-playwright-stealth-chromium_headless | 215.0 | 0.0 |
-| tf-playwright-stealth-chromium | 398.0 | 0.0 |
-| playwright-chrome | 405.0 | 0.0 |
-| nodriver-chrome_headless | 510.0 | 6.3 |
-| playwright-firefox_headless | 521.0 | 0.0 |
-| nodriver-chrome | 527.0 | 10.4 |
-| patchright_headless | 540.0 | 15.5 |
-| patchright | 573.0 | 5.2 |
-| playwright-firefox | 601.0 | 10.3 |
-| tf-playwright-stealth-firefox_headless | 737.0 | 5.1 |
-| tf-playwright-stealth-firefox | 900.0 | 10.3 |
-| camoufox | 1080.0 | 36.4 |
-| camoufox_headless | 1097.0 | 20.7 |
+| playwright-chrome_headless | 209.0 | 0.0 |
+| tf-playwright-stealth-chromium_headless | 220.0 | 5.2 |
+| selenium-chrome_headless__no_proxy | 356.0 | 6.1 |
+| zendriver-chrome | 370.0 | 3.3 |
+| tf-playwright-stealth-chromium | 410.0 | 15.5 |
+| playwright-chrome | 414.0 | 4.4 |
+| zendriver-chrome_headless | 437.0 | 6.8 |
+| selenium-chrome__no_proxy | 490.0 | 10.0 |
+| nodriver-chrome_headless | 508.0 | 7.9 |
+| patchright_headless | 545.0 | 0.0 |
+| nodriver-chrome | 601.0 | 12.3 |
+| tf-playwright-stealth-firefox | 607.0 | 0.0 |
+| patchright | 699.0 | 31.1 |
+| playwright-firefox_headless | 818.0 | 10.4 |
+| tf-playwright-stealth-firefox_headless | 840.0 | 0.0 |
+| playwright-firefox | 914.0 | 10.3 |
+| camoufox_headless | 958.0 | 0.0 |
+| camoufox | 1040.0 | 15.5 |
 
-If the CPU usage is 0 - failed to measure or it really is 0 for CDP sessions. The problem is known and will be fixed.
+Note: If the CPU usage is 0 - failed to measure or it really is 0 for CDP sessions. The problem is known and will be fixed.
 
 ### Recaptcha Scores - https://antcpt.com/score_detector
 | Engine | Recaptcha Score (0-1) |
 |-----------------|--------------------:|
-| tf-playwright-stealth-chromium | 0.30 |
-| camoufox | 0.10 |
-| patchright | 0.10 |
+| camoufox | 0.30 |
+| nodriver-chrome | 0.30 |
+| tf-playwright-stealth-firefox | 0.30 |
+| nodriver-chrome_headless | 0.30 |
+| tf-playwright-stealth-chromium_headless | 0.30 |
+| zendriver-chrome_headless | 0.30 |
+| selenium-chrome__no_proxy | 0.30 |
+| tf-playwright-stealth-firefox_headless | 0.30 |
 | camoufox_headless | 0.10 |
-| patchright_headless | 0.10 |
-| playwright-chrome | 0.10 |
+| patchright | 0.10 |
+| playwright-firefox_headless | 0.10 |
 | playwright-firefox | 0.10 |
 | playwright-chrome_headless | 0.10 |
-| playwright-firefox_headless | 0.10 |
-| tf-playwright-stealth-chromium_headless | 0.10 |
-| tf-playwright-stealth-firefox | 0.10 |
-| tf-playwright-stealth-firefox_headless | 0.10 |
-| nodriver-chrome | nan |
-| nodriver-chrome_headless | nan |
+| playwright-chrome | 0.10 |
+| patchright_headless | 0.10 |
+| selenium-chrome_headless__no_proxy | 0.10 |
+| tf-playwright-stealth-chromium | 0.10 |
+| zendriver-chrome | 0.10 |
 
-`
+Note: `
 This Score is taken by solving the reCAPTCHA v3 on your browser.
 The Score shows if Google considers you as HUMAN or BOT.
 1.0 is very likely a good interaction, 0.0 is very likely a bot
@@ -120,45 +132,53 @@ And vise versa, with score >= 0.7 it will be much easier.
 ### CreepJS Scores - https://abrahamjuliot.github.io/creepjs
 | Engine | Trust Score (%) | Bot Score (%) | WebRTC IP |
 |-----------------|----------------:|--------------:|----------:|
-| patchright | 99.00 | 0.00 | 169.150.201.11 |
-| playwright-firefox_headless | 99.00 | 0.00 | 169.150.201.11 |
-| patchright_headless | 93.00 | 0.00 | 169.150.201.11 |
-| nodriver-chrome_headless | 93.00 | 0.00 | 169.150.201.11 |
-| playwright-firefox | 93.00 | 0.00 | 169.150.201.11 |
-| playwright-chrome_headless | 91.50 | 0.00 | 169.150.201.11 |
-| playwright-chrome | 84.00 | 0.00 | 169.150.201.11 |
-| nodriver-chrome | 69.00 | 13.00 | 169.150.201.11 |
-| camoufox_headless | 59.50 | 13.00 | 184.79.187.62 |
-| camoufox | 0.00 | 0.00 |  |
-| tf-playwright-stealth-chromium | 0.00 | 25.00 | 169.150.201.11 |
-| tf-playwright-stealth-chromium_headless | 0.00 | 25.00 | 169.150.201.11 |
-| tf-playwright-stealth-firefox | 0.00 | 25.00 | 169.150.201.11 |
-| tf-playwright-stealth-firefox_headless | 0.00 | 25.00 | 169.150.201.11 |
+| camoufox | 0.00 | 0.00 | 102.0.16.230 |
+| camoufox_headless | 0.00 | 0.00 | 93.185.151.247 |
+| nodriver-chrome | 0.00 | 0.00 | 149.102.240.71 |
+| nodriver-chrome_headless | 0.00 | 0.00 | 149.102.240.71 |
+| patchright | 0.00 | 0.00 | 149.102.240.71 |
+| patchright_headless | 0.00 | 0.00 | 149.102.240.71 |
+| playwright-chrome | 0.00 | 0.00 | 149.102.240.71 |
+| playwright-chrome_headless | 0.00 | 0.00 | 149.102.240.71 |
+| playwright-firefox | 0.00 | 0.00 | 149.102.240.71 |
+| playwright-firefox_headless | 0.00 | 0.00 | 149.102.240.71 |
+| selenium-chrome__no_proxy | 0.00 | 0.00 | 149.102.240.71 |
+| selenium-chrome_headless__no_proxy | 0.00 | 0.00 | 149.102.240.71 |
+| tf-playwright-stealth-chromium | 0.00 | 0.00 | 149.102.240.71 |
+| tf-playwright-stealth-chromium_headless | 0.00 | 0.00 | 149.102.240.71 |
+| tf-playwright-stealth-firefox | 0.00 | 0.00 | 149.102.240.71 |
+| tf-playwright-stealth-firefox_headless | 0.00 | 0.00 | 149.102.240.71 |
+| zendriver-chrome | 0.00 | 0.00 | 149.102.240.71 |
+| zendriver-chrome_headless | 0.00 | 0.00 | 149.102.240.71 |
 
-Applicapable only with proxy.
-If the WebRTC IP is different from your real IP - no leakage
+Note: 
+1. CreepJS disabled trust and bot scores for now - https://github.com/abrahamjuliot/creepjs/issues/292
+2. If the WebRTC IP is different from your real IP - no leakage (applicapable only with proxy).
 
 
 ### IP (Ipify)
 | Engine | IP |
 |-----------------|----------:|
-| camoufox | 62.136.33.120 |
-| camoufox_headless | 184.79.187.62 |
-| nodriver-chrome | 200.71.127.84 |
-| nodriver-chrome_headless | 196.17.170.160 |
-| patchright | 96.232.46.26 |
-| patchright_headless | 86.23.215.117 |
-| playwright-chrome | 184.77.209.35 |
-| playwright-chrome_headless | 184.77.78.176 |
-| playwright-firefox | 189.76.185.203 |
-| playwright-firefox_headless | 82.4.75.104 |
-| tf-playwright-stealth-chromium | 131.108.236.167 |
-| tf-playwright-stealth-chromium_headless | 184.79.64.193 |
-| tf-playwright-stealth-firefox | 86.176.4.29 |
-| tf-playwright-stealth-firefox_headless | 50.99.215.133 |
+| camoufox | 102.0.16.230 |
+| camoufox_headless | 79.3.97.54 |
+| nodriver-chrome | 209.35.93.167 |
+| nodriver-chrome_headless | 179.43.63.187 |
+| patchright | 196.133.10.26 |
+| patchright_headless | 189.36.133.109 |
+| playwright-chrome | 63.104.232.219 |
+| playwright-chrome_headless | 191.81.60.47 |
+| playwright-firefox | 185.74.53.51 |
+| playwright-firefox_headless | 75.25.150.59 |
+| selenium-chrome__no_proxy | 149.102.240.71 |
+| selenium-chrome_headless__no_proxy | 149.102.240.71 |
+| tf-playwright-stealth-chromium | 98.167.26.122 |
+| tf-playwright-stealth-chromium_headless | 92.22.82.4 |
+| tf-playwright-stealth-firefox | 189.36.133.109 |
+| tf-playwright-stealth-firefox_headless | 77.76.151.73 |
+| zendriver-chrome | 103.177.184.213 |
+| zendriver-chrome_headless | 181.170.174.42 |
 
-Applicapable only with proxy.
-If the IP is your proxy's IP - good, your real IP - bad.
+Note: If the IP is your proxy's IP - good, your real IP - bad (applicapable only with proxy).
 
 ### Visual Dashboard
 ![Bypass Dashboard](results/example/media/bypass_dashboard.png)
@@ -258,7 +278,7 @@ MAX_RETRIES=3
 The benchmark generates reports in the `results/` directory:
 
 - **`summary.md`** - Human-readable markdown report
-- **`benchmark_results_*.json`** - Raw data for further analysis  
+- **`benchmark_results.json`** - Raw data for further analysis  
 - **`media/`** - Generated visualizations and screenshots
   - `bypass_dashboard.png` - Multi-metric dashboard
   - `recaptcha_scores.png` - reCAPTCHA performance chart
