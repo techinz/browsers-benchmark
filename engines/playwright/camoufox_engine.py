@@ -1,10 +1,11 @@
 import asyncio
 import os
-from typing import Dict, Optional
+from typing import Dict, Optional, Literal
 
 import psutil
 from camoufox.async_api import AsyncCamoufox
 
+from config.settings import settings
 from engines.playwright_base import PlaywrightBase
 from utils.process import find_new_child_processes
 
@@ -29,7 +30,7 @@ class CamoufoxEngine(PlaywrightBase):
         :param proxy: Proxy settings, if any
         """
 
-        browser_type = 'firefox'  # camoufox only supports firefox
+        browser_type: Literal['chromium', 'firefox', 'webkit'] = 'firefox'  # camoufox only supports firefox
         super().__init__(name, browser_type, user_agent, headless, proxy)
 
         self.camoufox = None

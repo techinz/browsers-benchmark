@@ -83,6 +83,9 @@ class PlaywrightBase(BrowserEngine):
         self.context = await self.browser.new_context(**context_options)
         self.page = await self.context.new_page()
 
+        self.page.set_default_timeout(settings.browser.action_timeout_s * 1000)
+        self.page.set_default_navigation_timeout(settings.browser.page_load_timeout_s * 1000)
+
         # monkey-patch attachShadow to force open mode for closed shadow DOM
         await self.context.add_init_script(await load_js_script('unlockShadowDom.js'))
 
@@ -178,7 +181,7 @@ class PlaywrightBase(BrowserEngine):
         element: Locator = self.page.locator(selector)
         if await element.count() > 0:
             element_found = True
-            element_html: str = await element.inner_html()
+            element_html: str = await element.inner_html(timeout=settings.browser.action_timeout_s * 1000)
 
         return element_found, element_html
 

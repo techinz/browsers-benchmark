@@ -12,6 +12,11 @@ from utils.process import find_new_child_processes
 
 logger = logging.getLogger(__name__)
 
+"""
+asyncio.wait_for is used to implement a timeout for page navigation
+because NoDriver doesn't support timeout natively (as far as I see)
+"""
+
 
 class NoDriverBase(BrowserEngine):
     def __init__(
@@ -63,12 +68,13 @@ class NoDriverBase(BrowserEngine):
 
         try:
             # start browser with nodriver
-            self.browser = await uc.start(
+            self.browser = await asyncio.wait_for(uc.start(
                 headless=self.headless,
                 browser_args=browser_args,
                 user_data_dir=None,  # use temporary profile
                 sandbox=False
-            )
+            ),
+                timeout=settings.browser.action_timeout_s)
 
             # create context with proxy configuration if provided
             if self.proxy:
@@ -109,7 +115,9 @@ class NoDriverBase(BrowserEngine):
 
         try:
             if self.browser:
-                self.browser.stop()
+                await asyncio.wait_for(self.browser.stop(),
+                                       timeout=settings.browser.action_timeout_s)
+
         except Exception as e:
             logger.debug(f"Error stopping browser: {e}")
 
@@ -131,7 +139,7 @@ class NoDriverBase(BrowserEngine):
 
         try:
             await asyncio.wait_for(self.page.get(url),
-                                   timeout=settings.browser.page_load_timeout_s)  # because nodriver doesn't support timeout natively (as far as I know)
+                                   timeout=settings.browser.page_load_timeout_s)
             success = True
         except Exception as e:
             success = False
@@ -156,7 +164,8 @@ class NoDriverBase(BrowserEngine):
         start_time = asyncio.get_event_loop().time()
 
         try:
-            await self.page.reload()
+            await asyncio.wait_for(self.page.reload(),
+                                   timeout=settings.browser.page_load_timeout_s)
             success = True
         except Exception:
             success = False
@@ -186,16 +195,21 @@ class NoDriverBase(BrowserEngine):
         element_html = ''
 
         try:
-            element = await self.page.select(css_selector)
+            element = await asyncio.wait_for(self.page.select(css_selector),
+                                             timeout=settings.browser.action_timeout_s)
             if element:
                 element_found = True
                 try:
                     # get innerHTML or text content
-                    inner_html_result = await self.page.evaluate(f"document.querySelector('{css_selector}').innerHTML")
+                    inner_html_result = await asyncio.wait_for(
+                        self.page.evaluate(f"document.querySelector('{css_selector}').innerHTML"),
+                        timeout=settings.browser.action_timeout_s)
                     if isinstance(inner_html_result, str) and inner_html_result:
                         element_html = inner_html_result
                     else:
-                        text_result = await self.page.evaluate(f"document.querySelector('{css_selector}').textContent")
+                        text_result = await asyncio.wait_for(
+                            self.page.evaluate(f"document.querySelector('{css_selector}').textContent"),
+                            timeout=settings.browser.action_timeout_s)
                         element_html = text_result if isinstance(text_result, str) else ""
                 except Exception:
                     # fallback to getting text if available
@@ -215,7 +229,8 @@ class NoDriverBase(BrowserEngine):
             raise RuntimeError("Browser not started")
 
         try:
-            return await self.page.get_content()
+            return await asyncio.wait_for(self.page.get_content(),
+                                          timeout=settings.browser.action_timeout_s)
         except Exception as e:
             logger.error(f"Failed to get page content: {e}")
             return ""
@@ -231,7 +246,8 @@ class NoDriverBase(BrowserEngine):
             raise RuntimeError("Browser not started")
 
         try:
-            return await self.page.evaluate(f"(() => {{\n{script}\n}})();")  # wrap script in IIFE
+            return await asyncio.wait_for(self.page.evaluate(f"(() => {{\n{script}\n}})();"),
+                                          timeout=settings.browser.action_timeout_s)  # wrap script in IIFE
         except Exception as e:
             logger.error(f"Failed to execute JavaScript: {e}")
             return None
@@ -250,7 +266,8 @@ class NoDriverBase(BrowserEngine):
         os.makedirs(os.path.dirname(path), exist_ok=True)
 
         try:
-            await self.page.save_screenshot(path)
+            await asyncio.wait_for(self.page.save_screenshot(path),
+                                   timeout=settings.browser.action_timeout_s)
         except Exception as e:
             logger.error(f"Failed to take screenshot: {e}")
 

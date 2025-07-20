@@ -1,10 +1,11 @@
 import asyncio
 import os
-from typing import Dict, Optional
+from typing import Dict, Optional, Literal
 
 import psutil
 from patchright.async_api import async_playwright, BrowserType
 
+from config.settings import settings
 from engines.playwright_base import PlaywrightBase
 from utils.process import find_new_child_processes
 
@@ -29,7 +30,7 @@ class PatchrightEngine(PlaywrightBase):
         :param proxy: Proxy settings, if any
         """
 
-        browser_type = 'chromium'  # patchright only supports chromium
+        browser_type: Literal['chromium', 'firefox', 'webkit'] = 'chromium'  # patchright only supports chromium
         super().__init__(name, browser_type, user_agent, headless, proxy)
 
     async def start(self) -> None:
@@ -68,6 +69,9 @@ class PatchrightEngine(PlaywrightBase):
             **context_options
         )
         self.page = await self.context.new_page()
+
+        self.page.set_default_timeout(settings.browser.action_timeout_s * 1000)
+        self.page.set_default_navigation_timeout(settings.browser.page_load_timeout_s * 1000)
 
         # track process for resource usage
         process_children_after = parent_process.children(recursive=True)

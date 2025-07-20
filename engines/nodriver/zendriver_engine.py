@@ -7,6 +7,7 @@ import psutil
 import zendriver as zd
 from zendriver.cdp import fetch
 
+from config.settings import settings
 from engines.nodriver_base import NoDriverBase
 from utils.process import find_new_child_processes
 
@@ -49,7 +50,7 @@ class ZenDriverEngine(NoDriverBase):
         def auth_challenge_handler(event: fetch.AuthRequired):
             try:
                 asyncio.run_coroutine_threadsafe(
-                    main_tab.send(
+                    asyncio.wait_for(main_tab.send(
                         fetch.continue_with_auth(
                             request_id=event.request_id,
                             auth_challenge_response=fetch.AuthChallengeResponse(
@@ -58,7 +59,7 @@ class ZenDriverEngine(NoDriverBase):
                                 password=password,
                             ),
                         )
-                    ),
+                    ), timeout=settings.browser.action_timeout_s),
                     main_loop
                 )
             except Exception as e:
@@ -67,7 +68,8 @@ class ZenDriverEngine(NoDriverBase):
         def req_paused(event: fetch.RequestPaused):
             try:
                 asyncio.run_coroutine_threadsafe(
-                    main_tab.send(fetch.continue_request(request_id=event.request_id)),
+                    asyncio.wait_for(main_tab.send(fetch.continue_request(request_id=event.request_id)),
+                                     timeout=settings.browser.action_timeout_s),
                     main_loop
                 )
             except Exception as e:
@@ -113,12 +115,13 @@ class ZenDriverEngine(NoDriverBase):
                 browser_args.append(f'--user-agent={self.user_agent}')
 
             # start browser with zendriver
-            self.browser = await zd.start(
+            self.browser = await asyncio.wait_for(zd.start(
                 headless=self.headless,
                 browser_args=browser_args,
                 user_data_dir=None,  # use temporary profile
                 # sandbox=False
-            )
+            ),
+                timeout=settings.browser.action_timeout_s)
 
             main_tab = await self.browser.get("about:blank")
 
@@ -142,7 +145,8 @@ class ZenDriverEngine(NoDriverBase):
 
         try:
             if self.browser:
-                await self.browser.stop()
+                await asyncio.wait_for(self.browser.stop(),
+                                       timeout=settings.browser.action_timeout_s)
         except Exception as e:
             logger.debug(f"Error stopping browser: {e}")
 

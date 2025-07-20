@@ -92,7 +92,7 @@ class SeleniumBase(BrowserEngine):
         self.driver = self._create_driver(options)
 
         # set up wait object for explicit waits
-        self.wait = WebDriverWait(self.driver, settings.browser.page_load_timeout_s)
+        self.wait = WebDriverWait(self.driver, timeout=settings.browser.page_load_timeout_s)
 
         # remove webdriver property
         self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")

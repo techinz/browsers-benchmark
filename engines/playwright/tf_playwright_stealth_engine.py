@@ -6,6 +6,7 @@ import psutil
 from playwright.async_api import async_playwright, BrowserType
 from playwright_stealth import stealth_async
 
+from config.settings import settings
 from engines.playwright_base import PlaywrightBase
 from utils.js_script import load_js_script
 from utils.process import find_new_child_processes
@@ -71,6 +72,9 @@ class TfPlaywrightStealthEngine(PlaywrightBase):
         # create context and page
         self.context = await self.browser.new_context(**context_options)
         self.page = await self.context.new_page()
+
+        self.page.set_default_timeout(settings.browser.action_timeout_s * 1000)
+        self.page.set_default_navigation_timeout(settings.browser.page_load_timeout_s * 1000)
 
         await stealth_async(self.page)
 
