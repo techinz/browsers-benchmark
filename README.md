@@ -5,6 +5,14 @@
 
 A toolkit for testing browser automation engines against modern web protection systems. It checks how well each engine can bypass bot detection and measures their speed, resource usage, and resistance to fingerprinting.
 
+---
+
+<a href="https://iproyal.com/?r=958719" target="_blank">
+<img src="https://dashboard.iproyal.com/img/b/728_2.jpg" alt="https://iproyal.com/">
+</a>
+
+---
+
 ## 🎯 Overview
 Modern web applications use advanced bot detection like Cloudflare, DataDome, and Imperva to block automated access. This benchmark suite shows how different browser automation engines handle these defenses:
 - **Bypass Success Rate**: Effectiveness against major protection systems
