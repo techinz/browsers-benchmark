@@ -46,3 +46,6 @@ documents/proxies.txt
 *.log
 results/*/
 !results/example/
+
+# Seleniumbase files
+downloaded_files/
