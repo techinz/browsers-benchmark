@@ -97,6 +97,14 @@ class EnginesSettings(BaseSettings):
                 "params": {"headless": False, "name": "selenium-chrome__no_proxy", "browser_type": "chrome"}
             },
             {
+                "class": NoDriverEngine,
+                "params": {"headless": True, "name": "nodriver-chrome_headless", "browser_type": "chrome"}
+            },
+            {
+                "class": NoDriverEngine,
+                "params": {"headless": False, "name": "nodriver-chrome", "browser_type": "chrome"}
+            },
+            {
                 "class": ZenDriverEngine,
                 "params": {"headless": True, "name": "zendriver-chrome_headless", "browser_type": "chrome"}
             },
