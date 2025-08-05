@@ -1,7 +1,6 @@
 import asyncio
 import logging
 import os
-from time import sleep
 from typing import Dict, Optional
 
 import psutil
@@ -41,9 +40,13 @@ class SeleniumBaseCDPEngine(NoDriverBase):
             cdp_driver.cdp_util.start_async(proxy=proxy_str),
             timeout=settings.browser.action_timeout_s
         )
-        self.page = self.browser.main_tab
+        # workaround to init proxy setup in seleniumbase
+        self.page = await self.browser.get("about:blank")
 
-    async def _start_seleniumbase_with_proxy(self) -> None:
+    def _build_proxy_str(self) -> str | None:
+        if not self.proxy:
+            return None
+
         protocol = self.proxy.get('protocol')
         host = self.proxy.get('host')
         port = self.proxy.get('port')
@@ -55,30 +58,20 @@ class SeleniumBaseCDPEngine(NoDriverBase):
                 f"Unsupported proxy protocol: {protocol}. SeleniumBase CDP supports: {self.supported_proxy_protocols}")
 
         if username and password:
-            proxy_str = f"{protocol}://{username}:{password}@{host}:{port}"
+            proxy_str = f"{username}:{password}@{protocol}://{host}:{port}"
         else:
             proxy_str = f"{protocol}://{host}:{port}"
-
         logger.info(f"Using proxy: {proxy_str}")
-        await self._start_seleniumbase(proxy_str)
 
-        if username and password:
-            logger.info(f"Start proxy authentication setup.")
-            sleep(0.1)
-            await asyncio.wait_for(self.browser.connection.set_auth(username, password, self.page),
-                                   timeout=settings.browser.action_timeout_s)
-            sleep(0.25)
-            logger.info(f"Finish proxy authentication setup.")
+        return proxy_str
 
     async def start(self) -> None:
         """Start the SeleniumBase CDP browser"""
         parent_process = psutil.Process(os.getpid())
         process_children_before = parent_process.children(recursive=True)
 
-        if self.proxy:
-            await self._start_seleniumbase_with_proxy()
-        else:
-            await self._start_seleniumbase()
+        proxy_str = self._build_proxy_str()
+        await self._start_seleniumbase(proxy_str)
 
         # track process for resource usage
         process_children_after = parent_process.children(recursive=True)
