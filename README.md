@@ -7,9 +7,11 @@ A toolkit for testing browser automation engines against modern web protection s
 
 ---
 
-<a href="https://www.nstproxy.com/?type=flow&utm_source=techinz" target="_blank">
-    <img width="624" height="277" alt="Image" src="https://github.com/user-attachments/assets/36dcd8fe-8127-446a-828b-246d421d9319" />
-</a>
+<p align="center">
+    <a href="https://www.nstproxy.com/?type=flow&utm_source=techinz" target="_blank">
+        <img width="624" height="277" alt="Image" src="https://github.com/user-attachments/assets/280e27fd-90c6-4bc3-8300-ab3ed16e57f7" />
+    </a>
+</p>
 
 If you're looking for a reliable proxy to <b>bypass anti-bot systems, scrape at scale, and access geo-restricted data without blocks</b>, Nstproxy is built for you. Perfect for large-scale web scraping, SEO monitoring, e-commerce data collection, price intelligence, and automation — even under the strictest anti-scraping protections.
 
