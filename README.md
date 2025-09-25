@@ -13,7 +13,7 @@ A toolkit for testing browser automation engines against modern web protection s
     </a>
 </p>
 
-If you're looking for a reliable proxy to <b>bypass anti-bot systems, scrape at scale, and access geo-restricted data without blocks</b>, Nstproxy is built for you. Perfect for large-scale web scraping, SEO monitoring, e-commerce data collection, price intelligence, and automation — even under the strictest anti-scraping protections.
+If you're looking for a reliable proxy to <b>bypass anti-bot systems, scrape at scale, and access geo-restricted data without blocks</b>, <a href="https://www.nstproxy.com/?type=flow&utm_source=techinz">Nstproxy</a> is built for you. Perfect for large-scale web scraping, SEO monitoring, e-commerce data collection, price intelligence, and automation — even under the strictest anti-scraping protections.
 
 Nstproxy offers a global pool of residential, datacenter, and IPv6 proxies with rotating or sticky sessions, advanced anti-block tech, and pricing from $0.1/GB for maximum uptime and ROI.
 
