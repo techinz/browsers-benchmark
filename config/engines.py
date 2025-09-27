@@ -10,6 +10,7 @@ from engines.playwright.patchright_engine import PatchrightEngine
 from engines.playwright.playwright_engine import PlaywrightEngine
 from engines.playwright.tf_playwright_stealth_engine import TfPlaywrightStealthEngine
 from engines.selenium.selenium_engine import SeleniumEngine
+from engines.seleniumbase_engine import SeleniumBaseCDPEngine
 
 
 class EngineConfig(BaseModel):
@@ -111,8 +112,11 @@ class EnginesSettings(BaseSettings):
                 "class": ZenDriverEngine,
                 "params": {"headless": False, "name": "zendriver-chrome", "browser_type": "chrome"}
             },
+            {
+                "class": SeleniumBaseCDPEngine,
+                "params": {"name": "seleniumbase-cdp-chrome"}
+            },
         ]
-
         self.engines.extend(base_engines)
 
     model_config = {"extra": "ignore"}
