@@ -114,7 +114,7 @@ class SeleniumBase(BrowserEngine):
         else:
             raise ValueError(f"Unsupported browser type: {self.browser_type}")
 
-    def _create_driver(self, options: Union[ChromeOptions, FirefoxOptions, EdgeOptions]) -> webdriver:
+    def _create_driver(self, options: Union[ChromeOptions, FirefoxOptions, EdgeOptions]):
         """
         Create WebDriver instance based on browser type
 
@@ -252,36 +252,3 @@ class SeleniumBase(BrowserEngine):
         # ensure directory exists
         os.makedirs(os.path.dirname(path), exist_ok=True)
         self.driver.save_screenshot(path)
-
-    def get_memory_usage(self) -> int:
-        """Get memory usage of browser processes in MB"""
-
-        if not self.process_list:
-            return 0
-
-        total_memory = 0
-        for process in self.process_list:
-            try:
-                if process.is_running():
-                    memory_info = process.memory_info()
-                    total_memory += memory_info.rss  # Resident Set Size in bytes
-            except (psutil.NoSuchProcess, psutil.AccessDenied):
-                continue
-
-        return total_memory // (1024 * 1024)  # convert to MB
-
-    def get_cpu_usage(self) -> float:
-        """Get CPU usage percentage of browser processes"""
-
-        if not self.process_list:
-            return 0.0
-
-        total_cpu = 0.0
-        for process in self.process_list:
-            try:
-                if process.is_running():
-                    total_cpu += process.cpu_percent()
-            except (psutil.NoSuchProcess, psutil.AccessDenied):
-                continue
-
-        return total_cpu

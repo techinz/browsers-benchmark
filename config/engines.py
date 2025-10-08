@@ -4,13 +4,13 @@ from pydantic import BaseModel, Field
 from pydantic_settings import BaseSettings
 
 from engines.nodriver.nodriver_engine import NoDriverEngine
+from engines.nodriver.seleniumbase_engine import SeleniumbaseEngine
 from engines.nodriver.zendriver_engine import ZenDriverEngine
 from engines.playwright.camoufox_engine import CamoufoxEngine
 from engines.playwright.patchright_engine import PatchrightEngine
 from engines.playwright.playwright_engine import PlaywrightEngine
 from engines.playwright.tf_playwright_stealth_engine import TfPlaywrightStealthEngine
 from engines.selenium.selenium_engine import SeleniumEngine
-from engines.seleniumbase_engine import SeleniumBaseCDPEngine
 
 
 class EngineConfig(BaseModel):
@@ -113,9 +113,9 @@ class EnginesSettings(BaseSettings):
                 "params": {"headless": False, "name": "zendriver-chrome", "browser_type": "chrome"}
             },
             {
-                "class": SeleniumBaseCDPEngine,
+                "class": SeleniumbaseEngine,
                 "params": {"name": "seleniumbase-cdp-chrome"}
-            },
+            }
         ]
         self.engines.extend(base_engines)
 

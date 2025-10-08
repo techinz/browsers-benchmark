@@ -270,36 +270,3 @@ class NoDriverBase(BrowserEngine):
                                    timeout=settings.browser.action_timeout_s)
         except Exception as e:
             logger.error(f"Failed to take screenshot: {e}")
-
-    def get_memory_usage(self) -> int:
-        """Get memory usage of browser processes in MB"""
-
-        if not self.process_list:
-            return 0
-
-        total_memory = 0
-        for process in self.process_list:
-            try:
-                if process.is_running():
-                    memory_info = process.memory_info()
-                    total_memory += memory_info.rss  # Resident Set Size in bytes
-            except (psutil.NoSuchProcess, psutil.AccessDenied):
-                continue
-
-        return total_memory // (1024 * 1024)  # convert to MB
-
-    def get_cpu_usage(self) -> float:
-        """Get CPU usage percentage of browser processes"""
-
-        if not self.process_list:
-            return 0.0
-
-        total_cpu = 0.0
-        for process in self.process_list:
-            try:
-                if process.is_running():
-                    total_cpu += process.cpu_percent()
-            except (psutil.NoSuchProcess, psutil.AccessDenied):
-                continue
-
-        return total_cpu
