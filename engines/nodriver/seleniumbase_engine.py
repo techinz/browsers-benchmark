@@ -15,25 +15,22 @@ from utils.process import find_new_child_processes
 logger = logging.getLogger(__name__)
 
 
-class SeleniumbaseBase(NoDriverBase):
+class SeleniumbaseEngine(NoDriverBase):
     def __init__(
             self,
-            name: str = 'seleniumbase-chrome',
+            name: str = 'seleniumbase-cdp-chrome',
             proxy: Optional[Dict[str, str]] = None,
             **kwargs
     ):
         # Always use headless=False for SeleniumBase CDP engine
         super().__init__(name, headless=False, proxy=proxy, **kwargs)
 
-        # Explicitly type the browser and page with SeleniumBase types
         self.browser: Optional[Browser] = None
         self.page: Optional[Tab] = None
 
     @property
     def supported_proxy_protocols(self) -> list[str]:
-        # SeleniumBase's CDP driver supports multiple proxy protocols
-        # as seen in seleniumbase/core/proxy_helper.py
-        return ["http", "https", "socks4", "socks5"]
+        return ["http", "https"]
 
     async def _start_seleniumbase(self, proxy_str=None):
         self.browser = await asyncio.wait_for(
@@ -81,7 +78,6 @@ class SeleniumbaseBase(NoDriverBase):
     async def stop(self) -> None:
         """Stop the SeleniumBase CDP browser"""
         if self.browser:
-            # SeleniumBase's stop method is synchronous, not async
             self.browser.stop()
 
         self.browser = None

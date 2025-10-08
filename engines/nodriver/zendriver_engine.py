@@ -41,7 +41,7 @@ class ZenDriverEngine(NoDriverBase):
 
     @property
     def supported_proxy_protocols(self) -> list[str]:
-        return ["http", "https", "socks5"]
+        return ["http", "https"]
 
     @staticmethod
     async def setup_proxy(username, password, main_tab):
