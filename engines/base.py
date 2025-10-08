@@ -114,20 +114,22 @@ class BrowserEngine(abc.ABC):
 
         pass
 
-    def get_memory_usage(self) -> float:
+    def get_memory_usage(self) -> int:
         """Get current memory usage in MB"""
 
         if not self.process_list:
-            return 0.0
+            return 0
 
-        total_memory = 0.0
+        total_memory = 0
         for proc in self.process_list:
             try:
-                total_memory += proc.memory_info().rss / 1024 / 1024
+                if proc.is_running():
+                    memory_info = proc.memory_info()
+                    total_memory += memory_info.rss  # Resident Set Size in bytes
             except (psutil.NoSuchProcess, psutil.AccessDenied):
                 pass
 
-        return total_memory
+        return total_memory // (1024 * 1024)  # convert to MB
 
     def get_cpu_usage(self) -> float:
         """Get current cpu usage percentage"""
@@ -136,10 +138,26 @@ class BrowserEngine(abc.ABC):
             return 0.0
 
         total_cpu = 0.0
+        valid_processes = 0
+
         for proc in self.process_list:
             try:
-                total_cpu += proc.cpu_percent(interval=0.05)
-            except (psutil.NoSuchProcess, psutil.AccessDenied):
+                if proc.is_running():
+                    # Use interval=None to get non-blocking CPU percent
+                    # This returns the CPU usage since the last call
+                    cpu_usage = proc.cpu_percent(interval=None)
+
+                    # If this is the first call and returns 0, make a second call with interval
+                    if cpu_usage == 0.0:
+                        # Small delay and second measurement for accuracy
+                        import time
+                        time.sleep(0.1)
+                        cpu_usage = proc.cpu_percent(interval=0.1)
+
+                    total_cpu += cpu_usage
+                    valid_processes += 1
+
+            except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
                 pass
 
         return total_cpu
