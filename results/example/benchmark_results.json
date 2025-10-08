@@ -1,15 +1,15 @@
 [
   {
     "engine": "playwright-chrome_headless",
-    "timestamp": "2025-07-20T17:55:03.919401",
+    "timestamp": "2025-10-08T00:02:18.388769",
     "bypass_targets_results": [
       {
         "target": "google_search",
         "url": "https://www.google.com/search?q=what+is+my+user+agent",
         "bypass": false,
         "error": null,
-        "load_time_ms": 11865,
-        "memory_mb": 185,
+        "load_time_ms": 6039,
+        "memory_mb": 186,
         "cpu_percent": 0.0
       },
       {
@@ -17,56 +17,56 @@
         "url": "https://community.cloudflare.com",
         "bypass": false,
         "error": null,
-        "load_time_ms": 6670,
-        "memory_mb": 202,
-        "cpu_percent": 0.0
+        "load_time_ms": 3526,
+        "memory_mb": 204,
+        "cpu_percent": 8.1
       },
       {
         "target": "datadome_protected",
         "url": "https://datadome.co/customers-stories/",
         "bypass": false,
         "error": null,
-        "load_time_ms": 9458,
-        "memory_mb": 204,
-        "cpu_percent": 0.0
+        "load_time_ms": 4314,
+        "memory_mb": 205,
+        "cpu_percent": 1.7000000000000002
       },
       {
         "target": "datadome_protected_2",
         "url": "https://www.hermes.com/",
         "bypass": false,
         "error": null,
-        "load_time_ms": 1732,
-        "memory_mb": 195,
-        "cpu_percent": 0.0
+        "load_time_ms": 826,
+        "memory_mb": 197,
+        "cpu_percent": 0.9999999999999999
       },
       {
         "target": "amazon_product",
         "url": "https://a.co/d/21FTKNR",
         "bypass": true,
         "error": null,
-        "load_time_ms": 17087,
-        "memory_mb": 227,
-        "cpu_percent": 0.0
+        "load_time_ms": 10956,
+        "memory_mb": 236,
+        "cpu_percent": 3.1
       },
       {
         "target": "ticketmaster",
         "url": "https://www.ticketmaster.com/",
         "bypass": true,
         "error": null,
-        "load_time_ms": 41691,
-        "memory_mb": 241,
-        "cpu_percent": 0.0
+        "load_time_ms": 14375,
+        "memory_mb": 248,
+        "cpu_percent": 15.7
       }
     ],
     "browser_data_targets_results": [
       {
         "target": "recaptcha_score",
         "url": "https://antcpt.com/score_detector",
-        "error": null,
+        "error": "Original: Page.goto: net::ERR_CONNECTION_CLOSED at https://antcpt.com/score_detector\nCall log:\n  - navigating to \"https://antcpt.com/score_detector\", waiting until \"load\"\n, Fallback: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://antcpt.com/score_detector\nCall log:\n  - navigating to \"https://antcpt.com/score_detector\", waiting until \"load\"\n",
         "creepjs_trust_score": null,
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
-        "recaptcha_score": 0.1,
+        "recaptcha_score": null,
         "ip": null
       },
       {
@@ -75,7 +75,7 @@
         "error": null,
         "creepjs_trust_score": 0,
         "creepjs_bot_score": 0,
-        "creepjs_webrtc_ip": "149.102.240.71",
+        "creepjs_webrtc_ip": "149.102.240.75",
         "recaptcha_score": null,
         "ip": null
       },
@@ -87,71 +87,71 @@
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
         "recaptcha_score": null,
-        "ip": "191.81.60.47"
+        "ip": "45.188.194.209"
       }
     ],
-    "average_memory_mb": 209,
-    "average_cpu_percent": 0.0,
+    "average_memory_mb": 212,
+    "average_cpu_percent": 4.933333333333333,
     "bypass_rate": 0.3333333333333333,
     "error": null
   },
   {
     "engine": "playwright-chrome",
-    "timestamp": "2025-07-20T17:59:33.741044",
+    "timestamp": "2025-10-08T00:05:54.455325",
     "bypass_targets_results": [
       {
         "target": "google_search",
         "url": "https://www.google.com/search?q=what+is+my+user+agent",
         "bypass": false,
         "error": null,
-        "load_time_ms": 7077,
-        "memory_mb": 469,
-        "cpu_percent": 0.0
+        "load_time_ms": 4815,
+        "memory_mb": 483,
+        "cpu_percent": 15.5
       },
       {
         "target": "cloudflare_protected",
         "url": "https://community.cloudflare.com",
-        "bypass": true,
+        "bypass": false,
         "error": null,
-        "load_time_ms": 3773,
-        "memory_mb": 369,
-        "cpu_percent": 0.0
+        "load_time_ms": 2447,
+        "memory_mb": 438,
+        "cpu_percent": 22.7
       },
       {
         "target": "datadome_protected",
         "url": "https://datadome.co/customers-stories/",
         "bypass": false,
         "error": null,
-        "load_time_ms": 3305,
-        "memory_mb": 403,
-        "cpu_percent": 0.0
+        "load_time_ms": 2165,
+        "memory_mb": 469,
+        "cpu_percent": 27.8
       },
       {
         "target": "datadome_protected_2",
         "url": "https://www.hermes.com/",
-        "bypass": true,
+        "bypass": false,
         "error": null,
-        "load_time_ms": 8423,
-        "memory_mb": 402,
-        "cpu_percent": 0.0
+        "load_time_ms": 3459,
+        "memory_mb": 488,
+        "cpu_percent": 3.7
       },
       {
         "target": "amazon_product",
         "url": "https://a.co/d/21FTKNR",
         "bypass": false,
         "error": null,
-        "load_time_ms": 4048,
-        "memory_mb": 411,
-        "cpu_percent": 0.0
+        "load_time_ms": 3329,
+        "memory_mb": 415,
+        "cpu_percent": 4.6000000000000005
       },
       {
         "target": "ticketmaster",
         "url": "https://www.ticketmaster.com/",
         "bypass": true,
         "error": null,
-        "load_time_ms": 2532,
-        "memory_mb": 430,
-        "cpu_percent": 26.3
+        "load_time_ms": 1986,
+        "memory_mb": 436,
+        "cpu_percent": 47.1
       }
     ],
     "browser_data_targets_results": [
@@ -171,7 +171,7 @@
         "error": null,
         "creepjs_trust_score": 0,
         "creepjs_bot_score": 0,
-        "creepjs_webrtc_ip": "149.102.240.71",
+        "creepjs_webrtc_ip": "149.102.240.75",
         "recaptcha_score": null,
         "ip": null
       },
@@ -183,71 +183,71 @@
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
         "recaptcha_score": null,
-        "ip": "63.104.232.219"
+        "ip": "31.48.214.36"
       }
     ],
-    "average_memory_mb": 414,
-    "average_cpu_percent": 4.383333333333334,
-    "bypass_rate": 0.5,
+    "average_memory_mb": 454,
+    "average_cpu_percent": 20.233333333333334,
+    "bypass_rate": 0.16666666666666666,
     "error": null
   },
   {
     "engine": "playwright-firefox_headless",
-    "timestamp": "2025-07-20T18:02:45.441502",
+    "timestamp": "2025-10-08T00:08:55.128875",
     "bypass_targets_results": [
       {
         "target": "google_search",
         "url": "https://www.google.com/search?q=what+is+my+user+agent",
         "bypass": false,
         "error": null,
-        "load_time_ms": 12747,
-        "memory_mb": 550,
+        "load_time_ms": 2701,
+        "memory_mb": 545,
         "cpu_percent": 0.0
       },
       {
         "target": "cloudflare_protected",
         "url": "https://community.cloudflare.com",
-        "bypass": true,
+        "bypass": false,
         "error": null,
-        "load_time_ms": 7140,
-        "memory_mb": 763,
-        "cpu_percent": 0.0
+        "load_time_ms": 2087,
+        "memory_mb": 563,
+        "cpu_percent": 28.2
       },
       {
         "target": "datadome_protected",
         "url": "https://datadome.co/customers-stories/",
-        "bypass": false,
+        "bypass": true,
         "error": null,
-        "load_time_ms": 6759,
-        "memory_mb": 788,
-        "cpu_percent": 31.2
+        "load_time_ms": 5335,
+        "memory_mb": 522,
+        "cpu_percent": 19.8
       },
       {
         "target": "datadome_protected_2",
         "url": "https://www.hermes.com/",
         "bypass": true,
         "error": null,
-        "load_time_ms": 5420,
-        "memory_mb": 777,
-        "cpu_percent": 31.0
+        "load_time_ms": 2421,
+        "memory_mb": 539,
+        "cpu_percent": 20.5
       },
       {
         "target": "amazon_product",
         "url": "https://a.co/d/21FTKNR",
         "bypass": true,
         "error": null,
-        "load_time_ms": 15794,
-        "memory_mb": 1061,
-        "cpu_percent": 0.0
+        "load_time_ms": 4711,
+        "memory_mb": 586,
+        "cpu_percent": 29.4
       },
       {
         "target": "ticketmaster",
         "url": "https://www.ticketmaster.com/",
         "bypass": true,
         "error": null,
-        "load_time_ms": 67132,
-        "memory_mb": 973,
-        "cpu_percent": 0.0
+        "load_time_ms": 12378,
+        "memory_mb": 882,
+        "cpu_percent": 70.60000000000001
       }
     ],
     "browser_data_targets_results": [
@@ -267,7 +267,7 @@
         "error": null,
         "creepjs_trust_score": 0,
         "creepjs_bot_score": 0,
-        "creepjs_webrtc_ip": "149.102.240.71",
+        "creepjs_webrtc_ip": "149.102.240.75",
         "recaptcha_score": null,
         "ip": null
       },
@@ -279,25 +279,25 @@
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
         "recaptcha_score": null,
-        "ip": "75.25.150.59"
+        "ip": "165.238.24.218"
       }
     ],
-    "average_memory_mb": 818,
-    "average_cpu_percent": 10.366666666666667,
+    "average_memory_mb": 606,
+    "average_cpu_percent": 28.083333333333332,
     "bypass_rate": 0.6666666666666666,
     "error": null
   },
   {
     "engine": "playwright-firefox",
-    "timestamp": "2025-07-20T18:07:32.221034",
+    "timestamp": "2025-10-08T00:11:20.147737",
     "bypass_targets_results": [
       {
         "target": "google_search",
         "url": "https://www.google.com/search?q=what+is+my+user+agent",
         "bypass": false,
-        "error": null,
-        "load_time_ms": 5475,
-        "memory_mb": 651,
+        "error": "Page.goto: NS_ERROR_ABORT\nCall log:\n  - navigating to \"https://www.google.com/search?q=what+is+my+user+agent\", waiting until \"load\"\n",
+        "load_time_ms": 0,
+        "memory_mb": 0,
         "cpu_percent": 0.0
       },
       {
@@ -305,45 +305,45 @@
         "url": "https://community.cloudflare.com",
         "bypass": true,
         "error": null,
-        "load_time_ms": 5238,
-        "memory_mb": 824,
+        "load_time_ms": 4568,
+        "memory_mb": 811,
         "cpu_percent": 0.0
       },
       {
         "target": "datadome_protected",
         "url": "https://datadome.co/customers-stories/",
-        "bypass": false,
+        "bypass": true,
         "error": null,
-        "load_time_ms": 2563,
-        "memory_mb": 832,
-        "cpu_percent": 0.0
+        "load_time_ms": 4904,
+        "memory_mb": 884,
+        "cpu_percent": 60.5
       },
       {
         "target": "datadome_protected_2",
         "url": "https://www.hermes.com/",
-        "bypass": false,
+        "bypass": true,
         "error": null,
-        "load_time_ms": 3981,
-        "memory_mb": 936,
-        "cpu_percent": 31.1
+        "load_time_ms": 2746,
+        "memory_mb": 890,
+        "cpu_percent": 41.5
       },
       {
         "target": "amazon_product",
         "url": "https://a.co/d/21FTKNR",
         "bypass": true,
         "error": null,
-        "load_time_ms": 10655,
-        "memory_mb": 1109,
-        "cpu_percent": 30.9
+        "load_time_ms": 5433,
+        "memory_mb": 1338,
+        "cpu_percent": 77.30000000000001
       },
       {
         "target": "ticketmaster",
         "url": "https://www.ticketmaster.com/",
         "bypass": true,
         "error": null,
-        "load_time_ms": 10206,
-        "memory_mb": 1135,
-        "cpu_percent": 0.0
+        "load_time_ms": 12826,
+        "memory_mb": 1137,
+        "cpu_percent": 79.4
       }
     ],
     "browser_data_targets_results": [
@@ -363,7 +363,7 @@
         "error": null,
         "creepjs_trust_score": 0,
         "creepjs_bot_score": 0,
-        "creepjs_webrtc_ip": "149.102.240.71",
+        "creepjs_webrtc_ip": "149.102.240.75",
         "recaptcha_score": null,
         "ip": null
       },
@@ -375,217 +375,25 @@
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
         "recaptcha_score": null,
-        "ip": "185.74.53.51"
+        "ip": "142.168.221.86"
       }
     ],
-    "average_memory_mb": 914,
-    "average_cpu_percent": 10.333333333333334,
-    "bypass_rate": 0.5,
-    "error": null
-  },
-  {
-    "engine": "camoufox_headless",
-    "timestamp": "2025-07-20T18:22:09.096390",
-    "bypass_targets_results": [
-      {
-        "target": "google_search",
-        "url": "https://www.google.com/search?q=what+is+my+user+agent",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 29793,
-        "memory_mb": 817,
-        "cpu_percent": 0.0
-      },
-      {
-        "target": "cloudflare_protected",
-        "url": "https://community.cloudflare.com",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 3772,
-        "memory_mb": 1032,
-        "cpu_percent": 0.0
-      },
-      {
-        "target": "datadome_protected",
-        "url": "https://datadome.co/customers-stories/",
-        "bypass": false,
-        "error": null,
-        "load_time_ms": 2377,
-        "memory_mb": 1035,
-        "cpu_percent": 0.0
-      },
-      {
-        "target": "datadome_protected_2",
-        "url": "https://www.hermes.com/",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 1857,
-        "memory_mb": 956,
-        "cpu_percent": 0.0
-      },
-      {
-        "target": "amazon_product",
-        "url": "https://a.co/d/21FTKNR",
-        "bypass": false,
-        "error": null,
-        "load_time_ms": 3165,
-        "memory_mb": 865,
-        "cpu_percent": 0.0
-      },
-      {
-        "target": "ticketmaster",
-        "url": "https://www.ticketmaster.com/",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 7594,
-        "memory_mb": 1048,
-        "cpu_percent": 0.0
-      }
-    ],
-    "browser_data_targets_results": [
-      {
-        "target": "recaptcha_score",
-        "url": "https://antcpt.com/score_detector",
-        "error": null,
-        "creepjs_trust_score": null,
-        "creepjs_bot_score": null,
-        "creepjs_webrtc_ip": null,
-        "recaptcha_score": 0.1,
-        "ip": null
-      },
-      {
-        "target": "creepjs",
-        "url": "https://abrahamjuliot.github.io/creepjs/",
-        "error": null,
-        "creepjs_trust_score": 0,
-        "creepjs_bot_score": 0,
-        "creepjs_webrtc_ip": "93.185.151.247",
-        "recaptcha_score": null,
-        "ip": null
-      },
-      {
-        "target": "ipify",
-        "url": "https://api.ipify.org?format=json",
-        "error": null,
-        "creepjs_trust_score": null,
-        "creepjs_bot_score": null,
-        "creepjs_webrtc_ip": null,
-        "recaptcha_score": null,
-        "ip": "79.3.97.54"
-      }
-    ],
-    "average_memory_mb": 958,
-    "average_cpu_percent": 0.0,
-    "bypass_rate": 0.6666666666666666,
-    "error": null
-  },
-  {
-    "engine": "camoufox",
-    "timestamp": "2025-07-20T18:30:25.166387",
-    "bypass_targets_results": [
-      {
-        "target": "google_search",
-        "url": "https://www.google.com/search?q=what+is+my+user+agent",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 10854,
-        "memory_mb": 773,
-        "cpu_percent": 0.0
-      },
-      {
-        "target": "cloudflare_protected",
-        "url": "https://community.cloudflare.com",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 9288,
-        "memory_mb": 1068,
-        "cpu_percent": 0.0
-      },
-      {
-        "target": "datadome_protected",
-        "url": "https://datadome.co/customers-stories/",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 8761,
-        "memory_mb": 1045,
-        "cpu_percent": 31.1
-      },
-      {
-        "target": "datadome_protected_2",
-        "url": "https://www.hermes.com/",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 5214,
-        "memory_mb": 1053,
-        "cpu_percent": 62.0
-      },
-      {
-        "target": "amazon_product",
-        "url": "https://a.co/d/21FTKNR",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 12578,
-        "memory_mb": 1216,
-        "cpu_percent": 0.0
-      },
-      {
-        "target": "ticketmaster",
-        "url": "https://www.ticketmaster.com/",
-        "bypass": false,
-        "error": null,
-        "load_time_ms": 20370,
-        "memory_mb": 1088,
-        "cpu_percent": 0.0
-      }
-    ],
-    "browser_data_targets_results": [
-      {
-        "target": "recaptcha_score",
-        "url": "https://antcpt.com/score_detector",
-        "error": null,
-        "creepjs_trust_score": null,
-        "creepjs_bot_score": null,
-        "creepjs_webrtc_ip": null,
-        "recaptcha_score": 0.3,
-        "ip": null
-      },
-      {
-        "target": "creepjs",
-        "url": "https://abrahamjuliot.github.io/creepjs/",
-        "error": null,
-        "creepjs_trust_score": 0,
-        "creepjs_bot_score": 0,
-        "creepjs_webrtc_ip": "102.0.16.230",
-        "recaptcha_score": null,
-        "ip": null
-      },
-      {
-        "target": "ipify",
-        "url": "https://api.ipify.org?format=json",
-        "error": null,
-        "creepjs_trust_score": null,
-        "creepjs_bot_score": null,
-        "creepjs_webrtc_ip": null,
-        "recaptcha_score": null,
-        "ip": "102.0.16.230"
-      }
-    ],
-    "average_memory_mb": 1040,
-    "average_cpu_percent": 15.516666666666666,
+    "average_memory_mb": 1012,
+    "average_cpu_percent": 51.74000000000001,
     "bypass_rate": 0.8333333333333334,
     "error": null
   },
   {
-    "engine": "tf-playwright-stealth-chromium_headless",
-    "timestamp": "2025-07-20T18:33:59.010294",
+    "engine": "camoufox_headless",
+    "timestamp": "2025-10-08T00:14:46.253232",
     "bypass_targets_results": [
       {
         "target": "google_search",
         "url": "https://www.google.com/search?q=what+is+my+user+agent",
         "bypass": false,
         "error": null,
-        "load_time_ms": 7858,
-        "memory_mb": 182,
+        "load_time_ms": 8975,
+        "memory_mb": 818,
         "cpu_percent": 0.0
       },
       {
@@ -593,45 +401,45 @@
         "url": "https://community.cloudflare.com",
         "bypass": true,
         "error": null,
-        "load_time_ms": 3787,
-        "memory_mb": 198,
-        "cpu_percent": 0.0
+        "load_time_ms": 4410,
+        "memory_mb": 1092,
+        "cpu_percent": 59.49999999999999
       },
       {
         "target": "datadome_protected",
         "url": "https://datadome.co/customers-stories/",
-        "bypass": false,
+        "bypass": true,
         "error": null,
-        "load_time_ms": 6186,
-        "memory_mb": 211,
-        "cpu_percent": 0.0
+        "load_time_ms": 6873,
+        "memory_mb": 957,
+        "cpu_percent": 52.0
       },
       {
         "target": "datadome_protected_2",
         "url": "https://www.hermes.com/",
-        "bypass": false,
+        "bypass": true,
         "error": null,
-        "load_time_ms": 6617,
-        "memory_mb": 212,
-        "cpu_percent": 0.0
+        "load_time_ms": 2536,
+        "memory_mb": 1057,
+        "cpu_percent": 45.0
       },
       {
         "target": "amazon_product",
         "url": "https://a.co/d/21FTKNR",
         "bypass": true,
         "error": null,
-        "load_time_ms": 15688,
-        "memory_mb": 268,
-        "cpu_percent": 0.0
+        "load_time_ms": 6143,
+        "memory_mb": 1385,
+        "cpu_percent": 85.69999999999999
       },
       {
         "target": "ticketmaster",
         "url": "https://www.ticketmaster.com/",
         "bypass": true,
         "error": null,
-        "load_time_ms": 10049,
-        "memory_mb": 254,
-        "cpu_percent": 31.0
+        "load_time_ms": 12327,
+        "memory_mb": 917,
+        "cpu_percent": 31.1
       }
     ],
     "browser_data_targets_results": [
@@ -642,16 +450,16 @@
         "creepjs_trust_score": null,
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
-        "recaptcha_score": 0.3,
+        "recaptcha_score": 0.1,
         "ip": null
       },
       {
         "target": "creepjs",
         "url": "https://abrahamjuliot.github.io/creepjs/",
-        "error": null,
-        "creepjs_trust_score": 0,
-        "creepjs_bot_score": 0,
-        "creepjs_webrtc_ip": "149.102.240.71",
+        "error": "Page.goto: NS_ERROR_ABORT\nCall log:\n  - navigating to \"https://abrahamjuliot.github.io/creepjs/\", waiting until \"load\"\n",
+        "creepjs_trust_score": null,
+        "creepjs_bot_score": null,
+        "creepjs_webrtc_ip": null,
         "recaptcha_score": null,
         "ip": null
       },
@@ -663,25 +471,217 @@
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
         "recaptcha_score": null,
-        "ip": "92.22.82.4"
+        "ip": "142.168.221.86"
       }
     ],
-    "average_memory_mb": 220,
-    "average_cpu_percent": 5.166666666666667,
+    "average_memory_mb": 1037,
+    "average_cpu_percent": 45.54999999999999,
+    "bypass_rate": 0.8333333333333334,
+    "error": null
+  },
+  {
+    "engine": "camoufox",
+    "timestamp": "2025-10-08T00:19:01.270220",
+    "bypass_targets_results": [
+      {
+        "target": "google_search",
+        "url": "https://www.google.com/search?q=what+is+my+user+agent",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 7944,
+        "memory_mb": 779,
+        "cpu_percent": 0.0
+      },
+      {
+        "target": "cloudflare_protected",
+        "url": "https://community.cloudflare.com",
+        "bypass": false,
+        "error": "Page.goto: NS_ERROR_ABORT\nCall log:\n  - navigating to \"https://community.cloudflare.com/\", waiting until \"load\"\n",
+        "load_time_ms": 0,
+        "memory_mb": 0,
+        "cpu_percent": 0.0
+      },
+      {
+        "target": "datadome_protected",
+        "url": "https://datadome.co/customers-stories/",
+        "bypass": true,
+        "error": null,
+        "load_time_ms": 4181,
+        "memory_mb": 1052,
+        "cpu_percent": 80.6
+      },
+      {
+        "target": "datadome_protected_2",
+        "url": "https://www.hermes.com/",
+        "bypass": true,
+        "error": null,
+        "load_time_ms": 2410,
+        "memory_mb": 939,
+        "cpu_percent": 29.1
+      },
+      {
+        "target": "amazon_product",
+        "url": "https://a.co/d/21FTKNR",
+        "bypass": true,
+        "error": null,
+        "load_time_ms": 12541,
+        "memory_mb": 1033,
+        "cpu_percent": 15.5
+      },
+      {
+        "target": "ticketmaster",
+        "url": "https://www.ticketmaster.com/",
+        "bypass": true,
+        "error": null,
+        "load_time_ms": 18002,
+        "memory_mb": 1233,
+        "cpu_percent": 92.1
+      }
+    ],
+    "browser_data_targets_results": [
+      {
+        "target": "recaptcha_score",
+        "url": "https://antcpt.com/score_detector",
+        "error": null,
+        "creepjs_trust_score": null,
+        "creepjs_bot_score": null,
+        "creepjs_webrtc_ip": null,
+        "recaptcha_score": 0.1,
+        "ip": null
+      },
+      {
+        "target": "creepjs",
+        "url": "https://abrahamjuliot.github.io/creepjs/",
+        "error": null,
+        "creepjs_trust_score": 0,
+        "creepjs_bot_score": 0,
+        "creepjs_webrtc_ip": "179.60.189.65",
+        "recaptcha_score": null,
+        "ip": null
+      },
+      {
+        "target": "ipify",
+        "url": "https://api.ipify.org?format=json",
+        "error": null,
+        "creepjs_trust_score": null,
+        "creepjs_bot_score": null,
+        "creepjs_webrtc_ip": null,
+        "recaptcha_score": null,
+        "ip": "179.60.189.65"
+      }
+    ],
+    "average_memory_mb": 1007,
+    "average_cpu_percent": 43.459999999999994,
+    "bypass_rate": 0.6666666666666666,
+    "error": null
+  },
+  {
+    "engine": "tf-playwright-stealth-chromium_headless",
+    "timestamp": "2025-10-08T00:24:24.013758",
+    "bypass_targets_results": [
+      {
+        "target": "google_search",
+        "url": "https://www.google.com/search?q=what+is+my+user+agent",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 48127,
+        "memory_mb": 187,
+        "cpu_percent": 0.0
+      },
+      {
+        "target": "cloudflare_protected",
+        "url": "https://community.cloudflare.com",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 15595,
+        "memory_mb": 194,
+        "cpu_percent": 4.2
+      },
+      {
+        "target": "datadome_protected",
+        "url": "https://datadome.co/customers-stories/",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 25048,
+        "memory_mb": 203,
+        "cpu_percent": 3.0999999999999996
+      },
+      {
+        "target": "datadome_protected_2",
+        "url": "https://www.hermes.com/",
+        "bypass": true,
+        "error": null,
+        "load_time_ms": 41773,
+        "memory_mb": 205,
+        "cpu_percent": 1.1
+      },
+      {
+        "target": "amazon_product",
+        "url": "https://a.co/d/21FTKNR",
+        "bypass": true,
+        "error": null,
+        "load_time_ms": 12265,
+        "memory_mb": 517,
+        "cpu_percent": 31.2
+      },
+      {
+        "target": "ticketmaster",
+        "url": "https://www.ticketmaster.com/",
+        "bypass": true,
+        "error": null,
+        "load_time_ms": 23535,
+        "memory_mb": 483,
+        "cpu_percent": 16.900000000000002
+      }
+    ],
+    "browser_data_targets_results": [
+      {
+        "target": "recaptcha_score",
+        "url": "https://antcpt.com/score_detector",
+        "error": null,
+        "creepjs_trust_score": null,
+        "creepjs_bot_score": null,
+        "creepjs_webrtc_ip": null,
+        "recaptcha_score": 0.1,
+        "ip": null
+      },
+      {
+        "target": "creepjs",
+        "url": "https://abrahamjuliot.github.io/creepjs/",
+        "error": null,
+        "creepjs_trust_score": 0,
+        "creepjs_bot_score": 0,
+        "creepjs_webrtc_ip": "149.102.240.75",
+        "recaptcha_score": null,
+        "ip": null
+      },
+      {
+        "target": "ipify",
+        "url": "https://api.ipify.org?format=json",
+        "error": null,
+        "creepjs_trust_score": null,
+        "creepjs_bot_score": null,
+        "creepjs_webrtc_ip": null,
+        "recaptcha_score": null,
+        "ip": "204.204.177.118"
+      }
+    ],
+    "average_memory_mb": 298,
+    "average_cpu_percent": 9.416666666666666,
     "bypass_rate": 0.5,
     "error": null
   },
   {
     "engine": "tf-playwright-stealth-chromium",
-    "timestamp": "2025-07-20T18:37:28.078622",
+    "timestamp": "2025-10-08T00:31:06.916248",
     "bypass_targets_results": [
       {
         "target": "google_search",
         "url": "https://www.google.com/search?q=what+is+my+user+agent",
         "bypass": false,
         "error": null,
-        "load_time_ms": 10252,
-        "memory_mb": 472,
+        "load_time_ms": 6940,
+        "memory_mb": 484,
         "cpu_percent": 0.0
       },
       {
@@ -689,45 +689,45 @@
         "url": "https://community.cloudflare.com",
         "bypass": true,
         "error": null,
-        "load_time_ms": 9394,
-        "memory_mb": 357,
-        "cpu_percent": 0.0
+        "load_time_ms": 4656,
+        "memory_mb": 376,
+        "cpu_percent": 19.7
       },
       {
         "target": "datadome_protected",
         "url": "https://datadome.co/customers-stories/",
         "bypass": false,
         "error": null,
-        "load_time_ms": 6508,
-        "memory_mb": 383,
-        "cpu_percent": 0.0
+        "load_time_ms": 2969,
+        "memory_mb": 485,
+        "cpu_percent": 38.6
       },
       {
         "target": "datadome_protected_2",
         "url": "https://www.hermes.com/",
         "bypass": false,
         "error": null,
-        "load_time_ms": 7332,
-        "memory_mb": 379,
-        "cpu_percent": 0.0
+        "load_time_ms": 4630,
+        "memory_mb": 495,
+        "cpu_percent": 3.5
       },
       {
         "target": "amazon_product",
         "url": "https://a.co/d/21FTKNR",
         "bypass": true,
         "error": null,
-        "load_time_ms": 27176,
-        "memory_mb": 427,
-        "cpu_percent": 0.0
+        "load_time_ms": 6547,
+        "memory_mb": 465,
+        "cpu_percent": 6.5
       },
       {
         "target": "ticketmaster",
         "url": "https://www.ticketmaster.com/",
         "bypass": true,
         "error": null,
-        "load_time_ms": 6001,
-        "memory_mb": 443,
-        "cpu_percent": 93.2
+        "load_time_ms": 3943,
+        "memory_mb": 470,
+        "cpu_percent": 50.199999999999996
       }
     ],
     "browser_data_targets_results": [
@@ -747,7 +747,7 @@
         "error": null,
         "creepjs_trust_score": 0,
         "creepjs_bot_score": 0,
-        "creepjs_webrtc_ip": "149.102.240.71",
+        "creepjs_webrtc_ip": "149.102.240.75",
         "recaptcha_score": null,
         "ip": null
       },
@@ -759,25 +759,25 @@
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
         "recaptcha_score": null,
-        "ip": "98.167.26.122"
+        "ip": "37.5.253.239"
       }
     ],
-    "average_memory_mb": 410,
-    "average_cpu_percent": 15.533333333333333,
+    "average_memory_mb": 462,
+    "average_cpu_percent": 19.75,
     "bypass_rate": 0.5,
     "error": null
   },
   {
     "engine": "tf-playwright-stealth-firefox_headless",
-    "timestamp": "2025-07-20T18:41:43.251054",
+    "timestamp": "2025-10-08T00:35:10.997950",
     "bypass_targets_results": [
       {
         "target": "google_search",
         "url": "https://www.google.com/search?q=what+is+my+user+agent",
         "bypass": false,
         "error": null,
-        "load_time_ms": 5055,
-        "memory_mb": 601,
+        "load_time_ms": 8297,
+        "memory_mb": 574,
         "cpu_percent": 0.0
       },
       {
@@ -785,45 +785,45 @@
         "url": "https://community.cloudflare.com",
         "bypass": true,
         "error": null,
-        "load_time_ms": 3750,
-        "memory_mb": 787,
-        "cpu_percent": 0.0
+        "load_time_ms": 4963,
+        "memory_mb": 781,
+        "cpu_percent": 49.7
       },
       {
         "target": "datadome_protected",
         "url": "https://datadome.co/customers-stories/",
         "bypass": false,
         "error": null,
-        "load_time_ms": 2954,
-        "memory_mb": 766,
-        "cpu_percent": 0.0
+        "load_time_ms": 4029,
+        "memory_mb": 863,
+        "cpu_percent": 59.0
       },
       {
         "target": "datadome_protected_2",
         "url": "https://www.hermes.com/",
         "bypass": false,
         "error": null,
-        "load_time_ms": 1568,
-        "memory_mb": 760,
-        "cpu_percent": 0.0
+        "load_time_ms": 6576,
+        "memory_mb": 777,
+        "cpu_percent": 10.0
       },
       {
         "target": "amazon_product",
         "url": "https://a.co/d/21FTKNR",
         "bypass": true,
         "error": null,
-        "load_time_ms": 5609,
-        "memory_mb": 1119,
-        "cpu_percent": 0.0
+        "load_time_ms": 11378,
+        "memory_mb": 857,
+        "cpu_percent": 62.2
       },
       {
         "target": "ticketmaster",
         "url": "https://www.ticketmaster.com/",
         "bypass": true,
         "error": null,
-        "load_time_ms": 8577,
-        "memory_mb": 1007,
-        "cpu_percent": 0.0
+        "load_time_ms": 10511,
+        "memory_mb": 1084,
+        "cpu_percent": 96.1
       }
     ],
     "browser_data_targets_results": [
@@ -834,7 +834,7 @@
         "creepjs_trust_score": null,
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
-        "recaptcha_score": 0.3,
+        "recaptcha_score": 0.1,
         "ip": null
       },
       {
@@ -843,7 +843,7 @@
         "error": null,
         "creepjs_trust_score": 0,
         "creepjs_bot_score": 0,
-        "creepjs_webrtc_ip": "149.102.240.71",
+        "creepjs_webrtc_ip": "",
         "recaptcha_score": null,
         "ip": null
       },
@@ -855,25 +855,25 @@
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
         "recaptcha_score": null,
-        "ip": "77.76.151.73"
+        "ip": "204.205.129.70"
       }
     ],
-    "average_memory_mb": 840,
-    "average_cpu_percent": 0.0,
+    "average_memory_mb": 822,
+    "average_cpu_percent": 46.166666666666664,
     "bypass_rate": 0.5,
     "error": null
   },
   {
     "engine": "tf-playwright-stealth-firefox",
-    "timestamp": "2025-07-20T18:44:48.708376",
+    "timestamp": "2025-10-08T00:41:55.415401",
     "bypass_targets_results": [
       {
         "target": "google_search",
         "url": "https://www.google.com/search?q=what+is+my+user+agent",
         "bypass": false,
         "error": null,
-        "load_time_ms": 15533,
-        "memory_mb": 631,
+        "load_time_ms": 6188,
+        "memory_mb": 680,
         "cpu_percent": 0.0
       },
       {
@@ -881,45 +881,237 @@
         "url": "https://community.cloudflare.com",
         "bypass": false,
         "error": null,
-        "load_time_ms": 4751,
-        "memory_mb": 538,
-        "cpu_percent": 0.0
+        "load_time_ms": 2147,
+        "memory_mb": 560,
+        "cpu_percent": 40.800000000000004
       },
       {
         "target": "datadome_protected",
         "url": "https://datadome.co/customers-stories/",
         "bypass": false,
         "error": null,
-        "load_time_ms": 8586,
-        "memory_mb": 579,
-        "cpu_percent": 0.0
+        "load_time_ms": 3321,
+        "memory_mb": 656,
+        "cpu_percent": 39.0
       },
       {
         "target": "datadome_protected_2",
         "url": "https://www.hermes.com/",
-        "bypass": true,
+        "bypass": false,
         "error": null,
-        "load_time_ms": 10446,
-        "memory_mb": 572,
-        "cpu_percent": 0.0
+        "load_time_ms": 4570,
+        "memory_mb": 612,
+        "cpu_percent": 4.800000000000001
       },
       {
         "target": "amazon_product",
         "url": "https://a.co/d/21FTKNR",
         "bypass": true,
         "error": null,
-        "load_time_ms": 13174,
-        "memory_mb": 681,
-        "cpu_percent": 0.0
+        "load_time_ms": 4868,
+        "memory_mb": 724,
+        "cpu_percent": 12.999999999999998
       },
       {
         "target": "ticketmaster",
         "url": "https://www.ticketmaster.com/",
         "bypass": true,
         "error": null,
-        "load_time_ms": 18710,
-        "memory_mb": 641,
+        "load_time_ms": 10919,
+        "memory_mb": 724,
+        "cpu_percent": 60.699999999999996
+      }
+    ],
+    "browser_data_targets_results": [
+      {
+        "target": "recaptcha_score",
+        "url": "https://antcpt.com/score_detector",
+        "error": null,
+        "creepjs_trust_score": null,
+        "creepjs_bot_score": null,
+        "creepjs_webrtc_ip": null,
+        "recaptcha_score": 0.1,
+        "ip": null
+      },
+      {
+        "target": "creepjs",
+        "url": "https://abrahamjuliot.github.io/creepjs/",
+        "error": null,
+        "creepjs_trust_score": 0,
+        "creepjs_bot_score": 0,
+        "creepjs_webrtc_ip": "149.102.240.75",
+        "recaptcha_score": null,
+        "ip": null
+      },
+      {
+        "target": "ipify",
+        "url": "https://api.ipify.org?format=json",
+        "error": null,
+        "creepjs_trust_score": null,
+        "creepjs_bot_score": null,
+        "creepjs_webrtc_ip": null,
+        "recaptcha_score": null,
+        "ip": "208.32.186.48"
+      }
+    ],
+    "average_memory_mb": 659,
+    "average_cpu_percent": 26.383333333333336,
+    "bypass_rate": 0.3333333333333333,
+    "error": null
+  },
+  {
+    "engine": "patchright_headless",
+    "timestamp": "2025-10-08T00:46:35.462546",
+    "bypass_targets_results": [
+      {
+        "target": "google_search",
+        "url": "https://www.google.com/search?q=what+is+my+user+agent",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 7138,
+        "memory_mb": 629,
         "cpu_percent": 0.0
+      },
+      {
+        "target": "cloudflare_protected",
+        "url": "https://community.cloudflare.com",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 3942,
+        "memory_mb": 572,
+        "cpu_percent": 20.0
+      },
+      {
+        "target": "datadome_protected",
+        "url": "https://datadome.co/customers-stories/",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 3456,
+        "memory_mb": 555,
+        "cpu_percent": 27.5
+      },
+      {
+        "target": "datadome_protected_2",
+        "url": "https://www.hermes.com/",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 1090,
+        "memory_mb": 530,
+        "cpu_percent": 1.2
+      },
+      {
+        "target": "amazon_product",
+        "url": "https://a.co/d/21FTKNR",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 3820,
+        "memory_mb": 526,
+        "cpu_percent": 3.3000000000000003
+      },
+      {
+        "target": "ticketmaster",
+        "url": "https://www.ticketmaster.com/",
+        "bypass": true,
+        "error": null,
+        "load_time_ms": 17246,
+        "memory_mb": 550,
+        "cpu_percent": 23.799999999999997
+      }
+    ],
+    "browser_data_targets_results": [
+      {
+        "target": "recaptcha_score",
+        "url": "https://antcpt.com/score_detector",
+        "error": null,
+        "creepjs_trust_score": null,
+        "creepjs_bot_score": null,
+        "creepjs_webrtc_ip": null,
+        "recaptcha_score": 0.1,
+        "ip": null
+      },
+      {
+        "target": "creepjs",
+        "url": "https://abrahamjuliot.github.io/creepjs/",
+        "error": null,
+        "creepjs_trust_score": 0,
+        "creepjs_bot_score": 0,
+        "creepjs_webrtc_ip": "149.102.240.75",
+        "recaptcha_score": null,
+        "ip": null
+      },
+      {
+        "target": "ipify",
+        "url": "https://api.ipify.org?format=json",
+        "error": null,
+        "creepjs_trust_score": null,
+        "creepjs_bot_score": null,
+        "creepjs_webrtc_ip": null,
+        "recaptcha_score": null,
+        "ip": "108.153.53.3"
+      }
+    ],
+    "average_memory_mb": 560,
+    "average_cpu_percent": 12.633333333333333,
+    "bypass_rate": 0.16666666666666666,
+    "error": null
+  },
+  {
+    "engine": "patchright",
+    "timestamp": "2025-10-08T00:51:16.756228",
+    "bypass_targets_results": [
+      {
+        "target": "google_search",
+        "url": "https://www.google.com/search?q=what+is+my+user+agent",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 6781,
+        "memory_mb": 629,
+        "cpu_percent": 0.0
+      },
+      {
+        "target": "cloudflare_protected",
+        "url": "https://community.cloudflare.com",
+        "bypass": true,
+        "error": null,
+        "load_time_ms": 7315,
+        "memory_mb": 732,
+        "cpu_percent": 0.0
+      },
+      {
+        "target": "datadome_protected",
+        "url": "https://datadome.co/customers-stories/",
+        "bypass": true,
+        "error": null,
+        "load_time_ms": 20076,
+        "memory_mb": 695,
+        "cpu_percent": 35.2
+      },
+      {
+        "target": "datadome_protected_2",
+        "url": "https://www.hermes.com/",
+        "bypass": true,
+        "error": null,
+        "load_time_ms": 7418,
+        "memory_mb": 749,
+        "cpu_percent": 20.000000000000007
+      },
+      {
+        "target": "amazon_product",
+        "url": "https://a.co/d/21FTKNR",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 4771,
+        "memory_mb": 710,
+        "cpu_percent": 16.1
+      },
+      {
+        "target": "ticketmaster",
+        "url": "https://www.ticketmaster.com/",
+        "bypass": true,
+        "error": null,
+        "load_time_ms": 2739,
+        "memory_mb": 740,
+        "cpu_percent": 43.89999999999999
       }
     ],
     "browser_data_targets_results": [
@@ -939,7 +1131,7 @@
         "error": null,
         "creepjs_trust_score": 0,
         "creepjs_bot_score": 0,
-        "creepjs_webrtc_ip": "149.102.240.71",
+        "creepjs_webrtc_ip": "149.102.240.75",
         "recaptcha_score": null,
         "ip": null
       },
@@ -951,217 +1143,25 @@
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
         "recaptcha_score": null,
-        "ip": "189.36.133.109"
+        "ip": "73.10.95.50"
       }
     ],
-    "average_memory_mb": 607,
-    "average_cpu_percent": 0.0,
-    "bypass_rate": 0.5,
-    "error": null
-  },
-  {
-    "engine": "patchright_headless",
-    "timestamp": "2025-07-20T18:48:00.902640",
-    "bypass_targets_results": [
-      {
-        "target": "google_search",
-        "url": "https://www.google.com/search?q=what+is+my+user+agent",
-        "bypass": false,
-        "error": null,
-        "load_time_ms": 11375,
-        "memory_mb": 604,
-        "cpu_percent": 0.0
-      },
-      {
-        "target": "cloudflare_protected",
-        "url": "https://community.cloudflare.com",
-        "bypass": false,
-        "error": null,
-        "load_time_ms": 7625,
-        "memory_mb": 538,
-        "cpu_percent": 0.0
-      },
-      {
-        "target": "datadome_protected",
-        "url": "https://datadome.co/customers-stories/",
-        "bypass": false,
-        "error": null,
-        "load_time_ms": 11047,
-        "memory_mb": 503,
-        "cpu_percent": 0.0
-      },
-      {
-        "target": "datadome_protected_2",
-        "url": "https://www.hermes.com/",
-        "bypass": false,
-        "error": null,
-        "load_time_ms": 2065,
-        "memory_mb": 507,
-        "cpu_percent": 0.0
-      },
-      {
-        "target": "amazon_product",
-        "url": "https://a.co/d/21FTKNR",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 19658,
-        "memory_mb": 550,
-        "cpu_percent": 0.0
-      },
-      {
-        "target": "ticketmaster",
-        "url": "https://www.ticketmaster.com/",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 33629,
-        "memory_mb": 568,
-        "cpu_percent": 0.0
-      }
-    ],
-    "browser_data_targets_results": [
-      {
-        "target": "recaptcha_score",
-        "url": "https://antcpt.com/score_detector",
-        "error": null,
-        "creepjs_trust_score": null,
-        "creepjs_bot_score": null,
-        "creepjs_webrtc_ip": null,
-        "recaptcha_score": 0.1,
-        "ip": null
-      },
-      {
-        "target": "creepjs",
-        "url": "https://abrahamjuliot.github.io/creepjs/",
-        "error": null,
-        "creepjs_trust_score": 0,
-        "creepjs_bot_score": 0,
-        "creepjs_webrtc_ip": "149.102.240.71",
-        "recaptcha_score": null,
-        "ip": null
-      },
-      {
-        "target": "ipify",
-        "url": "https://api.ipify.org?format=json",
-        "error": null,
-        "creepjs_trust_score": null,
-        "creepjs_bot_score": null,
-        "creepjs_webrtc_ip": null,
-        "recaptcha_score": null,
-        "ip": "189.36.133.109"
-      }
-    ],
-    "average_memory_mb": 545,
-    "average_cpu_percent": 0.0,
-    "bypass_rate": 0.3333333333333333,
-    "error": null
-  },
-  {
-    "engine": "patchright",
-    "timestamp": "2025-07-20T18:52:20.304033",
-    "bypass_targets_results": [
-      {
-        "target": "google_search",
-        "url": "https://www.google.com/search?q=what+is+my+user+agent",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 38285,
-        "memory_mb": 654,
-        "cpu_percent": 0.0
-      },
-      {
-        "target": "cloudflare_protected",
-        "url": "https://community.cloudflare.com",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 20792,
-        "memory_mb": 690,
-        "cpu_percent": 93.1
-      },
-      {
-        "target": "datadome_protected",
-        "url": "https://datadome.co/customers-stories/",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 6105,
-        "memory_mb": 701,
-        "cpu_percent": 31.2
-      },
-      {
-        "target": "datadome_protected_2",
-        "url": "https://www.hermes.com/",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 19187,
-        "memory_mb": 704,
-        "cpu_percent": 62.3
-      },
-      {
-        "target": "amazon_product",
-        "url": "https://a.co/d/21FTKNR",
-        "bypass": false,
-        "error": null,
-        "load_time_ms": 8236,
-        "memory_mb": 701,
-        "cpu_percent": 0.0
-      },
-      {
-        "target": "ticketmaster",
-        "url": "https://www.ticketmaster.com/",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 52958,
-        "memory_mb": 749,
-        "cpu_percent": 0.0
-      }
-    ],
-    "browser_data_targets_results": [
-      {
-        "target": "recaptcha_score",
-        "url": "https://antcpt.com/score_detector",
-        "error": null,
-        "creepjs_trust_score": null,
-        "creepjs_bot_score": null,
-        "creepjs_webrtc_ip": null,
-        "recaptcha_score": 0.1,
-        "ip": null
-      },
-      {
-        "target": "creepjs",
-        "url": "https://abrahamjuliot.github.io/creepjs/",
-        "error": null,
-        "creepjs_trust_score": 0,
-        "creepjs_bot_score": 0,
-        "creepjs_webrtc_ip": "149.102.240.71",
-        "recaptcha_score": null,
-        "ip": null
-      },
-      {
-        "target": "ipify",
-        "url": "https://api.ipify.org?format=json",
-        "error": null,
-        "creepjs_trust_score": null,
-        "creepjs_bot_score": null,
-        "creepjs_webrtc_ip": null,
-        "recaptcha_score": null,
-        "ip": "196.133.10.26"
-      }
-    ],
-    "average_memory_mb": 699,
-    "average_cpu_percent": 31.099999999999998,
-    "bypass_rate": 0.8333333333333334,
+    "average_memory_mb": 709,
+    "average_cpu_percent": 19.2,
+    "bypass_rate": 0.6666666666666666,
     "error": null
   },
   {
     "engine": "selenium-chrome_headless__no_proxy",
-    "timestamp": "2025-07-20T19:55:37.236984",
+    "timestamp": "2025-10-08T01:20:20.632714",
     "bypass_targets_results": [
       {
         "target": "google_search",
         "url": "https://www.google.com/search?q=what+is+my+user+agent",
         "bypass": false,
         "error": null,
-        "load_time_ms": 3047,
-        "memory_mb": 424,
+        "load_time_ms": 960,
+        "memory_mb": 304,
         "cpu_percent": 0.0
       },
       {
@@ -1169,56 +1169,56 @@
         "url": "https://community.cloudflare.com",
         "bypass": false,
         "error": null,
-        "load_time_ms": 1023,
-        "memory_mb": 361,
-        "cpu_percent": 18.0
+        "load_time_ms": 1261,
+        "memory_mb": 390,
+        "cpu_percent": 39.3
       },
       {
         "target": "datadome_protected",
         "url": "https://datadome.co/customers-stories/",
         "bypass": false,
         "error": null,
-        "load_time_ms": 1479,
-        "memory_mb": 315,
-        "cpu_percent": 5.5
+        "load_time_ms": 1450,
+        "memory_mb": 344,
+        "cpu_percent": 7.3999999999999995
       },
       {
         "target": "datadome_protected_2",
         "url": "https://www.hermes.com/",
         "bypass": false,
         "error": null,
-        "load_time_ms": 366,
-        "memory_mb": 325,
-        "cpu_percent": 1.1
+        "load_time_ms": 407,
+        "memory_mb": 341,
+        "cpu_percent": 1.5999999999999999
       },
       {
         "target": "amazon_product",
         "url": "https://a.co/d/21FTKNR",
         "bypass": true,
         "error": null,
-        "load_time_ms": 3028,
-        "memory_mb": 356,
-        "cpu_percent": 3.5
+        "load_time_ms": 3292,
+        "memory_mb": 380,
+        "cpu_percent": 6.1
       },
       {
         "target": "ticketmaster",
         "url": "https://www.ticketmaster.com/",
         "bypass": false,
         "error": null,
-        "load_time_ms": 2264,
-        "memory_mb": 355,
-        "cpu_percent": 8.5
+        "load_time_ms": 2274,
+        "memory_mb": 367,
+        "cpu_percent": 14.8
       }
     ],
     "browser_data_targets_results": [
       {
         "target": "recaptcha_score",
         "url": "https://antcpt.com/score_detector",
-        "error": null,
+        "error": "Failed to extract recaptcha score data after multiple attempts",
         "creepjs_trust_score": null,
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
-        "recaptcha_score": 0.1,
+        "recaptcha_score": null,
         "ip": null
       },
       {
@@ -1227,7 +1227,7 @@
         "error": null,
         "creepjs_trust_score": 0,
         "creepjs_bot_score": 0,
-        "creepjs_webrtc_ip": "149.102.240.71",
+        "creepjs_webrtc_ip": "149.102.240.75",
         "recaptcha_score": null,
         "ip": null
       },
@@ -1239,25 +1239,25 @@
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
         "recaptcha_score": null,
-        "ip": "149.102.240.71"
+        "ip": "149.102.240.75"
       }
     ],
-    "average_memory_mb": 356,
-    "average_cpu_percent": 6.1000000000000005,
+    "average_memory_mb": 354,
+    "average_cpu_percent": 11.533333333333333,
     "bypass_rate": 0.16666666666666666,
     "error": null
   },
   {
     "engine": "selenium-chrome__no_proxy",
-    "timestamp": "2025-07-20T19:58:26.121577",
+    "timestamp": "2025-10-08T01:27:10.011954",
     "bypass_targets_results": [
       {
         "target": "google_search",
         "url": "https://www.google.com/search?q=what+is+my+user+agent",
         "bypass": true,
         "error": null,
-        "load_time_ms": 1292,
-        "memory_mb": 447,
+        "load_time_ms": 1385,
+        "memory_mb": 439,
         "cpu_percent": 0.0
       },
       {
@@ -1265,56 +1265,56 @@
         "url": "https://community.cloudflare.com",
         "bypass": false,
         "error": null,
-        "load_time_ms": 651,
-        "memory_mb": 503,
-        "cpu_percent": 21.299999999999997
+        "load_time_ms": 1275,
+        "memory_mb": 525,
+        "cpu_percent": 30.8
       },
       {
         "target": "datadome_protected",
         "url": "https://datadome.co/customers-stories/",
         "bypass": false,
         "error": null,
-        "load_time_ms": 1999,
-        "memory_mb": 515,
-        "cpu_percent": 13.8
+        "load_time_ms": 2413,
+        "memory_mb": 549,
+        "cpu_percent": 16.900000000000002
       },
       {
         "target": "datadome_protected_2",
         "url": "https://www.hermes.com/",
-        "bypass": false,
+        "bypass": true,
         "error": null,
-        "load_time_ms": 1361,
-        "memory_mb": 517,
-        "cpu_percent": 5.5
+        "load_time_ms": 1881,
+        "memory_mb": 535,
+        "cpu_percent": 9.600000000000001
       },
       {
         "target": "amazon_product",
         "url": "https://a.co/d/21FTKNR",
         "bypass": false,
         "error": null,
-        "load_time_ms": 1858,
-        "memory_mb": 466,
-        "cpu_percent": 1.4
+        "load_time_ms": 1952,
+        "memory_mb": 516,
+        "cpu_percent": 17.8
       },
       {
         "target": "ticketmaster",
         "url": "https://www.ticketmaster.com/",
         "bypass": false,
         "error": null,
-        "load_time_ms": 2132,
-        "memory_mb": 497,
-        "cpu_percent": 17.8
+        "load_time_ms": 2266,
+        "memory_mb": 550,
+        "cpu_percent": 17.6
       }
     ],
     "browser_data_targets_results": [
       {
         "target": "recaptcha_score",
         "url": "https://antcpt.com/score_detector",
-        "error": null,
+        "error": "Failed to extract recaptcha score data after multiple attempts",
         "creepjs_trust_score": null,
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
-        "recaptcha_score": 0.3,
+        "recaptcha_score": null,
         "ip": null
       },
       {
@@ -1323,7 +1323,7 @@
         "error": null,
         "creepjs_trust_score": 0,
         "creepjs_bot_score": 0,
-        "creepjs_webrtc_ip": "149.102.240.71",
+        "creepjs_webrtc_ip": "149.102.240.75",
         "recaptcha_score": null,
         "ip": null
       },
@@ -1335,82 +1335,82 @@
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
         "recaptcha_score": null,
-        "ip": "149.102.240.71"
+        "ip": "149.102.240.75"
       }
     ],
-    "average_memory_mb": 490,
-    "average_cpu_percent": 9.966666666666667,
-    "bypass_rate": 0.16666666666666666,
+    "average_memory_mb": 519,
+    "average_cpu_percent": 15.450000000000001,
+    "bypass_rate": 0.3333333333333333,
     "error": null
   },
   {
     "engine": "nodriver-chrome_headless",
-    "timestamp": "2025-07-20T20:01:54.787977",
+    "timestamp": "2025-10-08T02:43:46.075153",
     "bypass_targets_results": [
       {
         "target": "google_search",
         "url": "https://www.google.com/search?q=what+is+my+user+agent",
         "bypass": false,
         "error": null,
-        "load_time_ms": 3704,
-        "memory_mb": 603,
-        "cpu_percent": 0.0
+        "load_time_ms": 4082,
+        "memory_mb": 623,
+        "cpu_percent": 62.300000000000004
       },
       {
         "target": "cloudflare_protected",
         "url": "https://community.cloudflare.com",
         "bypass": false,
         "error": null,
-        "load_time_ms": 2367,
-        "memory_mb": 504,
-        "cpu_percent": 13.7
+        "load_time_ms": 2242,
+        "memory_mb": 526,
+        "cpu_percent": 14.799999999999997
       },
       {
         "target": "datadome_protected",
         "url": "https://datadome.co/customers-stories/",
         "bypass": false,
         "error": null,
-        "load_time_ms": 3057,
-        "memory_mb": 474,
-        "cpu_percent": 10.400000000000002
+        "load_time_ms": 3482,
+        "memory_mb": 547,
+        "cpu_percent": 15.8
       },
       {
         "target": "datadome_protected_2",
         "url": "https://www.hermes.com/",
         "bypass": false,
         "error": null,
-        "load_time_ms": 2553,
-        "memory_mb": 470,
-        "cpu_percent": 2.4000000000000004
+        "load_time_ms": 2360,
+        "memory_mb": 499,
+        "cpu_percent": 4.3
       },
       {
         "target": "amazon_product",
         "url": "https://a.co/d/21FTKNR",
         "bypass": true,
         "error": null,
-        "load_time_ms": 5710,
-        "memory_mb": 489,
-        "cpu_percent": 1.1
+        "load_time_ms": 4046,
+        "memory_mb": 529,
+        "cpu_percent": 4.2
       },
       {
         "target": "ticketmaster",
         "url": "https://www.ticketmaster.com/",
         "bypass": true,
         "error": null,
-        "load_time_ms": 3337,
-        "memory_mb": 508,
-        "cpu_percent": 19.900000000000002
+        "load_time_ms": 3191,
+        "memory_mb": 560,
+        "cpu_percent": 18.700000000000003
       }
     ],
     "browser_data_targets_results": [
       {
         "target": "recaptcha_score",
         "url": "https://antcpt.com/score_detector",
-        "error": null,
+        "error": "Failed to extract recaptcha score data after multiple attempts",
         "creepjs_trust_score": null,
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
-        "recaptcha_score": 0.3,
+        "recaptcha_score": null,
         "ip": null
       },
       {
@@ -1419,7 +1419,7 @@
         "error": null,
         "creepjs_trust_score": 0,
         "creepjs_bot_score": 0,
-        "creepjs_webrtc_ip": "149.102.240.71",
+        "creepjs_webrtc_ip": "149.102.240.75",
         "recaptcha_score": null,
         "ip": null
       },
@@ -1431,25 +1431,25 @@
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
         "recaptcha_score": null,
-        "ip": "179.43.63.187"
+        "ip": "38.13.154.130"
       }
     ],
-    "average_memory_mb": 508,
-    "average_cpu_percent": 7.916666666666668,
+    "average_memory_mb": 547,
+    "average_cpu_percent": 20.01666666666667,
     "bypass_rate": 0.3333333333333333,
     "error": null
   },
   {
     "engine": "nodriver-chrome",
-    "timestamp": "2025-07-20T20:12:44.047632",
+    "timestamp": "2025-10-08T02:52:59.059935",
     "bypass_targets_results": [
       {
         "target": "google_search",
         "url": "https://www.google.com/search?q=what+is+my+user+agent",
         "bypass": true,
         "error": null,
-        "load_time_ms": 2079,
-        "memory_mb": 633,
+        "load_time_ms": 3323,
+        "memory_mb": 606,
         "cpu_percent": 0.0
       },
       {
@@ -1457,56 +1457,56 @@
         "url": "https://community.cloudflare.com",
         "bypass": true,
         "error": null,
-        "load_time_ms": 2074,
-        "memory_mb": 611,
-        "cpu_percent": 21.599999999999998
+        "load_time_ms": 3238,
+        "memory_mb": 527,
+        "cpu_percent": 22.5
       },
       {
         "target": "datadome_protected",
         "url": "https://datadome.co/customers-stories/",
         "bypass": true,
         "error": null,
-        "load_time_ms": 1990,
-        "memory_mb": 574,
-        "cpu_percent": 5.4
+        "load_time_ms": 2782,
+        "memory_mb": 502,
+        "cpu_percent": 24.900000000000002
       },
       {
         "target": "datadome_protected_2",
         "url": "https://www.hermes.com/",
         "bypass": true,
         "error": null,
-        "load_time_ms": 2084,
-        "memory_mb": 582,
-        "cpu_percent": 11.8
+        "load_time_ms": 3324,
+        "memory_mb": 537,
+        "cpu_percent": 18.1
       },
       {
         "target": "amazon_product",
         "url": "https://a.co/d/21FTKNR",
         "bypass": false,
         "error": null,
-        "load_time_ms": 3202,
-        "memory_mb": 589,
-        "cpu_percent": 4.0
+        "load_time_ms": 4306,
+        "memory_mb": 579,
+        "cpu_percent": 16.9
       },
       {
         "target": "ticketmaster",
         "url": "https://www.ticketmaster.com/",
         "bypass": true,
         "error": null,
-        "load_time_ms": 1811,
-        "memory_mb": 619,
-        "cpu_percent": 31.1
+        "load_time_ms": 2829,
+        "memory_mb": 576,
+        "cpu_percent": 31.8
       }
     ],
     "browser_data_targets_results": [
       {
         "target": "recaptcha_score",
         "url": "https://antcpt.com/score_detector",
-        "error": null,
+        "error": "Failed to extract recaptcha score data after multiple attempts",
         "creepjs_trust_score": null,
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
-        "recaptcha_score": 0.3,
+        "recaptcha_score": null,
         "ip": null
       },
       {
@@ -1515,7 +1515,7 @@
         "error": null,
         "creepjs_trust_score": 0,
         "creepjs_bot_score": 0,
-        "creepjs_webrtc_ip": "149.102.240.71",
+        "creepjs_webrtc_ip": "149.102.240.75",
         "recaptcha_score": null,
         "ip": null
       },
@@ -1527,25 +1527,25 @@
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
         "recaptcha_score": null,
-        "ip": "209.35.93.167"
+        "ip": "181.188.19.203"
       }
     ],
-    "average_memory_mb": 601,
-    "average_cpu_percent": 12.316666666666668,
+    "average_memory_mb": 554,
+    "average_cpu_percent": 19.033333333333335,
     "bypass_rate": 0.8333333333333334,
     "error": null
   },
   {
     "engine": "zendriver-chrome_headless",
-    "timestamp": "2025-07-20T20:15:43.513664",
+    "timestamp": "2025-10-08T03:16:00.397186",
     "bypass_targets_results": [
       {
         "target": "google_search",
         "url": "https://www.google.com/search?q=what+is+my+user+agent",
         "bypass": true,
         "error": null,
-        "load_time_ms": 1106,
-        "memory_mb": 480,
+        "load_time_ms": 2291,
+        "memory_mb": 558,
         "cpu_percent": 0.0
       },
       {
@@ -1553,56 +1553,56 @@
         "url": "https://community.cloudflare.com",
         "bypass": false,
         "error": null,
-        "load_time_ms": 1092,
-        "memory_mb": 548,
-        "cpu_percent": 23.0
+        "load_time_ms": 1060,
+        "memory_mb": 464,
+        "cpu_percent": 18.400000000000002
       },
       {
         "target": "datadome_protected",
         "url": "https://datadome.co/customers-stories/",
         "bypass": false,
         "error": null,
-        "load_time_ms": 1030,
-        "memory_mb": 437,
-        "cpu_percent": 12.899999999999999
+        "load_time_ms": 1221,
+        "memory_mb": 464,
+        "cpu_percent": 22.400000000000002
       },
       {
         "target": "datadome_protected_2",
         "url": "https://www.hermes.com/",
-        "bypass": false,
+        "bypass": true,
         "error": null,
-        "load_time_ms": 839,
-        "memory_mb": 434,
-        "cpu_percent": 1.1
+        "load_time_ms": 1438,
+        "memory_mb": 353,
+        "cpu_percent": 7.4
       },
       {
         "target": "amazon_product",
         "url": "https://a.co/d/21FTKNR",
-        "bypass": true,
+        "bypass": false,
         "error": null,
-        "load_time_ms": 90011,
-        "memory_mb": 362,
-        "cpu_percent": 0.7999999999999999
+        "load_time_ms": 2110,
+        "memory_mb": 353,
+        "cpu_percent": 13.9
       },
       {
         "target": "ticketmaster",
         "url": "https://www.ticketmaster.com/",
         "bypass": true,
         "error": null,
-        "load_time_ms": 90003,
-        "memory_mb": 365,
-        "cpu_percent": 2.9
+        "load_time_ms": 1263,
+        "memory_mb": 356,
+        "cpu_percent": 18.1
       }
     ],
     "browser_data_targets_results": [
       {
         "target": "recaptcha_score",
         "url": "https://antcpt.com/score_detector",
-        "error": null,
+        "error": "Failed to extract recaptcha score data after multiple attempts",
         "creepjs_trust_score": null,
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
-        "recaptcha_score": 0.3,
+        "recaptcha_score": null,
         "ip": null
       },
       {
@@ -1611,7 +1611,7 @@
         "error": null,
         "creepjs_trust_score": 0,
         "creepjs_bot_score": 0,
-        "creepjs_webrtc_ip": "149.102.240.71",
+        "creepjs_webrtc_ip": "149.102.240.75",
         "recaptcha_score": null,
         "ip": null
       },
@@ -1623,25 +1623,25 @@
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
         "recaptcha_score": null,
-        "ip": "181.170.174.42"
+        "ip": "204.205.78.214"
       }
     ],
-    "average_memory_mb": 437,
-    "average_cpu_percent": 6.783333333333332,
+    "average_memory_mb": 424,
+    "average_cpu_percent": 13.366666666666667,
     "bypass_rate": 0.5,
     "error": null
   },
   {
     "engine": "zendriver-chrome",
-    "timestamp": "2025-07-20T20:30:46.413277",
+    "timestamp": "2025-10-08T03:50:54.442277",
     "bypass_targets_results": [
       {
         "target": "google_search",
         "url": "https://www.google.com/search?q=what+is+my+user+agent",
         "bypass": false,
         "error": null,
-        "load_time_ms": 90012,
-        "memory_mb": 406,
+        "load_time_ms": 1847,
+        "memory_mb": 460,
         "cpu_percent": 0.0
       },
       {
@@ -1649,45 +1649,141 @@
         "url": "https://community.cloudflare.com",
         "bypass": true,
         "error": null,
-        "load_time_ms": 90009,
-        "memory_mb": 320,
-        "cpu_percent": 2.5
+        "load_time_ms": 1315,
+        "memory_mb": 349,
+        "cpu_percent": 10.899999999999999
       },
       {
         "target": "datadome_protected",
         "url": "https://datadome.co/customers-stories/",
         "bypass": false,
         "error": null,
-        "load_time_ms": 90002,
-        "memory_mb": 376,
-        "cpu_percent": 3.1
+        "load_time_ms": 1681,
+        "memory_mb": 347,
+        "cpu_percent": 16.5
       },
       {
         "target": "datadome_protected_2",
         "url": "https://www.hermes.com/",
         "bypass": true,
         "error": null,
-        "load_time_ms": 90006,
-        "memory_mb": 372,
-        "cpu_percent": 0.30000000000000004
+        "load_time_ms": 1570,
+        "memory_mb": 344,
+        "cpu_percent": 6.3
       },
       {
         "target": "amazon_product",
         "url": "https://a.co/d/21FTKNR",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 2934,
+        "memory_mb": 342,
+        "cpu_percent": 13.7
+      },
+      {
+        "target": "ticketmaster",
+        "url": "https://www.ticketmaster.com/",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 1802,
+        "memory_mb": 345,
+        "cpu_percent": 13.9
+      }
+    ],
+    "browser_data_targets_results": [
+      {
+        "target": "recaptcha_score",
+        "url": "https://antcpt.com/score_detector",
+        "error": "Failed to extract recaptcha score data after multiple attempts",
+        "creepjs_trust_score": null,
+        "creepjs_bot_score": null,
+        "creepjs_webrtc_ip": null,
+        "recaptcha_score": null,
+        "ip": null
+      },
+      {
+        "target": "creepjs",
+        "url": "https://abrahamjuliot.github.io/creepjs/",
+        "error": null,
+        "creepjs_trust_score": 0,
+        "creepjs_bot_score": 0,
+        "creepjs_webrtc_ip": "149.102.240.75",
+        "recaptcha_score": null,
+        "ip": null
+      },
+      {
+        "target": "ipify",
+        "url": "https://api.ipify.org?format=json",
+        "error": null,
+        "creepjs_trust_score": null,
+        "creepjs_bot_score": null,
+        "creepjs_webrtc_ip": null,
+        "recaptcha_score": null,
+        "ip": "207.146.227.90"
+      }
+    ],
+    "average_memory_mb": 364,
+    "average_cpu_percent": 10.216666666666667,
+    "bypass_rate": 0.3333333333333333,
+    "error": null
+  },
+  {
+    "engine": "seleniumbase-cdp-chrome",
+    "timestamp": "2025-10-08T03:59:42.913519",
+    "bypass_targets_results": [
+      {
+        "target": "google_search",
+        "url": "https://www.google.com/search?q=what+is+my+user+agent",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 1484,
+        "memory_mb": 448,
+        "cpu_percent": 0.0
+      },
+      {
+        "target": "cloudflare_protected",
+        "url": "https://community.cloudflare.com",
         "bypass": true,
         "error": null,
-        "load_time_ms": 90012,
-        "memory_mb": 373,
-        "cpu_percent": 3.9
+        "load_time_ms": 1191,
+        "memory_mb": 371,
+        "cpu_percent": 17.3
+      },
+      {
+        "target": "datadome_protected",
+        "url": "https://datadome.co/customers-stories/",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 1361,
+        "memory_mb": 337,
+        "cpu_percent": 6.1
+      },
+      {
+        "target": "datadome_protected_2",
+        "url": "https://www.hermes.com/",
+        "bypass": true,
+        "error": null,
+        "load_time_ms": 1318,
+        "memory_mb": 349,
+        "cpu_percent": 12.7
+      },
+      {
+        "target": "amazon_product",
+        "url": "https://a.co/d/21FTKNR",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 2050,
+        "memory_mb": 374,
+        "cpu_percent": 11.299999999999999
       },
       {
         "target": "ticketmaster",
         "url": "https://www.ticketmaster.com/",
         "bypass": true,
         "error": null,
-        "load_time_ms": 90005,
-        "memory_mb": 378,
-        "cpu_percent": 10.0
+        "load_time_ms": 1407,
+        "memory_mb": 375,
+        "cpu_percent": 36.7
       }
     ],
     "browser_data_targets_results": [
@@ -1707,7 +1803,7 @@
         "error": null,
         "creepjs_trust_score": 0,
         "creepjs_bot_score": 0,
-        "creepjs_webrtc_ip": "149.102.240.71",
+        "creepjs_webrtc_ip": "149.102.240.75",
         "recaptcha_score": null,
         "ip": null
       },
@@ -1719,12 +1815,12 @@
         "creepjs_bot_score": null,
         "creepjs_webrtc_ip": null,
         "recaptcha_score": null,
-        "ip": "103.177.184.213"
+        "ip": "207.146.227.90"
       }
     ],
-    "average_memory_mb": 370,
-    "average_cpu_percent": 3.3000000000000003,
-    "bypass_rate": 0.6666666666666666,
+    "average_memory_mb": 375,
+    "average_cpu_percent": 14.016666666666666,
+    "bypass_rate": 0.5,
     "error": null
   }
 ]
