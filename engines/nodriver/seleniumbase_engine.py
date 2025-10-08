@@ -15,10 +15,10 @@ from utils.process import find_new_child_processes
 logger = logging.getLogger(__name__)
 
 
-class SeleniumBaseCDPEngine(NoDriverBase):
+class SeleniumbaseBase(NoDriverBase):
     def __init__(
             self,
-            name: str = 'seleniumbase-cdp-chrome',
+            name: str = 'seleniumbase-chrome',
             proxy: Optional[Dict[str, str]] = None,
             **kwargs
     ):

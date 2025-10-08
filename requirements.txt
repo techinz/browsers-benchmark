@@ -11,14 +11,14 @@ pydantic==2.11.7
 pydantic-settings==2.10.1
 
 # browsers
-seleniumbase==4.40.6
-playwright==1.53.0
+seleniumbase==4.42.2
+playwright==1.55.0
 camoufox[geoip]==0.4.11
 tf-playwright-stealth==1.2.0
-patchright==1.52.5
-selenium==4.34.2
-nodriver==0.46.1
-zendriver==0.12.1
+patchright==1.55.2
+selenium==4.36.0
+nodriver==0.47.0
+zendriver==0.14.2
 
 # files
 aiofiles==24.1.0
