@@ -256,6 +256,14 @@ Note: If the IP is your proxy's IP - good, your real IP - bad (applicapable only
    pip install -r requirements.txt
    ```
 
+## Offline Verification
+
+Routine CI is intentionally offline. It checks Python syntax and parses checked-in JSON results without installing browser engines, launching browsers, using proxies, or contacting external protection targets.
+
+```bash
+bash scripts/verify.sh ci
+```
+
 3. **Install browser engines**
 
    **Playwright**
