@@ -221,12 +221,9 @@ class PydollEngine(BrowserEngine):
                 except Exception:
                     # Fallback to web element text extraction methods
                     try:
-                        element_html = await element.get_element_text()
+                        element_html = await element.text
                     except Exception:
-                        try:
-                            element_html = await element.text
-                        except Exception:
-                            element_html = ""
+                        element_html = ""
         except Exception:
             pass
 
