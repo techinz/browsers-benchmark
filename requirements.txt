@@ -21,6 +21,7 @@ invisible_playwright @ git+https://github.com/feder-cr/invisible_playwright.git
 selenium>=4.36.0
 nodriver>=0.47.0
 zendriver>=0.14.2
+pydoll-python>=2.23.0
 
 # files
-aiofiles==24.1.0
+aiofiles>=25.1.0
