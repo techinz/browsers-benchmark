@@ -38,6 +38,7 @@ Modern web applications use advanced bot detection like Cloudflare, DataDome, an
 - <a href="https://seleniumbase.io/">**Seleniumbase**</a> - <b>(Open-Source)</b> Professional toolkit for web automation activities
 - <a href="https://github.com/ultrafunkamsterdam/nodriver">**NoDriver**</a> - <b>(Open-Source)</b> Browser automation framework (supports only SOCKS5 proxies)
 - <a href="https://github.com/cdpdriver/zendriver">**ZenDriver**</a> - <b>(Open-Source)</b> NoDriver-based
+- <a href="https://github.com/autoscrape-labs/pydoll">**PyDoll**</a> - <b>(Open-Source)</b> Asynchronous browser automation framework using Chrome DevTools Protocol (CDP) directly
 - <i>More engines coming soon. What engine should I add next?</i>
 
 ### Analytics
