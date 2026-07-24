@@ -264,6 +264,12 @@ Routine CI is intentionally offline. It checks Python syntax and parses checked-
 bash scripts/verify.sh ci
 ```
 
+Current offline verification boundaries and cleanup status are tracked in
+[`docs/current-state.md`](docs/current-state.md) and
+[`docs/cleanup-roadmap.md`](docs/cleanup-roadmap.md).
+
+See [`docs/index.md`](docs/index.md) for the local documentation map.
+
 3. **Install browser engines**
 
    **Playwright**
