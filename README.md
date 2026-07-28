@@ -57,20 +57,6 @@ Modern web applications use advanced bot detection like Cloudflare, DataDome, an
 
 ---
 
-<div align="center">
-
-<a href="https://www.swiftproxy.net/?ref=browsersbenchmark">
-  <img width="600" height="314" alt="Swiftproxy" src="https://github.com/user-attachments/assets/7113c097-e4f4-4b5b-9571-b16bfdd5dba2" />
-</a>
-
-**Swiftproxy — Premium residential proxies with 80M+ IPs across 190+ countries, non-expiring traffic, and high-anonymity connections. Built for web scraping, protocol analysis, AI agents, browser automation, and large-scale data collection.**
-
-🔗 [https://www.swiftproxy.net](https://www.swiftproxy.net/?ref=browsersbenchmark)
-
-</div>
-
----
-
 ## 📊 Sample Results
 This benchmark provides detailed comparative analysis. Here's an excerpt from a recent test run (more in <a href="results/example">results/example</a>):  
 <i>Real IP in this example - 146.70.188.179</i>  
