@@ -57,6 +57,20 @@ Modern web applications use advanced bot detection like Cloudflare, DataDome, an
 
 ---
 
+<div align="center">
+
+<a href="https://www.rapidproxy.io/?ref=benchmark">
+  <img width="600" height="314" alt="RapidProxy" src="https://github.com/user-attachments/assets/a9b19942-e868-4758-92b0-b7dc7cf0e97b" />
+</a>
+
+**RapidProxy — a high-performance proxy provider built for developers working on web scraping, browser automation, multi-account management, and large-scale data collection. 90M+ global residential IPs, native static ISP proxies, smart rotation, stable sessions, high concurrency, and non-expiring residential proxy traffic. Residential proxies start from $0.55/GB — use code `RAPID10` for 10% off.**
+
+🔗 [https://www.rapidproxy.io](https://www.rapidproxy.io/?ref=benchmark)
+
+</div>
+
+---
+
 ## 📊 Sample Results
 This benchmark provides detailed comparative analysis. Here's an excerpt from a recent test run (more in <a href="results/example">results/example</a>):  
 <i>Real IP in this example - 146.70.188.179</i>  
