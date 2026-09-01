@@ -1,0 +1,40 @@
+name: Verify
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/*.py'
+      - 'results/**/*.json'
+      - 'requirements.txt'
+      - '.python-version'
+      - 'AGENTS.md'
+      - '.github/workflows/verify.yml'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '**/*.py'
+      - 'results/**/*.json'
+      - 'requirements.txt'
+      - '.python-version'
+      - 'AGENTS.md'
+      - '.github/workflows/verify.yml'
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: .python-version
+
+      - name: Run offline verifier
+        run: bash scripts/verify.sh ci
