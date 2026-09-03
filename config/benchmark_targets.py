@@ -14,6 +14,7 @@ from utils.targets.check_bypass.akamai_protected import check_akamai_bypass
 from utils.targets.check_bypass.kasada_protected import check_kasada_bypass
 from utils.targets.check_bypass.perimeterx_protected import check_perimeterx_bypass
 from utils.targets.check_bypass.reddit import check_reddit_bypass
+from utils.targets.check_bypass.shopee import check_shopee_bypass
 from utils.targets.check_bypass.ticketmaster import check_ticketmaster_bypass
 
 
@@ -91,7 +92,13 @@ class BypassTargetsSettings(BaseModel):
                 name="reddit",
                 url="https://www.reddit.com/",
                 check_function="check_reddit_bypass",
-                description="Reddit bypass test"
+                description="Reddit bypass test",
+            ),
+            Target(
+                name="shopee_sg",
+                url="https://shopee.sg/",
+                check_function="check_shopee_bypass",
+                description="Shopee Singapore traffic verification redirect bypass test",
             ),
         ]
     )
@@ -108,6 +115,7 @@ class BypassTargetsSettings(BaseModel):
             "check_perimeterx_bypass": check_perimeterx_bypass,
             "check_kasada_bypass": check_kasada_bypass,
             "check_reddit_bypass": check_reddit_bypass,
+            "check_shopee_bypass": check_shopee_bypass,
         }
     )
 

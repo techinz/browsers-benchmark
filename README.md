@@ -25,6 +25,7 @@ Modern web applications use advanced bot detection like Cloudflare, DataDome, an
 - **PerimeterX / HUMAN Security**
 - **Kasada**
 - **Reddit**
+- **Shopee SG**
 - <i>More systems coming soon</i>
 
 ### Browser Engine Support
