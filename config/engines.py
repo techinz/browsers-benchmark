@@ -11,6 +11,7 @@ from engines.playwright.adspower_engine import AdsPowerEngine
 from engines.playwright.camoufox_engine import CamoufoxEngine
 from engines.playwright.invisible_playwright_engine import InvisiblePlaywrightEngine
 from engines.playwright.cloakbrowser_engine import CloakBrowserEngine
+from engines.playwright.clearcote_engine import ClearcoteEngine
 from engines.playwright.patchright_engine import PatchrightEngine
 from engines.playwright.playwright_engine import PlaywrightEngine
 from engines.playwright.tf_playwright_stealth_engine import TfPlaywrightStealthEngine
@@ -81,6 +82,14 @@ class EnginesSettings(BaseSettings):
             {
                 "class": CloakBrowserEngine,
                 "params": {"headless": False, "name": "cloakbrowser"}
+            },
+            {
+                "class": ClearcoteEngine,
+                "params": {"headless": True, "name": "clearcote_headless"}
+            },
+            {
+                "class": ClearcoteEngine,
+                "params": {"headless": False, "name": "clearcote"}
             },
             {
                 "class": TfPlaywrightStealthEngine,
