@@ -15,6 +15,7 @@ seleniumbase>=4.42.2
 playwright>=1.55.0
 camoufox[geoip]>=0.4.11
 cloakbrowser[geoip]>=0.3.19
+clearcote>=0.67.1
 tf-playwright-stealth>=1.2.0
 patchright>=1.55.2
 invisible_playwright @ git+https://github.com/feder-cr/invisible_playwright.git

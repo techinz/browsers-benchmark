@@ -34,6 +34,7 @@ Modern web applications use advanced bot detection like Cloudflare, DataDome, an
 - <a href="https://github.com/Kaliiiiiiiiii-Vinyzu/patchright-python">**Patchright**</a> - <b>(Open-Source)</b> Playwright-based
 - <a href="https://github.com/tinyfish-io/tf-playwright-stealth">**Playwright Stealth**</a> - <b>(Open-Source)</b> Playwright-based
 - <a href="https://github.com/CloakHQ/cloakbrowser">**CloakBrowser**</a> - <b>(Open-Source)</b> Playwright-based
+- <a href="https://github.com/clearcotelabs/clearcote-browser">**Clearcote**</a> - <b>(Open-Source)</b> Playwright-based. Runs the open build without a key; `CLEARCOTE_LICENSE_KEY` switches to the licensed build
 - <a href="https://www.selenium.dev">**Selenium**</a> - <b>(Open-Source)</b> Browser automation framework (apparently deprecated, so it is tested without proxies)
 - <a href="https://seleniumbase.io/">**Seleniumbase**</a> - <b>(Open-Source)</b> Professional toolkit for web automation activities
 - <a href="https://github.com/ultrafunkamsterdam/nodriver">**NoDriver**</a> - <b>(Open-Source)</b> Browser automation framework (supports only SOCKS5 proxies)
