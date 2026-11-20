@@ -236,8 +236,12 @@ class PydollEngine(BrowserEngine):
             raise RuntimeError("Browser not started")
 
         try:
+            # pydoll 3.x made page_source a method (2.x: awaitable property)
+            page_source = self.page.page_source
+            if callable(page_source):
+                page_source = page_source()
             return await asyncio.wait_for(
-                self.page.page_source,
+                page_source,
                 timeout=settings.browser.action_timeout_s
             )
         except Exception as e:
