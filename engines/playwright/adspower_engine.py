@@ -1,12 +1,13 @@
 import asyncio
 import json
 import os
+import time
 from typing import Dict, Optional
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 import psutil
-from playwright.async_api import async_playwright
+from patchright.async_api import async_playwright
 
 from config.settings import settings
 from engines.playwright_base import PlaywrightBase
@@ -94,10 +95,16 @@ class AdsPowerEngine(PlaywrightBase):
 
     def _delete_profile(self, profile_id: str) -> None:
         """Delete an AdsPower profile"""
-        try:
-            self._api_call("POST", "/api/v1/user/delete", params={"user_ids": profile_id})
-        except:
-            pass
+        # retry: right after browser/stop a headed profile may still be closing and the delete gets rejected
+        for _ in range(5):
+            try:
+                # the API expects a json body, query params are rejected with "user_ids is required"
+                response = self._api_call("POST", "/api/v1/user/delete", body={"user_ids": [profile_id]})
+                if response.get("code") == 0:
+                    return
+            except:
+                pass
+            time.sleep(2)
 
     async def start(self) -> None:
         """Create AdsPower profile, launch it, and connect via Playwright CDP"""
@@ -122,7 +129,8 @@ class AdsPowerEngine(PlaywrightBase):
 
         ws_endpoint = response["data"]["ws"]["puppeteer"]
 
-        # connect to the running browser via CDP
+        # connect to the running browser via CDP (patchright instead of playwright: it leaves fewer automation
+        # traces, e.g. headless profiles connected with playwright get flagged for inconsistent timing resolution)
         self.playwright = await async_playwright().start()
         self.browser = await self.playwright.chromium.connect_over_cdp(ws_endpoint)
         self.context = self.browser.contexts[0]
