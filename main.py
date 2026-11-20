@@ -16,6 +16,7 @@ from utils.logging.logging import setup_logging
 from utils.metrics import calculate_metrics
 from utils.proxy.proxy_manager import proxy_manager, is_proxy_related_error, handle_proxy_fallback
 from utils.report import generate_report
+from utils.real_ip import detect_real_ip
 from utils.screenshot import take_screenshot
 
 setup_logging()
@@ -252,6 +253,9 @@ async def run_benchmark_for_engine(
 
 async def run_all_benchmarks() -> None:
     """Run benchmarks for all configured engines"""
+
+    # the machine's real IP is replaced with a placeholder in results and screenshots
+    detect_real_ip()
 
     # validate proxy setup before starting
     if not settings.proxy.enabled:

@@ -3,6 +3,7 @@ import os
 
 from config.settings import settings
 from utils.dataclasses import BenchmarkResults
+from utils.real_ip import mask_real_ip
 
 
 def create_directory_structure(timestamp: str) -> tuple[str, str, str]:
@@ -89,6 +90,7 @@ def save_results(results: BenchmarkResults, result_path: str) -> str:
     all_results = existing_results + [results_dict]
 
     with open(results_file, "w") as f:
-        json.dump(all_results, f, indent=2)
+        # never store the machine's real IP (WebRTC leaks, no-proxy engines), only a placeholder
+        f.write(mask_real_ip(json.dumps(all_results, indent=2)))
 
     return results_file

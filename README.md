@@ -380,6 +380,8 @@ The benchmark generates reports in the `results/` directory:
   - `creepjs_scores.png` - Fingerprinting resistance analysis
   - `screenshots` - Screenshots of all tested targets
 
+Your machine's real IP is detected at startup and saved as `REAL_IP` in the results and on screenshots (page text is masked right before each screenshot), so reports can be shared safely. Text inside cross-origin iframes can't be masked.
+
 ## 🏗️ Architecture
 
 The codebase follows a modular architecture for extensibility:
