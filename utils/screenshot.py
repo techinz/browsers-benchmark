@@ -1,3 +1,4 @@
+import asyncio
 import logging
 import os
 
@@ -17,6 +18,6 @@ async def take_screenshot(engine: BrowserEngine, screenshots_path: str, target_n
 
     try:
         screenshot_path = os.path.join(screenshots_path, f"{target_name}.png")
-        await engine.screenshot(screenshot_path)
+        await asyncio.wait_for(engine.screenshot(screenshot_path), 60)
     except Exception as e:
         logger.warning(f'{engine.name} failed to take screenshot for {target_name}: {e}')

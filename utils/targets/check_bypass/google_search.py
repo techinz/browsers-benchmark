@@ -1,4 +1,5 @@
 from engines.base import BrowserEngine
+from utils.targets.check_bypass.page_state import wait_for_bypass
 
 
 async def check_google_search_bypass(engine: BrowserEngine) -> bool:
@@ -8,6 +9,7 @@ async def check_google_search_bypass(engine: BrowserEngine) -> bool:
     :param engine: BrowserEngine instance
     """
 
-    element_found, element_html = await engine.locator("div#search")
-
-    return element_found
+    return await wait_for_bypass(
+        engine,
+        success_selector='div#search'
+    )

@@ -1,17 +1,17 @@
-import asyncio
-
 from engines.base import BrowserEngine
+from utils.targets.check_bypass.page_state import wait_for_bypass
 
 
 async def check_perimeterx_bypass(engine: BrowserEngine) -> bool:
     """
-    Check if the PerimeterX (HUMAN Security) bypass is successful (Target.com)
+    Check if the PerimeterX (HUMAN Security) bypass is successful (Priceline)
 
     :param engine: BrowserEngine instance
     """
 
-    await asyncio.sleep(10)  # time to load
-
-    element_found, element_html = await engine.locator('iframe[id="px-captcha-modal"]')
-
-    return not element_found
+    return await wait_for_bypass(
+        engine,
+        success_selector='#__next',
+        block_selector='#px-captcha, #px-captcha-modal',
+        min_wait_s=10
+    )

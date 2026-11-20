@@ -1,4 +1,5 @@
 from engines.base import BrowserEngine
+from utils.targets.check_bypass.page_state import wait_for_bypass
 
 
 async def check_reddit_bypass(engine: BrowserEngine) -> bool:
@@ -8,8 +9,8 @@ async def check_reddit_bypass(engine: BrowserEngine) -> bool:
     :param engine: BrowserEngine instance
     """
 
-    element_found, element_html = await engine.locator(
-        'a[href^="https://support.reddithelp.com/hc/en-us/requests/new?ticket_form_id="]'
+    return await wait_for_bypass(
+        engine,
+        success_selector='shreddit-app',
+        block_selector='a[href^="https://support.reddithelp.com/hc/en-us/requests/new?ticket_form_id="]'
     )
-
-    return not element_found

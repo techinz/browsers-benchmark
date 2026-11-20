@@ -1,6 +1,6 @@
 import asyncio
-import json
 import logging
+import re
 
 from engines.base import BrowserEngine
 
@@ -19,10 +19,12 @@ async def extract_ipify_data(engine: BrowserEngine) -> dict:
     ip = '-'
 
     try:
-        element_found, element_html = await engine.locator('pre')
-        if element_found:
-            json_content = json.loads(element_html)
-            ip = json_content.get('ip', '-')
+        # read the ip from the raw html: firefox renders json in its own viewer (no <pre>), chrome wraps it in <pre>
+        page_content = await engine.get_page_content()
+        match = re.search(r'"ip"\s*:\s*"([0-9a-fA-F.:]+)"', page_content) or \
+            re.search(r'\b((?:\d{1,3}\.){3}\d{1,3})\b', page_content)
+        if match:
+            ip = match.group(1)
     except Exception as e:
         logger.error(f"Error getting Ipify data for engine {engine.name}: {e}")
 

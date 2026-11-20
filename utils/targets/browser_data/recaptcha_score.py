@@ -19,11 +19,12 @@ async def get_recaptcha_score_data(engine: BrowserEngine, tries: int = 5) -> dic
         for i in range(tries):
             await asyncio.sleep(5)
 
-            element_found, element_html = await engine.locator('div.row')
+            # google's reCAPTCHA v3 demo writes the backend verification json (incl. "score") into pre.response
+            element_found, element_html = await engine.locator('pre.response')
             if not element_found:
                 continue
 
-            score_match = re.search(r'Your score is:\s*([\d.]+)', element_html)
+            score_match = re.search(r'"score"\s*:\s*([\d.]+)', element_html)
             if not score_match:
                 continue
 

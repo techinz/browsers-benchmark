@@ -22,6 +22,30 @@ setup_logging()
 
 logger = logging.getLogger(__name__)
 
+# hard limit for a single target (navigation + checks + proxy fallbacks + screenshot), so a dead proxy can't hang the run
+TARGET_TIMEOUT_S = 600
+
+
+async def navigate_with_retry(engine: BrowserEngine, url: str, retries: int = 2) -> Dict[str, Any]:
+    """
+    Navigate to url, retrying when the navigation was aborted by a late redirect of the previous page
+    (e.g. a Cloudflare challenge that finishes after we already moved on)
+
+    :param engine: The browser engine to use
+    :param url: URL to navigate to
+    :param retries: How many times to retry an aborted navigation
+    """
+
+    aborted_markers = ("ns_binding_aborted", "err_aborted", "interrupted by another navigation")
+    for attempt in range(retries + 1):
+        try:
+            return await engine.navigate(url)
+        except Exception as e:
+            if attempt == retries or not any(m in str(e).lower() for m in aborted_markers):
+                raise
+            logger.info(f"{engine.name}: navigation to {url} was aborted ({e}), retrying...")
+            await asyncio.sleep(3)
+
 
 async def test_bypass_target(
         engine: BrowserEngine,
@@ -41,7 +65,7 @@ async def test_bypass_target(
     result = BypassTestResult(target=target["name"], url=target["url"])
 
     async def attempt_bypass_test():
-        navigation_result = await engine.navigate(target["url"])
+        navigation_result = await navigate_with_retry(engine, target["url"])
         result.performance.load_time_ms = int(navigation_result.get("load_time", 0) * 1000)
 
         await asyncio.sleep(settings.browser.page_stabilization_delay_s)  # wait for page to stabilize
@@ -96,7 +120,7 @@ async def extract_browser_data(
     result = BrowserDataResult(target=target["name"], url=target["url"])
 
     async def attempt_data_extraction():
-        await engine.navigate(target["url"])
+        await navigate_with_retry(engine, target["url"])
         await asyncio.sleep(settings.browser.page_stabilization_delay_s)  # ensure page is fully loaded
 
         extract_function = benchmark_targets_config.browser_data_targets.checkers.get(target["check_function"])
@@ -178,7 +202,13 @@ async def run_benchmark_for_engine(
 
         # test bypass targets
         for target in bypass_targets:
-            bypass_result = await test_bypass_target(engine, target, engine_screenshots_path)
+            try:
+                bypass_result = await asyncio.wait_for(
+                    test_bypass_target(engine, target, engine_screenshots_path), TARGET_TIMEOUT_S)
+            except asyncio.TimeoutError:
+                logger.warning(f"{engine.name} timed out on {target['name']} after {TARGET_TIMEOUT_S}s")
+                bypass_result = BypassTestResult(target=target["name"], url=target["url"],
+                                                 error=f"Target timed out after {TARGET_TIMEOUT_S}s")
             results.bypass_targets_results.append(bypass_result)
 
             if not bypass_result.error:
@@ -189,7 +219,13 @@ async def run_benchmark_for_engine(
 
         # extract browser data
         for target in browser_data_targets:
-            data_result = await extract_browser_data(engine, target, engine_screenshots_path)
+            try:
+                data_result = await asyncio.wait_for(
+                    extract_browser_data(engine, target, engine_screenshots_path), TARGET_TIMEOUT_S)
+            except asyncio.TimeoutError:
+                logger.warning(f"{engine.name} timed out on {target['name']} after {TARGET_TIMEOUT_S}s")
+                data_result = BrowserDataResult(target=target["name"], url=target["url"],
+                                                error=f"Target timed out after {TARGET_TIMEOUT_S}s")
             results.browser_data_targets_results.append(data_result)
             await asyncio.sleep(1)
     except Exception as e:
