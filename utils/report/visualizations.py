@@ -9,8 +9,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+from matplotlib.patches import Patch, Rectangle
 
 from config.report import report_settings
+from .data_processor import summarize_detection
 
 _mpath.Path.__deepcopy__ = lambda self, memo=None: copy.copy(self)
 matplotlib.use('Agg')
@@ -92,32 +94,65 @@ def generate_recaptcha_score_image(df: pd.DataFrame, output_dir: str) -> str:
     return image_path
 
 
-def generate_creepjs_image(df: pd.DataFrame, output_dir: str) -> str:
+def generate_detection_image(df: pd.DataFrame, output_dir: str) -> str:
     """
-    Generate image for CreepJS scores
+    Generate a verdict grid of the bot detection tests (engines x test sites)
 
-    :param df: DataFrame containing CreepJS scores
+    :param df: DataFrame containing bot detection test verdicts
     :param output_dir: Directory to save the generated image
     """
 
-    plt.figure(figsize=report_settings.visualization.figure_size_medium)
-    plt.title("CreepJS by Browser", fontsize=16)
+    image_path = os.path.join(output_dir, report_settings.filenames.detection_tests)
 
-    creepjs_df = df.dropna(subset=["creepjs_trust_score"]) if "creepjs_trust_score" in df.columns else df.iloc[0:0]
-
-    if creepjs_df.empty:
-        plt.text(0.5, 0.5, "No CreepJS data available",
+    if df.empty:
+        plt.figure(figsize=report_settings.visualization.figure_size_medium)
+        plt.text(0.5, 0.5, "No bot detection data available",
                  ha='center', va='center', fontsize=16)
-        image_path = os.path.join(output_dir, report_settings.filenames.creepjs_scores)
         plt.savefig(image_path, dpi=report_settings.visualization.dpi)
         plt.close('all')
         return image_path
 
-    _create_creepjs_plot(creepjs_df)
-    _add_creepjs_note()
+    summary = summarize_detection(df)
+    engines = summary.index.tolist()
+    targets = list(dict.fromkeys(df["target"]))
+    cells = df.set_index(["engine", "target"])
+    colors = report_settings.colors.verdict
 
-    image_path = os.path.join(output_dir, report_settings.filenames.creepjs_scores)
-    plt.tight_layout(rect=(0, 0.04, 1.0, 1.0))
+    _, ax = plt.subplots(figsize=(2.1 * len(targets) + 4, 0.5 * len(engines) + 2.5))
+
+    for i, engine in enumerate(engines):
+        for j, target in enumerate(targets):
+            if (engine, target) not in cells.index:
+                continue
+            cell = cells.loc[(engine, target)]
+            verdict = cell["verdict"] or "error"
+            label = cell["summary"] if cell["verdict"] else "error"
+            ax.add_patch(Rectangle((j, i), 1, 1, facecolor=colors[verdict], edgecolor="white", linewidth=2))
+            ax.text(j + 0.5, i + 0.5, label, ha="center", va="center", fontsize=8,
+                    color="white" if verdict in ("human", "bot") else "black")
+
+    ax.set_xlim(0, len(targets))
+    ax.set_ylim(len(engines), 0)
+    ax.xaxis.tick_top()
+    ax.set_xticks([j + 0.5 for j in range(len(targets))])
+    ax.set_xticklabels(targets, rotation=30, ha="left", fontsize=10)
+    ax.set_yticks([i + 0.5 for i in range(len(engines))])
+    ax.set_yticklabels([f"{engine}  ({summary.at[engine, 'detected']}/{summary.at[engine, 'total']})"
+                        for engine in engines], fontsize=10)
+    ax.tick_params(length=0)
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+
+    ax.set_title("Bot Detection Tests (detected by N of M finished tests)", fontsize=16, pad=40)
+    ax.legend(
+        handles=[Patch(color=colors["human"], label="Looks human"),
+                 Patch(color=colors["suspicious"], label="Suspicious"),
+                 Patch(color=colors["bot"], label="Detected as bot"),
+                 Patch(color=colors["error"], label="Didn't finish")],
+        loc="upper center", bbox_to_anchor=(0.5, 0), ncol=4, frameon=False
+    )
+
+    plt.tight_layout()
     plt.savefig(image_path, dpi=report_settings.visualization.dpi, bbox_inches="tight")
     plt.close('all')
 
@@ -297,47 +332,6 @@ def _create_recaptcha_plot(recaptcha_df: pd.DataFrame) -> None:
         plt.text(i, v + 0.02, f'{v:.2f}', ha='center', va='bottom', fontsize=9)
 
 
-def _create_creepjs_plot(creepjs_df: pd.DataFrame) -> None:
-    """
-    Create the CreepJS scores plot
-
-    :param creepjs_df: DataFrame containing CreepJS scores
-    """
-
-    creepjs_data = creepjs_df.groupby("engine")[["creepjs_trust_score", "creepjs_bot_score"]].mean().reset_index()
-    creepjs_data = creepjs_data.sort_values("creepjs_trust_score", ascending=False)
-
-    x = np.arange(len(creepjs_data))
-    width = 0.35
-
-    bar1 = plt.bar(x - width / 2, creepjs_data["creepjs_trust_score"], width,
-                   label="Trust Score (higher is better)", color=report_settings.colors.success)
-    bar2 = plt.bar(x + width / 2, creepjs_data["creepjs_bot_score"], width,
-                   label="Bot Score (lower is better)", color=report_settings.colors.failure)
-
-    ax = plt.gca()
-    ax.set_xticks(x)
-    ax.set_xticklabels(creepjs_data["engine"].tolist(), rotation=45, ha="right", fontsize=10)
-    plt.ylabel("Score (0-100%)", fontsize=12)
-    plt.ylim(0, 105)
-
-    # reference lines for good scores
-    plt.axhline(y=report_settings.thresholds.creepjs_good_trust_score, color='green', linestyle='--',
-                alpha=0.5, label="Good Trust Score")
-    plt.axhline(y=report_settings.thresholds.creepjs_good_bot_score, color='red', linestyle='--',
-                alpha=0.5, label="Good Bot Score")
-
-    plt.legend(loc="upper right", fontsize=9)
-    plt.grid(axis="y", **report_settings.colors.grid_style)
-
-    # Value annotations
-    for i, bars in enumerate(zip(bar1, bar2)):
-        for j, bar in enumerate(bars):
-            value = creepjs_data.iloc[i]["creepjs_trust_score"] if j == 0 else creepjs_data.iloc[i]["creepjs_bot_score"]
-            plt.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 2,
-                     f'{value}%', ha='center', va='bottom', fontsize=9)
-
-
 def _add_dashboard_note() -> None:
     """Add explanatory note to dashboard"""
 
@@ -355,12 +349,4 @@ def _add_recaptcha_note() -> None:
                 "The Score shows if Google considers you as HUMAN or BOT: 1.0 - human, 0.0 - bot\n"
                 "With score < 0.3 you'll get a slow reCAPTCHA 2, it would be hard to solve it.\n"
                 "with score >= 0.7 it will be much easier.",
-                ha='center', fontsize=10, style='italic')
-
-
-def _add_creepjs_note() -> None:
-    """Explanatory note for CreepJS plot"""
-
-    plt.figtext(0.5, 0.01,
-                "Higher trust score = better fingerprinting protection\nLower bot score = less bot-like behavior",
                 ha='center', fontsize=10, style='italic')

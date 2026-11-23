@@ -5,11 +5,15 @@ import pandas as pd
 
 from config.report import report_settings
 from config.settings import settings
+from .data_processor import summarize_detection
+
+VERDICT_ICONS = {"human": "✅", "suspicious": "⚠️", "bot": "❌"}
 
 
 def generate_markdown_summary(
         bypass_df: pd.DataFrame,
         browser_data_df: pd.DataFrame,
+        detection_df: pd.DataFrame,
         output_dir: str,
         image_paths: Dict[str, str]
 ) -> None:
@@ -18,16 +22,18 @@ def generate_markdown_summary(
 
     :param bypass_df: DataFrame containing bypass results
     :param browser_data_df: DataFrame containing browser data results
+    :param detection_df: DataFrame containing bot detection test verdicts
     :param output_dir: Directory to save the generated markdown file
     :param image_paths: Dictionary mapping visualization names to their file paths
     """
 
     with open(os.path.join(output_dir, report_settings.filenames.summary), "w", encoding="utf-8") as f:
         _write_report_header(f)
-        _write_bypass_section(f, bypass_df)
+        _write_bypass_section(f, bypass_df, detection_df)
+        _write_detection_section(f, detection_df)
         _write_resource_section(f, bypass_df)
         _write_recaptcha_section(f, browser_data_df)
-        _write_creepjs_section(f, browser_data_df)
+        _write_webrtc_section(f, browser_data_df)
         _write_ip_section(f, browser_data_df)
         _write_visualization_sections(f, image_paths)
 
@@ -43,12 +49,13 @@ def _write_report_header(f) -> None:
     f.write(f"*Generated on: {pd.Timestamp.now().strftime('%Y-%m-%d %H:%M')}*\n\n")
 
 
-def _write_bypass_section(f, bypass_df: pd.DataFrame) -> None:
+def _write_bypass_section(f, bypass_df: pd.DataFrame, detection_df: pd.DataFrame) -> None:
     """
-    Write the bypass rate section
+    Write the bypass rate section (with the number of bot detection tests that detected each engine)
 
     :param f: File object to write the section to
     :param bypass_df: DataFrame containing bypass results
+    :param detection_df: DataFrame containing bot detection test verdicts
     """
 
     f.write("## Overall Bypass Rate\n\n")
@@ -61,10 +68,52 @@ def _write_bypass_section(f, bypass_df: pd.DataFrame) -> None:
     bypass_by_engine.loc[:, "bypass_percent"] = bypass_by_engine["bypass"] * 100
     bypass_by_engine = bypass_by_engine.sort_values("bypass_percent", ascending=False)
 
-    f.write("| Engine | Bypass Rate (%) |\n")
-    f.write("|-----------------|----------------:|\n")
+    detection = summarize_detection(detection_df)
+    if detection.empty:
+        f.write("| Engine | Bypass Rate (%) |\n")
+        f.write("|-----------------|----------------:|\n")
+        for _, row in bypass_by_engine.iterrows():
+            f.write(f"| {row['engine']} | {row['bypass_percent']:.1f} |\n")
+        return
+
+    f.write("| Engine | Bypass Rate (%) | Detected by |\n")
+    f.write("|-----------------|----------------:|------------:|\n")
     for _, row in bypass_by_engine.iterrows():
-        f.write(f"| {row['engine']} | {row['bypass_percent']:.1f} |\n")
+        detected_by = (f"{detection.at[row['engine'], 'detected']}/{detection.at[row['engine'], 'total']}"
+                       if row["engine"] in detection.index else "-")
+        f.write(f"| {row['engine']} | {row['bypass_percent']:.1f} | {detected_by} |\n")
+
+
+def _write_detection_section(f, detection_df: pd.DataFrame) -> None:
+    """
+    Write the bot detection tests section: how each test site classified each engine
+
+    :param f: File object to write the section to
+    :param detection_df: DataFrame containing bot detection test verdicts
+    """
+
+    f.write("\n\n## Bot Detection Tests\n\n")
+
+    if detection_df.empty:
+        f.write("*No bot detection data available*\n\n")
+        return
+
+    f.write("✅ looks human · ⚠️ suspicious · ❌ detected as bot · ❔ test didn't finish (not counted in \"Detected by\")\n\n")
+
+    targets = list(dict.fromkeys(detection_df["target"]))
+    cells = detection_df.set_index(["engine", "target"])
+
+    f.write("| Engine | " + " | ".join(targets) + " | Detected by |\n")
+    f.write("|-----------------|" + "|".join(":---:" for _ in targets) + "|------------:|\n")
+    for engine, counts in summarize_detection(detection_df).iterrows():
+        row = []
+        for target in targets:
+            if (engine, target) not in cells.index:
+                row.append("-")
+                continue
+            cell = cells.loc[(engine, target)]
+            row.append(f"{VERDICT_ICONS[cell['verdict']]} {cell['summary']}" if cell["verdict"] else "❔ error")
+        f.write(f"| {engine} | " + " | ".join(row) + f" | {counts['detected']}/{counts['total']} |\n")
 
 
 def _write_resource_section(f, bypass_df: pd.DataFrame) -> None:
@@ -122,47 +171,28 @@ def _write_recaptcha_section(f, browser_data_df: pd.DataFrame) -> None:
     f.write('\n\n')
 
 
-def _write_creepjs_section(f, browser_data_df: pd.DataFrame) -> None:
+def _write_webrtc_section(f, browser_data_df: pd.DataFrame) -> None:
     """
-    Write the CreepJS section
+    Write the WebRTC IP section (IP seen by CreepJS through WebRTC, a leak if it's the real IP)
 
     :param f: File object to write the section to
-    :param browser_data_df: DataFrame containing browser data results with CreepJS scores
+    :param browser_data_df: DataFrame containing browser data results with WebRTC IPs
     """
 
-    f.write("## CreepJS Scores\n\n")
+    f.write("## WebRTC IP (CreepJS)\n\n")
 
-    if "creepjs_trust_score" not in browser_data_df.columns:
-        f.write("*No CreepJS data available*\n\n")
+    if "creepjs_webrtc_ip" not in browser_data_df.columns:
+        f.write("*No WebRTC data available*\n\n")
         return
 
-    # calculate the metrics
-    creepjs_numeric_data = browser_data_df.groupby("engine")[
-        ["creepjs_trust_score", "creepjs_bot_score"]].mean().reset_index()
+    webrtc_data = browser_data_df.groupby("engine")["creepjs_webrtc_ip"].agg(
+        lambda x: x[x.notna() & (x != "")].iloc[0] if (x.notna() & (x != "")).any() else "Not detected"
+    ).reset_index()
 
-    if creepjs_numeric_data.empty:
-        f.write("*No CreepJS data available*\n\n")
-        return
-
-    try:
-        creepjs_webrtc_ip_data = browser_data_df.groupby("engine")["creepjs_webrtc_ip"].agg(
-            lambda x: x.mode().iloc[0] if not x.isna().all() and len(x) > 0 else "Not detected"
-        ).reset_index()
-    except Exception:
-        creepjs_webrtc_ip_data = browser_data_df.groupby("engine")["creepjs_webrtc_ip"].first().reset_index()
-        creepjs_webrtc_ip_data["creepjs_webrtc_ip"] = creepjs_webrtc_ip_data["creepjs_webrtc_ip"].fillna("Not detected")
-
-    # merge data and sort
-    creepjs_data = pd.merge(creepjs_numeric_data, creepjs_webrtc_ip_data, on="engine")
-    creepjs_data = creepjs_data.sort_values("creepjs_trust_score", ascending=False)
-
-    f.write("| Engine | Trust Score (%) | Bot Score (%) | WebRTC IP |\n")
-    f.write("|-----------------|----------------:|--------------:|----------:|\n")
-    for _, row in creepjs_data.iterrows():
-        f.write(f"| {row['engine']} "
-                f"| {row['creepjs_trust_score']:.2f} "
-                f"| {row['creepjs_bot_score']:.2f} "
-                f"| {row['creepjs_webrtc_ip']} |\n")
+    f.write("| Engine | WebRTC IP |\n")
+    f.write("|-----------------|----------:|\n")
+    for _, row in webrtc_data.iterrows():
+        f.write(f"| {row['engine']} | {row['creepjs_webrtc_ip']} |\n")
 
     f.write('\n\n')
 
@@ -221,10 +251,10 @@ def _write_visualization_sections(f, image_paths: Dict[str, str]) -> None:
     else:
         f.write("*No reCAPTCHA image available*\n\n")
 
-    # creepJS visualization
-    f.write("## CreepJS Visualization\n\n")
-    if "creepjs_image" in image_paths and image_paths["creepjs_image"]:
+    # bot detection visualization
+    f.write("## Bot Detection Visualization\n\n")
+    if "detection_image" in image_paths and image_paths["detection_image"]:
         f.write(
-            f"![CreepJS Scores]({os.path.join(settings.paths.media_dir, os.path.basename(image_paths['creepjs_image']))})\n\n")
+            f"![Bot Detection Tests]({os.path.join(settings.paths.media_dir, os.path.basename(image_paths['detection_image']))})\n\n")
     else:
-        f.write("*No CreepJS image available*\n\n")
+        f.write("*No bot detection image available*\n\n")

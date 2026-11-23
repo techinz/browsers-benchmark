@@ -63,12 +63,20 @@ def save_results(results: BenchmarkResults, result_path: str) -> str:
                 "target": r.target,
                 "url": r.url,
                 "error": r.error,
-                "creepjs_trust_score": r.creepjs_trust_score,
-                "creepjs_bot_score": r.creepjs_bot_score,
                 "creepjs_webrtc_ip": r.creepjs_webrtc_ip,
                 "recaptcha_score": r.recaptcha_score,
                 "ip": r.ip
             } for r in results.browser_data_targets_results
+        ],
+        "detection_targets_results": [
+            {
+                "target": r.target,
+                "url": r.url,
+                "verdict": r.verdict,
+                "summary": r.summary,
+                "error": r.error,
+                "details": r.details
+            } for r in results.detection_targets_results
         ],
         "average_memory_mb": results.average_memory_mb,
         "average_cpu_percent": results.average_cpu_percent,

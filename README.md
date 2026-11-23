@@ -11,7 +11,8 @@ A toolkit for testing browser automation engines against modern web protection s
 Modern web applications use advanced bot detection like Cloudflare, DataDome, and Imperva to block automated access. This benchmark suite shows how different browser automation engines handle these defenses:
 - **Bypass Success Rate**: Effectiveness against major protection systems
 - **Performance Metrics**: Memory usage, CPU consumption, and page load times
-- **Fingerprinting Resistance**: reCAPTCHA scores and CreepJS trust ratings
+- **Bot Detection Tests**: How 9 public bot/fingerprint test sites classify each engine (human, suspicious or bot)
+- **Fingerprinting Resistance**: reCAPTCHA v3 scores
 - **Network Analysis**: IP detection (proxy validation) and WebRTC leak testing
 
 ## 🚀 Key Features
@@ -26,6 +27,20 @@ Modern web applications use advanced bot detection like Cloudflare, DataDome, an
 - **Kasada**
 - **Reddit**
 - <i>More systems coming soon</i>
+
+### Bot Detection Tests
+Each site's own verdict is used, mapped to ✅ looks human, ⚠️ suspicious or ❌ detected as bot:
+- **CleanTalk** - Human Score (80+ human, 50-79 needs review, below 50 bot)
+- **Scrapfly** - automation signals (any DETECTED - bot, any SUSPICIOUS - suspicious)
+- **BrowserScan** - bot detection checks (any Abnormal - bot)
+- **APIVoid** - risk score and level (also weighs the IP reputation)
+- **Pixelscan** - "You're Definitely a Human" or "Bot Behavior Detected"
+- **Sannysoft** - passed/warn/failed checks
+- **CreepJS** - headless and stealth detection (any non-zero percentage - bot)
+- **DeviceAndBrowserInfo** - isBot and the individual detection signals
+- **Fingerprint-Scan** - bot score categories (any HIGH - bot, any MEDIUM - suspicious)
+
+Pages are only read (and buttons clicked) through JavaScript, the same way for every engine, so there is no real mouse movement - sites that score interaction see none.
 
 ### Browser Engine Support
 - <a href="https://www.adspower.com">**AdsPower**</a> - <b>(Proprietary)</b> Anti-detect browser with per-profile fingerprinting. Requires AdsPower desktop app running locally and an API key.
@@ -378,7 +393,7 @@ The benchmark generates reports in the `results/` directory:
 - **`media/`** - Generated visualizations and screenshots
   - `bypass_dashboard.png` - Multi-metric dashboard
   - `recaptcha_scores.png` - reCAPTCHA performance chart
-  - `creepjs_scores.png` - Fingerprinting resistance analysis
+  - `detection_tests.png` - Bot detection test verdicts for every engine
   - `screenshots` - Screenshots of all tested targets
 
 Your machine's real IP is detected at startup and saved as `REAL_IP` in the results and on screenshots (page text is masked right before each screenshot), so reports can be shared safely. Text inside cross-origin iframes can't be masked.
@@ -466,6 +481,24 @@ The codebase follows a modular architecture for extensibility:
                 "class": CustomEngine,
                 "params": {"headless": True, "name": "custom_engine", "browser_type": "chromium"}
             }
+### Adding New Bot Detection Tests
+1. Create a check function in `utils/targets/detection` that reads the site's own verdict and returns it with `detection()`:
+    ```python
+    from engines.base import BrowserEngine
+    from utils.targets.detection.page import BOT, HUMAN, SUSPICIOUS, detection, wait_for
+
+    RESULT_SCRIPT = "const el = document.querySelector('#score'); return JSON.stringify(el ? parseInt(el.textContent) : null);"
+
+    async def check_custom_detection(engine: BrowserEngine) -> dict:
+        score = await wait_for(engine, RESULT_SCRIPT, timeout_s=45)
+        if score is None:
+            raise Exception("Result not found")
+
+        verdict = HUMAN if score < 30 else SUSPICIOUS if score < 70 else BOT
+        return detection(verdict, f"bot score {score}", score=score)
+    ```
+2. Add a `Target` and the function to `DetectionTargetsSettings` in `config/benchmark_targets.py`.
+
    ]
     ```
 

@@ -23,6 +23,10 @@ class ColorSettings(BaseModel):
 
     success: str = "forestgreen"
     failure: str = "firebrick"
+    human: str = "#1a9850"
+    suspicious: str = "#fdd75f"
+    bot: str = "#d73027"
+    error: str = "#bdbdbd"
     grid_linestyle: str = "--"
     grid_alpha: float = 0.3
 
@@ -33,6 +37,17 @@ class ColorSettings(BaseModel):
         return {
             "success": self.success,
             "failure": self.failure,
+        }
+
+    @property
+    def verdict(self) -> Dict[str, str]:
+        """Return bot detection verdict colors as dictionary"""
+
+        return {
+            "human": self.human,
+            "suspicious": self.suspicious,
+            "bot": self.bot,
+            "error": self.error,
         }
 
     @property
@@ -52,8 +67,6 @@ class ScoreThresholds(BaseModel):
 
     highlight_good_score: float = 0.8
     highlight_bad_score: float = 0.2
-    creepjs_good_trust_score: float = 80.0
-    creepjs_good_bot_score: float = 20.0
 
     model_config = {"extra": "ignore"}
 
@@ -63,7 +76,7 @@ class FilenameSettings(BaseModel):
 
     bypass_dashboard: str = "bypass_dashboard.png"
     recaptcha_scores: str = "recaptcha_scores.png"
-    creepjs_scores: str = "creepjs_scores.png"
+    detection_tests: str = "detection_tests.png"
     summary: str = "summary.md"
 
     model_config = {"extra": "ignore"}
@@ -88,13 +101,11 @@ class ReportSettings(BaseSettings):
     # score thresholds
     HIGHLIGHT_GOOD_SCORE: float = 0.8
     HIGHLIGHT_BAD_SCORE: float = 0.2
-    CREEPJS_GOOD_TRUST_SCORE: float = 80.0
-    CREEPJS_GOOD_BOT_SCORE: float = 20.0
 
     # output filenames
     BYPASS_DASHBOARD_FILENAME: str = "bypass_dashboard.png"
     RECAPTCHA_SCORES_FILENAME: str = "recaptcha_scores.png"
-    CREEPJS_SCORES_FILENAME: str = "creepjs_scores.png"
+    DETECTION_TESTS_FILENAME: str = "detection_tests.png"
     SUMMARY_FILENAME: str = "summary.md"
 
     @property
@@ -124,9 +135,7 @@ class ReportSettings(BaseSettings):
 
         return ScoreThresholds(
             highlight_good_score=self.HIGHLIGHT_GOOD_SCORE,
-            highlight_bad_score=self.HIGHLIGHT_BAD_SCORE,
-            creepjs_good_trust_score=self.CREEPJS_GOOD_TRUST_SCORE,
-            creepjs_good_bot_score=self.CREEPJS_GOOD_BOT_SCORE
+            highlight_bad_score=self.HIGHLIGHT_BAD_SCORE
         )
 
     @property
@@ -136,7 +145,7 @@ class ReportSettings(BaseSettings):
         return FilenameSettings(
             bypass_dashboard=self.BYPASS_DASHBOARD_FILENAME,
             recaptcha_scores=self.RECAPTCHA_SCORES_FILENAME,
-            creepjs_scores=self.CREEPJS_SCORES_FILENAME,
+            detection_tests=self.DETECTION_TESTS_FILENAME,
             summary=self.SUMMARY_FILENAME
         )
 

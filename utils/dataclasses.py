@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import List, Optional
+from typing import Any, Dict, List, Optional
 
 
 @dataclass
@@ -30,8 +30,6 @@ class BrowserDataResult:
     url: str
     error: Optional[str] = None
     # creepJS data
-    creepjs_trust_score: Optional[float] = None
-    creepjs_bot_score: Optional[float] = None
     creepjs_webrtc_ip: Optional[str] = None
     # recaptcha data
     recaptcha_score: Optional[float] = None
@@ -40,13 +38,26 @@ class BrowserDataResult:
 
 
 @dataclass
+class DetectionTestResult:
+    """Result of a bot detection test (how the site classified the browser)"""
+
+    target: str
+    url: str
+    verdict: Optional[str] = None
+    summary: Optional[str] = None
+    details: Dict[str, Any] = field(default_factory=dict)
+    error: Optional[str] = None
+
+
+@dataclass
 class BenchmarkResults:
     """Complete benchmark results for an engine"""
-    
+
     engine: str
     timestamp: str
     bypass_targets_results: List[BypassTestResult] = field(default_factory=list)
     browser_data_targets_results: List[BrowserDataResult] = field(default_factory=list)
+    detection_targets_results: List[DetectionTestResult] = field(default_factory=list)
     average_memory_mb: int = 0
     average_cpu_percent: float = 0.0
     bypass_rate: float = 0.0

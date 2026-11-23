@@ -10,7 +10,7 @@ from config.benchmark_targets import benchmark_targets_config
 from config.engines import engines_config
 from config.settings import settings
 from engines.base import BrowserEngine
-from utils.dataclasses import BypassTestResult, BrowserDataResult, BenchmarkResults
+from utils.dataclasses import BypassTestResult, BrowserDataResult, BenchmarkResults, DetectionTestResult
 from utils.io import create_directory_structure, save_results
 from utils.logging.logging import setup_logging
 from utils.metrics import calculate_metrics
@@ -159,11 +159,63 @@ async def extract_browser_data(
     return result
 
 
+async def run_detection_test(
+        engine: BrowserEngine,
+        target: Dict[str, Any],
+        screenshots_path: str
+) -> DetectionTestResult:
+    """
+    Run a bot detection test site and record how it classified the browser
+
+    :param engine: The browser engine to use
+    :param target: The detection target configuration
+    :param screenshots_path: Path to save screenshots
+    """
+
+    logger.info(f"Running {target['name']} bot detection test using {engine.name}...")
+
+    result = DetectionTestResult(target=target["name"], url=target["url"])
+
+    async def attempt_detection_test():
+        await navigate_with_retry(engine, target["url"])
+        await asyncio.sleep(settings.browser.page_stabilization_delay_s)
+
+        check_function = benchmark_targets_config.detection_targets.checkers.get(target["check_function"])
+        if check_function is None:
+            raise ValueError(f"Check function '{target['check_function']}' not found")
+
+        outcome = await check_function(engine)
+        result.verdict = outcome["verdict"]
+        result.summary = outcome["summary"]
+        result.details = outcome["details"]
+        return result
+
+    try:
+        result = await attempt_detection_test()
+    except Exception as e:
+        if is_proxy_related_error(e) and settings.proxy.enabled:
+            fallback_result, error_msg = await handle_proxy_fallback(
+                engine, target['name'], e, attempt_detection_test
+            )
+            if fallback_result:
+                result = fallback_result
+            else:
+                result.error = error_msg
+        else:
+            result.error = str(e)
+            logger.warning(f'{engine.name} failed bot detection test {target["name"]}: {e}')
+
+    await take_screenshot(engine, screenshots_path, target["name"])
+
+    return result
+
+
 async def run_benchmark_for_engine(
         engine_cls,
         engine_params: Dict[str, Any],
         bypass_targets: List[Dict[str, Any]],
         browser_data_targets: List[Dict[str, Any]],
+        detection_targets: List[Dict[str, Any]],
         screenshots_path: str,
         proxy: Optional[Dict[str, str]] = None
 ) -> BenchmarkResults | None:
@@ -174,6 +226,7 @@ async def run_benchmark_for_engine(
     :param engine_params: Parameters for the engine
     :param bypass_targets: List of bypass targets to test
     :param browser_data_targets: List of browser data targets to test
+    :param detection_targets: List of bot detection test sites to run
     :param screenshots_path: Path for saving screenshots
     :param proxy: Optional proxy configuration to use for the engine
     """
@@ -228,6 +281,18 @@ async def run_benchmark_for_engine(
                 data_result = BrowserDataResult(target=target["name"], url=target["url"],
                                                 error=f"Target timed out after {TARGET_TIMEOUT_S}s")
             results.browser_data_targets_results.append(data_result)
+            await asyncio.sleep(1)
+
+        # run bot detection tests
+        for target in detection_targets:
+            try:
+                detection_result = await asyncio.wait_for(
+                    run_detection_test(engine, target, engine_screenshots_path), TARGET_TIMEOUT_S)
+            except asyncio.TimeoutError:
+                logger.warning(f"{engine.name} timed out on {target['name']} after {TARGET_TIMEOUT_S}s")
+                detection_result = DetectionTestResult(target=target["name"], url=target["url"],
+                                                       error=f"Target timed out after {TARGET_TIMEOUT_S}s")
+            results.detection_targets_results.append(detection_result)
             await asyncio.sleep(1)
     except Exception as e:
         logger.error(f"Critical error during benchmark for {engine.name}: {e}")
@@ -329,6 +394,8 @@ async def run_all_benchmarks() -> None:
                     bypass_targets=[target.model_dump() for target in benchmark_targets_config.bypass_targets.targets],
                     browser_data_targets=[target.model_dump() for target in
                                           benchmark_targets_config.browser_data_targets.targets],
+                    detection_targets=[target.model_dump() for target in
+                                       benchmark_targets_config.detection_targets.targets],
                     screenshots_path=screenshots_path,
                     proxy=proxy,
                 )
@@ -356,6 +423,9 @@ async def run_all_benchmarks() -> None:
             logger.info(f"\n===== BENCHMARK FOR {engine_name} SUMMARY =====")
             logger.info(f"{results.engine}:")
             logger.info(f"\tBypass rate: {results.bypass_rate * 100:.1f}%")
+            if results.detection_targets_results:
+                detected = sum(1 for r in results.detection_targets_results if r.verdict == "bot")
+                logger.info(f"\tDetected by: {detected}/{len(results.detection_targets_results)} bot detection tests")
             logger.info(f"\tAverage memory: {results.average_memory_mb} MB")
             logger.info(f"\tAverage CPU: {results.average_cpu_percent:.1f}%")
             if results.error:

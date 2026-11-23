@@ -15,6 +15,15 @@ from utils.targets.check_bypass.kasada_protected import check_kasada_bypass
 from utils.targets.check_bypass.perimeterx_protected import check_perimeterx_bypass
 from utils.targets.check_bypass.reddit import check_reddit_bypass
 from utils.targets.check_bypass.ticketmaster import check_ticketmaster_bypass
+from utils.targets.detection.apivoid import check_apivoid
+from utils.targets.detection.browserscan import check_browserscan
+from utils.targets.detection.cleantalk import check_cleantalk
+from utils.targets.detection.creepjs import check_creepjs
+from utils.targets.detection.deviceandbrowserinfo import check_deviceandbrowserinfo
+from utils.targets.detection.fingerprint_scan import check_fingerprint_scan
+from utils.targets.detection.pixelscan import check_pixelscan
+from utils.targets.detection.sannysoft import check_sannysoft
+from utils.targets.detection.scrapfly import check_scrapfly
 
 
 class Target(BaseModel):
@@ -151,11 +160,91 @@ class BrowserDataTargetsSettings(BaseModel):
     model_config = {"extra": "ignore"}
 
 
+class DetectionTargetsSettings(BaseModel):
+    """Configuration for bot detection test sites (each one classifies the browser as human, suspicious or bot)"""
+
+    targets: List[Target] = Field(
+        default_factory=lambda: [
+            Target(
+                name="cleantalk",
+                url="https://cleantalk.org/am-i-a-bot",
+                check_function="check_cleantalk",
+                description="CleanTalk Human Score"
+            ),
+            Target(
+                name="scrapfly",
+                url="https://scrapfly.io/web-scraping-tools/automation-detector",
+                check_function="check_scrapfly",
+                description="Scrapfly automation detector"
+            ),
+            Target(
+                name="browserscan",
+                url="https://www.browserscan.net/bot-detection",
+                check_function="check_browserscan",
+                description="BrowserScan bot detection"
+            ),
+            Target(
+                name="apivoid",
+                url="https://www.apivoid.com/tools/bot-detection-test/",
+                check_function="check_apivoid",
+                description="APIVoid bot detection risk score"
+            ),
+            Target(
+                name="pixelscan",
+                url="https://pixelscan.net/bot-check",
+                check_function="check_pixelscan",
+                description="Pixelscan bot check"
+            ),
+            Target(
+                name="sannysoft",
+                url="https://bot.sannysoft.com/",
+                check_function="check_sannysoft",
+                description="Sannysoft bot test"
+            ),
+            Target(
+                name="creepjs_headless",
+                url="https://abrahamjuliot.github.io/creepjs/",
+                check_function="check_creepjs",
+                description="CreepJS headless and stealth detection"
+            ),
+            Target(
+                name="deviceandbrowserinfo",
+                url="https://deviceandbrowserinfo.com/are_you_a_bot",
+                check_function="check_deviceandbrowserinfo",
+                description="DeviceAndBrowserInfo bot detection"
+            ),
+            Target(
+                name="fingerprint_scan",
+                url="https://fingerprint-scan.com/",
+                check_function="check_fingerprint_scan",
+                description="Fingerprint-Scan bot score"
+            ),
+        ]
+    )
+
+    checkers: Dict[str, Callable] = Field(
+        default_factory=lambda: {
+            "check_cleantalk": check_cleantalk,
+            "check_scrapfly": check_scrapfly,
+            "check_browserscan": check_browserscan,
+            "check_apivoid": check_apivoid,
+            "check_pixelscan": check_pixelscan,
+            "check_sannysoft": check_sannysoft,
+            "check_creepjs": check_creepjs,
+            "check_deviceandbrowserinfo": check_deviceandbrowserinfo,
+            "check_fingerprint_scan": check_fingerprint_scan,
+        }
+    )
+
+    model_config = {"extra": "ignore"}
+
+
 class BenchmarkTargetsSettings(BaseModel):
     """Benchmark targets configuration"""
 
     bypass_targets: BypassTargetsSettings = Field(default_factory=BypassTargetsSettings)
     browser_data_targets: BrowserDataTargetsSettings = Field(default_factory=BrowserDataTargetsSettings)
+    detection_targets: DetectionTargetsSettings = Field(default_factory=DetectionTargetsSettings)
 
     model_config = {"extra": "ignore"}
 

@@ -4,12 +4,12 @@ import os
 from typing import Dict, Optional
 
 from config.settings import settings
-from .data_processor import process_bypass_data, process_browser_data
+from .data_processor import process_bypass_data, process_browser_data, process_detection_data
 from .markdown_generator import generate_markdown_summary
 from .visualizations import (
     generate_bypass_dashboard_image,
     generate_recaptcha_score_image,
-    generate_creepjs_image
+    generate_detection_image
 )
 
 logger = logging.getLogger(__name__)
@@ -37,14 +37,16 @@ def generate_report(results_file: str, output_dir: Optional[str] = None) -> None
         # process data into dataframes
         bypass_df = process_bypass_data(results)
         browser_data_df = process_browser_data(results)
+        detection_df = process_detection_data(results)
 
-        logger.info(f"Processed {len(bypass_df)} bypass results and {len(browser_data_df)} browser data points")
+        logger.info(f"Processed {len(bypass_df)} bypass results, {len(browser_data_df)} browser data points "
+                    f"and {len(detection_df)} bot detection verdicts")
 
         # generate visualization images
-        image_paths = _generate_all_visualizations(bypass_df, browser_data_df, media_output_dir)
+        image_paths = _generate_all_visualizations(bypass_df, browser_data_df, detection_df, media_output_dir)
 
         # generate markdown summary
-        generate_markdown_summary(bypass_df, browser_data_df, output_dir, image_paths)
+        generate_markdown_summary(bypass_df, browser_data_df, detection_df, output_dir, image_paths)
 
         logger.info(f"Report generated successfully in {output_dir}")
 
@@ -65,12 +67,13 @@ def _load_results(results_file: str) -> list:
         return json.load(f)
 
 
-def _generate_all_visualizations(bypass_df, browser_data_df, media_output_dir: str) -> Dict[str, str]:
+def _generate_all_visualizations(bypass_df, browser_data_df, detection_df, media_output_dir: str) -> Dict[str, str]:
     """
     Generate all visualization images and return their paths
 
     :param bypass_df: DataFrame containing bypass results
     :param browser_data_df: DataFrame containing browser data results
+    :param detection_df: DataFrame containing bot detection test verdicts
     :param media_output_dir: Directory to save the generated images
     :return: Dictionary mapping visualization names to their file paths
     """
@@ -78,5 +81,5 @@ def _generate_all_visualizations(bypass_df, browser_data_df, media_output_dir: s
     return {
         "bypass_dashboard_image": generate_bypass_dashboard_image(bypass_df, media_output_dir),
         "recaptcha_score_image": generate_recaptcha_score_image(browser_data_df, media_output_dir),
-        "creepjs_image": generate_creepjs_image(browser_data_df, media_output_dir),
+        "detection_image": generate_detection_image(detection_df, media_output_dir),
     }

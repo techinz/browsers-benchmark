@@ -62,3 +62,47 @@ def process_browser_data(results: List[Dict[str, Any]]) -> pd.DataFrame:
             browser_data_rows.append(row)
 
     return pd.DataFrame(browser_data_rows)
+
+
+def process_detection_data(results: List[Dict[str, Any]]) -> pd.DataFrame:
+    """
+    Extract bot detection test verdicts from benchmark results
+
+    :param results: List of benchmark results for each engine
+    :return: DataFrame with one row per engine and detection test
+    """
+
+    detection_rows = []
+
+    for engine_result in results:
+        for test in engine_result.get("detection_targets_results", []):
+            detection_rows.append({
+                "engine": engine_result["engine"],
+                "target": test["target"],
+                "verdict": test.get("verdict") if not test.get("error") else None,
+                "summary": test.get("summary"),
+                "error": test.get("error"),
+            })
+
+    return pd.DataFrame(detection_rows, columns=["engine", "target", "verdict", "summary", "error"])
+
+
+def summarize_detection(detection_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Count bot detection verdicts per engine
+
+    :param detection_df: DataFrame from process_detection_data
+    :return: DataFrame indexed by engine with detected/suspicious/total (finished tests)/errors columns,
+        best engines first
+    """
+
+    if detection_df.empty:
+        return pd.DataFrame(columns=["detected", "suspicious", "total", "errors"])
+
+    summary = detection_df.groupby("engine").agg(
+        detected=("verdict", lambda v: int((v == "bot").sum())),
+        suspicious=("verdict", lambda v: int((v == "suspicious").sum())),
+        total=("verdict", lambda v: int(v.notna().sum())),
+        errors=("verdict", lambda v: int(v.isna().sum())),
+    )
+    return summary.sort_index().sort_values(["detected", "suspicious", "errors"], kind="stable")
