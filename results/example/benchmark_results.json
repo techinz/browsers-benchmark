@@ -127,6 +127,7 @@
         "verdict": "bot",
         "summary": "score 1",
         "error": null,
+        "risk": 99,
         "details": {
           "score": 1,
           "label": "Bot-like",
@@ -147,6 +148,7 @@
         "verdict": "bot",
         "summary": "2 detected",
         "error": null,
+        "risk": 100,
         "details": {
           "label": "Automated Browser Detected",
           "detected": [
@@ -167,6 +169,7 @@
         "verdict": "bot",
         "summary": "robot, WebDriver",
         "error": null,
+        "risk": 100,
         "details": {
           "overall": "Robot",
           "abnormal": [
@@ -182,6 +185,7 @@
         "verdict": "bot",
         "summary": "blocked (403)",
         "error": null,
+        "risk": 100,
         "details": {
           "blocked": true
         }
@@ -192,6 +196,7 @@
         "verdict": "bot",
         "summary": "6 not clear",
         "error": null,
+        "risk": 100,
         "details": {
           "state": "error",
           "not_clear": [
@@ -211,6 +216,7 @@
         "verdict": "bot",
         "summary": "12 failed",
         "error": null,
+        "risk": 100,
         "details": {
           "failed": [
             "User Agent (Old)",
@@ -238,6 +244,7 @@
         "verdict": "bot",
         "summary": "headless 100%, stealth 0%",
         "error": null,
+        "risk": 100,
         "details": {
           "like_headless": 94,
           "headless": 100,
@@ -250,6 +257,7 @@
         "verdict": "bot",
         "summary": "bot, 6 signals",
         "error": null,
+        "risk": 100,
         "details": {
           "is_bot": true,
           "signals": [
@@ -268,6 +276,7 @@
         "verdict": "bot",
         "summary": "bot score 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "categories": {
@@ -411,6 +420,7 @@
         "verdict": "suspicious",
         "summary": "score 50",
         "error": null,
+        "risk": 50,
         "details": {
           "score": 50,
           "label": "Needs Review",
@@ -428,6 +438,7 @@
         "verdict": "bot",
         "summary": "1 detected",
         "error": null,
+        "risk": 100,
         "details": {
           "label": "Automated Browser Detected",
           "detected": [
@@ -445,6 +456,7 @@
         "verdict": "bot",
         "summary": "robot, WebDriver",
         "error": null,
+        "risk": 100,
         "details": {
           "overall": "Robot",
           "abnormal": [
@@ -460,6 +472,7 @@
         "verdict": "bot",
         "summary": "risk 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "label": "High Risk | Likely Bot",
@@ -480,6 +493,7 @@
         "verdict": "bot",
         "summary": "2 not clear",
         "error": null,
+        "risk": 100,
         "details": {
           "state": "error",
           "not_clear": [
@@ -495,6 +509,7 @@
         "verdict": "bot",
         "summary": "2 failed",
         "error": null,
+        "risk": 100,
         "details": {
           "failed": [
             "WebDriver (New)",
@@ -510,6 +525,7 @@
         "verdict": "bot",
         "summary": "headless 33%, stealth 0%",
         "error": null,
+        "risk": 33,
         "details": {
           "like_headless": 50,
           "headless": 33,
@@ -522,6 +538,7 @@
         "verdict": "bot",
         "summary": "bot, 6 signals",
         "error": null,
+        "risk": 100,
         "details": {
           "is_bot": true,
           "signals": [
@@ -540,6 +557,7 @@
         "verdict": "bot",
         "summary": "bot score 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "categories": {
@@ -683,6 +701,7 @@
         "verdict": "bot",
         "summary": "score 41",
         "error": null,
+        "risk": 59,
         "details": {
           "score": 41,
           "label": "Bot-like",
@@ -701,6 +720,7 @@
         "verdict": "bot",
         "summary": "1 detected",
         "error": null,
+        "risk": 100,
         "details": {
           "label": "Automated Browser Detected",
           "detected": [
@@ -719,6 +739,7 @@
         "verdict": "bot",
         "summary": "robot, WebDriver",
         "error": null,
+        "risk": 100,
         "details": {
           "overall": "Robot",
           "abnormal": [
@@ -734,6 +755,7 @@
         "verdict": "bot",
         "summary": "risk 93",
         "error": null,
+        "risk": 93,
         "details": {
           "score": 93,
           "label": "High Risk | Likely Bot",
@@ -754,6 +776,7 @@
         "verdict": "bot",
         "summary": "2 not clear",
         "error": null,
+        "risk": 100,
         "details": {
           "state": "error",
           "not_clear": [
@@ -769,6 +792,7 @@
         "verdict": "bot",
         "summary": "3 failed",
         "error": null,
+        "risk": 100,
         "details": {
           "failed": [
             "WebDriver (New)",
@@ -785,6 +809,7 @@
         "verdict": "bot",
         "summary": "headless 33%, stealth 0%",
         "error": null,
+        "risk": 33,
         "details": {
           "like_headless": 19,
           "headless": 33,
@@ -797,6 +822,7 @@
         "verdict": "bot",
         "summary": "bot, 2 signals",
         "error": null,
+        "risk": 100,
         "details": {
           "is_bot": true,
           "signals": [
@@ -811,6 +837,7 @@
         "verdict": "bot",
         "summary": "bot score 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "categories": {
@@ -954,6 +981,7 @@
         "verdict": "bot",
         "summary": "score 41",
         "error": null,
+        "risk": 59,
         "details": {
           "score": 41,
           "label": "Bot-like",
@@ -972,6 +1000,7 @@
         "verdict": "bot",
         "summary": "1 detected",
         "error": null,
+        "risk": 100,
         "details": {
           "label": "Automated Browser Detected",
           "detected": [
@@ -990,6 +1019,7 @@
         "verdict": "bot",
         "summary": "robot, WebDriver",
         "error": null,
+        "risk": 100,
         "details": {
           "overall": "Robot",
           "abnormal": [
@@ -1005,6 +1035,7 @@
         "verdict": "bot",
         "summary": "risk 93",
         "error": null,
+        "risk": 93,
         "details": {
           "score": 93,
           "label": "High Risk | Likely Bot",
@@ -1025,6 +1056,7 @@
         "verdict": "bot",
         "summary": "2 not clear",
         "error": null,
+        "risk": 100,
         "details": {
           "state": "error",
           "not_clear": [
@@ -1040,6 +1072,7 @@
         "verdict": "bot",
         "summary": "3 failed",
         "error": null,
+        "risk": 100,
         "details": {
           "failed": [
             "WebDriver (New)",
@@ -1056,6 +1089,7 @@
         "verdict": "bot",
         "summary": "headless 33%, stealth 0%",
         "error": null,
+        "risk": 33,
         "details": {
           "like_headless": 19,
           "headless": 33,
@@ -1068,6 +1102,7 @@
         "verdict": "bot",
         "summary": "bot, 2 signals",
         "error": null,
+        "risk": 100,
         "details": {
           "is_bot": true,
           "signals": [
@@ -1082,6 +1117,7 @@
         "verdict": "bot",
         "summary": "bot score 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "categories": {
@@ -1225,6 +1261,7 @@
         "verdict": "human",
         "summary": "score 100",
         "error": null,
+        "risk": 0,
         "details": {
           "score": 100,
           "label": "Looks Human",
@@ -1239,6 +1276,7 @@
         "verdict": "human",
         "summary": "14/14 safe",
         "error": null,
+        "risk": 0,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -1252,6 +1290,7 @@
         "verdict": "human",
         "summary": "17/17 normal",
         "error": null,
+        "risk": 0,
         "details": {
           "overall": "Normal",
           "abnormal": [],
@@ -1265,6 +1304,7 @@
         "verdict": "suspicious",
         "summary": "risk 50",
         "error": null,
+        "risk": 50,
         "details": {
           "score": 50,
           "label": "Moderate Risk",
@@ -1285,6 +1325,7 @@
         "verdict": "human",
         "summary": "69/69 clear",
         "error": null,
+        "risk": 0,
         "details": {
           "state": "success",
           "not_clear": [],
@@ -1297,6 +1338,7 @@
         "verdict": "suspicious",
         "summary": "1 warn",
         "error": null,
+        "risk": 50,
         "details": {
           "failed": [],
           "warn": [
@@ -1311,6 +1353,7 @@
         "verdict": "human",
         "summary": "headless 0%, stealth 0%",
         "error": null,
+        "risk": 0,
         "details": {
           "like_headless": 6,
           "headless": 0,
@@ -1323,6 +1366,7 @@
         "verdict": "human",
         "summary": "human",
         "error": null,
+        "risk": 0,
         "details": {
           "is_bot": false,
           "signals": []
@@ -1334,6 +1378,7 @@
         "verdict": "suspicious",
         "summary": "bot score 57",
         "error": null,
+        "risk": 57,
         "details": {
           "score": 57,
           "categories": {
@@ -1477,6 +1522,7 @@
         "verdict": "human",
         "summary": "score 100",
         "error": null,
+        "risk": 0,
         "details": {
           "score": 100,
           "label": "Looks Human",
@@ -1491,6 +1537,7 @@
         "verdict": "human",
         "summary": "14/14 safe",
         "error": null,
+        "risk": 0,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -1504,6 +1551,7 @@
         "verdict": "human",
         "summary": "17/17 normal",
         "error": null,
+        "risk": 0,
         "details": {
           "overall": "Normal",
           "abnormal": [],
@@ -1517,6 +1565,7 @@
         "verdict": "suspicious",
         "summary": "risk 40",
         "error": null,
+        "risk": 40,
         "details": {
           "score": 40,
           "label": "Moderate Risk",
@@ -1537,6 +1586,7 @@
         "verdict": "human",
         "summary": "69/69 clear",
         "error": null,
+        "risk": 0,
         "details": {
           "state": "success",
           "not_clear": [],
@@ -1549,6 +1599,7 @@
         "verdict": "suspicious",
         "summary": "1 warn",
         "error": null,
+        "risk": 50,
         "details": {
           "failed": [],
           "warn": [
@@ -1563,6 +1614,7 @@
         "verdict": "human",
         "summary": "headless 0%, stealth 0%",
         "error": null,
+        "risk": 0,
         "details": {
           "like_headless": 6,
           "headless": 0,
@@ -1575,6 +1627,7 @@
         "verdict": "human",
         "summary": "human",
         "error": null,
+        "risk": 0,
         "details": {
           "is_bot": false,
           "signals": []
@@ -1586,6 +1639,7 @@
         "verdict": "bot",
         "summary": "bot score 92",
         "error": null,
+        "risk": 92,
         "details": {
           "score": 92,
           "categories": {
@@ -1729,6 +1783,7 @@
         "verdict": "human",
         "summary": "score 100",
         "error": null,
+        "risk": 0,
         "details": {
           "score": 100,
           "label": "Looks Human",
@@ -1743,6 +1798,7 @@
         "verdict": "human",
         "summary": "14/14 safe",
         "error": null,
+        "risk": 0,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -1756,6 +1812,7 @@
         "verdict": "human",
         "summary": "17/17 normal",
         "error": null,
+        "risk": 0,
         "details": {
           "overall": "Normal",
           "abnormal": [],
@@ -1769,6 +1826,7 @@
         "verdict": "human",
         "summary": "risk 0",
         "error": null,
+        "risk": 0,
         "details": {
           "score": 0,
           "label": "Likely Human",
@@ -1789,6 +1847,7 @@
         "verdict": "human",
         "summary": "69/69 clear",
         "error": null,
+        "risk": 0,
         "details": {
           "state": "success",
           "not_clear": [],
@@ -1801,6 +1860,7 @@
         "verdict": "human",
         "summary": "30/30 passed",
         "error": null,
+        "risk": 0,
         "details": {
           "failed": [],
           "warn": [],
@@ -1813,6 +1873,7 @@
         "verdict": "human",
         "summary": "headless 0%, stealth 0%",
         "error": null,
+        "risk": 0,
         "details": {
           "like_headless": 0,
           "headless": 0,
@@ -1825,6 +1886,7 @@
         "verdict": "human",
         "summary": "human",
         "error": null,
+        "risk": 0,
         "details": {
           "is_bot": false,
           "signals": []
@@ -1836,6 +1898,7 @@
         "verdict": "suspicious",
         "summary": "bot score 15",
         "error": null,
+        "risk": 15,
         "details": {
           "score": 15,
           "categories": {
@@ -1979,6 +2042,7 @@
         "verdict": "human",
         "summary": "score 100",
         "error": null,
+        "risk": 0,
         "details": {
           "score": 100,
           "label": "Looks Human",
@@ -1993,6 +2057,7 @@
         "verdict": "human",
         "summary": "14/14 safe",
         "error": null,
+        "risk": 0,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -2006,6 +2071,7 @@
         "verdict": "human",
         "summary": "17/17 normal",
         "error": null,
+        "risk": 0,
         "details": {
           "overall": "Normal",
           "abnormal": [],
@@ -2019,6 +2085,7 @@
         "verdict": "human",
         "summary": "risk 20",
         "error": null,
+        "risk": 20,
         "details": {
           "score": 20,
           "label": "Low Risk",
@@ -2039,6 +2106,7 @@
         "verdict": "human",
         "summary": "69/69 clear",
         "error": null,
+        "risk": 0,
         "details": {
           "state": "success",
           "not_clear": [],
@@ -2051,6 +2119,7 @@
         "verdict": "human",
         "summary": "30/30 passed",
         "error": null,
+        "risk": 0,
         "details": {
           "failed": [],
           "warn": [],
@@ -2063,6 +2132,7 @@
         "verdict": "human",
         "summary": "headless 0%, stealth 0%",
         "error": null,
+        "risk": 0,
         "details": {
           "like_headless": 6,
           "headless": 0,
@@ -2075,6 +2145,7 @@
         "verdict": "human",
         "summary": "human",
         "error": null,
+        "risk": 0,
         "details": {
           "is_bot": false,
           "signals": []
@@ -2086,6 +2157,7 @@
         "verdict": "suspicious",
         "summary": "bot score 15",
         "error": null,
+        "risk": 15,
         "details": {
           "score": 15,
           "categories": {
@@ -2229,6 +2301,7 @@
         "verdict": "human",
         "summary": "score 100",
         "error": null,
+        "risk": 0,
         "details": {
           "score": 100,
           "label": "Looks Human",
@@ -2243,6 +2316,7 @@
         "verdict": "suspicious",
         "summary": "1 suspicious",
         "error": null,
+        "risk": 50,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -2258,6 +2332,7 @@
         "verdict": "human",
         "summary": "17/17 normal",
         "error": null,
+        "risk": 0,
         "details": {
           "overall": "Normal",
           "abnormal": [],
@@ -2271,6 +2346,7 @@
         "verdict": "suspicious",
         "summary": "risk 53",
         "error": null,
+        "risk": 53,
         "details": {
           "score": 53,
           "label": "Moderate Risk",
@@ -2291,6 +2367,7 @@
         "verdict": "human",
         "summary": "101/101 clear",
         "error": null,
+        "risk": 0,
         "details": {
           "state": "success",
           "not_clear": [],
@@ -2303,6 +2380,7 @@
         "verdict": "human",
         "summary": "31/31 passed",
         "error": null,
+        "risk": 0,
         "details": {
           "failed": [],
           "warn": [],
@@ -2315,6 +2393,7 @@
         "verdict": "human",
         "summary": "headless 0%, stealth 0%",
         "error": null,
+        "risk": 0,
         "details": {
           "like_headless": 50,
           "headless": 0,
@@ -2327,6 +2406,7 @@
         "verdict": "human",
         "summary": "human",
         "error": null,
+        "risk": 0,
         "details": {
           "is_bot": false,
           "signals": []
@@ -2338,6 +2418,7 @@
         "verdict": "suspicious",
         "summary": "bot score 26",
         "error": null,
+        "risk": 26,
         "details": {
           "score": 26,
           "categories": {
@@ -2481,6 +2562,7 @@
         "verdict": "human",
         "summary": "score 100",
         "error": null,
+        "risk": 0,
         "details": {
           "score": 100,
           "label": "Looks Human",
@@ -2495,6 +2577,7 @@
         "verdict": "suspicious",
         "summary": "1 suspicious",
         "error": null,
+        "risk": 50,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -2510,6 +2593,7 @@
         "verdict": "human",
         "summary": "17/17 normal",
         "error": null,
+        "risk": 0,
         "details": {
           "overall": "Normal",
           "abnormal": [],
@@ -2523,6 +2607,7 @@
         "verdict": "human",
         "summary": "risk 33",
         "error": null,
+        "risk": 33,
         "details": {
           "score": 33,
           "label": "Low Risk",
@@ -2543,6 +2628,7 @@
         "verdict": "human",
         "summary": "101/101 clear",
         "error": null,
+        "risk": 0,
         "details": {
           "state": "success",
           "not_clear": [],
@@ -2555,6 +2641,7 @@
         "verdict": "human",
         "summary": "31/31 passed",
         "error": null,
+        "risk": 0,
         "details": {
           "failed": [],
           "warn": [],
@@ -2567,6 +2654,7 @@
         "verdict": "human",
         "summary": "headless 0%, stealth 0%",
         "error": null,
+        "risk": 0,
         "details": {
           "like_headless": 44,
           "headless": 0,
@@ -2579,6 +2667,7 @@
         "verdict": "bot",
         "summary": "bot, 1 signal",
         "error": null,
+        "risk": 100,
         "details": {
           "is_bot": true,
           "signals": [
@@ -2592,6 +2681,7 @@
         "verdict": "bot",
         "summary": "bot score 76",
         "error": null,
+        "risk": 76,
         "details": {
           "score": 76,
           "categories": {
@@ -2735,6 +2825,7 @@
         "verdict": "human",
         "summary": "score 100",
         "error": null,
+        "risk": 0,
         "details": {
           "score": 100,
           "label": "Looks Human",
@@ -2749,6 +2840,7 @@
         "verdict": "human",
         "summary": "14/14 safe",
         "error": null,
+        "risk": 0,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -2762,6 +2854,7 @@
         "verdict": "bot",
         "summary": "robot",
         "error": null,
+        "risk": 100,
         "details": {
           "overall": "Robot",
           "abnormal": [],
@@ -2775,6 +2868,7 @@
         "verdict": "bot",
         "summary": "risk 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "label": "High Risk | Likely Bot",
@@ -2795,6 +2889,7 @@
         "verdict": "bot",
         "summary": "3 not clear",
         "error": null,
+        "risk": 100,
         "details": {
           "state": "error",
           "not_clear": [
@@ -2811,6 +2906,7 @@
         "verdict": "human",
         "summary": "31/31 passed",
         "error": null,
+        "risk": 0,
         "details": {
           "failed": [],
           "warn": [],
@@ -2823,6 +2919,7 @@
         "verdict": "human",
         "summary": "headless 0%, stealth 0%",
         "error": null,
+        "risk": 0,
         "details": {
           "like_headless": 0,
           "headless": 0,
@@ -2835,6 +2932,7 @@
         "verdict": "bot",
         "summary": "bot, 4 signals",
         "error": null,
+        "risk": 100,
         "details": {
           "is_bot": true,
           "signals": [
@@ -2851,6 +2949,7 @@
         "verdict": "bot",
         "summary": "bot score 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "categories": {
@@ -2994,6 +3093,7 @@
         "verdict": "human",
         "summary": "score 100",
         "error": null,
+        "risk": 0,
         "details": {
           "score": 100,
           "label": "Looks Human",
@@ -3008,6 +3108,7 @@
         "verdict": "human",
         "summary": "14/14 safe",
         "error": null,
+        "risk": 0,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -3021,6 +3122,7 @@
         "verdict": "bot",
         "summary": "robot",
         "error": null,
+        "risk": 100,
         "details": {
           "overall": "Robot",
           "abnormal": [],
@@ -3034,6 +3136,7 @@
         "verdict": "bot",
         "summary": "risk 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "label": "High Risk | Likely Bot",
@@ -3054,6 +3157,7 @@
         "verdict": "bot",
         "summary": "3 not clear",
         "error": null,
+        "risk": 100,
         "details": {
           "state": "error",
           "not_clear": [
@@ -3070,6 +3174,7 @@
         "verdict": "human",
         "summary": "31/31 passed",
         "error": null,
+        "risk": 0,
         "details": {
           "failed": [],
           "warn": [],
@@ -3082,6 +3187,7 @@
         "verdict": "human",
         "summary": "headless 0%, stealth 0%",
         "error": null,
+        "risk": 0,
         "details": {
           "like_headless": 0,
           "headless": 0,
@@ -3094,6 +3200,7 @@
         "verdict": "bot",
         "summary": "bot, 4 signals",
         "error": null,
+        "risk": 100,
         "details": {
           "is_bot": true,
           "signals": [
@@ -3110,6 +3217,7 @@
         "verdict": "bot",
         "summary": "bot score 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "categories": {
@@ -3253,6 +3361,7 @@
         "verdict": "suspicious",
         "summary": "score 50",
         "error": null,
+        "risk": 50,
         "details": {
           "score": 50,
           "label": "Needs Review",
@@ -3270,6 +3379,7 @@
         "verdict": "bot",
         "summary": "1 detected",
         "error": null,
+        "risk": 100,
         "details": {
           "label": "Automated Browser Detected",
           "detected": [
@@ -3285,6 +3395,7 @@
         "verdict": "bot",
         "summary": "robot, WebDriver",
         "error": null,
+        "risk": 100,
         "details": {
           "overall": "Robot",
           "abnormal": [
@@ -3300,6 +3411,7 @@
         "verdict": "bot",
         "summary": "risk 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "label": "High Risk | Likely Bot",
@@ -3320,6 +3432,7 @@
         "verdict": "bot",
         "summary": "3 not clear",
         "error": null,
+        "risk": 100,
         "details": {
           "state": "error",
           "not_clear": [
@@ -3336,6 +3449,7 @@
         "verdict": "bot",
         "summary": "4 failed",
         "error": null,
+        "risk": 100,
         "details": {
           "failed": [
             "WebDriver (New)",
@@ -3353,6 +3467,7 @@
         "verdict": "bot",
         "summary": "headless 33%, stealth 40%",
         "error": null,
+        "risk": 40,
         "details": {
           "like_headless": 19,
           "headless": 33,
@@ -3365,6 +3480,7 @@
         "verdict": "bot",
         "summary": "bot, 3 signals",
         "error": null,
+        "risk": 100,
         "details": {
           "is_bot": true,
           "signals": [
@@ -3380,6 +3496,7 @@
         "verdict": "bot",
         "summary": "bot score 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "categories": {
@@ -3523,6 +3640,7 @@
         "verdict": "suspicious",
         "summary": "score 50",
         "error": null,
+        "risk": 50,
         "details": {
           "score": 50,
           "label": "Needs Review",
@@ -3540,6 +3658,7 @@
         "verdict": "bot",
         "summary": "1 detected",
         "error": null,
+        "risk": 100,
         "details": {
           "label": "Automated Browser Detected",
           "detected": [
@@ -3555,6 +3674,7 @@
         "verdict": "bot",
         "summary": "robot, WebDriver",
         "error": null,
+        "risk": 100,
         "details": {
           "overall": "Robot",
           "abnormal": [
@@ -3570,6 +3690,7 @@
         "verdict": "bot",
         "summary": "risk 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "label": "High Risk | Likely Bot",
@@ -3590,6 +3711,7 @@
         "verdict": "bot",
         "summary": "3 not clear",
         "error": null,
+        "risk": 100,
         "details": {
           "state": "error",
           "not_clear": [
@@ -3606,6 +3728,7 @@
         "verdict": "bot",
         "summary": "4 failed",
         "error": null,
+        "risk": 100,
         "details": {
           "failed": [
             "WebDriver (New)",
@@ -3623,6 +3746,7 @@
         "verdict": "bot",
         "summary": "headless 33%, stealth 40%",
         "error": null,
+        "risk": 40,
         "details": {
           "like_headless": 19,
           "headless": 33,
@@ -3635,6 +3759,7 @@
         "verdict": "bot",
         "summary": "bot, 3 signals",
         "error": null,
+        "risk": 100,
         "details": {
           "is_bot": true,
           "signals": [
@@ -3650,6 +3775,7 @@
         "verdict": "bot",
         "summary": "bot score 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "categories": {
@@ -3793,6 +3919,7 @@
         "verdict": "suspicious",
         "summary": "score 58",
         "error": null,
+        "risk": 42,
         "details": {
           "score": 58,
           "label": "Needs Review",
@@ -3810,6 +3937,7 @@
         "verdict": "bot",
         "summary": "1 detected",
         "error": null,
+        "risk": 100,
         "details": {
           "label": "Automated Browser Detected",
           "detected": [
@@ -3827,6 +3955,7 @@
         "verdict": "bot",
         "summary": "robot",
         "error": null,
+        "risk": 100,
         "details": {
           "overall": "Robot",
           "abnormal": [],
@@ -3840,6 +3969,7 @@
         "verdict": "bot",
         "summary": "blocked (403)",
         "error": null,
+        "risk": 100,
         "details": {
           "blocked": true
         }
@@ -3850,6 +3980,7 @@
         "verdict": "bot",
         "summary": "2 not clear",
         "error": null,
+        "risk": 100,
         "details": {
           "state": "error",
           "not_clear": [
@@ -3865,6 +3996,7 @@
         "verdict": "bot",
         "summary": "4 failed",
         "error": null,
+        "risk": 100,
         "details": {
           "failed": [
             "User Agent (Old)",
@@ -3882,6 +4014,7 @@
         "verdict": "bot",
         "summary": "headless 67%, stealth 0%",
         "error": null,
+        "risk": 67,
         "details": {
           "like_headless": 50,
           "headless": 67,
@@ -3894,6 +4027,7 @@
         "verdict": "bot",
         "summary": "bot, 2 signals",
         "error": null,
+        "risk": 100,
         "details": {
           "is_bot": true,
           "signals": [
@@ -3908,6 +4042,7 @@
         "verdict": "bot",
         "summary": "bot score 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "categories": {
@@ -4051,6 +4186,7 @@
         "verdict": "human",
         "summary": "score 100",
         "error": null,
+        "risk": 0,
         "details": {
           "score": 100,
           "label": "Looks Human",
@@ -4065,6 +4201,7 @@
         "verdict": "suspicious",
         "summary": "1 suspicious",
         "error": null,
+        "risk": 50,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -4080,6 +4217,7 @@
         "verdict": "human",
         "summary": "17/17 normal",
         "error": null,
+        "risk": 0,
         "details": {
           "overall": "Normal",
           "abnormal": [],
@@ -4093,6 +4231,7 @@
         "verdict": "human",
         "summary": "risk 26",
         "error": null,
+        "risk": 26,
         "details": {
           "score": 26,
           "label": "Low Risk",
@@ -4113,6 +4252,7 @@
         "verdict": "human",
         "summary": "90/90 clear",
         "error": null,
+        "risk": 0,
         "details": {
           "state": "success",
           "not_clear": [],
@@ -4125,6 +4265,7 @@
         "verdict": "bot",
         "summary": "2 failed",
         "error": null,
+        "risk": 100,
         "details": {
           "failed": [
             "WebGL Vendor",
@@ -4140,6 +4281,7 @@
         "verdict": "human",
         "summary": "headless 0%, stealth 0%",
         "error": null,
+        "risk": 0,
         "details": {
           "like_headless": 44,
           "headless": 0,
@@ -4152,6 +4294,7 @@
         "verdict": "human",
         "summary": "human",
         "error": null,
+        "risk": 0,
         "details": {
           "is_bot": false,
           "signals": []
@@ -4163,6 +4306,7 @@
         "verdict": "suspicious",
         "summary": "bot score 99",
         "error": null,
+        "risk": 99,
         "details": {
           "score": 99,
           "categories": {
@@ -4306,6 +4450,7 @@
         "verdict": "bot",
         "summary": "score 28",
         "error": null,
+        "risk": 72,
         "details": {
           "score": 28,
           "label": "Bot-like",
@@ -4324,6 +4469,7 @@
         "verdict": "bot",
         "summary": "1 detected",
         "error": null,
+        "risk": 100,
         "details": {
           "label": "Automated Browser Detected",
           "detected": [
@@ -4341,6 +4487,7 @@
         "verdict": "bot",
         "summary": "robot, Selenium",
         "error": null,
+        "risk": 100,
         "details": {
           "overall": "Robot",
           "abnormal": [
@@ -4356,6 +4503,7 @@
         "verdict": "bot",
         "summary": "blocked (403)",
         "error": null,
+        "risk": 100,
         "details": {
           "blocked": true
         }
@@ -4366,6 +4514,7 @@
         "verdict": "bot",
         "summary": "3 not clear",
         "error": null,
+        "risk": 100,
         "details": {
           "state": "error",
           "not_clear": [
@@ -4382,6 +4531,7 @@
         "verdict": "bot",
         "summary": "4 failed",
         "error": null,
+        "risk": 100,
         "details": {
           "failed": [
             "User Agent (Old)",
@@ -4399,6 +4549,7 @@
         "verdict": "bot",
         "summary": "headless 67%, stealth 0%",
         "error": null,
+        "risk": 67,
         "details": {
           "like_headless": 50,
           "headless": 67,
@@ -4411,6 +4562,7 @@
         "verdict": "bot",
         "summary": "bot, 5 signals",
         "error": null,
+        "risk": 100,
         "details": {
           "is_bot": true,
           "signals": [
@@ -4428,6 +4580,7 @@
         "verdict": "bot",
         "summary": "bot score 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "categories": {
@@ -4571,6 +4724,7 @@
         "verdict": "suspicious",
         "summary": "score 70",
         "error": null,
+        "risk": 30,
         "details": {
           "score": 70,
           "label": "Needs Review",
@@ -4587,6 +4741,7 @@
         "verdict": "suspicious",
         "summary": "1 suspicious",
         "error": null,
+        "risk": 50,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -4602,6 +4757,7 @@
         "verdict": "bot",
         "summary": "robot, Selenium",
         "error": null,
+        "risk": 100,
         "details": {
           "overall": "Robot",
           "abnormal": [
@@ -4617,6 +4773,7 @@
         "verdict": "bot",
         "summary": "risk 66",
         "error": null,
+        "risk": 66,
         "details": {
           "score": 66,
           "label": "High Risk | Likely Bot",
@@ -4637,6 +4794,7 @@
         "verdict": "bot",
         "summary": "1 not clear",
         "error": null,
+        "risk": 100,
         "details": {
           "state": "error",
           "not_clear": [
@@ -4651,6 +4809,7 @@
         "verdict": "bot",
         "summary": "2 failed",
         "error": null,
+        "risk": 100,
         "details": {
           "failed": [
             "WebGL Vendor",
@@ -4666,6 +4825,7 @@
         "verdict": "human",
         "summary": "headless 0%, stealth 0%",
         "error": null,
+        "risk": 0,
         "details": {
           "like_headless": 44,
           "headless": 0,
@@ -4678,6 +4838,7 @@
         "verdict": "bot",
         "summary": "bot, 2 signals",
         "error": null,
+        "risk": 100,
         "details": {
           "is_bot": true,
           "signals": [
@@ -4692,6 +4853,7 @@
         "verdict": "bot",
         "summary": "bot score 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "categories": {
@@ -4835,6 +4997,7 @@
         "verdict": "suspicious",
         "summary": "score 58",
         "error": null,
+        "risk": 42,
         "details": {
           "score": 58,
           "label": "Needs Review",
@@ -4852,6 +5015,7 @@
         "verdict": "bot",
         "summary": "1 detected",
         "error": null,
+        "risk": 100,
         "details": {
           "label": "Automated Browser Detected",
           "detected": [
@@ -4869,6 +5033,7 @@
         "verdict": "bot",
         "summary": "robot",
         "error": null,
+        "risk": 100,
         "details": {
           "overall": "Robot",
           "abnormal": [],
@@ -4882,6 +5047,7 @@
         "verdict": "bot",
         "summary": "blocked (403)",
         "error": null,
+        "risk": 100,
         "details": {
           "blocked": true
         }
@@ -4892,6 +5058,7 @@
         "verdict": "bot",
         "summary": "2 not clear",
         "error": null,
+        "risk": 100,
         "details": {
           "state": "error",
           "not_clear": [
@@ -4907,6 +5074,7 @@
         "verdict": "bot",
         "summary": "4 failed",
         "error": null,
+        "risk": 100,
         "details": {
           "failed": [
             "User Agent (Old)",
@@ -4924,6 +5092,7 @@
         "verdict": "bot",
         "summary": "headless 33%, stealth 0%",
         "error": null,
+        "risk": 33,
         "details": {
           "like_headless": 44,
           "headless": 33,
@@ -4936,6 +5105,7 @@
         "verdict": "bot",
         "summary": "bot, 2 signals",
         "error": null,
+        "risk": 100,
         "details": {
           "is_bot": true,
           "signals": [
@@ -4950,6 +5120,7 @@
         "verdict": "bot",
         "summary": "bot score 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "categories": {
@@ -5093,6 +5264,7 @@
         "verdict": "human",
         "summary": "score 100",
         "error": null,
+        "risk": 0,
         "details": {
           "score": 100,
           "label": "Looks Human",
@@ -5107,6 +5279,7 @@
         "verdict": "suspicious",
         "summary": "1 suspicious",
         "error": null,
+        "risk": 50,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -5122,6 +5295,7 @@
         "verdict": "human",
         "summary": "17/17 normal",
         "error": null,
+        "risk": 0,
         "details": {
           "overall": "Normal",
           "abnormal": [],
@@ -5135,6 +5309,7 @@
         "verdict": "human",
         "summary": "risk 26",
         "error": null,
+        "risk": 26,
         "details": {
           "score": 26,
           "label": "Low Risk",
@@ -5155,6 +5330,7 @@
         "verdict": "human",
         "summary": "90/90 clear",
         "error": null,
+        "risk": 0,
         "details": {
           "state": "success",
           "not_clear": [],
@@ -5167,6 +5343,7 @@
         "verdict": "bot",
         "summary": "2 failed",
         "error": null,
+        "risk": 100,
         "details": {
           "failed": [
             "WebGL Vendor",
@@ -5182,6 +5359,7 @@
         "verdict": "human",
         "summary": "headless 0%, stealth 0%",
         "error": null,
+        "risk": 0,
         "details": {
           "like_headless": 44,
           "headless": 0,
@@ -5194,6 +5372,7 @@
         "verdict": "human",
         "summary": "human",
         "error": null,
+        "risk": 0,
         "details": {
           "is_bot": false,
           "signals": []
@@ -5205,6 +5384,7 @@
         "verdict": "bot",
         "summary": "bot score 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "categories": {
@@ -5348,6 +5528,7 @@
         "verdict": "human",
         "summary": "score 84",
         "error": null,
+        "risk": 16,
         "details": {
           "score": 84,
           "label": "Looks Human",
@@ -5364,6 +5545,7 @@
         "verdict": "suspicious",
         "summary": "1 suspicious",
         "error": null,
+        "risk": 50,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -5379,6 +5561,7 @@
         "verdict": "human",
         "summary": "17/17 normal",
         "error": null,
+        "risk": 0,
         "details": {
           "overall": "Normal",
           "abnormal": [],
@@ -5392,6 +5575,7 @@
         "verdict": "bot",
         "summary": "risk 85",
         "error": null,
+        "risk": 85,
         "details": {
           "score": 85,
           "label": "High Risk | Likely Bot",
@@ -5412,6 +5596,7 @@
         "verdict": "human",
         "summary": "90/90 clear",
         "error": null,
+        "risk": 0,
         "details": {
           "state": "success",
           "not_clear": [],
@@ -5424,6 +5609,7 @@
         "verdict": "bot",
         "summary": "1 failed",
         "error": null,
+        "risk": 100,
         "details": {
           "failed": [
             "WebGL Renderer"
@@ -5438,6 +5624,7 @@
         "verdict": "bot",
         "summary": "headless 33%, stealth 0%",
         "error": null,
+        "risk": 33,
         "details": {
           "like_headless": 56,
           "headless": 33,
@@ -5450,6 +5637,7 @@
         "verdict": "bot",
         "summary": "bot, 1 signal",
         "error": null,
+        "risk": 100,
         "details": {
           "is_bot": true,
           "signals": [
@@ -5463,6 +5651,7 @@
         "verdict": "bot",
         "summary": "bot score 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "categories": {
@@ -5606,6 +5795,7 @@
         "verdict": "human",
         "summary": "score 100",
         "error": null,
+        "risk": 0,
         "details": {
           "score": 100,
           "label": "Looks Human",
@@ -5620,6 +5810,7 @@
         "verdict": "suspicious",
         "summary": "1 suspicious",
         "error": null,
+        "risk": 50,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -5635,6 +5826,7 @@
         "verdict": "human",
         "summary": "17/17 normal",
         "error": null,
+        "risk": 0,
         "details": {
           "overall": "Normal",
           "abnormal": [],
@@ -5648,6 +5840,7 @@
         "verdict": "suspicious",
         "summary": "risk 36",
         "error": null,
+        "risk": 36,
         "details": {
           "score": 36,
           "label": "Moderate Risk",
@@ -5668,6 +5861,7 @@
         "verdict": "human",
         "summary": "90/90 clear",
         "error": null,
+        "risk": 0,
         "details": {
           "state": "success",
           "not_clear": [],
@@ -5680,6 +5874,7 @@
         "verdict": "bot",
         "summary": "2 failed",
         "error": null,
+        "risk": 100,
         "details": {
           "failed": [
             "WebGL Vendor",
@@ -5695,6 +5890,7 @@
         "verdict": "human",
         "summary": "headless 0%, stealth 0%",
         "error": null,
+        "risk": 0,
         "details": {
           "like_headless": 44,
           "headless": 0,
@@ -5707,6 +5903,7 @@
         "verdict": "human",
         "summary": "human",
         "error": null,
+        "risk": 0,
         "details": {
           "is_bot": false,
           "signals": []
@@ -5718,6 +5915,7 @@
         "verdict": "suspicious",
         "summary": "bot score 69",
         "error": null,
+        "risk": 69,
         "details": {
           "score": 69,
           "categories": {
@@ -5861,6 +6059,7 @@
         "verdict": "suspicious",
         "summary": "score 58",
         "error": null,
+        "risk": 42,
         "details": {
           "score": 58,
           "label": "Needs Review",
@@ -5878,6 +6077,7 @@
         "verdict": "bot",
         "summary": "1 detected",
         "error": null,
+        "risk": 100,
         "details": {
           "label": "Automated Browser Detected",
           "detected": [
@@ -5895,6 +6095,7 @@
         "verdict": "bot",
         "summary": "robot",
         "error": null,
+        "risk": 100,
         "details": {
           "overall": "Robot",
           "abnormal": [],
@@ -5908,6 +6109,7 @@
         "verdict": "bot",
         "summary": "blocked (403)",
         "error": null,
+        "risk": 100,
         "details": {
           "blocked": true
         }
@@ -5918,6 +6120,7 @@
         "verdict": "bot",
         "summary": "2 not clear",
         "error": null,
+        "risk": 100,
         "details": {
           "state": "error",
           "not_clear": [
@@ -5933,6 +6136,7 @@
         "verdict": "bot",
         "summary": "4 failed",
         "error": null,
+        "risk": 100,
         "details": {
           "failed": [
             "User Agent (Old)",
@@ -5950,6 +6154,7 @@
         "verdict": "bot",
         "summary": "headless 67%, stealth 0%",
         "error": null,
+        "risk": 67,
         "details": {
           "like_headless": 50,
           "headless": 67,
@@ -5962,6 +6167,7 @@
         "verdict": "bot",
         "summary": "bot, 2 signals",
         "error": null,
+        "risk": 100,
         "details": {
           "is_bot": true,
           "signals": [
@@ -5976,6 +6182,7 @@
         "verdict": "bot",
         "summary": "bot score 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "categories": {
@@ -6119,6 +6326,7 @@
         "verdict": "human",
         "summary": "score 100",
         "error": null,
+        "risk": 0,
         "details": {
           "score": 100,
           "label": "Looks Human",
@@ -6133,6 +6341,7 @@
         "verdict": "suspicious",
         "summary": "1 suspicious",
         "error": null,
+        "risk": 50,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -6148,6 +6357,7 @@
         "verdict": "human",
         "summary": "17/17 normal",
         "error": null,
+        "risk": 0,
         "details": {
           "overall": "Normal",
           "abnormal": [],
@@ -6161,6 +6371,7 @@
         "verdict": "suspicious",
         "summary": "risk 41",
         "error": null,
+        "risk": 41,
         "details": {
           "score": 41,
           "label": "Moderate Risk",
@@ -6181,6 +6392,7 @@
         "verdict": "human",
         "summary": "90/90 clear",
         "error": null,
+        "risk": 0,
         "details": {
           "state": "success",
           "not_clear": [],
@@ -6193,6 +6405,7 @@
         "verdict": "bot",
         "summary": "2 failed",
         "error": null,
+        "risk": 100,
         "details": {
           "failed": [
             "WebGL Vendor",
@@ -6208,6 +6421,7 @@
         "verdict": "human",
         "summary": "headless 0%, stealth 0%",
         "error": null,
+        "risk": 0,
         "details": {
           "like_headless": 44,
           "headless": 0,
@@ -6220,6 +6434,7 @@
         "verdict": "human",
         "summary": "human",
         "error": null,
+        "risk": 0,
         "details": {
           "is_bot": false,
           "signals": []
@@ -6231,6 +6446,7 @@
         "verdict": "suspicious",
         "summary": "bot score 99",
         "error": null,
+        "risk": 99,
         "details": {
           "score": 99,
           "categories": {
@@ -6374,6 +6590,7 @@
         "verdict": "human",
         "summary": "score 100",
         "error": null,
+        "risk": 0,
         "details": {
           "score": 100,
           "label": "Looks Human",
@@ -6388,6 +6605,7 @@
         "verdict": "suspicious",
         "summary": "1 suspicious",
         "error": null,
+        "risk": 50,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -6403,6 +6621,7 @@
         "verdict": "human",
         "summary": "17/17 normal",
         "error": null,
+        "risk": 0,
         "details": {
           "overall": "Normal",
           "abnormal": [],
@@ -6416,6 +6635,7 @@
         "verdict": "suspicious",
         "summary": "risk 36",
         "error": null,
+        "risk": 36,
         "details": {
           "score": 36,
           "label": "Moderate Risk",
@@ -6436,6 +6656,7 @@
         "verdict": "bot",
         "summary": "1 not clear",
         "error": null,
+        "risk": 100,
         "details": {
           "state": "error",
           "not_clear": [
@@ -6450,6 +6671,7 @@
         "verdict": "bot",
         "summary": "2 failed",
         "error": null,
+        "risk": 100,
         "details": {
           "failed": [
             "WebGL Vendor",
@@ -6465,6 +6687,7 @@
         "verdict": "human",
         "summary": "headless 0%, stealth 0%",
         "error": null,
+        "risk": 0,
         "details": {
           "like_headless": 44,
           "headless": 0,
@@ -6477,6 +6700,7 @@
         "verdict": "human",
         "summary": "human",
         "error": null,
+        "risk": 0,
         "details": {
           "is_bot": false,
           "signals": []
@@ -6488,6 +6712,7 @@
         "verdict": "suspicious",
         "summary": "bot score 69",
         "error": null,
+        "risk": 69,
         "details": {
           "score": 69,
           "categories": {
@@ -6631,6 +6856,7 @@
         "verdict": "human",
         "summary": "score 100",
         "error": null,
+        "risk": 0,
         "details": {
           "score": 100,
           "label": "Looks Human",
@@ -6645,6 +6871,7 @@
         "verdict": "suspicious",
         "summary": "1 suspicious",
         "error": null,
+        "risk": 50,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -6660,6 +6887,7 @@
         "verdict": "human",
         "summary": "17/17 normal",
         "error": null,
+        "risk": 0,
         "details": {
           "overall": "Normal",
           "abnormal": [],
@@ -6673,6 +6901,7 @@
         "verdict": "human",
         "summary": "risk 10",
         "error": null,
+        "risk": 10,
         "details": {
           "score": 10,
           "label": "Likely Human",
@@ -6693,6 +6922,7 @@
         "verdict": "human",
         "summary": "92/92 clear",
         "error": null,
+        "risk": 0,
         "details": {
           "state": "success",
           "not_clear": [],
@@ -6705,6 +6935,7 @@
         "verdict": "human",
         "summary": "31/31 passed",
         "error": null,
+        "risk": 0,
         "details": {
           "failed": [],
           "warn": [],
@@ -6717,6 +6948,7 @@
         "verdict": "human",
         "summary": "headless 0%, stealth 0%",
         "error": null,
+        "risk": 0,
         "details": {
           "like_headless": 25,
           "headless": 0,
@@ -6729,6 +6961,7 @@
         "verdict": "human",
         "summary": "human",
         "error": null,
+        "risk": 0,
         "details": {
           "is_bot": false,
           "signals": []
@@ -6740,6 +6973,7 @@
         "verdict": "suspicious",
         "summary": "bot score 45",
         "error": null,
+        "risk": 45,
         "details": {
           "score": 45,
           "categories": {
@@ -6883,6 +7117,7 @@
         "verdict": "human",
         "summary": "score 100",
         "error": null,
+        "risk": 0,
         "details": {
           "score": 100,
           "label": "Looks Human",
@@ -6897,6 +7132,7 @@
         "verdict": "suspicious",
         "summary": "1 suspicious",
         "error": null,
+        "risk": 50,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -6912,6 +7148,7 @@
         "verdict": "human",
         "summary": "17/17 normal",
         "error": null,
+        "risk": 0,
         "details": {
           "overall": "Normal",
           "abnormal": [],
@@ -6925,6 +7162,7 @@
         "verdict": "human",
         "summary": "risk 20",
         "error": null,
+        "risk": 20,
         "details": {
           "score": 20,
           "label": "Low Risk",
@@ -6945,6 +7183,7 @@
         "verdict": "human",
         "summary": "92/92 clear",
         "error": null,
+        "risk": 0,
         "details": {
           "state": "success",
           "not_clear": [],
@@ -6957,6 +7196,7 @@
         "verdict": "human",
         "summary": "31/31 passed",
         "error": null,
+        "risk": 0,
         "details": {
           "failed": [],
           "warn": [],
@@ -6969,6 +7209,7 @@
         "verdict": "human",
         "summary": "headless 0%, stealth 0%",
         "error": null,
+        "risk": 0,
         "details": {
           "like_headless": 25,
           "headless": 0,
@@ -6981,6 +7222,7 @@
         "verdict": "human",
         "summary": "human",
         "error": null,
+        "risk": 0,
         "details": {
           "is_bot": false,
           "signals": []
@@ -6992,6 +7234,7 @@
         "verdict": "suspicious",
         "summary": "bot score 15",
         "error": null,
+        "risk": 15,
         "details": {
           "score": 15,
           "categories": {
@@ -7135,6 +7378,7 @@
         "verdict": "human",
         "summary": "score 100",
         "error": null,
+        "risk": 0,
         "details": {
           "score": 100,
           "label": "Looks Human",
@@ -7149,6 +7393,7 @@
         "verdict": "suspicious",
         "summary": "1 suspicious",
         "error": null,
+        "risk": 50,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -7164,6 +7409,7 @@
         "verdict": "human",
         "summary": "17/17 normal",
         "error": null,
+        "risk": 0,
         "details": {
           "overall": "Normal",
           "abnormal": [],
@@ -7177,6 +7423,7 @@
         "verdict": "suspicious",
         "summary": "risk 60",
         "error": null,
+        "risk": 60,
         "details": {
           "score": 60,
           "label": "Moderate Risk",
@@ -7197,6 +7444,7 @@
         "verdict": "human",
         "summary": "102/102 clear",
         "error": null,
+        "risk": 0,
         "details": {
           "state": "success",
           "not_clear": [],
@@ -7209,6 +7457,7 @@
         "verdict": "human",
         "summary": "31/31 passed",
         "error": null,
+        "risk": 0,
         "details": {
           "failed": [],
           "warn": [],
@@ -7221,6 +7470,7 @@
         "verdict": "human",
         "summary": "headless 0%, stealth 0%",
         "error": null,
+        "risk": 0,
         "details": {
           "like_headless": 38,
           "headless": 0,
@@ -7233,6 +7483,7 @@
         "verdict": "human",
         "summary": "human",
         "error": null,
+        "risk": 0,
         "details": {
           "is_bot": false,
           "signals": []
@@ -7244,6 +7495,7 @@
         "verdict": "suspicious",
         "summary": "bot score 81",
         "error": null,
+        "risk": 81,
         "details": {
           "score": 81,
           "categories": {
@@ -7387,6 +7639,7 @@
         "verdict": "human",
         "summary": "score 100",
         "error": null,
+        "risk": 0,
         "details": {
           "score": 100,
           "label": "Looks Human",
@@ -7401,6 +7654,7 @@
         "verdict": "suspicious",
         "summary": "1 suspicious",
         "error": null,
+        "risk": 50,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -7416,6 +7670,7 @@
         "verdict": "human",
         "summary": "17/17 normal",
         "error": null,
+        "risk": 0,
         "details": {
           "overall": "Normal",
           "abnormal": [],
@@ -7429,6 +7684,7 @@
         "verdict": "bot",
         "summary": "risk 75",
         "error": null,
+        "risk": 75,
         "details": {
           "score": 75,
           "label": "High Risk | Likely Bot",
@@ -7449,6 +7705,7 @@
         "verdict": "human",
         "summary": "102/102 clear",
         "error": null,
+        "risk": 0,
         "details": {
           "state": "success",
           "not_clear": [],
@@ -7461,6 +7718,7 @@
         "verdict": "human",
         "summary": "31/31 passed",
         "error": null,
+        "risk": 0,
         "details": {
           "failed": [],
           "warn": [],
@@ -7473,6 +7731,7 @@
         "verdict": "human",
         "summary": "headless 0%, stealth 0%",
         "error": null,
+        "risk": 0,
         "details": {
           "like_headless": 44,
           "headless": 0,
@@ -7485,6 +7744,7 @@
         "verdict": "human",
         "summary": "human",
         "error": null,
+        "risk": 0,
         "details": {
           "is_bot": false,
           "signals": []
@@ -7496,6 +7756,7 @@
         "verdict": "suspicious",
         "summary": "bot score 100",
         "error": null,
+        "risk": 100,
         "details": {
           "score": 100,
           "categories": {
@@ -7639,6 +7900,7 @@
         "verdict": "human",
         "summary": "score 100",
         "error": null,
+        "risk": 0,
         "details": {
           "score": 100,
           "label": "Looks Human",
@@ -7653,6 +7915,7 @@
         "verdict": "suspicious",
         "summary": "1 suspicious",
         "error": null,
+        "risk": 50,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -7668,6 +7931,7 @@
         "verdict": "human",
         "summary": "17/17 normal",
         "error": null,
+        "risk": 0,
         "details": {
           "overall": "Normal",
           "abnormal": [],
@@ -7681,6 +7945,7 @@
         "verdict": "suspicious",
         "summary": "risk 58",
         "error": null,
+        "risk": 58,
         "details": {
           "score": 58,
           "label": "Moderate Risk",
@@ -7701,6 +7966,7 @@
         "verdict": "human",
         "summary": "91/91 clear",
         "error": null,
+        "risk": 0,
         "details": {
           "state": "success",
           "not_clear": [],
@@ -7713,6 +7979,7 @@
         "verdict": "human",
         "summary": "31/31 passed",
         "error": null,
+        "risk": 0,
         "details": {
           "failed": [],
           "warn": [],
@@ -7725,6 +7992,7 @@
         "verdict": "human",
         "summary": "headless 0%, stealth 0%",
         "error": null,
+        "risk": 0,
         "details": {
           "like_headless": 38,
           "headless": 0,
@@ -7737,6 +8005,7 @@
         "verdict": "human",
         "summary": "human",
         "error": null,
+        "risk": 0,
         "details": {
           "is_bot": false,
           "signals": []
@@ -7748,6 +8017,7 @@
         "verdict": "suspicious",
         "summary": "bot score 36",
         "error": null,
+        "risk": 36,
         "details": {
           "score": 36,
           "categories": {
@@ -7891,6 +8161,7 @@
         "verdict": "human",
         "summary": "score 100",
         "error": null,
+        "risk": 0,
         "details": {
           "score": 100,
           "label": "Looks Human",
@@ -7905,6 +8176,7 @@
         "verdict": "suspicious",
         "summary": "1 suspicious",
         "error": null,
+        "risk": 50,
         "details": {
           "label": "Not Automated",
           "detected": [],
@@ -7920,6 +8192,7 @@
         "verdict": "human",
         "summary": "17/17 normal",
         "error": null,
+        "risk": 0,
         "details": {
           "overall": "Normal",
           "abnormal": [],
@@ -7933,6 +8206,7 @@
         "verdict": "suspicious",
         "summary": "risk 55",
         "error": null,
+        "risk": 55,
         "details": {
           "score": 55,
           "label": "Moderate Risk",
@@ -7953,6 +8227,7 @@
         "verdict": "human",
         "summary": "91/91 clear",
         "error": null,
+        "risk": 0,
         "details": {
           "state": "success",
           "not_clear": [],
@@ -7965,6 +8240,7 @@
         "verdict": "bot",
         "summary": "2 failed",
         "error": null,
+        "risk": 100,
         "details": {
           "failed": [
             "WebGL Vendor",
@@ -7980,6 +8256,7 @@
         "verdict": "human",
         "summary": "headless 0%, stealth 0%",
         "error": null,
+        "risk": 0,
         "details": {
           "like_headless": 38,
           "headless": 0,
@@ -7992,6 +8269,7 @@
         "verdict": "human",
         "summary": "human",
         "error": null,
+        "risk": 0,
         "details": {
           "is_bot": false,
           "signals": []
@@ -8003,6 +8281,7 @@
         "verdict": "suspicious",
         "summary": "bot score 66",
         "error": null,
+        "risk": 66,
         "details": {
           "score": 66,
           "categories": {

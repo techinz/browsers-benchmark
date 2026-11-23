@@ -1,81 +1,83 @@
 # Browser Benchmark Results Summary
 
-*Generated on: 2026-11-23 20:52*
+*Generated on: 2026-11-23 21:19*
 
 ## Overall Bypass Rate
 
-| Engine | Bypass Rate (%) | Detected by |
-|-----------------|----------------:|------------:|
-| camoufox | 90.0 | 1/9 |
-| camoufox_headless | 80.0 | 0/9 |
-| invisible-playwright | 80.0 | 0/9 |
-| invisible-playwright_headless | 80.0 | 0/9 |
-| patchright | 80.0 | 1/9 |
-| seleniumbase-cdp-chrome | 80.0 | 2/9 |
-| pydoll-chrome | 80.0 | 1/9 |
-| nodriver-chrome | 70.0 | 2/9 |
-| zendriver-chrome_headless | 70.0 | 5/9 |
-| clearcote_headless | 70.0 | 0/9 |
-| clearcote | 70.0 | 2/9 |
-| zendriver-chrome | 70.0 | 1/9 |
-| adspower_headless | 60.0 | 1/9 |
-| shardbrowser | 60.0 | 1/9 |
-| selenium-chrome__no_proxy | 60.0 | 6/9 |
-| playwright-firefox_headless | 60.0 | 9/9 |
-| playwright-firefox | 60.0 | 9/9 |
-| tf-playwright-stealth-firefox | 50.0 | 8/9 |
-| cloakbrowser | 50.0 | 0/9 |
-| adspower | 50.0 | 0/9 |
-| cloakbrowser_headless | 50.0 | 0/9 |
-| playwright-chrome | 50.0 | 8/9 |
-| tf-playwright-stealth-chromium_headless | 40.0 | 5/9 |
-| tf-playwright-stealth-firefox_headless | 40.0 | 8/9 |
-| tf-playwright-stealth-chromium | 40.0 | 5/9 |
-| shardbrowser_headless | 40.0 | 0/9 |
-| pydoll-chrome_headless | 10.0 | 8/9 |
-| selenium-chrome_headless__no_proxy | 10.0 | 9/9 |
-| nodriver-chrome_headless | 0.0 | 8/9 |
-| patchright_headless | 0.0 | 8/9 |
-| playwright-chrome_headless | 0.0 | 9/9 |
+| Engine | Bypass Rate (%) | Detected by | Detection risk |
+|-----------------|----------------:|------------:|---------------:|
+| camoufox | 90.0 | 1/9 | 20 |
+| camoufox_headless | 80.0 | 0/9 | 17 |
+| invisible-playwright | 80.0 | 0/9 | 4 |
+| invisible-playwright_headless | 80.0 | 0/9 | 2 |
+| patchright | 80.0 | 1/9 | 31 |
+| seleniumbase-cdp-chrome | 80.0 | 2/9 | 39 |
+| pydoll-chrome | 80.0 | 1/9 | 32 |
+| nodriver-chrome | 70.0 | 2/9 | 31 |
+| zendriver-chrome_headless | 70.0 | 5/9 | 54 |
+| clearcote_headless | 70.0 | 0/9 | 14 |
+| clearcote | 70.0 | 2/9 | 29 |
+| zendriver-chrome | 70.0 | 1/9 | 28 |
+| adspower_headless | 60.0 | 1/9 | 25 |
+| shardbrowser | 60.0 | 1/9 | 30 |
+| selenium-chrome__no_proxy | 60.0 | 6/9 | 72 |
+| playwright-firefox_headless | 60.0 | 9/9 | 87 |
+| playwright-firefox | 60.0 | 9/9 | 87 |
+| tf-playwright-stealth-firefox | 50.0 | 8/9 | 88 |
+| cloakbrowser | 50.0 | 0/9 | 9 |
+| adspower | 50.0 | 0/9 | 21 |
+| cloakbrowser_headless | 50.0 | 0/9 | 12 |
+| playwright-chrome | 50.0 | 8/9 | 87 |
+| tf-playwright-stealth-chromium_headless | 40.0 | 5/9 | 56 |
+| tf-playwright-stealth-firefox_headless | 40.0 | 8/9 | 88 |
+| tf-playwright-stealth-chromium | 40.0 | 5/9 | 56 |
+| shardbrowser_headless | 40.0 | 0/9 | 16 |
+| pydoll-chrome_headless | 10.0 | 8/9 | 90 |
+| selenium-chrome_headless__no_proxy | 10.0 | 9/9 | 93 |
+| nodriver-chrome_headless | 0.0 | 8/9 | 86 |
+| patchright_headless | 0.0 | 8/9 | 90 |
+| playwright-chrome_headless | 0.0 | 9/9 | 100 |
 
 
 ## Bot Detection Tests
 
-✅ looks human · ⚠️ suspicious · ❌ detected as bot · ❔ test didn't finish (not counted in "Detected by")
+✅ looks human · ⚠️ suspicious · ❌ detected as bot · ❔ test didn't finish (not counted)
 
-| Engine | cleantalk | scrapfly | browserscan | apivoid | pixelscan | sannysoft | creepjs_headless | deviceandbrowserinfo | fingerprint_scan | Detected by |
-|-----------------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|------------:|
-| invisible-playwright | ✅ score 100 | ✅ 14/14 safe | ✅ 17/17 normal | ✅ risk 20 | ✅ 69/69 clear | ✅ 30/30 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 15 | 0/9 |
-| invisible-playwright_headless | ✅ score 100 | ✅ 14/14 safe | ✅ 17/17 normal | ✅ risk 0 | ✅ 69/69 clear | ✅ 30/30 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 15 | 0/9 |
-| cloakbrowser | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 20 | ✅ 92/92 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 15 | 0/9 |
-| cloakbrowser_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 10 | ✅ 92/92 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 45 | 0/9 |
-| adspower | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 60 | ✅ 102/102 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 81 | 0/9 |
-| camoufox_headless | ✅ score 100 | ✅ 14/14 safe | ✅ 17/17 normal | ⚠️ risk 50 | ✅ 69/69 clear | ⚠️ 1 warn | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 57 | 0/9 |
-| clearcote_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 53 | ✅ 101/101 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 26 | 0/9 |
-| shardbrowser_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 58 | ✅ 91/91 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 36 | 0/9 |
-| adspower_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 75 | ✅ 102/102 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 100 | 1/9 |
-| camoufox | ✅ score 100 | ✅ 14/14 safe | ✅ 17/17 normal | ⚠️ risk 40 | ✅ 69/69 clear | ⚠️ 1 warn | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 92 | 1/9 |
-| patchright | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 26 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 99 | 1/9 |
-| pydoll-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 41 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 99 | 1/9 |
-| shardbrowser | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 55 | ✅ 91/91 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 66 | 1/9 |
-| zendriver-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 36 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 69 | 1/9 |
-| clearcote | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 33 | ✅ 101/101 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ❌ bot, 1 signal | ❌ bot score 76 | 2/9 |
-| nodriver-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 26 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 100 | 2/9 |
-| seleniumbase-cdp-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 36 | ❌ 1 not clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 69 | 2/9 |
-| tf-playwright-stealth-chromium | ✅ score 100 | ✅ 14/14 safe | ❌ robot | ❌ risk 100 | ❌ 3 not clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ❌ bot, 4 signals | ❌ bot score 100 | 5/9 |
-| tf-playwright-stealth-chromium_headless | ✅ score 100 | ✅ 14/14 safe | ❌ robot | ❌ risk 100 | ❌ 3 not clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ❌ bot, 4 signals | ❌ bot score 100 | 5/9 |
-| zendriver-chrome_headless | ✅ score 84 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 85 | ✅ 90/90 clear | ❌ 1 failed | ❌ headless 33%, stealth 0% | ❌ bot, 1 signal | ❌ bot score 100 | 5/9 |
-| selenium-chrome__no_proxy | ⚠️ score 70 | ⚠️ 1 suspicious | ❌ robot, Selenium | ❌ risk 66 | ❌ 1 not clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ❌ bot, 2 signals | ❌ bot score 100 | 6/9 |
-| nodriver-chrome_headless | ⚠️ score 58 | ❌ 1 detected | ❌ robot | ❌ blocked (403) | ❌ 2 not clear | ❌ 4 failed | ❌ headless 33%, stealth 0% | ❌ bot, 2 signals | ❌ bot score 100 | 8/9 |
-| patchright_headless | ⚠️ score 58 | ❌ 1 detected | ❌ robot | ❌ blocked (403) | ❌ 2 not clear | ❌ 4 failed | ❌ headless 67%, stealth 0% | ❌ bot, 2 signals | ❌ bot score 100 | 8/9 |
-| playwright-chrome | ⚠️ score 50 | ❌ 1 detected | ❌ robot, WebDriver | ❌ risk 100 | ❌ 2 not clear | ❌ 2 failed | ❌ headless 33%, stealth 0% | ❌ bot, 6 signals | ❌ bot score 100 | 8/9 |
-| pydoll-chrome_headless | ⚠️ score 58 | ❌ 1 detected | ❌ robot | ❌ blocked (403) | ❌ 2 not clear | ❌ 4 failed | ❌ headless 67%, stealth 0% | ❌ bot, 2 signals | ❌ bot score 100 | 8/9 |
-| tf-playwright-stealth-firefox | ⚠️ score 50 | ❌ 1 detected | ❌ robot, WebDriver | ❌ risk 100 | ❌ 3 not clear | ❌ 4 failed | ❌ headless 33%, stealth 40% | ❌ bot, 3 signals | ❌ bot score 100 | 8/9 |
-| tf-playwright-stealth-firefox_headless | ⚠️ score 50 | ❌ 1 detected | ❌ robot, WebDriver | ❌ risk 100 | ❌ 3 not clear | ❌ 4 failed | ❌ headless 33%, stealth 40% | ❌ bot, 3 signals | ❌ bot score 100 | 8/9 |
-| playwright-chrome_headless | ❌ score 1 | ❌ 2 detected | ❌ robot, WebDriver | ❌ blocked (403) | ❌ 6 not clear | ❌ 12 failed | ❌ headless 100%, stealth 0% | ❌ bot, 6 signals | ❌ bot score 100 | 9/9 |
-| playwright-firefox | ❌ score 41 | ❌ 1 detected | ❌ robot, WebDriver | ❌ risk 93 | ❌ 2 not clear | ❌ 3 failed | ❌ headless 33%, stealth 0% | ❌ bot, 2 signals | ❌ bot score 100 | 9/9 |
-| playwright-firefox_headless | ❌ score 41 | ❌ 1 detected | ❌ robot, WebDriver | ❌ risk 93 | ❌ 2 not clear | ❌ 3 failed | ❌ headless 33%, stealth 0% | ❌ bot, 2 signals | ❌ bot score 100 | 9/9 |
-| selenium-chrome_headless__no_proxy | ❌ score 28 | ❌ 1 detected | ❌ robot, Selenium | ❌ blocked (403) | ❌ 3 not clear | ❌ 4 failed | ❌ headless 67%, stealth 0% | ❌ bot, 5 signals | ❌ bot score 100 | 9/9 |
+Risk (0 - human, 100 - bot) is the average over the tests: the site's own score where it has one (CleanTalk: 100 - Human Score, APIVoid: risk score, CreepJS: headless/stealth %, Fingerprint-Scan: bot score), otherwise its verdict (✅ 0, ⚠️ 50, ❌ 100). Engines are sorted by it.
+
+| Engine | cleantalk | scrapfly | browserscan | apivoid | pixelscan | sannysoft | creepjs_headless | deviceandbrowserinfo | fingerprint_scan | Detected by | Risk |
+|-----------------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|------------:|-----:|
+| invisible-playwright_headless | ✅ score 100 | ✅ 14/14 safe | ✅ 17/17 normal | ✅ risk 0 | ✅ 69/69 clear | ✅ 30/30 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 15 | 0/9 | 2 |
+| invisible-playwright | ✅ score 100 | ✅ 14/14 safe | ✅ 17/17 normal | ✅ risk 20 | ✅ 69/69 clear | ✅ 30/30 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 15 | 0/9 | 4 |
+| cloakbrowser | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 20 | ✅ 92/92 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 15 | 0/9 | 9 |
+| cloakbrowser_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 10 | ✅ 92/92 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 45 | 0/9 | 12 |
+| clearcote_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 53 | ✅ 101/101 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 26 | 0/9 | 14 |
+| shardbrowser_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 58 | ✅ 91/91 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 36 | 0/9 | 16 |
+| camoufox_headless | ✅ score 100 | ✅ 14/14 safe | ✅ 17/17 normal | ⚠️ risk 50 | ✅ 69/69 clear | ⚠️ 1 warn | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 57 | 0/9 | 17 |
+| camoufox | ✅ score 100 | ✅ 14/14 safe | ✅ 17/17 normal | ⚠️ risk 40 | ✅ 69/69 clear | ⚠️ 1 warn | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 92 | 1/9 | 20 |
+| adspower | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 60 | ✅ 102/102 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 81 | 0/9 | 21 |
+| adspower_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 75 | ✅ 102/102 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 100 | 1/9 | 25 |
+| zendriver-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 36 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 69 | 1/9 | 28 |
+| clearcote | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 33 | ✅ 101/101 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ❌ bot, 1 signal | ❌ bot score 76 | 2/9 | 29 |
+| shardbrowser | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 55 | ✅ 91/91 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 66 | 1/9 | 30 |
+| patchright | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 26 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 99 | 1/9 | 31 |
+| nodriver-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 26 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 100 | 2/9 | 31 |
+| pydoll-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 41 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 99 | 1/9 | 32 |
+| seleniumbase-cdp-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 36 | ❌ 1 not clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 69 | 2/9 | 39 |
+| zendriver-chrome_headless | ✅ score 84 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 85 | ✅ 90/90 clear | ❌ 1 failed | ❌ headless 33%, stealth 0% | ❌ bot, 1 signal | ❌ bot score 100 | 5/9 | 54 |
+| tf-playwright-stealth-chromium | ✅ score 100 | ✅ 14/14 safe | ❌ robot | ❌ risk 100 | ❌ 3 not clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ❌ bot, 4 signals | ❌ bot score 100 | 5/9 | 56 |
+| tf-playwright-stealth-chromium_headless | ✅ score 100 | ✅ 14/14 safe | ❌ robot | ❌ risk 100 | ❌ 3 not clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ❌ bot, 4 signals | ❌ bot score 100 | 5/9 | 56 |
+| selenium-chrome__no_proxy | ⚠️ score 70 | ⚠️ 1 suspicious | ❌ robot, Selenium | ❌ risk 66 | ❌ 1 not clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ❌ bot, 2 signals | ❌ bot score 100 | 6/9 | 72 |
+| nodriver-chrome_headless | ⚠️ score 58 | ❌ 1 detected | ❌ robot | ❌ blocked (403) | ❌ 2 not clear | ❌ 4 failed | ❌ headless 33%, stealth 0% | ❌ bot, 2 signals | ❌ bot score 100 | 8/9 | 86 |
+| playwright-chrome | ⚠️ score 50 | ❌ 1 detected | ❌ robot, WebDriver | ❌ risk 100 | ❌ 2 not clear | ❌ 2 failed | ❌ headless 33%, stealth 0% | ❌ bot, 6 signals | ❌ bot score 100 | 8/9 | 87 |
+| playwright-firefox | ❌ score 41 | ❌ 1 detected | ❌ robot, WebDriver | ❌ risk 93 | ❌ 2 not clear | ❌ 3 failed | ❌ headless 33%, stealth 0% | ❌ bot, 2 signals | ❌ bot score 100 | 9/9 | 87 |
+| playwright-firefox_headless | ❌ score 41 | ❌ 1 detected | ❌ robot, WebDriver | ❌ risk 93 | ❌ 2 not clear | ❌ 3 failed | ❌ headless 33%, stealth 0% | ❌ bot, 2 signals | ❌ bot score 100 | 9/9 | 87 |
+| tf-playwright-stealth-firefox | ⚠️ score 50 | ❌ 1 detected | ❌ robot, WebDriver | ❌ risk 100 | ❌ 3 not clear | ❌ 4 failed | ❌ headless 33%, stealth 40% | ❌ bot, 3 signals | ❌ bot score 100 | 8/9 | 88 |
+| tf-playwright-stealth-firefox_headless | ⚠️ score 50 | ❌ 1 detected | ❌ robot, WebDriver | ❌ risk 100 | ❌ 3 not clear | ❌ 4 failed | ❌ headless 33%, stealth 40% | ❌ bot, 3 signals | ❌ bot score 100 | 8/9 | 88 |
+| patchright_headless | ⚠️ score 58 | ❌ 1 detected | ❌ robot | ❌ blocked (403) | ❌ 2 not clear | ❌ 4 failed | ❌ headless 67%, stealth 0% | ❌ bot, 2 signals | ❌ bot score 100 | 8/9 | 90 |
+| pydoll-chrome_headless | ⚠️ score 58 | ❌ 1 detected | ❌ robot | ❌ blocked (403) | ❌ 2 not clear | ❌ 4 failed | ❌ headless 67%, stealth 0% | ❌ bot, 2 signals | ❌ bot score 100 | 8/9 | 90 |
+| selenium-chrome_headless__no_proxy | ❌ score 28 | ❌ 1 detected | ❌ robot, Selenium | ❌ blocked (403) | ❌ 3 not clear | ❌ 4 failed | ❌ headless 67%, stealth 0% | ❌ bot, 5 signals | ❌ bot score 100 | 9/9 | 93 |
+| playwright-chrome_headless | ❌ score 1 | ❌ 2 detected | ❌ robot, WebDriver | ❌ blocked (403) | ❌ 6 not clear | ❌ 12 failed | ❌ headless 100%, stealth 0% | ❌ bot, 6 signals | ❌ bot score 100 | 9/9 | 100 |
 
 
 ## Resource Usage Comparison
