@@ -76,12 +76,15 @@ def _write_bypass_section(f, bypass_df: pd.DataFrame, detection_df: pd.DataFrame
             f.write(f"| {row['engine']} | {row['bypass_percent']:.1f} |\n")
         return
 
-    f.write("| Engine | Bypass Rate (%) | Detected by |\n")
-    f.write("|-----------------|----------------:|------------:|\n")
+    f.write("| Engine | Bypass Rate (%) | Detected by | Detection risk |\n")
+    f.write("|-----------------|----------------:|------------:|---------------:|\n")
     for _, row in bypass_by_engine.iterrows():
-        detected_by = (f"{detection.at[row['engine'], 'detected']}/{detection.at[row['engine'], 'total']}"
-                       if row["engine"] in detection.index else "-")
-        f.write(f"| {row['engine']} | {row['bypass_percent']:.1f} | {detected_by} |\n")
+        if row["engine"] in detection.index:
+            counts = detection.loc[row["engine"]]
+            detected_by, risk = f"{counts['detected']:.0f}/{counts['total']:.0f}", f"{counts['risk']:.0f}"
+        else:
+            detected_by, risk = "-", "-"
+        f.write(f"| {row['engine']} | {row['bypass_percent']:.1f} | {detected_by} | {risk} |\n")
 
 
 def _write_detection_section(f, detection_df: pd.DataFrame) -> None:
@@ -98,13 +101,17 @@ def _write_detection_section(f, detection_df: pd.DataFrame) -> None:
         f.write("*No bot detection data available*\n\n")
         return
 
-    f.write("✅ looks human · ⚠️ suspicious · ❌ detected as bot · ❔ test didn't finish (not counted in \"Detected by\")\n\n")
+    f.write("✅ looks human · ⚠️ suspicious · ❌ detected as bot · ❔ test didn't finish (not counted)\n\n")
+    f.write("Risk (0 - human, 100 - bot) is the average over the tests: the site's own score where it has one "
+            "(CleanTalk: 100 - Human Score, APIVoid: risk score, CreepJS: headless/stealth %, "
+            "Fingerprint-Scan: bot score), otherwise its verdict (✅ 0, ⚠️ 50, ❌ 100). "
+            "Engines are sorted by it.\n\n")
 
     targets = list(dict.fromkeys(detection_df["target"]))
     cells = detection_df.set_index(["engine", "target"])
 
-    f.write("| Engine | " + " | ".join(targets) + " | Detected by |\n")
-    f.write("|-----------------|" + "|".join(":---:" for _ in targets) + "|------------:|\n")
+    f.write("| Engine | " + " | ".join(targets) + " | Detected by | Risk |\n")
+    f.write("|-----------------|" + "|".join(":---:" for _ in targets) + "|------------:|-----:|\n")
     for engine, counts in summarize_detection(detection_df).iterrows():
         row = []
         for target in targets:
@@ -113,7 +120,7 @@ def _write_detection_section(f, detection_df: pd.DataFrame) -> None:
                 continue
             cell = cells.loc[(engine, target)]
             row.append(f"{VERDICT_ICONS[cell['verdict']]} {cell['summary']}" if cell["verdict"] else "❔ error")
-        f.write(f"| {engine} | " + " | ".join(row) + f" | {counts['detected']}/{counts['total']} |\n")
+        f.write(f"| {engine} | " + " | ".join(row) + f" | {counts['detected']:.0f}/{counts['total']:.0f} | {counts['risk']:.0f} |\n")
 
 
 def _write_resource_section(f, bypass_df: pd.DataFrame) -> None:

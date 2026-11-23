@@ -45,6 +45,7 @@ class DetectionTestResult:
     url: str
     verdict: Optional[str] = None
     summary: Optional[str] = None
+    risk: Optional[int] = None
     details: Dict[str, Any] = field(default_factory=dict)
     error: Optional[str] = None
 

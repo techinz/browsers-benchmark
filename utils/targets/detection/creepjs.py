@@ -28,6 +28,6 @@ async def check_creepjs(engine: BrowserEngine) -> dict:
 
     verdict = BOT if headless or stealth else HUMAN
     return detection(
-        verdict, f"headless {headless}%, stealth {stealth}%",
+        verdict, f"headless {headless}%, stealth {stealth}%", risk=max(headless, stealth),
         like_headless=like_headless, headless=headless, stealth=stealth
     )

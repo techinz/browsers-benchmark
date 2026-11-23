@@ -137,13 +137,14 @@ def generate_detection_image(df: pd.DataFrame, output_dir: str) -> str:
     ax.set_xticks([j + 0.5 for j in range(len(targets))])
     ax.set_xticklabels(targets, rotation=30, ha="left", fontsize=10)
     ax.set_yticks([i + 0.5 for i in range(len(engines))])
-    ax.set_yticklabels([f"{engine}  ({summary.at[engine, 'detected']}/{summary.at[engine, 'total']})"
+    ax.set_yticklabels([f"{engine}  (risk {summary.at[engine, 'risk']:.0f}, "
+                        f"{summary.at[engine, 'detected']}/{summary.at[engine, 'total']})"
                         for engine in engines], fontsize=10)
     ax.tick_params(length=0)
     for spine in ax.spines.values():
         spine.set_visible(False)
 
-    ax.set_title("Bot Detection Tests (detected by N of M finished tests)", fontsize=16, pad=40)
+    ax.set_title("Bot Detection Tests (average risk 0-100, detected by N of M finished tests)", fontsize=16, pad=40)
     ax.legend(
         handles=[Patch(color=colors["human"], label="Looks human"),
                  Patch(color=colors["suspicious"], label="Suspicious"),

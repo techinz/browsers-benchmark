@@ -31,4 +31,4 @@ async def check_fingerprint_scan(engine: BrowserEngine) -> dict:
     levels = " ".join(categories.values())
     verdict = BOT if "HIGH" in levels else SUSPICIOUS if "MEDIUM" in levels else HUMAN
 
-    return detection(verdict, f"bot score {score}", score=score, categories=categories)
+    return detection(verdict, f"bot score {score}", risk=score, score=score, categories=categories)

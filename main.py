@@ -187,6 +187,7 @@ async def run_detection_test(
         outcome = await check_function(engine)
         result.verdict = outcome["verdict"]
         result.summary = outcome["summary"]
+        result.risk = outcome["risk"]
         result.details = outcome["details"]
         return result
 

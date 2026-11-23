@@ -42,6 +42,8 @@ Each site's own verdict is used, mapped to ✅ looks human, ⚠️ suspicious or
 
 Pages are only read (and buttons clicked) through JavaScript, the same way for every engine, so there is no real mouse movement - sites that score interaction see none.
 
+Each engine also gets a **detection risk** (0 - human, 100 - bot): the average over the tests of the site's own score where it has one (CleanTalk, APIVoid, CreepJS, Fingerprint-Scan), otherwise its verdict (✅ 0, ⚠️ 50, ❌ 100). It ranks the engines, so a suspicious result counts too, not only an outright detection.
+
 ### Browser Engine Support
 - <a href="https://www.adspower.com">**AdsPower**</a> - <b>(Proprietary)</b> Anti-detect browser with per-profile fingerprinting. Requires AdsPower desktop app running locally and an API key.
 - <a href="https://playwright.dev">**Playwright**</a> - <b>(Open-Source)</b> Microsoft's automation framework (Chrome, Firefox, Safari)
@@ -508,7 +510,7 @@ The codebase follows a modular architecture for extensibility:
             raise Exception("Result not found")
 
         verdict = HUMAN if score < 30 else SUSPICIOUS if score < 70 else BOT
-        return detection(verdict, f"bot score {score}", score=score)
+        return detection(verdict, f"bot score {score}", risk=score, score=score)
     ```
 2. Add a `Target` and the function to `DetectionTargetsSettings` in `config/benchmark_targets.py`.
 

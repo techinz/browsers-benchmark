@@ -81,28 +81,30 @@ def process_detection_data(results: List[Dict[str, Any]]) -> pd.DataFrame:
                 "target": test["target"],
                 "verdict": test.get("verdict") if not test.get("error") else None,
                 "summary": test.get("summary"),
+                "risk": test.get("risk") if not test.get("error") else None,
                 "error": test.get("error"),
             })
 
-    return pd.DataFrame(detection_rows, columns=["engine", "target", "verdict", "summary", "error"])
+    return pd.DataFrame(detection_rows, columns=["engine", "target", "verdict", "summary", "risk", "error"])
 
 
 def summarize_detection(detection_df: pd.DataFrame) -> pd.DataFrame:
     """
-    Count bot detection verdicts per engine
+    Summarize bot detection results per engine
 
     :param detection_df: DataFrame from process_detection_data
-    :return: DataFrame indexed by engine with detected/suspicious/total (finished tests)/errors columns,
-        best engines first
+    :return: DataFrame indexed by engine with detected/suspicious/total (finished tests)/errors counts and
+        risk (average detection risk 0-100 over the finished tests), least detectable engines first
     """
 
     if detection_df.empty:
-        return pd.DataFrame(columns=["detected", "suspicious", "total", "errors"])
+        return pd.DataFrame(columns=["detected", "suspicious", "total", "errors", "risk"])
 
     summary = detection_df.groupby("engine").agg(
         detected=("verdict", lambda v: int((v == "bot").sum())),
         suspicious=("verdict", lambda v: int((v == "suspicious").sum())),
         total=("verdict", lambda v: int(v.notna().sum())),
         errors=("verdict", lambda v: int(v.isna().sum())),
+        risk=("risk", lambda r: float(pd.to_numeric(r, errors="coerce").mean())),
     )
-    return summary.sort_index().sort_values(["detected", "suspicious", "errors"], kind="stable")
+    return summary.sort_index().sort_values(["risk", "detected", "errors"], kind="stable")

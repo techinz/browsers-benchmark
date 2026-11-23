@@ -9,17 +9,25 @@ HUMAN = "human"
 SUSPICIOUS = "suspicious"
 BOT = "bot"
 
+VERDICT_RISK = {HUMAN: 0, SUSPICIOUS: 50, BOT: 100}
 
-def detection(verdict: str, summary: str, **details: Any) -> dict:
+
+def detection(verdict: str, summary: str, risk: Optional[float] = None, **details: Any) -> dict:
     """
     Build the result of a bot detection test
 
     :param verdict: HUMAN, SUSPICIOUS or BOT - how the site classified the browser
     :param summary: Short, human-readable result shown in the report (e.g. "risk 41")
+    :param risk: 0 (human) - 100 (bot) on the site's own numeric scale; sites without one use the verdict
     :param details: Site-specific data kept in the raw results
     """
 
-    return {"verdict": verdict, "summary": summary, "details": details}
+    return {
+        "verdict": verdict,
+        "summary": summary,
+        "risk": round(risk) if risk is not None else VERDICT_RISK[verdict],
+        "details": details,
+    }
 
 
 async def evaluate(engine: BrowserEngine, script: str) -> Any:

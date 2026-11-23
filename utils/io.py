@@ -74,6 +74,7 @@ def save_results(results: BenchmarkResults, result_path: str) -> str:
                 "url": r.url,
                 "verdict": r.verdict,
                 "summary": r.summary,
+                "risk": r.risk,
                 "error": r.error,
                 "details": r.details
             } for r in results.detection_targets_results

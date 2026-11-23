@@ -23,7 +23,7 @@ async def check_apivoid(engine: BrowserEngine) -> dict:
     result = await wait_for(engine, RESULT_SCRIPT, timeout_s=60)
     if not result:
         if "403 Forbidden" in await page_text(engine):
-            return detection(BOT, "blocked (403)", blocked=True)
+            return detection(BOT, "blocked (403)", risk=100, blocked=True)
         raise Exception("APIVoid result not found")
 
     summary = result["verdict"]
@@ -31,7 +31,7 @@ async def check_apivoid(engine: BrowserEngine) -> dict:
     verdict = HUMAN if level == "ok" else SUSPICIOUS if level == "warn" else BOT
 
     return detection(
-        verdict, f"risk {summary.get('score')}",
+        verdict, f"risk {summary.get('score')}", risk=summary.get("score"),
         score=summary.get("score"), label=summary.get("label"), level=level,
         tampered=summary.get("tampered"), triggered_rules=summary.get("ruleCount"),
         groups={g.get("label"): g.get("status") for g in result.get("groups", [])}

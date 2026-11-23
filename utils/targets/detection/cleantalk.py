@@ -38,7 +38,7 @@ async def check_cleantalk(engine: BrowserEngine) -> dict:
     score = result["score"]
     verdict = HUMAN if score >= 80 else SUSPICIOUS if score >= 50 else BOT
     return detection(
-        verdict, f"score {score}",
+        verdict, f"score {score}", risk=100 - score,
         score=score, label=result["label"], flagged=result["flagged"], weak=result["weak"],
         signals_checked=result["checked"]
     )
