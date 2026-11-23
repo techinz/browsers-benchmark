@@ -51,14 +51,14 @@ def _write_report_header(f) -> None:
 
 def _write_bypass_section(f, bypass_df: pd.DataFrame, detection_df: pd.DataFrame) -> None:
     """
-    Write the bypass rate section (with the number of bot detection tests that detected each engine)
+    Write the overall ranking: bypass rate combined with the bot detection risk
 
     :param f: File object to write the section to
     :param bypass_df: DataFrame containing bypass results
     :param detection_df: DataFrame containing bot detection test verdicts
     """
 
-    f.write("## Overall Bypass Rate\n\n")
+    f.write("## Overall Ranking\n\n")
 
     if bypass_df.empty:
         f.write("*No bypass data available*\n\n")
@@ -67,25 +67,32 @@ def _write_bypass_section(f, bypass_df: pd.DataFrame, detection_df: pd.DataFrame
     bypass_by_engine = bypass_df.groupby("engine")["bypass"].mean().reset_index()
     bypass_by_engine.loc[:, "bypass_percent"] = bypass_by_engine["bypass"] * 100
     detection = summarize_detection(detection_df)
-    bypass_by_engine.loc[:, "risk"] = bypass_by_engine["engine"].map(detection["risk"]) if not detection.empty else 0
-    bypass_by_engine = bypass_by_engine.sort_values(["bypass_percent", "risk", "engine"], ascending=[False, True, True])
 
     if detection.empty:
+        bypass_by_engine = bypass_by_engine.sort_values(["bypass_percent", "engine"], ascending=[False, True])
         f.write("| Engine | Bypass Rate (%) |\n")
         f.write("|-----------------|----------------:|\n")
         for _, row in bypass_by_engine.iterrows():
             f.write(f"| {row['engine']} | {row['bypass_percent']:.1f} |\n")
         return
 
-    f.write("| Engine | Bypass Rate (%) | Detected by | Detection risk |\n")
-    f.write("|-----------------|----------------:|------------:|---------------:|\n")
+    bypass_by_engine.loc[:, "risk"] = bypass_by_engine["engine"].map(detection["risk"])
+    bypass_by_engine.loc[:, "score"] = (bypass_by_engine["bypass_percent"] + 100 - bypass_by_engine["risk"]) / 2
+    bypass_by_engine = bypass_by_engine.sort_values(["score", "bypass_percent", "engine"], ascending=[False, False, True],
+                                                    na_position="last")
+
+    f.write("Overall score is the average of the bypass rate and 100 minus the detection risk "
+            "(see Bot Detection Tests), both weighted equally.\n\n")
+    f.write("| Engine | Overall score | Bypass Rate (%) | Detected by | Detection risk |\n")
+    f.write("|-----------------|--------------:|----------------:|------------:|---------------:|\n")
     for _, row in bypass_by_engine.iterrows():
         if row["engine"] in detection.index:
             counts = detection.loc[row["engine"]]
+            score = f"{row['score']:.1f}"
             detected_by, risk = f"{counts['detected']:.0f}/{counts['total']:.0f}", f"{counts['risk']:.0f}"
         else:
-            detected_by, risk = "-", "-"
-        f.write(f"| {row['engine']} | {row['bypass_percent']:.1f} | {detected_by} | {risk} |\n")
+            score, detected_by, risk = "-", "-", "-"
+        f.write(f"| {row['engine']} | {score} | {row['bypass_percent']:.1f} | {detected_by} | {risk} |\n")
 
 
 def _write_detection_section(f, detection_df: pd.DataFrame) -> None:
