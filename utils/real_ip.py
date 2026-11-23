@@ -31,12 +31,20 @@ def get_real_ip() -> Optional[str]:
     return _real_ip
 
 
+def _real_ip_pattern() -> str:
+    """Regex for the real IP, also when written with dashes or underscores (e.g. in reverse DNS host names)"""
+
+    if ":" in _real_ip:
+        return re.escape(_real_ip)
+    return r"[.\-_]".join(_real_ip.split("."))
+
+
 def mask_real_ip(text: str) -> str:
     """Replace the real IP in text with the placeholder"""
 
     if not _real_ip:
         return text
-    return re.sub(rf"(?<![\w.:]){re.escape(_real_ip)}(?![\w.:])", REAL_IP_PLACEHOLDER, text)
+    return re.sub(rf"(?<![\d.]){_real_ip_pattern()}(?!\d|\.\d)", REAL_IP_PLACEHOLDER, text)
 
 
 def mask_real_ip_js() -> Optional[str]:
@@ -45,17 +53,18 @@ def mask_real_ip_js() -> Optional[str]:
     if not _real_ip:
         return None
     return (
-        f"const ip = {json.dumps(_real_ip)};\n"
-        f"const re = new RegExp('(^|[^\\\\w.:])' + ip.replace(/[.:]/g, '\\\\$&') + '(?![\\\\w.:])', 'g');\n"
+        f"const re = new RegExp('(^|[^\\\\d.])' + {json.dumps(_real_ip_pattern())} + '(?!\\\\d|\\\\.\\\\d)', 'g');\n"
+        "const mask = (value) => value.replace(re, '$1" + REAL_IP_PLACEHOLDER + "');\n"
         "const walk = (root) => {\n"
         "  const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT);\n"
         "  let n;\n"
         "  while ((n = w.nextNode())) {\n"
         "    if (n.nodeType === Node.TEXT_NODE) {\n"
-        f"      if (n.nodeValue.includes(ip)) n.nodeValue = n.nodeValue.replace(re, '$1{REAL_IP_PLACEHOLDER}');\n"
+        "      const masked = mask(n.nodeValue);\n"
+        "      if (masked !== n.nodeValue) n.nodeValue = masked;\n"
         "    } else {\n"
         "      if (n.shadowRoot) walk(n.shadowRoot);\n"
-        f"      if ('value' in n && typeof n.value === 'string' && n.value.includes(ip)) n.value = n.value.replace(re, '$1{REAL_IP_PLACEHOLDER}');\n"
+        "      if ('value' in n && typeof n.value === 'string' && mask(n.value) !== n.value) n.value = mask(n.value);\n"
         "    }\n"
         "  }\n"
         "};\n"
