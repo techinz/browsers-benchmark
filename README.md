@@ -95,71 +95,109 @@ This benchmark provides detailed comparative analysis. Here's an excerpt from a 
 <i>Proxy IP in this example is different for each engine</i>
 
 ## Overall Bypass Rate
-| Engine | Bypass Rate (%) |
-|-----------------|----------------:|
-| pydoll-chrome | 90.0 |
-| invisible-playwright_headless | 80.0 |
-| nodriver-chrome | 80.0 |
-| patchright | 80.0 |
-| clearcote_headless | 80.0 |
-| zendriver-chrome | 80.0 |
-| camoufox | 70.0 |
-| invisible-playwright | 70.0 |
-| adspower | 70.0 |
-| selenium-chrome__no_proxy | 70.0 |
-| seleniumbase-cdp-chrome | 70.0 |
-| adspower_headless | 60.0 |
-| clearcote | 60.0 |
-| zendriver-chrome_headless | 60.0 |
-| tf-playwright-stealth-firefox_headless | 60.0 |
-| cloakbrowser | 50.0 |
-| camoufox_headless | 50.0 |
-| tf-playwright-stealth-chromium | 50.0 |
-| cloakbrowser_headless | 50.0 |
-| playwright-chrome | 50.0 |
-| playwright-firefox | 50.0 |
-| playwright-firefox_headless | 50.0 |
-| tf-playwright-stealth-firefox | 40.0 |
-| tf-playwright-stealth-chromium_headless | 40.0 |
-| playwright-chrome_headless | 10.0 |
-| selenium-chrome_headless__no_proxy | 10.0 |
-| nodriver-chrome_headless | 0.0 |
-| pydoll-chrome_headless | 0.0 |
-| patchright_headless | 0.0 |
+| Engine | Bypass Rate (%) | Detected by |
+|-----------------|----------------:|------------:|
+| camoufox | 90.0 | 1/9 |
+| camoufox_headless | 80.0 | 0/9 |
+| patchright | 80.0 | 1/9 |
+| invisible-playwright_headless | 80.0 | 0/9 |
+| invisible-playwright | 80.0 | 0/9 |
+| seleniumbase-cdp-chrome | 80.0 | 2/9 |
+| pydoll-chrome | 80.0 | 1/9 |
+| nodriver-chrome | 70.0 | 2/9 |
+| clearcote_headless | 70.0 | 0/9 |
+| zendriver-chrome | 70.0 | 1/9 |
+| zendriver-chrome_headless | 70.0 | 5/9 |
+| clearcote | 70.0 | 2/9 |
+| adspower_headless | 60.0 | 1/9 |
+| playwright-firefox_headless | 60.0 | 9/9 |
+| playwright-firefox | 60.0 | 9/9 |
+| selenium-chrome__no_proxy | 60.0 | 6/9 |
+| adspower | 50.0 | 0/9 |
+| tf-playwright-stealth-firefox | 50.0 | 8/9 |
+| cloakbrowser_headless | 50.0 | 0/9 |
+| cloakbrowser | 50.0 | 0/9 |
+| playwright-chrome | 50.0 | 8/9 |
+| tf-playwright-stealth-firefox_headless | 40.0 | 8/9 |
+| tf-playwright-stealth-chromium | 40.0 | 5/9 |
+| tf-playwright-stealth-chromium_headless | 40.0 | 5/9 |
+| pydoll-chrome_headless | 10.0 | 8/9 |
+| selenium-chrome_headless__no_proxy | 10.0 | 9/9 |
+| nodriver-chrome_headless | 0.0 | 8/9 |
+| patchright_headless | 0.0 | 8/9 |
+| playwright-chrome_headless | 0.0 | 9/9 |
+
+
+## Bot Detection Tests
+✅ looks human · ⚠️ suspicious · ❌ detected as bot · ❔ test didn't finish (not counted in "Detected by")
+
+| Engine | cleantalk | scrapfly | browserscan | apivoid | pixelscan | sannysoft | creepjs_headless | deviceandbrowserinfo | fingerprint_scan | Detected by |
+|-----------------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|------------:|
+| invisible-playwright | ✅ score 100 | ✅ 14/14 safe | ✅ 17/17 normal | ✅ risk 20 | ✅ 69/69 clear | ✅ 30/30 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 15 | 0/9 |
+| invisible-playwright_headless | ✅ score 100 | ✅ 14/14 safe | ✅ 17/17 normal | ✅ risk 0 | ✅ 69/69 clear | ✅ 30/30 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 15 | 0/9 |
+| cloakbrowser | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 20 | ✅ 92/92 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 15 | 0/9 |
+| cloakbrowser_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 10 | ✅ 92/92 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 45 | 0/9 |
+| adspower | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 60 | ✅ 102/102 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 81 | 0/9 |
+| camoufox_headless | ✅ score 100 | ✅ 14/14 safe | ✅ 17/17 normal | ⚠️ risk 50 | ✅ 69/69 clear | ⚠️ 1 warn | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 57 | 0/9 |
+| clearcote_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 53 | ✅ 101/101 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 26 | 0/9 |
+| adspower_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 75 | ✅ 102/102 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 100 | 1/9 |
+| camoufox | ✅ score 100 | ✅ 14/14 safe | ✅ 17/17 normal | ⚠️ risk 40 | ✅ 69/69 clear | ⚠️ 1 warn | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 92 | 1/9 |
+| patchright | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 26 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 99 | 1/9 |
+| pydoll-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 41 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 99 | 1/9 |
+| zendriver-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 36 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 69 | 1/9 |
+| clearcote | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 33 | ✅ 101/101 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ❌ bot, 1 signal | ❌ bot score 76 | 2/9 |
+| nodriver-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 26 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 100 | 2/9 |
+| seleniumbase-cdp-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 36 | ❌ 1 not clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 69 | 2/9 |
+| tf-playwright-stealth-chromium | ✅ score 100 | ✅ 14/14 safe | ❌ robot | ❌ risk 100 | ❌ 3 not clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ❌ bot, 4 signals | ❌ bot score 100 | 5/9 |
+| tf-playwright-stealth-chromium_headless | ✅ score 100 | ✅ 14/14 safe | ❌ robot | ❌ risk 100 | ❌ 3 not clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ❌ bot, 4 signals | ❌ bot score 100 | 5/9 |
+| zendriver-chrome_headless | ✅ score 84 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 85 | ✅ 90/90 clear | ❌ 1 failed | ❌ headless 33%, stealth 0% | ❌ bot, 1 signal | ❌ bot score 100 | 5/9 |
+| selenium-chrome__no_proxy | ⚠️ score 70 | ⚠️ 1 suspicious | ❌ robot, Selenium | ❌ risk 66 | ❌ 1 not clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ❌ bot, 2 signals | ❌ bot score 100 | 6/9 |
+| nodriver-chrome_headless | ⚠️ score 58 | ❌ 1 detected | ❌ robot | ❌ blocked (403) | ❌ 2 not clear | ❌ 4 failed | ❌ headless 33%, stealth 0% | ❌ bot, 2 signals | ❌ bot score 100 | 8/9 |
+| patchright_headless | ⚠️ score 58 | ❌ 1 detected | ❌ robot | ❌ blocked (403) | ❌ 2 not clear | ❌ 4 failed | ❌ headless 67%, stealth 0% | ❌ bot, 2 signals | ❌ bot score 100 | 8/9 |
+| playwright-chrome | ⚠️ score 50 | ❌ 1 detected | ❌ robot, WebDriver | ❌ risk 100 | ❌ 2 not clear | ❌ 2 failed | ❌ headless 33%, stealth 0% | ❌ bot, 6 signals | ❌ bot score 100 | 8/9 |
+| pydoll-chrome_headless | ⚠️ score 58 | ❌ 1 detected | ❌ robot | ❌ blocked (403) | ❌ 2 not clear | ❌ 4 failed | ❌ headless 67%, stealth 0% | ❌ bot, 2 signals | ❌ bot score 100 | 8/9 |
+| tf-playwright-stealth-firefox | ⚠️ score 50 | ❌ 1 detected | ❌ robot, WebDriver | ❌ risk 100 | ❌ 3 not clear | ❌ 4 failed | ❌ headless 33%, stealth 40% | ❌ bot, 3 signals | ❌ bot score 100 | 8/9 |
+| tf-playwright-stealth-firefox_headless | ⚠️ score 50 | ❌ 1 detected | ❌ robot, WebDriver | ❌ risk 100 | ❌ 3 not clear | ❌ 4 failed | ❌ headless 33%, stealth 40% | ❌ bot, 3 signals | ❌ bot score 100 | 8/9 |
+| playwright-chrome_headless | ❌ score 1 | ❌ 2 detected | ❌ robot, WebDriver | ❌ blocked (403) | ❌ 6 not clear | ❌ 12 failed | ❌ headless 100%, stealth 0% | ❌ bot, 6 signals | ❌ bot score 100 | 9/9 |
+| playwright-firefox | ❌ score 41 | ❌ 1 detected | ❌ robot, WebDriver | ❌ risk 93 | ❌ 2 not clear | ❌ 3 failed | ❌ headless 33%, stealth 0% | ❌ bot, 2 signals | ❌ bot score 100 | 9/9 |
+| playwright-firefox_headless | ❌ score 41 | ❌ 1 detected | ❌ robot, WebDriver | ❌ risk 93 | ❌ 2 not clear | ❌ 3 failed | ❌ headless 33%, stealth 0% | ❌ bot, 2 signals | ❌ bot score 100 | 9/9 |
+| selenium-chrome_headless__no_proxy | ❌ score 28 | ❌ 1 detected | ❌ robot, Selenium | ❌ blocked (403) | ❌ 3 not clear | ❌ 4 failed | ❌ headless 67%, stealth 0% | ❌ bot, 5 signals | ❌ bot score 100 | 9/9 |
+
+Note: The headed Chromium-based engines ran on a server without a GPU, so they have no WebGL - this is what Sannysoft flags ("WebGL Vendor/Renderer failed"). Headless engines get a software WebGL renderer instead.
 
 
 ## Resource Usage Comparison
 | Engine | Memory Usage (MB) | CPU Usage (%) |
 |-----------------|------------------:|--------------:|
-| adspower_headless | 158.0 | 3.7 |
-| adspower | 185.0 | 3.3 |
-| tf-playwright-stealth-chromium_headless | 596.0 | 6.3 |
-| playwright-chrome_headless | 626.0 | 3.9 |
-| pydoll-chrome_headless | 970.0 | 4.0 |
-| invisible-playwright | 971.0 | 34.7 |
-| cloakbrowser_headless | 973.0 | 19.4 |
-| selenium-chrome_headless__no_proxy | 1017.0 | 5.8 |
-| zendriver-chrome_headless | 1026.0 | 13.1 |
-| cloakbrowser | 1056.0 | 16.7 |
-| invisible-playwright_headless | 1090.0 | 42.6 |
-| camoufox | 1092.0 | 28.9 |
-| pydoll-chrome | 1103.0 | 22.3 |
-| zendriver-chrome | 1108.0 | 23.3 |
-| selenium-chrome__no_proxy | 1138.0 | 20.8 |
-| seleniumbase-cdp-chrome | 1146.0 | 30.7 |
-| tf-playwright-stealth-chromium | 1173.0 | 10.8 |
-| playwright-chrome | 1187.0 | 15.9 |
-| clearcote | 1203.0 | 62.4 |
-| tf-playwright-stealth-firefox | 1253.0 | 37.2 |
-| clearcote_headless | 1293.0 | 86.2 |
-| nodriver-chrome_headless | 1330.0 | 4.5 |
-| tf-playwright-stealth-firefox_headless | 1362.0 | 53.3 |
-| playwright-firefox | 1370.0 | 55.9 |
-| playwright-firefox_headless | 1373.0 | 58.3 |
-| nodriver-chrome | 1429.0 | 18.9 |
-| camoufox_headless | 1454.0 | 54.5 |
-| patchright_headless | 1481.0 | 3.6 |
-| patchright | 1666.0 | 28.5 |
+| adspower | 150.0 | 2.2 |
+| adspower_headless | 170.0 | 3.5 |
+| tf-playwright-stealth-chromium_headless | 589.0 | 5.2 |
+| playwright-chrome_headless | 600.0 | 1.3 |
+| playwright-firefox_headless | 933.0 | 31.0 |
+| tf-playwright-stealth-chromium | 967.0 | 12.9 |
+| pydoll-chrome_headless | 972.0 | 4.1 |
+| cloakbrowser_headless | 975.0 | 16.4 |
+| playwright-firefox | 978.0 | 23.6 |
+| invisible-playwright | 983.0 | 41.3 |
+| selenium-chrome_headless__no_proxy | 1013.0 | 4.1 |
+| zendriver-chrome_headless | 1037.0 | 17.0 |
+| playwright-chrome | 1083.0 | 10.6 |
+| cloakbrowser | 1084.0 | 20.6 |
+| zendriver-chrome | 1097.0 | 15.3 |
+| pydoll-chrome | 1099.0 | 18.7 |
+| selenium-chrome__no_proxy | 1123.0 | 14.9 |
+| invisible-playwright_headless | 1135.0 | 44.7 |
+| seleniumbase-cdp-chrome | 1135.0 | 28.2 |
+| tf-playwright-stealth-firefox_headless | 1202.0 | 29.9 |
+| clearcote | 1221.0 | 45.4 |
+| clearcote_headless | 1285.0 | 85.2 |
+| nodriver-chrome_headless | 1320.0 | 3.8 |
+| tf-playwright-stealth-firefox | 1414.0 | 43.7 |
+| nodriver-chrome | 1504.0 | 17.9 |
+| patchright_headless | 1508.0 | 4.2 |
+| camoufox | 1545.0 | 79.9 |
+| camoufox_headless | 1608.0 | 59.1 |
+| patchright | 1652.0 | 20.8 |
 
 
 ### Recaptcha Scores - https://recaptcha-demo.appspot.com/recaptcha-v3-request-scores.php
@@ -206,76 +244,74 @@ And vise versa, with score >= 0.7 it will be much easier.
 `
 
 
-### CreepJS Scores - https://abrahamjuliot.github.io/creepjs
-| Engine | Trust Score (%) | Bot Score (%) | WebRTC IP |
-|-----------------|----------------:|--------------:|----------:|
-| adspower | 0.00 | 0.00 | 76.38.23.42 |
-| adspower_headless | 0.00 | 0.00 | 96.27.46.243 |
-| camoufox | 0.00 | 0.00 | 50.26.201.59 |
-| camoufox_headless | 0.00 | 0.00 | 107.136.236.92 |
-| clearcote | 0.00 | 0.00 | 162.220.232.51 |
-| clearcote_headless | 0.00 | 0.00 | 184.58.65.71 |
-| cloakbrowser | 0.00 | 0.00 | 99.129.117.52 |
-| cloakbrowser_headless | 0.00 | 0.00 | 76.97.38.119 |
-| invisible-playwright | 0.00 | 0.00 |  |
-| invisible-playwright_headless | 0.00 | 0.00 |  |
-| nodriver-chrome | 0.00 | 0.00 | REAL_IP |
-| nodriver-chrome_headless | 0.00 | 0.00 | REAL_IP |
-| patchright | 0.00 | 0.00 | REAL_IP |
-| patchright_headless | 0.00 | 0.00 | REAL_IP |
-| playwright-chrome | 0.00 | 0.00 | REAL_IP |
-| playwright-chrome_headless | 0.00 | 0.00 | REAL_IP |
-| playwright-firefox | 0.00 | 0.00 | REAL_IP |
-| playwright-firefox_headless | 0.00 | 0.00 | REAL_IP |
-| pydoll-chrome | 0.00 | 0.00 | REAL_IP |
-| pydoll-chrome_headless | 0.00 | 0.00 | REAL_IP |
-| selenium-chrome__no_proxy | 0.00 | 0.00 | REAL_IP |
-| selenium-chrome_headless__no_proxy | 0.00 | 0.00 | REAL_IP |
-| seleniumbase-cdp-chrome | 0.00 | 0.00 |  |
-| tf-playwright-stealth-chromium | 0.00 | 0.00 | REAL_IP |
-| tf-playwright-stealth-chromium_headless | 0.00 | 0.00 | REAL_IP |
-| tf-playwright-stealth-firefox | 0.00 | 0.00 | REAL_IP |
-| tf-playwright-stealth-firefox_headless | 0.00 | 0.00 | REAL_IP |
-| zendriver-chrome | 0.00 | 0.00 |  |
-| zendriver-chrome_headless | 0.00 | 0.00 |  |
+### WebRTC IP (CreepJS) - https://abrahamjuliot.github.io/creepjs
+| Engine | WebRTC IP |
+|-----------------|----------:|
+| adspower | 97.189.111.154 |
+| adspower_headless | 172.56.219.96 |
+| camoufox | 172.56.153.41 |
+| camoufox_headless | 69.112.50.25 |
+| clearcote | 107.12.52.229 |
+| clearcote_headless | 70.130.166.136 |
+| cloakbrowser | 172.4.209.245 |
+| cloakbrowser_headless | 68.58.217.217 |
+| invisible-playwright | Not detected |
+| invisible-playwright_headless | Not detected |
+| nodriver-chrome | REAL_IP |
+| nodriver-chrome_headless | REAL_IP |
+| patchright | REAL_IP |
+| patchright_headless | REAL_IP |
+| playwright-chrome | REAL_IP |
+| playwright-chrome_headless | REAL_IP |
+| playwright-firefox | REAL_IP |
+| playwright-firefox_headless | REAL_IP |
+| pydoll-chrome | REAL_IP |
+| pydoll-chrome_headless | REAL_IP |
+| selenium-chrome__no_proxy | REAL_IP |
+| selenium-chrome_headless__no_proxy | REAL_IP |
+| seleniumbase-cdp-chrome | Not detected |
+| tf-playwright-stealth-chromium | REAL_IP |
+| tf-playwright-stealth-chromium_headless | REAL_IP |
+| tf-playwright-stealth-firefox | REAL_IP |
+| tf-playwright-stealth-firefox_headless | REAL_IP |
+| zendriver-chrome | Not detected |
+| zendriver-chrome_headless | Not detected |
 
-Note: 
-1. CreepJS disabled trust and bot scores for now - https://github.com/abrahamjuliot/creepjs/issues/292
-2. If the WebRTC IP is different from your real IP - no leakage (applicable only with proxy).
+Note: If the WebRTC IP is different from your real IP - no leakage (applicable only with proxy). "Not detected" means WebRTC is blocked.
 
 
 ### IP (Ipify)
 | Engine | IP |
 |-----------------|----------:|
-| adspower | 67.173.191.76 |
-| adspower_headless | 96.27.46.243 |
-| camoufox | 50.26.201.59 |
-| camoufox_headless | 107.136.236.92 |
-| clearcote | 162.220.232.51 |
-| clearcote_headless | 173.64.64.227 |
-| cloakbrowser | 99.129.117.52 |
-| cloakbrowser_headless | 108.206.169.72 |
-| invisible-playwright | 74.194.143.108 |
-| invisible-playwright_headless | 24.49.49.192 |
-| nodriver-chrome | 104.176.174.41 |
-| nodriver-chrome_headless | 71.75.40.222 |
-| patchright | 68.192.100.74 |
-| patchright_headless | 72.200.220.88 |
-| playwright-chrome | 73.96.79.106 |
-| playwright-chrome_headless | 108.207.76.135 |
-| playwright-firefox | 68.54.208.109 |
-| playwright-firefox_headless | 72.82.21.32 |
-| pydoll-chrome | 68.226.171.120 |
-| pydoll-chrome_headless | 23.117.134.46 |
+| adspower | 107.195.49.21 |
+| adspower_headless | 75.247.146.166 |
+| camoufox | 108.217.179.151 |
+| camoufox_headless | 69.112.50.25 |
+| clearcote | 107.12.52.229 |
+| clearcote_headless | 70.130.166.136 |
+| cloakbrowser | 172.4.209.245 |
+| cloakbrowser_headless | 75.224.223.158 |
+| invisible-playwright | 64.135.135.152 |
+| invisible-playwright_headless | 96.245.65.169 |
+| nodriver-chrome | 141.126.220.102 |
+| nodriver-chrome_headless | 66.117.131.179 |
+| patchright | 67.174.234.74 |
+| patchright_headless | 98.52.109.165 |
+| playwright-chrome | 216.223.223.39 |
+| playwright-chrome_headless | 67.197.51.143 |
+| playwright-firefox | 173.71.77.12 |
+| playwright-firefox_headless | 98.252.228.14 |
+| pydoll-chrome | 71.143.207.203 |
+| pydoll-chrome_headless | 98.50.251.99 |
 | selenium-chrome__no_proxy | REAL_IP |
 | selenium-chrome_headless__no_proxy | REAL_IP |
-| seleniumbase-cdp-chrome | 204.111.137.63 |
-| tf-playwright-stealth-chromium | 76.117.112.121 |
-| tf-playwright-stealth-chromium_headless | 24.192.108.243 |
-| tf-playwright-stealth-firefox | 82.40.102.67 |
-| tf-playwright-stealth-firefox_headless | 135.26.83.225 |
-| zendriver-chrome | 73.16.149.151 |
-| zendriver-chrome_headless | 99.68.64.97 |
+| seleniumbase-cdp-chrome | 108.236.48.229 |
+| tf-playwright-stealth-chromium | 68.97.88.186 |
+| tf-playwright-stealth-chromium_headless | 99.170.234.92 |
+| tf-playwright-stealth-firefox | 73.13.114.239 |
+| tf-playwright-stealth-firefox_headless | 82.40.110.136 |
+| zendriver-chrome | 24.239.63.50 |
+| zendriver-chrome_headless | 96.59.44.43 |
 
 Note: If the IP is your proxy's IP - good, your real IP - bad (applicapable only with proxy).
 
@@ -285,8 +321,8 @@ Note: If the IP is your proxy's IP - good, your real IP - bad (applicapable only
 ### Recaptcha Score Visualization
 ![Recaptcha Scores](results/example/media/recaptcha_scores.png)
 
-### CreepJS Visualization
-![CreepJS Scores](results/example/media/creepjs_scores.png)
+### Bot Detection Visualization
+![Bot Detection Tests](results/example/media/detection_tests.png)
 
 ## 🛠️ Installation
 
@@ -445,6 +481,24 @@ The codebase follows a modular architecture for extensibility:
     )
     ```
 
+### Adding New Bot Detection Tests
+1. Create a check function in `utils/targets/detection` that reads the site's own verdict and returns it with `detection()`:
+    ```python
+    from engines.base import BrowserEngine
+    from utils.targets.detection.page import BOT, HUMAN, SUSPICIOUS, detection, wait_for
+
+    RESULT_SCRIPT = "const el = document.querySelector('#score'); return JSON.stringify(el ? parseInt(el.textContent) : null);"
+
+    async def check_custom_detection(engine: BrowserEngine) -> dict:
+        score = await wait_for(engine, RESULT_SCRIPT, timeout_s=45)
+        if score is None:
+            raise Exception("Result not found")
+
+        verdict = HUMAN if score < 30 else SUSPICIOUS if score < 70 else BOT
+        return detection(verdict, f"bot score {score}", score=score)
+    ```
+2. Add a `Target` and the function to `DetectionTargetsSettings` in `config/benchmark_targets.py`.
+
 ### Adding New Engines
 1. Extend the `BrowserEngine` base class:
 
@@ -481,24 +535,6 @@ The codebase follows a modular architecture for extensibility:
                 "class": CustomEngine,
                 "params": {"headless": True, "name": "custom_engine", "browser_type": "chromium"}
             }
-### Adding New Bot Detection Tests
-1. Create a check function in `utils/targets/detection` that reads the site's own verdict and returns it with `detection()`:
-    ```python
-    from engines.base import BrowserEngine
-    from utils.targets.detection.page import BOT, HUMAN, SUSPICIOUS, detection, wait_for
-
-    RESULT_SCRIPT = "const el = document.querySelector('#score'); return JSON.stringify(el ? parseInt(el.textContent) : null);"
-
-    async def check_custom_detection(engine: BrowserEngine) -> dict:
-        score = await wait_for(engine, RESULT_SCRIPT, timeout_s=45)
-        if score is None:
-            raise Exception("Result not found")
-
-        verdict = HUMAN if score < 30 else SUSPICIOUS if score < 70 else BOT
-        return detection(verdict, f"bot score {score}", score=score)
-    ```
-2. Add a `Target` and the function to `DetectionTargetsSettings` in `config/benchmark_targets.py`.
-
    ]
     ```
 
