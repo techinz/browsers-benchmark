@@ -11,7 +11,7 @@ async def check_perimeterx_bypass(engine: BrowserEngine) -> bool:
 
     return await wait_for_bypass(
         engine,
-        success_selector='#__next',
+        success_selector='a[href*="/hotels"]',
         block_selector='#px-captcha, #px-captcha-modal',
         min_wait_s=10
     )
