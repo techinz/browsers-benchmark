@@ -1,6 +1,6 @@
 # Browser Benchmark Results Summary
 
-*Generated on: 2026-11-23 17:03*
+*Generated on: 2026-11-23 20:52*
 
 ## Overall Bypass Rate
 
@@ -8,28 +8,30 @@
 |-----------------|----------------:|------------:|
 | camoufox | 90.0 | 1/9 |
 | camoufox_headless | 80.0 | 0/9 |
-| patchright | 80.0 | 1/9 |
-| invisible-playwright_headless | 80.0 | 0/9 |
 | invisible-playwright | 80.0 | 0/9 |
+| invisible-playwright_headless | 80.0 | 0/9 |
+| patchright | 80.0 | 1/9 |
 | seleniumbase-cdp-chrome | 80.0 | 2/9 |
 | pydoll-chrome | 80.0 | 1/9 |
 | nodriver-chrome | 70.0 | 2/9 |
-| clearcote_headless | 70.0 | 0/9 |
-| zendriver-chrome | 70.0 | 1/9 |
 | zendriver-chrome_headless | 70.0 | 5/9 |
+| clearcote_headless | 70.0 | 0/9 |
 | clearcote | 70.0 | 2/9 |
+| zendriver-chrome | 70.0 | 1/9 |
 | adspower_headless | 60.0 | 1/9 |
+| shardbrowser | 60.0 | 1/9 |
+| selenium-chrome__no_proxy | 60.0 | 6/9 |
 | playwright-firefox_headless | 60.0 | 9/9 |
 | playwright-firefox | 60.0 | 9/9 |
-| selenium-chrome__no_proxy | 60.0 | 6/9 |
-| adspower | 50.0 | 0/9 |
 | tf-playwright-stealth-firefox | 50.0 | 8/9 |
-| cloakbrowser_headless | 50.0 | 0/9 |
 | cloakbrowser | 50.0 | 0/9 |
+| adspower | 50.0 | 0/9 |
+| cloakbrowser_headless | 50.0 | 0/9 |
 | playwright-chrome | 50.0 | 8/9 |
+| tf-playwright-stealth-chromium_headless | 40.0 | 5/9 |
 | tf-playwright-stealth-firefox_headless | 40.0 | 8/9 |
 | tf-playwright-stealth-chromium | 40.0 | 5/9 |
-| tf-playwright-stealth-chromium_headless | 40.0 | 5/9 |
+| shardbrowser_headless | 40.0 | 0/9 |
 | pydoll-chrome_headless | 10.0 | 8/9 |
 | selenium-chrome_headless__no_proxy | 10.0 | 9/9 |
 | nodriver-chrome_headless | 0.0 | 8/9 |
@@ -50,10 +52,12 @@
 | adspower | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 60 | ✅ 102/102 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 81 | 0/9 |
 | camoufox_headless | ✅ score 100 | ✅ 14/14 safe | ✅ 17/17 normal | ⚠️ risk 50 | ✅ 69/69 clear | ⚠️ 1 warn | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 57 | 0/9 |
 | clearcote_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 53 | ✅ 101/101 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 26 | 0/9 |
+| shardbrowser_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 58 | ✅ 91/91 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 36 | 0/9 |
 | adspower_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 75 | ✅ 102/102 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 100 | 1/9 |
 | camoufox | ✅ score 100 | ✅ 14/14 safe | ✅ 17/17 normal | ⚠️ risk 40 | ✅ 69/69 clear | ⚠️ 1 warn | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 92 | 1/9 |
 | patchright | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 26 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 99 | 1/9 |
 | pydoll-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 41 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 99 | 1/9 |
+| shardbrowser | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 55 | ✅ 91/91 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 66 | 1/9 |
 | zendriver-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 36 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 69 | 1/9 |
 | clearcote | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 33 | ✅ 101/101 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ❌ bot, 1 signal | ❌ bot score 76 | 2/9 |
 | nodriver-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 26 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 100 | 2/9 |
@@ -102,8 +106,10 @@
 | clearcote_headless | 1285.0 | 85.2 |
 | nodriver-chrome_headless | 1320.0 | 3.8 |
 | tf-playwright-stealth-firefox | 1414.0 | 43.7 |
+| shardbrowser_headless | 1472.0 | 13.8 |
 | nodriver-chrome | 1504.0 | 17.9 |
 | patchright_headless | 1508.0 | 4.2 |
+| shardbrowser | 1544.0 | 23.5 |
 | camoufox | 1545.0 | 79.9 |
 | camoufox_headless | 1608.0 | 59.1 |
 | patchright | 1652.0 | 20.8 |
@@ -134,6 +140,8 @@
 | selenium-chrome__no_proxy | 0.90 |
 | selenium-chrome_headless__no_proxy | 0.90 |
 | seleniumbase-cdp-chrome | 0.90 |
+| shardbrowser | 0.90 |
+| shardbrowser_headless | 0.90 |
 | tf-playwright-stealth-firefox | 0.90 |
 | tf-playwright-stealth-firefox_headless | 0.90 |
 | zendriver-chrome | 0.90 |
@@ -171,6 +179,8 @@
 | selenium-chrome__no_proxy | REAL_IP |
 | selenium-chrome_headless__no_proxy | REAL_IP |
 | seleniumbase-cdp-chrome | Not detected |
+| shardbrowser | Not detected |
+| shardbrowser_headless | Not detected |
 | tf-playwright-stealth-chromium | REAL_IP |
 | tf-playwright-stealth-chromium_headless | REAL_IP |
 | tf-playwright-stealth-firefox | REAL_IP |
@@ -206,6 +216,8 @@
 | selenium-chrome__no_proxy | REAL_IP |
 | selenium-chrome_headless__no_proxy | REAL_IP |
 | seleniumbase-cdp-chrome | 108.236.48.229 |
+| shardbrowser | 47.177.13.39 |
+| shardbrowser_headless | 108.70.80.243 |
 | tf-playwright-stealth-chromium | 68.97.88.186 |
 | tf-playwright-stealth-chromium_headless | 99.170.234.92 |
 | tf-playwright-stealth-firefox | 73.13.114.239 |
