@@ -51,6 +51,7 @@ Pages are only read (and buttons clicked) through JavaScript, the same way for e
 - <a href="https://github.com/CloakHQ/cloakbrowser">**CloakBrowser**</a> - <b>(Open-Source)</b> Playwright-based
 - <a href="https://github.com/feder-cr/invisible_playwright">**invisible_playwright**</a> - <b>(Open-Source)</b> Playwright-based, patched Firefox with source-level fingerprint
 - <a href="https://github.com/clearcotelabs/clearcote-browser">**Clearcote**</a> - <b>(Open-Source)</b> Playwright-based. Runs the open build without a key; `CLEARCOTE_LICENSE_KEY` switches to the licensed build
+- <a href="https://github.com/ProxyShard/ShardBrowser">**ShardBrowser**</a> - <b>(Open-Source launcher)</b> Patched Chromium driven over CDP with Patchright, fingerprint profiles from its bundled library
 - <a href="https://www.selenium.dev">**Selenium**</a> - <b>(Open-Source)</b> Browser automation framework (apparently deprecated, so it is tested without proxies)
 - <a href="https://seleniumbase.io/">**Seleniumbase**</a> - <b>(Open-Source)</b> Professional toolkit for web automation activities
 - <a href="https://github.com/ultrafunkamsterdam/nodriver">**NoDriver**</a> - <b>(Open-Source)</b> Browser automation framework (supports only SOCKS5 proxies)

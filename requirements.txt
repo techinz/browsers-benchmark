@@ -16,6 +16,7 @@ playwright>=1.55.0
 camoufox[geoip]>=0.4.11
 cloakbrowser[geoip]>=0.3.19
 clearcote==0.70.1
+shardx==2.1.7
 tf-playwright-stealth>=1.2.0
 patchright>=1.55.2
 invisible_playwright @ git+https://github.com/feder-cr/invisible_playwright.git@6b1712ee9ea957e8874ca3aa0252dedd2a36278e
