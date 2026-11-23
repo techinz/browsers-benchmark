@@ -1,37 +1,37 @@
 # Browser Benchmark Results Summary
 
-*Generated on: 2026-11-23 21:19*
+*Generated on: 2026-11-23 21:21*
 
 ## Overall Bypass Rate
 
 | Engine | Bypass Rate (%) | Detected by | Detection risk |
 |-----------------|----------------:|------------:|---------------:|
 | camoufox | 90.0 | 1/9 | 20 |
-| camoufox_headless | 80.0 | 0/9 | 17 |
-| invisible-playwright | 80.0 | 0/9 | 4 |
 | invisible-playwright_headless | 80.0 | 0/9 | 2 |
+| invisible-playwright | 80.0 | 0/9 | 4 |
+| camoufox_headless | 80.0 | 0/9 | 17 |
 | patchright | 80.0 | 1/9 | 31 |
-| seleniumbase-cdp-chrome | 80.0 | 2/9 | 39 |
 | pydoll-chrome | 80.0 | 1/9 | 32 |
+| seleniumbase-cdp-chrome | 80.0 | 2/9 | 39 |
+| clearcote_headless | 70.0 | 0/9 | 14 |
+| zendriver-chrome | 70.0 | 1/9 | 28 |
+| clearcote | 70.0 | 2/9 | 29 |
 | nodriver-chrome | 70.0 | 2/9 | 31 |
 | zendriver-chrome_headless | 70.0 | 5/9 | 54 |
-| clearcote_headless | 70.0 | 0/9 | 14 |
-| clearcote | 70.0 | 2/9 | 29 |
-| zendriver-chrome | 70.0 | 1/9 | 28 |
 | adspower_headless | 60.0 | 1/9 | 25 |
 | shardbrowser | 60.0 | 1/9 | 30 |
 | selenium-chrome__no_proxy | 60.0 | 6/9 | 72 |
-| playwright-firefox_headless | 60.0 | 9/9 | 87 |
 | playwright-firefox | 60.0 | 9/9 | 87 |
-| tf-playwright-stealth-firefox | 50.0 | 8/9 | 88 |
+| playwright-firefox_headless | 60.0 | 9/9 | 87 |
 | cloakbrowser | 50.0 | 0/9 | 9 |
-| adspower | 50.0 | 0/9 | 21 |
 | cloakbrowser_headless | 50.0 | 0/9 | 12 |
+| adspower | 50.0 | 0/9 | 21 |
 | playwright-chrome | 50.0 | 8/9 | 87 |
+| tf-playwright-stealth-firefox | 50.0 | 8/9 | 88 |
+| shardbrowser_headless | 40.0 | 0/9 | 16 |
+| tf-playwright-stealth-chromium | 40.0 | 5/9 | 56 |
 | tf-playwright-stealth-chromium_headless | 40.0 | 5/9 | 56 |
 | tf-playwright-stealth-firefox_headless | 40.0 | 8/9 | 88 |
-| tf-playwright-stealth-chromium | 40.0 | 5/9 | 56 |
-| shardbrowser_headless | 40.0 | 0/9 | 16 |
 | pydoll-chrome_headless | 10.0 | 8/9 | 90 |
 | selenium-chrome_headless__no_proxy | 10.0 | 9/9 | 93 |
 | nodriver-chrome_headless | 0.0 | 8/9 | 86 |

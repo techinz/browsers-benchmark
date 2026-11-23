@@ -66,9 +66,10 @@ def _write_bypass_section(f, bypass_df: pd.DataFrame, detection_df: pd.DataFrame
 
     bypass_by_engine = bypass_df.groupby("engine")["bypass"].mean().reset_index()
     bypass_by_engine.loc[:, "bypass_percent"] = bypass_by_engine["bypass"] * 100
-    bypass_by_engine = bypass_by_engine.sort_values("bypass_percent", ascending=False)
-
     detection = summarize_detection(detection_df)
+    bypass_by_engine.loc[:, "risk"] = bypass_by_engine["engine"].map(detection["risk"]) if not detection.empty else 0
+    bypass_by_engine = bypass_by_engine.sort_values(["bypass_percent", "risk", "engine"], ascending=[False, True, True])
+
     if detection.empty:
         f.write("| Engine | Bypass Rate (%) |\n")
         f.write("|-----------------|----------------:|\n")
