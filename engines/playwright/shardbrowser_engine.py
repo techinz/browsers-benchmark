@@ -12,6 +12,7 @@ from config.settings import settings
 from engines.playwright_base import PlaywrightBase
 from utils.js_script import load_js_script
 from utils.process import find_new_child_processes
+from utils.real_ip import get_real_ip
 
 
 class ShardBrowserEngine(PlaywrightBase):
@@ -25,8 +26,8 @@ class ShardBrowserEngine(PlaywrightBase):
         """
         Initialize the ShardBrowserEngine with the given parameters
 
-        Every start creates a fresh Windows profile from the bundled fingerprint library
-        and drops it on stop, the same way the AdsPower engine does with its profiles.
+        Every start creates a fresh Windows profile from the bundled fingerprint library, with timezone,
+        language and geolocation set to follow the proxy (the launcher's auto mode), and drops it on stop.
 
         :param name: Name of the engine instance
         :param headless: Whether to run the browser in headless mode
@@ -60,11 +61,23 @@ class ShardBrowserEngine(PlaywrightBase):
         self._profiles_dir = tempfile.mkdtemp(prefix="shardbrowser-")
         sdk = ShardX(profiles_dir=self._profiles_dir)
         profile = await asyncio.to_thread(sdk.create_profile, platform="Win")
+
+        # auto geolocation: timezone, language and coordinates follow the proxy's exit
+        profile.config["timezone"] = "auto"
+        profile.config.setdefault("navigator", {})["language"] = "auto"
+        profile.config["geolocation"] = {**(profile.config.get("geolocation") or {}), "mode": "auto"}
+
         self._session = await asyncio.to_thread(
             sdk.launch, profile, proxy=self._proxy_url(), cdp=True, headless=self.headless
         )
         if not self._session.cdp_url:
             raise RuntimeError("ShardBrowser did not expose a CDP endpoint")
+
+        # the SDK falls back to a direct lookup when the one through the proxy fails,
+        # which would give the profile this machine's location instead of the proxy's
+        geo = self._session.geo
+        if self.proxy and (geo is None or geo.ip == get_real_ip()):
+            raise RuntimeError("ShardBrowser could not resolve the proxy's location")
 
         self.playwright = await async_playwright().start()
         self.browser = await self.playwright.chromium.connect_over_cdp(self._session.cdp_url)
