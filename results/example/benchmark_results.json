@@ -7251,528 +7251,6 @@
     "error": null
   },
   {
-    "engine": "adspower",
-    "timestamp": "2026-11-23T16:29:21.285308",
-    "bypass_targets_results": [
-      {
-        "target": "google_search",
-        "url": "https://www.google.com/search?q=what+is+my+user+agent",
-        "bypass": false,
-        "error": null,
-        "load_time_ms": 11293,
-        "memory_mb": 143,
-        "cpu_percent": 0.0
-      },
-      {
-        "target": "cloudflare_protected",
-        "url": "https://community.cloudflare.com",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 24264,
-        "memory_mb": 161,
-        "cpu_percent": 2.0
-      },
-      {
-        "target": "datadome_protected",
-        "url": "https://datadome.co/customers-stories/",
-        "bypass": false,
-        "error": null,
-        "load_time_ms": 6191,
-        "memory_mb": 161,
-        "cpu_percent": 1.7
-      },
-      {
-        "target": "datadome_protected_2",
-        "url": "https://www.hermes.com/",
-        "bypass": false,
-        "error": null,
-        "load_time_ms": 7273,
-        "memory_mb": 162,
-        "cpu_percent": 1.1
-      },
-      {
-        "target": "amazon_product",
-        "url": "https://a.co/d/21FTKNR",
-        "bypass": false,
-        "error": null,
-        "load_time_ms": 3553,
-        "memory_mb": 125,
-        "cpu_percent": 0.6
-      },
-      {
-        "target": "ticketmaster",
-        "url": "https://www.ticketmaster.com/",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 22319,
-        "memory_mb": 141,
-        "cpu_percent": 3.5
-      },
-      {
-        "target": "akamai_protected",
-        "url": "https://www.mrporter.com",
-        "bypass": false,
-        "error": null,
-        "load_time_ms": 3180,
-        "memory_mb": 149,
-        "cpu_percent": 3.1
-      },
-      {
-        "target": "perimeterx_protected",
-        "url": "https://www.priceline.com",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 58140,
-        "memory_mb": 172,
-        "cpu_percent": 0.0
-      },
-      {
-        "target": "kasada_protected",
-        "url": "https://www.wizzair.com",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 4537,
-        "memory_mb": 157,
-        "cpu_percent": 3.1
-      },
-      {
-        "target": "reddit",
-        "url": "https://www.reddit.com/",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 12592,
-        "memory_mb": 167,
-        "cpu_percent": 5.4
-      }
-    ],
-    "browser_data_targets_results": [
-      {
-        "target": "recaptcha_score",
-        "url": "https://recaptcha-demo.appspot.com/recaptcha-v3-request-scores.php",
-        "error": null,
-        "creepjs_webrtc_ip": null,
-        "recaptcha_score": 0.9,
-        "ip": null
-      },
-      {
-        "target": "creepjs",
-        "url": "https://abrahamjuliot.github.io/creepjs/",
-        "error": null,
-        "creepjs_webrtc_ip": "97.189.111.154",
-        "recaptcha_score": null,
-        "ip": null
-      },
-      {
-        "target": "ipify",
-        "url": "https://api.ipify.org?format=json",
-        "error": null,
-        "creepjs_webrtc_ip": null,
-        "recaptcha_score": null,
-        "ip": "107.195.49.21"
-      }
-    ],
-    "detection_targets_results": [
-      {
-        "target": "cleantalk",
-        "url": "https://cleantalk.org/am-i-a-bot",
-        "verdict": "human",
-        "summary": "score 100",
-        "error": null,
-        "risk": 0,
-        "details": {
-          "score": 100,
-          "label": "Looks Human",
-          "flagged": [],
-          "weak": [],
-          "signals_checked": 16
-        }
-      },
-      {
-        "target": "scrapfly",
-        "url": "https://scrapfly.io/web-scraping-tools/automation-detector",
-        "verdict": "suspicious",
-        "summary": "1 suspicious",
-        "error": null,
-        "risk": 50,
-        "details": {
-          "label": "Not Automated",
-          "detected": [],
-          "suspicious": [
-            "chrome.runtime"
-          ],
-          "total": 14
-        }
-      },
-      {
-        "target": "browserscan",
-        "url": "https://www.browserscan.net/bot-detection",
-        "verdict": "human",
-        "summary": "17/17 normal",
-        "error": null,
-        "risk": 0,
-        "details": {
-          "overall": "Normal",
-          "abnormal": [],
-          "unknown": [],
-          "checks": 17
-        }
-      },
-      {
-        "target": "apivoid",
-        "url": "https://www.apivoid.com/tools/bot-detection-test/",
-        "verdict": "suspicious",
-        "summary": "risk 60",
-        "error": null,
-        "risk": 60,
-        "details": {
-          "score": 60,
-          "label": "Moderate Risk",
-          "level": "warn",
-          "tampered": true,
-          "triggered_rules": 4,
-          "groups": {
-            "Network & Request": "fail",
-            "Hardware & Display": "fail",
-            "Browser & Engine": "ok",
-            "Browser Integrity": "fail"
-          }
-        }
-      },
-      {
-        "target": "pixelscan",
-        "url": "https://pixelscan.net/bot-check",
-        "verdict": "human",
-        "summary": "102/102 clear",
-        "error": null,
-        "risk": 0,
-        "details": {
-          "state": "success",
-          "not_clear": [],
-          "checks": 102
-        }
-      },
-      {
-        "target": "sannysoft",
-        "url": "https://bot.sannysoft.com/",
-        "verdict": "human",
-        "summary": "31/31 passed",
-        "error": null,
-        "risk": 0,
-        "details": {
-          "failed": [],
-          "warn": [],
-          "checks": 31
-        }
-      },
-      {
-        "target": "creepjs_headless",
-        "url": "https://abrahamjuliot.github.io/creepjs/",
-        "verdict": "human",
-        "summary": "headless 0%, stealth 0%",
-        "error": null,
-        "risk": 0,
-        "details": {
-          "like_headless": 38,
-          "headless": 0,
-          "stealth": 0
-        }
-      },
-      {
-        "target": "deviceandbrowserinfo",
-        "url": "https://deviceandbrowserinfo.com/are_you_a_bot",
-        "verdict": "human",
-        "summary": "human",
-        "error": null,
-        "risk": 0,
-        "details": {
-          "is_bot": false,
-          "signals": []
-        }
-      },
-      {
-        "target": "fingerprint_scan",
-        "url": "https://fingerprint-scan.com/",
-        "verdict": "suspicious",
-        "summary": "bot score 81",
-        "error": null,
-        "risk": 81,
-        "details": {
-          "score": 81,
-          "categories": {
-            "Hardware / OS": "MEDIUM +21",
-            "Browser": "MEDIUM +21",
-            "Network / proxy": "MEDIUM +45"
-          }
-        }
-      }
-    ],
-    "average_memory_mb": 150,
-    "average_cpu_percent": 2.21,
-    "bypass_rate": 0.5,
-    "error": null
-  },
-  {
-    "engine": "adspower_headless",
-    "timestamp": "2026-11-23T16:40:18.141659",
-    "bypass_targets_results": [
-      {
-        "target": "google_search",
-        "url": "https://www.google.com/search?q=what+is+my+user+agent",
-        "bypass": false,
-        "error": null,
-        "load_time_ms": 7250,
-        "memory_mb": 139,
-        "cpu_percent": 0.0
-      },
-      {
-        "target": "cloudflare_protected",
-        "url": "https://community.cloudflare.com",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 11039,
-        "memory_mb": 160,
-        "cpu_percent": 2.3
-      },
-      {
-        "target": "datadome_protected",
-        "url": "https://datadome.co/customers-stories/",
-        "bypass": false,
-        "error": null,
-        "load_time_ms": 6947,
-        "memory_mb": 162,
-        "cpu_percent": 1.5
-      },
-      {
-        "target": "datadome_protected_2",
-        "url": "https://www.hermes.com/",
-        "bypass": false,
-        "error": null,
-        "load_time_ms": 7841,
-        "memory_mb": 163,
-        "cpu_percent": 1.0
-      },
-      {
-        "target": "amazon_product",
-        "url": "https://a.co/d/21FTKNR",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 22606,
-        "memory_mb": 150,
-        "cpu_percent": 2.9
-      },
-      {
-        "target": "ticketmaster",
-        "url": "https://www.ticketmaster.com/",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 29725,
-        "memory_mb": 166,
-        "cpu_percent": 6.5
-      },
-      {
-        "target": "akamai_protected",
-        "url": "https://www.mrporter.com",
-        "bypass": false,
-        "error": null,
-        "load_time_ms": 3432,
-        "memory_mb": 166,
-        "cpu_percent": 3.1
-      },
-      {
-        "target": "perimeterx_protected",
-        "url": "https://www.priceline.com",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 33947,
-        "memory_mb": 194,
-        "cpu_percent": 3.5
-      },
-      {
-        "target": "kasada_protected",
-        "url": "https://www.wizzair.com",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 5462,
-        "memory_mb": 202,
-        "cpu_percent": 8.7
-      },
-      {
-        "target": "reddit",
-        "url": "https://www.reddit.com/",
-        "bypass": true,
-        "error": null,
-        "load_time_ms": 14958,
-        "memory_mb": 205,
-        "cpu_percent": 5.3
-      }
-    ],
-    "browser_data_targets_results": [
-      {
-        "target": "recaptcha_score",
-        "url": "https://recaptcha-demo.appspot.com/recaptcha-v3-request-scores.php",
-        "error": null,
-        "creepjs_webrtc_ip": null,
-        "recaptcha_score": 0.9,
-        "ip": null
-      },
-      {
-        "target": "creepjs",
-        "url": "https://abrahamjuliot.github.io/creepjs/",
-        "error": null,
-        "creepjs_webrtc_ip": "172.56.219.96",
-        "recaptcha_score": null,
-        "ip": null
-      },
-      {
-        "target": "ipify",
-        "url": "https://api.ipify.org?format=json",
-        "error": null,
-        "creepjs_webrtc_ip": null,
-        "recaptcha_score": null,
-        "ip": "75.247.146.166"
-      }
-    ],
-    "detection_targets_results": [
-      {
-        "target": "cleantalk",
-        "url": "https://cleantalk.org/am-i-a-bot",
-        "verdict": "human",
-        "summary": "score 100",
-        "error": null,
-        "risk": 0,
-        "details": {
-          "score": 100,
-          "label": "Looks Human",
-          "flagged": [],
-          "weak": [],
-          "signals_checked": 16
-        }
-      },
-      {
-        "target": "scrapfly",
-        "url": "https://scrapfly.io/web-scraping-tools/automation-detector",
-        "verdict": "suspicious",
-        "summary": "1 suspicious",
-        "error": null,
-        "risk": 50,
-        "details": {
-          "label": "Not Automated",
-          "detected": [],
-          "suspicious": [
-            "chrome.runtime"
-          ],
-          "total": 14
-        }
-      },
-      {
-        "target": "browserscan",
-        "url": "https://www.browserscan.net/bot-detection",
-        "verdict": "human",
-        "summary": "17/17 normal",
-        "error": null,
-        "risk": 0,
-        "details": {
-          "overall": "Normal",
-          "abnormal": [],
-          "unknown": [],
-          "checks": 17
-        }
-      },
-      {
-        "target": "apivoid",
-        "url": "https://www.apivoid.com/tools/bot-detection-test/",
-        "verdict": "bot",
-        "summary": "risk 75",
-        "error": null,
-        "risk": 75,
-        "details": {
-          "score": 75,
-          "label": "High Risk | Likely Bot",
-          "level": "fail",
-          "tampered": true,
-          "triggered_rules": 7,
-          "groups": {
-            "Network & Request": "fail",
-            "Hardware & Display": "fail",
-            "Browser & Engine": "ok",
-            "Browser Integrity": "fail"
-          }
-        }
-      },
-      {
-        "target": "pixelscan",
-        "url": "https://pixelscan.net/bot-check",
-        "verdict": "human",
-        "summary": "102/102 clear",
-        "error": null,
-        "risk": 0,
-        "details": {
-          "state": "success",
-          "not_clear": [],
-          "checks": 102
-        }
-      },
-      {
-        "target": "sannysoft",
-        "url": "https://bot.sannysoft.com/",
-        "verdict": "human",
-        "summary": "31/31 passed",
-        "error": null,
-        "risk": 0,
-        "details": {
-          "failed": [],
-          "warn": [],
-          "checks": 31
-        }
-      },
-      {
-        "target": "creepjs_headless",
-        "url": "https://abrahamjuliot.github.io/creepjs/",
-        "verdict": "human",
-        "summary": "headless 0%, stealth 0%",
-        "error": null,
-        "risk": 0,
-        "details": {
-          "like_headless": 44,
-          "headless": 0,
-          "stealth": 0
-        }
-      },
-      {
-        "target": "deviceandbrowserinfo",
-        "url": "https://deviceandbrowserinfo.com/are_you_a_bot",
-        "verdict": "human",
-        "summary": "human",
-        "error": null,
-        "risk": 0,
-        "details": {
-          "is_bot": false,
-          "signals": []
-        }
-      },
-      {
-        "target": "fingerprint_scan",
-        "url": "https://fingerprint-scan.com/",
-        "verdict": "suspicious",
-        "summary": "bot score 100",
-        "error": null,
-        "risk": 100,
-        "details": {
-          "score": 100,
-          "categories": {
-            "Hardware / OS": "MEDIUM +49",
-            "Browser": "MEDIUM +21",
-            "Network / proxy": "MEDIUM +45"
-          }
-        }
-      }
-    ],
-    "average_memory_mb": 170,
-    "average_cpu_percent": 3.4799999999999995,
-    "bypass_rate": 0.6,
-    "error": null
-  },
-  {
     "engine": "shardbrowser_headless",
     "timestamp": "2026-11-23T16:32:18.543942",
     "bypass_targets_results": [
@@ -8295,6 +7773,531 @@
     "average_memory_mb": 1544,
     "average_cpu_percent": 23.52,
     "bypass_rate": 0.6,
+    "error": null
+  },
+  {
+    "engine": "adspower",
+    "timestamp": "2026-11-24T15:15:41.064715",
+    "bypass_targets_results": [
+      {
+        "target": "google_search",
+        "url": "https://www.google.com/search?q=what+is+my+user+agent",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 6087,
+        "memory_mb": 144,
+        "cpu_percent": 0.0
+      },
+      {
+        "target": "cloudflare_protected",
+        "url": "https://community.cloudflare.com",
+        "bypass": true,
+        "error": null,
+        "load_time_ms": 7378,
+        "memory_mb": 161,
+        "cpu_percent": 2.6
+      },
+      {
+        "target": "datadome_protected",
+        "url": "https://datadome.co/customers-stories/",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 4417,
+        "memory_mb": 163,
+        "cpu_percent": 1.8
+      },
+      {
+        "target": "datadome_protected_2",
+        "url": "https://www.hermes.com/",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 5663,
+        "memory_mb": 162,
+        "cpu_percent": 1.7
+      },
+      {
+        "target": "amazon_product",
+        "url": "https://a.co/d/21FTKNR",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 2823,
+        "memory_mb": 162,
+        "cpu_percent": 0.3
+      },
+      {
+        "target": "ticketmaster",
+        "url": "https://www.ticketmaster.com/",
+        "bypass": true,
+        "error": null,
+        "load_time_ms": 39418,
+        "memory_mb": 141,
+        "cpu_percent": 3.3
+      },
+      {
+        "target": "akamai_protected",
+        "url": "https://www.mrporter.com",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 3117,
+        "memory_mb": 145,
+        "cpu_percent": 3.3
+      },
+      {
+        "target": "perimeterx_protected",
+        "url": "https://www.priceline.com",
+        "bypass": true,
+        "error": null,
+        "load_time_ms": 10371,
+        "memory_mb": 145,
+        "cpu_percent": 2.8
+      },
+      {
+        "target": "kasada_protected",
+        "url": "https://www.wizzair.com",
+        "bypass": true,
+        "error": null,
+        "load_time_ms": 5331,
+        "memory_mb": 155,
+        "cpu_percent": 8.0
+      },
+      {
+        "target": "reddit",
+        "url": "https://www.reddit.com/",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 6103,
+        "memory_mb": 165,
+        "cpu_percent": 5.5
+      }
+    ],
+    "browser_data_targets_results": [
+      {
+        "target": "recaptcha_score",
+        "url": "https://recaptcha-demo.appspot.com/recaptcha-v3-request-scores.php",
+        "error": null,
+        "creepjs_webrtc_ip": null,
+        "recaptcha_score": 0.9,
+        "ip": null
+      },
+      {
+        "target": "creepjs",
+        "url": "https://abrahamjuliot.github.io/creepjs/",
+        "error": null,
+        "creepjs_webrtc_ip": "73.34.111.188",
+        "recaptcha_score": null,
+        "ip": null
+      },
+      {
+        "target": "ipify",
+        "url": "https://api.ipify.org?format=json",
+        "error": null,
+        "creepjs_webrtc_ip": null,
+        "recaptcha_score": null,
+        "ip": "24.13.136.4"
+      }
+    ],
+    "detection_targets_results": [
+      {
+        "target": "cleantalk",
+        "url": "https://cleantalk.org/am-i-a-bot",
+        "verdict": "human",
+        "summary": "score 100",
+        "error": null,
+        "risk": 0,
+        "details": {
+          "score": 100,
+          "label": "Looks Human",
+          "flagged": [],
+          "weak": [],
+          "signals_checked": 16
+        }
+      },
+      {
+        "target": "scrapfly",
+        "url": "https://scrapfly.io/web-scraping-tools/automation-detector",
+        "verdict": "suspicious",
+        "summary": "1 suspicious",
+        "error": null,
+        "risk": 50,
+        "details": {
+          "label": "Not Automated",
+          "detected": [],
+          "suspicious": [
+            "chrome.runtime"
+          ],
+          "total": 14
+        }
+      },
+      {
+        "target": "browserscan",
+        "url": "https://www.browserscan.net/bot-detection",
+        "verdict": "human",
+        "summary": "17/17 normal",
+        "error": null,
+        "risk": 0,
+        "details": {
+          "overall": "Normal",
+          "abnormal": [],
+          "unknown": [],
+          "checks": 17
+        }
+      },
+      {
+        "target": "apivoid",
+        "url": "https://www.apivoid.com/tools/bot-detection-test/",
+        "verdict": "bot",
+        "summary": "risk 68",
+        "error": null,
+        "risk": 68,
+        "details": {
+          "score": 68,
+          "label": "High Risk | Likely Bot",
+          "level": "fail",
+          "tampered": true,
+          "triggered_rules": 7,
+          "groups": {
+            "Network & Request": "fail",
+            "Hardware & Display": "fail",
+            "Browser & Engine": "warn",
+            "Browser Integrity": "fail"
+          }
+        }
+      },
+      {
+        "target": "pixelscan",
+        "url": "https://pixelscan.net/bot-check",
+        "verdict": "human",
+        "summary": "102/102 clear",
+        "error": null,
+        "risk": 0,
+        "details": {
+          "state": "success",
+          "not_clear": [],
+          "checks": 102
+        }
+      },
+      {
+        "target": "sannysoft",
+        "url": "https://bot.sannysoft.com/",
+        "verdict": "bot",
+        "summary": "2 failed",
+        "error": null,
+        "risk": 100,
+        "details": {
+          "failed": [
+            "WebGL Vendor",
+            "WebGL Renderer"
+          ],
+          "warn": [],
+          "checks": 31
+        }
+      },
+      {
+        "target": "creepjs_headless",
+        "url": "https://abrahamjuliot.github.io/creepjs/",
+        "verdict": "human",
+        "summary": "headless 0%, stealth 0%",
+        "error": null,
+        "risk": 0,
+        "details": {
+          "like_headless": 44,
+          "headless": 0,
+          "stealth": 0
+        }
+      },
+      {
+        "target": "deviceandbrowserinfo",
+        "url": "https://deviceandbrowserinfo.com/are_you_a_bot",
+        "verdict": "human",
+        "summary": "human",
+        "error": null,
+        "risk": 0,
+        "details": {
+          "is_bot": false,
+          "signals": []
+        }
+      },
+      {
+        "target": "fingerprint_scan",
+        "url": "https://fingerprint-scan.com/",
+        "verdict": "bot",
+        "summary": "bot score 100",
+        "error": null,
+        "risk": 100,
+        "details": {
+          "score": 100,
+          "categories": {
+            "Hardware / OS": "MEDIUM +31",
+            "Browser": "MEDIUM +34",
+            "Network / proxy": "HIGH +68"
+          }
+        }
+      }
+    ],
+    "average_memory_mb": 154,
+    "average_cpu_percent": 2.93,
+    "bypass_rate": 0.4,
+    "error": null
+  },
+  {
+    "engine": "adspower_headless",
+    "timestamp": "2026-11-24T15:24:42.299361",
+    "bypass_targets_results": [
+      {
+        "target": "google_search",
+        "url": "https://www.google.com/search?q=what+is+my+user+agent",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 6189,
+        "memory_mb": 144,
+        "cpu_percent": 0.0
+      },
+      {
+        "target": "cloudflare_protected",
+        "url": "https://community.cloudflare.com",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 11885,
+        "memory_mb": 149,
+        "cpu_percent": 0.8
+      },
+      {
+        "target": "datadome_protected",
+        "url": "https://datadome.co/customers-stories/",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 10029,
+        "memory_mb": 119,
+        "cpu_percent": 0.9
+      },
+      {
+        "target": "datadome_protected_2",
+        "url": "https://www.hermes.com/",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 9476,
+        "memory_mb": 120,
+        "cpu_percent": 1.0
+      },
+      {
+        "target": "amazon_product",
+        "url": "https://a.co/d/21FTKNR",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 5292,
+        "memory_mb": 121,
+        "cpu_percent": 0.3
+      },
+      {
+        "target": "ticketmaster",
+        "url": "https://www.ticketmaster.com/",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 10687,
+        "memory_mb": 124,
+        "cpu_percent": 1.2
+      },
+      {
+        "target": "akamai_protected",
+        "url": "https://www.mrporter.com",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 6076,
+        "memory_mb": 125,
+        "cpu_percent": 0.6
+      },
+      {
+        "target": "perimeterx_protected",
+        "url": "https://www.priceline.com",
+        "bypass": true,
+        "error": null,
+        "load_time_ms": 19194,
+        "memory_mb": 132,
+        "cpu_percent": 2.0
+      },
+      {
+        "target": "kasada_protected",
+        "url": "https://www.wizzair.com",
+        "bypass": true,
+        "error": null,
+        "load_time_ms": 5805,
+        "memory_mb": 148,
+        "cpu_percent": 6.6
+      },
+      {
+        "target": "reddit",
+        "url": "https://www.reddit.com/",
+        "bypass": false,
+        "error": null,
+        "load_time_ms": 12623,
+        "memory_mb": 152,
+        "cpu_percent": 4.0
+      }
+    ],
+    "browser_data_targets_results": [
+      {
+        "target": "recaptcha_score",
+        "url": "https://recaptcha-demo.appspot.com/recaptcha-v3-request-scores.php",
+        "error": null,
+        "creepjs_webrtc_ip": null,
+        "recaptcha_score": 0.9,
+        "ip": null
+      },
+      {
+        "target": "creepjs",
+        "url": "https://abrahamjuliot.github.io/creepjs/",
+        "error": null,
+        "creepjs_webrtc_ip": "82.40.107.107",
+        "recaptcha_score": null,
+        "ip": null
+      },
+      {
+        "target": "ipify",
+        "url": "https://api.ipify.org?format=json",
+        "error": null,
+        "creepjs_webrtc_ip": null,
+        "recaptcha_score": null,
+        "ip": "82.40.85.150"
+      }
+    ],
+    "detection_targets_results": [
+      {
+        "target": "cleantalk",
+        "url": "https://cleantalk.org/am-i-a-bot",
+        "verdict": "human",
+        "summary": "score 100",
+        "error": null,
+        "risk": 0,
+        "details": {
+          "score": 100,
+          "label": "Looks Human",
+          "flagged": [],
+          "weak": [],
+          "signals_checked": 16
+        }
+      },
+      {
+        "target": "scrapfly",
+        "url": "https://scrapfly.io/web-scraping-tools/automation-detector",
+        "verdict": "suspicious",
+        "summary": "1 suspicious",
+        "error": null,
+        "risk": 50,
+        "details": {
+          "label": "Not Automated",
+          "detected": [],
+          "suspicious": [
+            "chrome.runtime"
+          ],
+          "total": 14
+        }
+      },
+      {
+        "target": "browserscan",
+        "url": "https://www.browserscan.net/bot-detection",
+        "verdict": "human",
+        "summary": "17/17 normal",
+        "error": null,
+        "risk": 0,
+        "details": {
+          "overall": "Normal",
+          "abnormal": [],
+          "unknown": [],
+          "checks": 17
+        }
+      },
+      {
+        "target": "apivoid",
+        "url": "https://www.apivoid.com/tools/bot-detection-test/",
+        "verdict": "bot",
+        "summary": "risk 83",
+        "error": null,
+        "risk": 83,
+        "details": {
+          "score": 83,
+          "label": "High Risk | Likely Bot",
+          "level": "fail",
+          "tampered": true,
+          "triggered_rules": 9,
+          "groups": {
+            "Network & Request": "fail",
+            "Hardware & Display": "fail",
+            "Browser & Engine": "ok",
+            "Browser Integrity": "fail"
+          }
+        }
+      },
+      {
+        "target": "pixelscan",
+        "url": "https://pixelscan.net/bot-check",
+        "verdict": "human",
+        "summary": "102/102 clear",
+        "error": null,
+        "risk": 0,
+        "details": {
+          "state": "success",
+          "not_clear": [],
+          "checks": 102
+        }
+      },
+      {
+        "target": "sannysoft",
+        "url": "https://bot.sannysoft.com/",
+        "verdict": "human",
+        "summary": "31/31 passed",
+        "error": null,
+        "risk": 0,
+        "details": {
+          "failed": [],
+          "warn": [],
+          "checks": 31
+        }
+      },
+      {
+        "target": "creepjs_headless",
+        "url": "https://abrahamjuliot.github.io/creepjs/",
+        "verdict": "human",
+        "summary": "headless 0%, stealth 0%",
+        "error": null,
+        "risk": 0,
+        "details": {
+          "like_headless": 44,
+          "headless": 0,
+          "stealth": 0
+        }
+      },
+      {
+        "target": "deviceandbrowserinfo",
+        "url": "https://deviceandbrowserinfo.com/are_you_a_bot",
+        "verdict": "human",
+        "summary": "human",
+        "error": null,
+        "risk": 0,
+        "details": {
+          "is_bot": false,
+          "signals": []
+        }
+      },
+      {
+        "target": "fingerprint_scan",
+        "url": "https://fingerprint-scan.com/",
+        "verdict": "bot",
+        "summary": "bot score 100",
+        "error": null,
+        "risk": 100,
+        "details": {
+          "score": 100,
+          "categories": {
+            "Hardware / OS": "MEDIUM +59",
+            "Browser": "MEDIUM +34",
+            "Network / proxy": "HIGH +70"
+          }
+        }
+      }
+    ],
+    "average_memory_mb": 133,
+    "average_cpu_percent": 1.7399999999999998,
+    "bypass_rate": 0.2,
     "error": null
   }
 ]

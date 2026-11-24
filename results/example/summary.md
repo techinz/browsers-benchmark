@@ -1,6 +1,6 @@
 # Browser Benchmark Results Summary
 
-*Generated on: 2026-11-23 21:23*
+*Generated on: 2026-11-24 19:37*
 
 ## Overall Ranking
 
@@ -21,11 +21,11 @@ Overall score is the average of the bypass rate and 100 minus the detection risk
 | cloakbrowser | 70.3 | 50.0 | 0/9 | 9 |
 | nodriver-chrome | 69.7 | 70.0 | 2/9 | 31 |
 | cloakbrowser_headless | 69.2 | 50.0 | 0/9 | 12 |
-| adspower_headless | 67.5 | 60.0 | 1/9 | 25 |
 | shardbrowser | 64.9 | 60.0 | 1/9 | 30 |
-| adspower | 64.4 | 50.0 | 0/9 | 21 |
 | shardbrowser_headless | 62.0 | 40.0 | 0/9 | 16 |
 | zendriver-chrome_headless | 58.1 | 70.0 | 5/9 | 54 |
+| adspower | 52.3 | 40.0 | 3/9 | 35 |
+| adspower_headless | 47.1 | 20.0 | 2/9 | 26 |
 | selenium-chrome__no_proxy | 44.1 | 60.0 | 6/9 | 72 |
 | tf-playwright-stealth-chromium | 42.2 | 40.0 | 5/9 | 56 |
 | tf-playwright-stealth-chromium_headless | 42.2 | 40.0 | 5/9 | 56 |
@@ -57,14 +57,14 @@ Risk (0 - human, 100 - bot) is the average over the tests: the site's own score 
 | shardbrowser_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 58 | ✅ 91/91 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 36 | 0/9 | 16 |
 | camoufox_headless | ✅ score 100 | ✅ 14/14 safe | ✅ 17/17 normal | ⚠️ risk 50 | ✅ 69/69 clear | ⚠️ 1 warn | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 57 | 0/9 | 17 |
 | camoufox | ✅ score 100 | ✅ 14/14 safe | ✅ 17/17 normal | ⚠️ risk 40 | ✅ 69/69 clear | ⚠️ 1 warn | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 92 | 1/9 | 20 |
-| adspower | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 60 | ✅ 102/102 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 81 | 0/9 | 21 |
-| adspower_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 75 | ✅ 102/102 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 100 | 1/9 | 25 |
+| adspower_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 83 | ✅ 102/102 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 100 | 2/9 | 26 |
 | zendriver-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 36 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 69 | 1/9 | 28 |
 | clearcote | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 33 | ✅ 101/101 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ❌ bot, 1 signal | ❌ bot score 76 | 2/9 | 29 |
 | shardbrowser | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 55 | ✅ 91/91 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 66 | 1/9 | 30 |
 | patchright | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 26 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 99 | 1/9 | 31 |
 | nodriver-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 26 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 100 | 2/9 | 31 |
 | pydoll-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 41 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 99 | 1/9 | 32 |
+| adspower | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 68 | ✅ 102/102 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 100 | 3/9 | 35 |
 | seleniumbase-cdp-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 36 | ❌ 1 not clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 69 | 2/9 | 39 |
 | zendriver-chrome_headless | ✅ score 84 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 85 | ✅ 90/90 clear | ❌ 1 failed | ❌ headless 33%, stealth 0% | ❌ bot, 1 signal | ❌ bot score 100 | 5/9 | 54 |
 | tf-playwright-stealth-chromium | ✅ score 100 | ✅ 14/14 safe | ❌ robot | ❌ risk 100 | ❌ 3 not clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ❌ bot, 4 signals | ❌ bot score 100 | 5/9 | 56 |
@@ -86,8 +86,8 @@ Risk (0 - human, 100 - bot) is the average over the tests: the site's own score 
 
 | Engine | Memory Usage (MB) | CPU Usage (%) |
 |-----------------|------------------:|--------------:|
-| adspower | 150.0 | 2.2 |
-| adspower_headless | 170.0 | 3.5 |
+| adspower_headless | 133.0 | 1.7 |
+| adspower | 154.0 | 2.9 |
 | tf-playwright-stealth-chromium_headless | 589.0 | 5.2 |
 | playwright-chrome_headless | 600.0 | 1.3 |
 | playwright-firefox_headless | 933.0 | 31.0 |
@@ -160,8 +160,8 @@ Risk (0 - human, 100 - bot) is the average over the tests: the site's own score 
 
 | Engine | WebRTC IP |
 |-----------------|----------:|
-| adspower | 97.189.111.154 |
-| adspower_headless | 172.56.219.96 |
+| adspower | 73.34.111.188 |
+| adspower_headless | 82.40.107.107 |
 | camoufox | 172.56.153.41 |
 | camoufox_headless | 69.112.50.25 |
 | clearcote | 107.12.52.229 |
@@ -197,8 +197,8 @@ Risk (0 - human, 100 - bot) is the average over the tests: the site's own score 
 
 | Engine | IP |
 |-----------------|----------:|
-| adspower | 107.195.49.21 |
-| adspower_headless | 75.247.146.166 |
+| adspower | 24.13.136.4 |
+| adspower_headless | 82.40.85.150 |
 | camoufox | 108.217.179.151 |
 | camoufox_headless | 69.112.50.25 |
 | clearcote | 107.12.52.229 |
