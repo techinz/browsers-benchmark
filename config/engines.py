@@ -13,6 +13,7 @@ from engines.playwright.invisible_playwright_engine import InvisiblePlaywrightEn
 from engines.playwright.cloakbrowser_engine import CloakBrowserEngine
 from engines.playwright.clearcote_engine import ClearcoteEngine
 from engines.playwright.dolphin_anty_engine import DolphinAntyEngine
+from engines.playwright.kameleo_engine import KameleoEngine
 from engines.playwright.shardbrowser_engine import ShardBrowserEngine
 from engines.playwright.patchright_engine import PatchrightEngine
 from engines.playwright.playwright_engine import PlaywrightEngine
@@ -191,6 +192,14 @@ class EnginesSettings(BaseSettings):
                            "api_token": settings.DOLPHIN_API_TOKEN,
                            "local_api_url": settings.DOLPHIN_LOCAL_API_URL,
                            "browser_version": settings.DOLPHIN_BROWSER_VERSION}
+            },
+            {
+                "class": KameleoEngine,
+                "params": {"name": "kameleo_chroma", "headless": False, "base_url": settings.KAMELEO_BASE_URL}
+            },
+            {
+                "class": KameleoEngine,
+                "params": {"name": "kameleo_chroma_headless", "headless": True, "base_url": settings.KAMELEO_BASE_URL}
             }
         ]
         self.engines.extend(base_engines)

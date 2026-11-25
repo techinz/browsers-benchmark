@@ -78,6 +78,9 @@ class Settings(BaseSettings):
     DOLPHIN_LOCAL_API_URL: str = "http://localhost:3001"
     DOLPHIN_BROWSER_VERSION: int = 158  # major version of the Chromium build Dolphin Anty runs
 
+    # kameleo
+    KAMELEO_BASE_URL: str = "http://localhost:5050"
+
     # constants
     MAX_RETRIES: int = 3  # maximum retries for failed tests
 
