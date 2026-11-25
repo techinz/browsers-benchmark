@@ -1,6 +1,6 @@
 # Browser Benchmark Results Summary
 
-*Generated on: 2026-11-25 17:25*
+*Generated on: 2026-11-25 18:20*
 
 ## Overall Ranking
 
@@ -21,8 +21,10 @@ Overall score is the average of the bypass rate and 100 minus the detection risk
 | cloakbrowser | 70.3 | 50.0 | 0/9 | 9 |
 | nodriver-chrome | 69.7 | 70.0 | 2/9 | 31 |
 | cloakbrowser_headless | 69.2 | 50.0 | 0/9 | 12 |
+| kameleo_chroma_headless | 67.6 | 60.0 | 1/9 | 25 |
 | seleniumbase-cdp-chrome | 65.8 | 60.0 | 1/9 | 28 |
 | shardbrowser_headless | 65.7 | 50.0 | 0/9 | 19 |
+| kameleo_chroma | 63.7 | 50.0 | 1/9 | 23 |
 | dolphin_anty | 62.9 | 60.0 | 1/9 | 34 |
 | dolphin_anty_headless | 62.1 | 50.0 | 2/9 | 26 |
 | zendriver-chrome_headless | 58.1 | 70.0 | 5/9 | 54 |
@@ -59,7 +61,9 @@ Risk (0 - human, 100 - bot) is the average over the tests: the site's own score 
 | camoufox_headless | ✅ score 100 | ✅ 14/14 safe | ✅ 17/17 normal | ⚠️ risk 50 | ✅ 69/69 clear | ⚠️ 1 warn | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 57 | 0/9 | 17 |
 | shardbrowser_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 63 | ✅ 91/91 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 54 | 0/9 | 19 |
 | camoufox | ✅ score 100 | ✅ 14/14 safe | ✅ 17/17 normal | ⚠️ risk 40 | ✅ 69/69 clear | ⚠️ 1 warn | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 92 | 1/9 | 20 |
+| kameleo_chroma | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 68 | ✅ 103/103 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 86 | 1/9 | 23 |
 | shardbrowser | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 33 | ✅ 91/91 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 21 | 1/9 | 23 |
+| kameleo_chroma_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 78 | ✅ 91/91 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 95 | 1/9 | 25 |
 | adspower_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 83 | ✅ 102/102 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 100 | 2/9 | 26 |
 | dolphin_anty_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 83 | ✅ 90/90 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 100 | 2/9 | 26 |
 | seleniumbase-cdp-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 36 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 69 | 1/9 | 28 |
@@ -91,8 +95,10 @@ Risk (0 - human, 100 - bot) is the average over the tests: the site's own score 
 | Engine | Memory Usage (MB) | CPU Usage (%) |
 |-----------------|------------------:|--------------:|
 | adspower_headless | 133.0 | 1.7 |
+| kameleo_chroma_headless | 152.0 | 2.0 |
 | adspower | 154.0 | 2.9 |
 | dolphin_anty_headless | 156.0 | 2.7 |
+| kameleo_chroma | 159.0 | 2.6 |
 | dolphin_anty | 170.0 | 4.2 |
 | tf-playwright-stealth-chromium_headless | 589.0 | 5.2 |
 | playwright-chrome_headless | 600.0 | 1.3 |
@@ -141,6 +147,8 @@ Risk (0 - human, 100 - bot) is the average over the tests: the site's own score 
 | dolphin_anty_headless | 0.90 |
 | invisible-playwright | 0.90 |
 | invisible-playwright_headless | 0.90 |
+| kameleo_chroma | 0.90 |
+| kameleo_chroma_headless | 0.90 |
 | nodriver-chrome | 0.90 |
 | nodriver-chrome_headless | 0.90 |
 | patchright | 0.90 |
@@ -180,6 +188,8 @@ Risk (0 - human, 100 - bot) is the average over the tests: the site's own score 
 | dolphin_anty_headless | 73.137.20.109 |
 | invisible-playwright | Not detected |
 | invisible-playwright_headless | Not detected |
+| kameleo_chroma | 24.47.96.41 |
+| kameleo_chroma_headless | 172.56.73.23 |
 | nodriver-chrome | REAL_IP |
 | nodriver-chrome_headless | REAL_IP |
 | patchright | REAL_IP |
@@ -219,6 +229,8 @@ Risk (0 - human, 100 - bot) is the average over the tests: the site's own score 
 | dolphin_anty_headless | 73.137.20.109 |
 | invisible-playwright | 64.135.135.152 |
 | invisible-playwright_headless | 96.245.65.169 |
+| kameleo_chroma | 24.47.96.41 |
+| kameleo_chroma_headless | 97.160.101.55 |
 | nodriver-chrome | 141.126.220.102 |
 | nodriver-chrome_headless | 66.117.131.179 |
 | patchright | 67.174.234.74 |
