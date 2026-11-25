@@ -96,7 +96,7 @@ Each engine also gets a **detection risk** (0 - human, 100 - bot): the average o
 ## 📊 Sample Results
 This benchmark provides detailed comparative analysis. Here's an excerpt from a recent test run (more in <a href="results/example">results/example</a>):  
 <i>Real IP in this example is hidden and shown as REAL_IP. All engines ran on the same Linux server (no GPU, virtual display)</i>  
-<i>AdsPower starts the browser itself, outside the benchmark's process tree, so its memory and CPU numbers only cover part of the browser and can't be compared with the other engines</i>  
+<i>AdsPower and Dolphin Anty start the browser themselves, outside the benchmark's process tree, so their memory and CPU numbers only cover part of the browser and can't be compared with the other engines</i>  
 <i>Proxy IP in this example is different for each engine</i>
 
 ## Overall Ranking
@@ -119,6 +119,8 @@ Overall score is the average of the bypass rate and 100 minus the detection risk
 | cloakbrowser_headless | 69.2 | 50.0 | 0/9 | 12 |
 | seleniumbase-cdp-chrome | 65.8 | 60.0 | 1/9 | 28 |
 | shardbrowser_headless | 65.7 | 50.0 | 0/9 | 19 |
+| dolphin_anty | 62.9 | 60.0 | 1/9 | 34 |
+| dolphin_anty_headless | 62.1 | 50.0 | 2/9 | 26 |
 | zendriver-chrome_headless | 58.1 | 70.0 | 5/9 | 54 |
 | adspower | 52.3 | 40.0 | 3/9 | 35 |
 | adspower_headless | 47.1 | 20.0 | 2/9 | 26 |
@@ -154,12 +156,14 @@ Risk (0 - human, 100 - bot) is the average over the tests: the site's own score 
 | camoufox | ✅ score 100 | ✅ 14/14 safe | ✅ 17/17 normal | ⚠️ risk 40 | ✅ 69/69 clear | ⚠️ 1 warn | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 92 | 1/9 | 20 |
 | shardbrowser | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 33 | ✅ 91/91 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 21 | 1/9 | 23 |
 | adspower_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 83 | ✅ 102/102 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 100 | 2/9 | 26 |
+| dolphin_anty_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 83 | ✅ 90/90 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 100 | 2/9 | 26 |
 | seleniumbase-cdp-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 36 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 69 | 1/9 | 28 |
 | zendriver-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 36 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 69 | 1/9 | 28 |
 | clearcote | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 33 | ✅ 101/101 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ❌ bot, 1 signal | ❌ bot score 76 | 2/9 | 29 |
 | patchright | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 26 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 99 | 1/9 | 31 |
 | nodriver-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 26 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 100 | 2/9 | 31 |
 | pydoll-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 41 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 99 | 1/9 | 32 |
+| dolphin_anty | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 58 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 100 | 1/9 | 34 |
 | adspower | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 68 | ✅ 102/102 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 100 | 3/9 | 35 |
 | zendriver-chrome_headless | ✅ score 84 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 85 | ✅ 90/90 clear | ❌ 1 failed | ❌ headless 33%, stealth 0% | ❌ bot, 1 signal | ❌ bot score 100 | 5/9 | 54 |
 | tf-playwright-stealth-chromium | ✅ score 100 | ✅ 14/14 safe | ❌ robot | ❌ risk 100 | ❌ 3 not clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ❌ bot, 4 signals | ❌ bot score 100 | 5/9 | 56 |
@@ -184,6 +188,8 @@ Note: The headed Chromium-based engines ran on a server without a GPU, so they h
 |-----------------|------------------:|--------------:|
 | adspower_headless | 133.0 | 1.7 |
 | adspower | 154.0 | 2.9 |
+| dolphin_anty_headless | 156.0 | 2.7 |
+| dolphin_anty | 170.0 | 4.2 |
 | tf-playwright-stealth-chromium_headless | 589.0 | 5.2 |
 | playwright-chrome_headless | 600.0 | 1.3 |
 | playwright-firefox_headless | 933.0 | 31.0 |
@@ -226,6 +232,8 @@ Note: The headed Chromium-based engines ran on a server without a GPU, so they h
 | clearcote_headless | 0.90 |
 | cloakbrowser | 0.90 |
 | cloakbrowser_headless | 0.90 |
+| dolphin_anty | 0.90 |
+| dolphin_anty_headless | 0.90 |
 | invisible-playwright | 0.90 |
 | invisible-playwright_headless | 0.90 |
 | nodriver-chrome | 0.90 |
@@ -272,6 +280,8 @@ And vise versa, with score >= 0.7 it will be much easier.
 | clearcote_headless | 70.130.166.136 |
 | cloakbrowser | 172.4.209.245 |
 | cloakbrowser_headless | 68.58.217.217 |
+| dolphin_anty | 67.145.96.130 |
+| dolphin_anty_headless | 73.137.20.109 |
 | invisible-playwright | Not detected |
 | invisible-playwright_headless | Not detected |
 | nodriver-chrome | REAL_IP |
@@ -310,6 +320,8 @@ Note: If the WebRTC IP is different from your real IP - no leakage (applicable o
 | clearcote_headless | 70.130.166.136 |
 | cloakbrowser | 172.4.209.245 |
 | cloakbrowser_headless | 75.224.223.158 |
+| dolphin_anty | 67.145.96.130 |
+| dolphin_anty_headless | 73.137.20.109 |
 | invisible-playwright | 64.135.135.152 |
 | invisible-playwright_headless | 96.245.65.169 |
 | nodriver-chrome | 141.126.220.102 |
@@ -391,6 +403,12 @@ Note: If the IP is your proxy's IP - good, your real IP - bad (applicapable only
    3. Copy your API key and set `ADSPOWER_API_KEY` in `.env`
    4. Keep AdsPower running while the benchmark is active - it manages the browser process
 
+   **Dolphin Anty** *(optional, needs a plan with API access)*  
+   1. Download and install [Dolphin Anty](https://dolphin-anty.com/download) and log in
+   2. Create an API token in your Dolphin Anty account and set `DOLPHIN_API_TOKEN` in `.env`
+   3. Keep Dolphin Anty running while the benchmark is active. Each run creates a `benchmark-...` profile and deletes it afterwards
+   4. If Dolphin Anty updates its browser, set `DOLPHIN_BROWSER_VERSION` to the new Chromium major version (the engine tells you when it doesn't match)
+
 4. **Configure settings**
    ```bash
    cp .env.example .env
@@ -403,12 +421,6 @@ Note: If the IP is your proxy's IP - good, your real IP - bad (applicapable only
       ❗️ IMPORTANT (1): Number of proxies has to be not less than number of engines you want to test.  
       ❗️ IMPORTANT (2): Some engines support different proxy protocols - for example, Playwright supports only HTTP and HTTPS, but NoDriver supports only SOCKS5.  
          This implies that you have to add multiple proxy protocols to the `proxies.txt` file or exclude some engines from the test.  
-   **Dolphin Anty** *(optional, needs a plan with API access)*  
-   1. Download and install [Dolphin Anty](https://dolphin-anty.com/download) and log in
-   2. Create an API token in your Dolphin Anty account and set `DOLPHIN_API_TOKEN` in `.env`
-   3. Keep Dolphin Anty running while the benchmark is active. Each run creates a `benchmark-...` profile and deletes it afterwards
-   4. If Dolphin Anty updates its browser, set `DOLPHIN_BROWSER_VERSION` to the new Chromium major version (the engine tells you when it doesn't match)
-
          At the moment you need all HTTP/HTTPS proxies and at least 1 SOCKS5 for NoDriver. Also, the benchmark will show you what proxy protocols are missing.  
       ❗️ IMPORTANT (3): Selenium won't use any proxies.  
 
@@ -445,6 +457,11 @@ MAX_RETRIES=3
 ADSPOWER_API_KEY=your_api_key_here
 ADSPOWER_BASE_URL=http://local.adspower.net:50325
 ADSPOWER_GROUP_ID=
+
+# Dolphin Anty (optional — only needed if running the dolphin_anty engines)
+DOLPHIN_API_TOKEN=your_api_token_here
+DOLPHIN_LOCAL_API_URL=http://localhost:3001
+DOLPHIN_BROWSER_VERSION=158
 ```
 
 ## 📈 Output & Reports
@@ -457,11 +474,6 @@ The benchmark generates reports in the `results/` directory:
   - `bypass_dashboard.png` - Multi-metric dashboard
   - `recaptcha_scores.png` - reCAPTCHA performance chart
   - `detection_tests.png` - Bot detection test verdicts for every engine
-
-# Dolphin Anty (optional — only needed if running the dolphin_anty engines)
-DOLPHIN_API_TOKEN=your_api_token_here
-DOLPHIN_LOCAL_API_URL=http://localhost:3001
-DOLPHIN_BROWSER_VERSION=158
   - `screenshots` - Screenshots of all tested targets
 
 Your machine's real IP is detected at startup and saved as `REAL_IP` in the results and on screenshots (page text is masked right before each screenshot), so reports can be shared safely. Text inside cross-origin iframes can't be masked.

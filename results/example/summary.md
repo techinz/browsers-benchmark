@@ -1,6 +1,6 @@
 # Browser Benchmark Results Summary
 
-*Generated on: 2026-11-24 21:24*
+*Generated on: 2026-11-25 17:25*
 
 ## Overall Ranking
 
@@ -23,6 +23,8 @@ Overall score is the average of the bypass rate and 100 minus the detection risk
 | cloakbrowser_headless | 69.2 | 50.0 | 0/9 | 12 |
 | seleniumbase-cdp-chrome | 65.8 | 60.0 | 1/9 | 28 |
 | shardbrowser_headless | 65.7 | 50.0 | 0/9 | 19 |
+| dolphin_anty | 62.9 | 60.0 | 1/9 | 34 |
+| dolphin_anty_headless | 62.1 | 50.0 | 2/9 | 26 |
 | zendriver-chrome_headless | 58.1 | 70.0 | 5/9 | 54 |
 | adspower | 52.3 | 40.0 | 3/9 | 35 |
 | adspower_headless | 47.1 | 20.0 | 2/9 | 26 |
@@ -59,12 +61,14 @@ Risk (0 - human, 100 - bot) is the average over the tests: the site's own score 
 | camoufox | ✅ score 100 | ✅ 14/14 safe | ✅ 17/17 normal | ⚠️ risk 40 | ✅ 69/69 clear | ⚠️ 1 warn | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 92 | 1/9 | 20 |
 | shardbrowser | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 33 | ✅ 91/91 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 21 | 1/9 | 23 |
 | adspower_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 83 | ✅ 102/102 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 100 | 2/9 | 26 |
+| dolphin_anty_headless | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 83 | ✅ 90/90 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 100 | 2/9 | 26 |
 | seleniumbase-cdp-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 36 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 69 | 1/9 | 28 |
 | zendriver-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 36 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 69 | 1/9 | 28 |
 | clearcote | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 33 | ✅ 101/101 clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ❌ bot, 1 signal | ❌ bot score 76 | 2/9 | 29 |
 | patchright | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 26 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 99 | 1/9 | 31 |
 | nodriver-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ✅ risk 26 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 100 | 2/9 | 31 |
 | pydoll-chrome | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 41 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 99 | 1/9 | 32 |
+| dolphin_anty | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ⚠️ risk 58 | ✅ 90/90 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ⚠️ bot score 100 | 1/9 | 34 |
 | adspower | ✅ score 100 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 68 | ✅ 102/102 clear | ❌ 2 failed | ✅ headless 0%, stealth 0% | ✅ human | ❌ bot score 100 | 3/9 | 35 |
 | zendriver-chrome_headless | ✅ score 84 | ⚠️ 1 suspicious | ✅ 17/17 normal | ❌ risk 85 | ✅ 90/90 clear | ❌ 1 failed | ❌ headless 33%, stealth 0% | ❌ bot, 1 signal | ❌ bot score 100 | 5/9 | 54 |
 | tf-playwright-stealth-chromium | ✅ score 100 | ✅ 14/14 safe | ❌ robot | ❌ risk 100 | ❌ 3 not clear | ✅ 31/31 passed | ✅ headless 0%, stealth 0% | ❌ bot, 4 signals | ❌ bot score 100 | 5/9 | 56 |
@@ -88,6 +92,8 @@ Risk (0 - human, 100 - bot) is the average over the tests: the site's own score 
 |-----------------|------------------:|--------------:|
 | adspower_headless | 133.0 | 1.7 |
 | adspower | 154.0 | 2.9 |
+| dolphin_anty_headless | 156.0 | 2.7 |
+| dolphin_anty | 170.0 | 4.2 |
 | tf-playwright-stealth-chromium_headless | 589.0 | 5.2 |
 | playwright-chrome_headless | 600.0 | 1.3 |
 | playwright-firefox_headless | 933.0 | 31.0 |
@@ -131,6 +137,8 @@ Risk (0 - human, 100 - bot) is the average over the tests: the site's own score 
 | clearcote_headless | 0.90 |
 | cloakbrowser | 0.90 |
 | cloakbrowser_headless | 0.90 |
+| dolphin_anty | 0.90 |
+| dolphin_anty_headless | 0.90 |
 | invisible-playwright | 0.90 |
 | invisible-playwright_headless | 0.90 |
 | nodriver-chrome | 0.90 |
@@ -168,6 +176,8 @@ Risk (0 - human, 100 - bot) is the average over the tests: the site's own score 
 | clearcote_headless | 70.130.166.136 |
 | cloakbrowser | 172.4.209.245 |
 | cloakbrowser_headless | 68.58.217.217 |
+| dolphin_anty | 67.145.96.130 |
+| dolphin_anty_headless | 73.137.20.109 |
 | invisible-playwright | Not detected |
 | invisible-playwright_headless | Not detected |
 | nodriver-chrome | REAL_IP |
@@ -205,6 +215,8 @@ Risk (0 - human, 100 - bot) is the average over the tests: the site's own score 
 | clearcote_headless | 70.130.166.136 |
 | cloakbrowser | 172.4.209.245 |
 | cloakbrowser_headless | 75.224.223.158 |
+| dolphin_anty | 67.145.96.130 |
+| dolphin_anty_headless | 73.137.20.109 |
 | invisible-playwright | 64.135.135.152 |
 | invisible-playwright_headless | 96.245.65.169 |
 | nodriver-chrome | 141.126.220.102 |
