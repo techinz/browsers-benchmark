@@ -73,6 +73,11 @@ class Settings(BaseSettings):
     ADSPOWER_BASE_URL: str = "http://local.adspower.net:50325"
     ADSPOWER_GROUP_ID: str = ""
 
+    # dolphin anty
+    DOLPHIN_API_TOKEN: str = ""
+    DOLPHIN_LOCAL_API_URL: str = "http://localhost:3001"
+    DOLPHIN_BROWSER_VERSION: int = 158  # major version of the Chromium build Dolphin Anty runs
+
     # constants
     MAX_RETRIES: int = 3  # maximum retries for failed tests
 

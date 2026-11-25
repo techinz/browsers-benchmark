@@ -12,6 +12,7 @@ from engines.playwright.camoufox_engine import CamoufoxEngine
 from engines.playwright.invisible_playwright_engine import InvisiblePlaywrightEngine
 from engines.playwright.cloakbrowser_engine import CloakBrowserEngine
 from engines.playwright.clearcote_engine import ClearcoteEngine
+from engines.playwright.dolphin_anty_engine import DolphinAntyEngine
 from engines.playwright.shardbrowser_engine import ShardBrowserEngine
 from engines.playwright.patchright_engine import PatchrightEngine
 from engines.playwright.playwright_engine import PlaywrightEngine
@@ -176,6 +177,20 @@ class EnginesSettings(BaseSettings):
                            "api_key": settings.ADSPOWER_API_KEY,
                            "base_url": settings.ADSPOWER_BASE_URL,
                            "group_id": settings.ADSPOWER_GROUP_ID}
+            },
+            {
+                "class": DolphinAntyEngine,
+                "params": {"name": "dolphin_anty", "headless": False,
+                           "api_token": settings.DOLPHIN_API_TOKEN,
+                           "local_api_url": settings.DOLPHIN_LOCAL_API_URL,
+                           "browser_version": settings.DOLPHIN_BROWSER_VERSION}
+            },
+            {
+                "class": DolphinAntyEngine,
+                "params": {"name": "dolphin_anty_headless", "headless": True,
+                           "api_token": settings.DOLPHIN_API_TOKEN,
+                           "local_api_url": settings.DOLPHIN_LOCAL_API_URL,
+                           "browser_version": settings.DOLPHIN_BROWSER_VERSION}
             }
         ]
         self.engines.extend(base_engines)
